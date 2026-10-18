@@ -1,0 +1,1 @@
+STATS joint dt 0.01 mass 1.3 radius 0.055 arm 0.33 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra none

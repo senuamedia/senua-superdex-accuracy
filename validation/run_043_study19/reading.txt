@@ -1,0 +1,107 @@
+identity | suite 1 stock against registered: 39 of 39
+identity | suite 1 off against registered stock: 39 of 39
+identity | suite 1 A to D against registered: 39 of 39
+identity | suite 1 A to E against registered: 39 of 39
+identity | suite 2 stock against registered: 28 of 28
+identity | suite 2 off against registered stock: 28 of 28
+identity | suite 2 A to D against registered: 28 of 28
+identity | suite 2 A to E against registered: 28 of 28
+S0 | RULE S0_same eq 268 268 : HELD
+S0 | RULE S0_files eq 268 268 : HELD
+exit | stock off exit 0 ERROR SUMMARY: 0 errors destroyed 1 invalid_in_ClearFrictionAnchors 0
+exit | b14 off exit 0 ERROR SUMMARY: 0 errors destroyed 1 invalid_in_ClearFrictionAnchors 0
+exit | b14 abcd exit 99 ERROR SUMMARY: 120 errors destroyed 1 invalid_in_ClearFrictionAnchors 1
+exit | b15 off exit 0 ERROR SUMMARY: 0 errors destroyed 1 invalid_in_ClearFrictionAnchors 0
+exit | b15 abcd exit 0 ERROR SUMMARY: 0 errors destroyed 1 invalid_in_ClearFrictionAnchors 0
+L1 | RULE L1_errors ge 120 1 : HELD
+L1 | RULE L1_in_ClearFrictionAnchors ge 1 1 : HELD
+L2 | RULE L2_errors all_eq 0 0 0 0 : HELD
+L2 | RULE L2_exit all_eq 0 0 0 0 : HELD
+L2 | RULE L2_destroyed all_eq 1 1 1 1 1 1 : HELD
+soft | SAME off_against_stock 1
+soft | SAME 14_against_15 c 1
+soft | SAME 14_against_15 abcd 1
+soft | SAME off_against_stock 4
+soft | SAME 14_against_15 c 4
+soft | SAME 14_against_15 abcd 4
+soft | SAME off_against_stock 16
+soft | SAME 14_against_15 c 16
+soft | SAME 14_against_15 abcd 16
+soft | SAME off_against_stock 32
+soft | DIFFERS 14_against_15 c 32 byte 45803, line 1438
+soft | DIFFERS 14_against_15 abcd 32 byte 54662, line 1697
+soft | SAME off_against_stock 64
+soft | DIFFERS 14_against_15 c 64 byte 63683, line 1978
+soft | SAME 14_against_15 abcd 64
+M0 | RULE M0_off_is_stock eq 5 5 : HELD
+M1 | RULE M1_reached ge 3 1 : HELD
+ends c 1/1 | ENDS dt_ns 10000000 place_apart_nm 0 speed_apart_ums 0
+ends c 1/4 | ENDS dt_ns 2500000 place_apart_nm 0 speed_apart_ums 0
+ends c 1/16 | ENDS dt_ns 625000 place_apart_nm 0 speed_apart_ums 0
+ends c 1/32 | ENDS dt_ns 312500 place_apart_nm 0 speed_apart_ums 0
+ends c 1/64 | ENDS dt_ns 156250 place_apart_nm 20 speed_apart_ums 0
+ends abcd 1/1 | ENDS dt_ns 10000000 place_apart_nm 0 speed_apart_ums 0
+ends abcd 1/4 | ENDS dt_ns 2500000 place_apart_nm 0 speed_apart_ums 0
+ends abcd 1/16 | ENDS dt_ns 625000 place_apart_nm 0 speed_apart_ums 0
+ends abcd 1/32 | ENDS dt_ns 312500 place_apart_nm 1 speed_apart_ums 0
+ends abcd 1/64 | ENDS dt_ns 156250 place_apart_nm 0 speed_apart_ums 0
+stock 1/1 | BOUNCE dt_ns 10000000 speed_in_ums 980000 steps_to_turn 3 rebound_nm -600281 drop_nm 60000000 rebound_per_10000 0
+stock 1/1 | STOP dt_ns 10000000 first_stopped_at_step 11 largest_speed_last_third_ums 153 slid_um 1580 came_back_um 285
+stock 1/1 | HOVER dt_ns 10000000 sliding_steps 11 highest_um 59020 highest_at_step 0 fastest_up_ums 0 deepest_um -2334
+stock 1/4 | BOUNCE dt_ns 2500000 speed_in_ums 1053500 steps_to_turn 6 rebound_nm 11409861 drop_nm 60000000 rebound_per_10000 1901
+stock 1/4 | STOP dt_ns 2500000 first_stopped_at_step 46 largest_speed_last_third_ums 76 slid_um 1677 came_back_um 2203
+stock 1/4 | HOVER dt_ns 2500000 sliding_steps 46 highest_um 59938 highest_at_step 0 fastest_up_ums 0 deepest_um -5048
+stock 1/16 | BOUNCE dt_ns 625000 speed_in_ums 1071875 steps_to_turn 21 rebound_nm 29879946 drop_nm 60000000 rebound_per_10000 4979
+stock 1/16 | STOP dt_ns 625000 first_stopped_at_step 188 largest_speed_last_third_ums 9881 slid_um 1724 came_back_um 2341
+stock 1/16 | HOVER dt_ns 625000 sliding_steps 188 highest_um 59996 highest_at_step 0 fastest_up_ums 0 deepest_um -6662
+stock 1/32 | BOUNCE dt_ns 312500 speed_in_ums 1074938 steps_to_turn 40 rebound_nm 35002634 drop_nm 60000000 rebound_per_10000 5833
+stock 1/32 | STOP dt_ns 312500 first_stopped_at_step 378 largest_speed_last_third_ums 11266 slid_um 1731 came_back_um 2307
+stock 1/32 | HOVER dt_ns 312500 sliding_steps 378 highest_um 59999 highest_at_step 0 fastest_up_ums 0 deepest_um -7066
+stock 1/64 | BOUNCE dt_ns 156250 speed_in_ums 1076469 steps_to_turn 79 rebound_nm 37852535 drop_nm 60000000 rebound_per_10000 6308
+stock 1/64 | STOP dt_ns 156250 first_stopped_at_step 759 largest_speed_last_third_ums 24380 slid_um 1736 came_back_um 10512
+stock 1/64 | HOVER dt_ns 156250 sliding_steps 759 highest_um 59999 highest_at_step 0 fastest_up_ums 0 deepest_um -7355
+b15_off 1/1 | BOUNCE dt_ns 10000000 speed_in_ums 980000 steps_to_turn 3 rebound_nm -600281 drop_nm 60000000 rebound_per_10000 0
+b15_off 1/1 | STOP dt_ns 10000000 first_stopped_at_step 11 largest_speed_last_third_ums 153 slid_um 1580 came_back_um 285
+b15_off 1/1 | HOVER dt_ns 10000000 sliding_steps 11 highest_um 59020 highest_at_step 0 fastest_up_ums 0 deepest_um -2334
+b15_off 1/4 | BOUNCE dt_ns 2500000 speed_in_ums 1053500 steps_to_turn 6 rebound_nm 11409861 drop_nm 60000000 rebound_per_10000 1901
+b15_off 1/4 | STOP dt_ns 2500000 first_stopped_at_step 46 largest_speed_last_third_ums 76 slid_um 1677 came_back_um 2203
+b15_off 1/4 | HOVER dt_ns 2500000 sliding_steps 46 highest_um 59938 highest_at_step 0 fastest_up_ums 0 deepest_um -5048
+b15_off 1/16 | BOUNCE dt_ns 625000 speed_in_ums 1071875 steps_to_turn 21 rebound_nm 29879946 drop_nm 60000000 rebound_per_10000 4979
+b15_off 1/16 | STOP dt_ns 625000 first_stopped_at_step 188 largest_speed_last_third_ums 9881 slid_um 1724 came_back_um 2341
+b15_off 1/16 | HOVER dt_ns 625000 sliding_steps 188 highest_um 59996 highest_at_step 0 fastest_up_ums 0 deepest_um -6662
+b15_off 1/32 | BOUNCE dt_ns 312500 speed_in_ums 1074938 steps_to_turn 40 rebound_nm 35002634 drop_nm 60000000 rebound_per_10000 5833
+b15_off 1/32 | STOP dt_ns 312500 first_stopped_at_step 378 largest_speed_last_third_ums 11266 slid_um 1731 came_back_um 2307
+b15_off 1/32 | HOVER dt_ns 312500 sliding_steps 378 highest_um 59999 highest_at_step 0 fastest_up_ums 0 deepest_um -7066
+b15_off 1/64 | BOUNCE dt_ns 156250 speed_in_ums 1076469 steps_to_turn 79 rebound_nm 37852535 drop_nm 60000000 rebound_per_10000 6308
+b15_off 1/64 | STOP dt_ns 156250 first_stopped_at_step 759 largest_speed_last_third_ums 24380 slid_um 1736 came_back_um 10512
+b15_off 1/64 | HOVER dt_ns 156250 sliding_steps 759 highest_um 59999 highest_at_step 0 fastest_up_ums 0 deepest_um -7355
+b15_c 1/1 | BOUNCE dt_ns 10000000 speed_in_ums 980000 steps_to_turn 3 rebound_nm -601270 drop_nm 60000000 rebound_per_10000 0
+b15_c 1/1 | STOP dt_ns 10000000 first_stopped_at_step 11 largest_speed_last_third_ums 0 slid_um 1580 came_back_um 58
+b15_c 1/1 | HOVER dt_ns 10000000 sliding_steps 11 highest_um 59020 highest_at_step 0 fastest_up_ums 0 deepest_um -2334
+b15_c 1/4 | BOUNCE dt_ns 2500000 speed_in_ums 1053500 steps_to_turn 6 rebound_nm 11465164 drop_nm 60000000 rebound_per_10000 1910
+b15_c 1/4 | STOP dt_ns 2500000 first_stopped_at_step 46 largest_speed_last_third_ums 16 slid_um 1677 came_back_um 1863
+b15_c 1/4 | HOVER dt_ns 2500000 sliding_steps 46 highest_um 59938 highest_at_step 0 fastest_up_ums 0 deepest_um -5048
+b15_c 1/16 | BOUNCE dt_ns 625000 speed_in_ums 1071875 steps_to_turn 21 rebound_nm 30011446 drop_nm 60000000 rebound_per_10000 5001
+b15_c 1/16 | STOP dt_ns 625000 first_stopped_at_step 188 largest_speed_last_third_ums 25017 slid_um 1723 came_back_um 2480
+b15_c 1/16 | HOVER dt_ns 625000 sliding_steps 188 highest_um 59996 highest_at_step 0 fastest_up_ums 0 deepest_um -6662
+b15_c 1/32 | BOUNCE dt_ns 312500 speed_in_ums 1074938 steps_to_turn 40 rebound_nm 35140790 drop_nm 60000000 rebound_per_10000 5856
+b15_c 1/32 | STOP dt_ns 312500 first_stopped_at_step 378 largest_speed_last_third_ums 26654 slid_um 1730 came_back_um 3152
+b15_c 1/32 | HOVER dt_ns 312500 sliding_steps 378 highest_um 59999 highest_at_step 0 fastest_up_ums 0 deepest_um -7066
+b15_c 1/64 | BOUNCE dt_ns 156250 speed_in_ums 1076469 steps_to_turn 79 rebound_nm 37990783 drop_nm 60000000 rebound_per_10000 6331
+b15_c 1/64 | STOP dt_ns 156250 first_stopped_at_step 758 largest_speed_last_third_ums 25969 slid_um 1735 came_back_um 10101
+b15_c 1/64 | HOVER dt_ns 156250 sliding_steps 758 highest_um 59999 highest_at_step 0 fastest_up_ums 0 deepest_um -7268
+b15_abcd 1/1 | BOUNCE dt_ns 10000000 speed_in_ums 980000 steps_to_turn 3 rebound_nm -587722 drop_nm 60000000 rebound_per_10000 0
+b15_abcd 1/1 | STOP dt_ns 10000000 first_stopped_at_step 11 largest_speed_last_third_ums 0 slid_um 1580 came_back_um 54
+b15_abcd 1/1 | HOVER dt_ns 10000000 sliding_steps 11 highest_um 59020 highest_at_step 0 fastest_up_ums 0 deepest_um -2334
+b15_abcd 1/4 | BOUNCE dt_ns 2500000 speed_in_ums 1053500 steps_to_turn 6 rebound_nm 11591163 drop_nm 60000000 rebound_per_10000 1931
+b15_abcd 1/4 | STOP dt_ns 2500000 first_stopped_at_step 46 largest_speed_last_third_ums 5 slid_um 1676 came_back_um 1584
+b15_abcd 1/4 | HOVER dt_ns 2500000 sliding_steps 46 highest_um 59938 highest_at_step 0 fastest_up_ums 0 deepest_um -5048
+b15_abcd 1/16 | BOUNCE dt_ns 625000 speed_in_ums 1071875 steps_to_turn 21 rebound_nm 30258813 drop_nm 60000000 rebound_per_10000 5043
+b15_abcd 1/16 | STOP dt_ns 625000 first_stopped_at_step 188 largest_speed_last_third_ums 43441 slid_um 1723 came_back_um 2485
+b15_abcd 1/16 | HOVER dt_ns 625000 sliding_steps 188 highest_um 59996 highest_at_step 0 fastest_up_ums 0 deepest_um -6662
+b15_abcd 1/32 | BOUNCE dt_ns 312500 speed_in_ums 1074938 steps_to_turn 40 rebound_nm 35412366 drop_nm 60000000 rebound_per_10000 5902
+b15_abcd 1/32 | STOP dt_ns 312500 first_stopped_at_step 378 largest_speed_last_third_ums 36924 slid_um 1729 came_back_um 4154
+b15_abcd 1/32 | HOVER dt_ns 312500 sliding_steps 378 highest_um 59999 highest_at_step 0 fastest_up_ums 0 deepest_um -7067
+b15_abcd 1/64 | BOUNCE dt_ns 156250 speed_in_ums 1076469 steps_to_turn 79 rebound_nm 38283805 drop_nm 60000000 rebound_per_10000 6380
+b15_abcd 1/64 | STOP dt_ns 156250 first_stopped_at_step 758 largest_speed_last_third_ums 22772 slid_um 1734 came_back_um 1686
+b15_abcd 1/64 | HOVER dt_ns 156250 sliding_steps 758 highest_um 59999 highest_at_step 0 fastest_up_ums 0 deepest_um -7269

@@ -1,0 +1,8 @@
+SAME hop_b14_abcd_1.txt
+SAME hop_b14_abcd_16.txt
+SAME hop_b14_abcd_4.txt
+SAME hop_b14_abcd_64.txt
+SAME hop_b14_c_1.txt
+SAME hop_b14_c_16.txt
+SAME hop_b14_c_4.txt
+SAME hop_b14_c_64.txt

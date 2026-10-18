@@ -1,0 +1,7 @@
+STATS run oblique_1 contact dt 0.01 h0 0.07 vx0 3.5 mu 0.35 lock 1 mass 1.6 radius 0.035 steps 30 converged 30 stopped 0 diverged 0 most_iterations 8 real_bits 64 extra floor=cloud cloudwid=0.16 ndamp=5 falloff=0.03
+STATS run oblique_4 contact dt 0.0025 h0 0.07 vx0 3.5 mu 0.35 lock 1 mass 1.6 radius 0.035 steps 120 converged 120 stopped 0 diverged 0 most_iterations 6 real_bits 64 extra floor=cloud cloudwid=0.16 ndamp=5 falloff=0.03
+STATS run slide_1 contact dt 0.01 h0 0 vx0 4 mu 0.35 lock 1 mass 1.6 radius 0.035 steps 50 converged 50 stopped 0 diverged 0 most_iterations 6 real_bits 64 extra floor=cloud cloudwid=0.16 ndamp=5 falloff=0.03
+STATS run rest_1 contact dt 0.01 h0 0 vx0 0 mu 0 lock 1 mass 1.6 radius 0.035 steps 200 converged 200 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra floor=cloud cloudwid=0.16 ndamp=5 falloff=0.03
+STATS run hold_1 contact dt 0.01 h0 0 vx0 0 mu 0.45 lock 1 mass 1.6 radius 0.035 steps 200 converged 200 stopped 0 diverged 0 most_iterations 4 real_bits 64 extra push=4.2336 pushat=0.5 floor=cloud cloudwid=0.16 ndamp=5 falloff=0.03
+STATS run slip_1 contact dt 0.01 h0 0 vx0 0 mu 0.45 lock 1 mass 1.6 radius 0.035 steps 200 converged 200 stopped 0 diverged 0 most_iterations 14 real_bits 64 extra push=8.4672 pushat=0.5 floor=cloud cloudwid=0.16 ndamp=5 falloff=0.03
+STATS run lift_1 contact dt 0.01 h0 0 vx0 0 mu 0 lock 1 mass 1.6 radius 0.035 steps 40 converged 40 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra lift=47.04 liftat=0.3 floor=cloud cloudwid=0.16 ndamp=5 falloff=0.03

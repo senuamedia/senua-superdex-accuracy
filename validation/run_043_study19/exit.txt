@@ -1,0 +1,5 @@
+stock off exit 0 ERROR SUMMARY: 0 errors destroyed 1 invalid_in_ClearFrictionAnchors 0
+b14 off exit 0 ERROR SUMMARY: 0 errors destroyed 1 invalid_in_ClearFrictionAnchors 0
+b14 abcd exit 99 ERROR SUMMARY: 120 errors destroyed 1 invalid_in_ClearFrictionAnchors 1
+b15 off exit 0 ERROR SUMMARY: 0 errors destroyed 1 invalid_in_ClearFrictionAnchors 0
+b15 abcd exit 0 ERROR SUMMARY: 0 errors destroyed 1 invalid_in_ClearFrictionAnchors 0

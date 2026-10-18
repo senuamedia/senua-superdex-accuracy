@@ -1,0 +1,12 @@
+## no switch set: 14 registered files
+identical of 14: 14
+## recommended with E, the new switches off: build 11 against build 9 on both suites
+identical 67 of 67
+## recommended on ant, 108 throwaway episodes: build 11 against build 10
+rec: steps 21600 stopped 5 at_the_limit 5 diverged 0 iterations_in_all 125765 most_iterations 200 stopped_residual_u 5704 to 184472483
+rec_enc.pcm identical
+rec_state.f32 identical
+## stock on ant: build 11 against build 10
+stock: steps 21600 stopped 223 at_the_limit 223 diverged 0 iterations_in_all 181733 most_iterations 200 stopped_residual_u 5066 to 2142041
+stock_enc.pcm identical
+stock_state.f32 identical

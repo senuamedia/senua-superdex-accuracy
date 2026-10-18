@@ -1,0 +1,156 @@
+diff --git a/superdex_physics/libraries/mochi/mochi_core/include/mochi_core/contact/contact_utils.h b/superdex_physics/libraries/mochi/mochi_core/include/mochi_core/contact/contact_utils.h
+index e72df74..c090dea 100644
+--- a/superdex_physics/libraries/mochi/mochi_core/include/mochi_core/contact/contact_utils.h
++++ b/superdex_physics/libraries/mochi/mochi_core/include/mochi_core/contact/contact_utils.h
+@@ -523,13 +523,29 @@ inline bool FrictionStickDamped() {
+   return kOn;
+ }
+ 
++/**
++ * @brief Friction on the normal force of the step being solved. Off unless the environment variable
++ * SUPERDEX_FRICTION_STEP_NORMAL is set.
++ * @details As shipped, friction takes the normal force of the start of the step, so at an impact it arrives
++ * one step late. The shipped switch implicitNormalForceForDissipation moves friction AND contact damping to
++ * the force of the step being solved, and the damping term's derivative is then incomplete. With this on,
++ * Coulomb friction alone takes the whole normal force of the step being solved (the penalty force at the
++ * current distance plus the damping part as it is applied to the body, never below zero). Contact damping
++ * and viscous friction keep the start-of-step force, so their derivatives stay exact.
++ */
++inline bool FrictionOnStepNormalForce() {
++  static bool const kOn = std::getenv("SUPERDEX_FRICTION_STEP_NORMAL") != nullptr;
++  return kOn;
++}
++
+ /**
+  * @brief Whether any of the contact corrections is switched on (see FrictionStickDistance,
+- * ContactDampingUnilateral, FrictionOnFullNormalForce). When none is, the shipped kernel runs.
++ * ContactDampingUnilateral, FrictionOnFullNormalForce, FrictionOnStepNormalForce). When none is, the shipped
++ * kernel runs.
+  */
+ inline bool SenuaContactPatchOn() {
+-  static bool const kOn =
+-      FrictionStickDistance() > 0_r || ContactDampingUnilateral() || FrictionOnFullNormalForce();
++  static bool const kOn = FrictionStickDistance() > 0_r || ContactDampingUnilateral() ||
++                          FrictionOnFullNormalForce() || FrictionOnStepNormalForce();
+   return kOn;
+ }
+ 
+@@ -1412,7 +1428,8 @@ MOCHI_FORCE_INLINE void ComputeBatchContactDissipationForceDForceSenua(
+   if (unilateralDamping || fullNormalFriction) {
+     // The normal displacement over the step at which the damping part cancels the penalty force of the step
+     // being solved. The damping part is built on fPenalty, which is the force at the start of the step unless
+-    // the implicit setting is on, so the bound is scaled by the ratio of the two forces.
++    // the implicit setting is on, so the bound is scaled by the ratio of the two forces. (With friction on the
++    // step's normal force alone, and no unilateral damping, fPenaltyNow is computed but not used here.)
+     real const dampLimitBase = dtFactor / params.normalViscousDampingCoefficient;
+     V const hasForce = fPenalty > 0_r;
+     V const forceRatio = Select(hasForce, fPenaltyNow / Select(hasForce, fPenalty, V{1_r}), V{1_r});
+@@ -1427,8 +1444,22 @@ MOCHI_FORCE_INLINE void ComputeBatchContactDissipationForceDForceSenua(
+     dampScale =
+         Max(V{0_r}, V{1_r} - V{params.normalViscousDampingCoefficient / dtFactor} * pRelNScalar);
+   }
+-  V const fFriction = fullNormalFriction ? fPenalty * dampScale : fPenalty;
++  V fFriction = fullNormalFriction ? fPenalty * dampScale : fPenalty;
+   V3 const pRelNDamp = unilateralDamping ? pRelNClamp * normal : pRelN;
++  // Friction on the normal force of the step being solved (FrictionOnStepNormalForce): the penalty force at
++  // the current distance, plus the damping part exactly as it is applied to the body just below, never below
++  // zero. The energy of this term is kept apart, because it is no longer a multiple of fPenalty.
++  bool const stepNormalFriction = FrictionOnStepNormalForce();
++  Vd energyFriction = {};
++  if (stepNormalFriction) {
++    V fNormalStep = fPenaltyNow;
++    if (hasNormalDamping) {
++      V const dampPart = (V{params.normalViscousDampingCoefficient / dtFactor} * fPenalty) *
++                         (unilateralDamping ? pRelNClamp : pRelNScalar);
++      fNormalStep = fNormalStep - dampPart;
++    }
++    fFriction = Max(V{0_r}, fNormalStep);
++  }
+ 
+   // Eigenvalues for dforce accumulation. The dforce matrix can be decomposed as:
+   // dforce = eigP * P + eigN * n ⊗ n + eigDeltaT * t ⊗ t
+@@ -1482,6 +1513,14 @@ MOCHI_FORCE_INLINE void ComputeBatchContactDissipationForceDForceSenua(
+       if (stickRate > 0_r) {
+         energyFactor = energyFactor * (1.0 / static_cast<double>(stickHessScale));
+       }
++      if (stepNormalFriction) {
++        // Friction's energy is its own normal force times its own factor; nothing of it is left on fPenalty.
++        energyFriction = static_cast<double>(coulombCoefficient) * StaticCast<Vd>(smoother);
++        if (stickRate > 0_r) {
++          energyFriction = energyFriction * (1.0 / static_cast<double>(stickHessScale));
++        }
++        energyFactor = {};
++      }
+     }
+ 
+     if (assemForce || assemDForce) {
+@@ -1705,6 +1744,9 @@ MOCHI_FORCE_INLINE void ComputeBatchContactDissipationForceDForceSenua(
+   // Output energy. Add to current value.
+   if (assemEnergy) {
+     outEnergy += StaticCast<Vd>(fPenalty) * energyFactor;
++    if (stepNormalFriction) {
++      outEnergy += StaticCast<Vd>(fFriction) * energyFriction;
++    }
+   }
+ 
+   // Add Previous-target terms from differentiating the explicit stage-start penalty force.
+@@ -1918,7 +1960,8 @@ MOCHI_NO_INLINE
+     // (ContactDampingUnilateral).
+     V fPenaltyNow = fPenalty;
+     V dFPenaltyNow = V{};
+-    if (ContactDampingUnilateral() && params.normalViscousDampingCoefficient > 0_r) {
++    if ((ContactDampingUnilateral() && params.normalViscousDampingCoefficient > 0_r) ||
++        FrictionOnStepNormalForce()) {
+       ComputeBatchContactPenaltyForceNormDForceNorm<kBatchSize>(
+           fPenaltyNow, dFPenaltyNow, d, alignmentMask, alignmentFactor, params, config, true);
+     }
+diff --git a/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.cpp b/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.cpp
+index e9ea349..9793279 100644
+--- a/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.cpp
++++ b/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.cpp
+@@ -1011,7 +1011,10 @@ struct FrictionAnchorEntry {
+   Real3 lastStageStart;
+ };
+ std::mutex gFrictionAnchorMutex;
+-std::map<std::tuple<void const*, uint32_t, uint32_t, int>, FrictionAnchorEntry> gFrictionAnchors;
++// The key is the registry, the two actors, the sample on the colliding actor and the feature on the collider
++// (-1 where the collider reports none). A point cloud gives one contact a sample AND a collider point, so
++// without the feature the contacts of one sample would share an anchor.
++std::map<std::tuple<void const*, uint32_t, uint32_t, int, int>, FrictionAnchorEntry> gFrictionAnchors;
+ 
+ void UpdateFrictionAnchors(
+     entt::registry const& reg,
+@@ -1032,6 +1035,7 @@ void UpdateFrictionAnchors(
+   real const openDistance =
+       freshWhenOpen ? reg.get<CContactParams const>(collider).GetPenaltyThresholdDist(true) : 0_r;
+   result.frictionAnchor.resize_noinit(result.sampleIndices.size());
++  bool const hasFeature = result.colliderFeatureIndices.size() == result.sampleIndices.size();
+   std::lock_guard<std::mutex> lock(gFrictionAnchorMutex);
+   for (int i = 0; i < isize(result.sampleIndices); ++i) {
+     Real3 const p0 = result.posCollidingStageStart[i];
+@@ -1040,7 +1044,8 @@ void UpdateFrictionAnchors(
+         static_cast<void const*>(&reg),
+         static_cast<uint32_t>(entt::to_integral(colliding)),
+         static_cast<uint32_t>(entt::to_integral(collider)),
+-        result.sampleIndices[i]);
++        result.sampleIndices[i],
++        hasFeature ? static_cast<int>(result.colliderFeatureIndices[i]) : -1);
+     auto it = gFrictionAnchors.find(key);
+     bool isOpen = false;
+     if (freshWhenOpen) {
+diff --git a/superdex_physics/libraries/mochi/mochi_physics/src/mochi_stage_start_contact.cpp b/superdex_physics/libraries/mochi/mochi_physics/src/mochi_stage_start_contact.cpp
+index d870f83..a0efed6 100644
+--- a/superdex_physics/libraries/mochi/mochi_physics/src/mochi_stage_start_contact.cpp
++++ b/superdex_physics/libraries/mochi/mochi_physics/src/mochi_stage_start_contact.cpp
+@@ -301,6 +301,11 @@ static void AddPerCollisionMissingStageStartContacts(
+     current.posCollidingStageStart.push_back(stageStart.posColliding[contactIdx]);
+     current.sdfInfoStageStart.val.push_back(stageStart.sdfInfo.val[contactIdx]);
+     current.sdfInfoStageStart.grad.push_back(stageStart.sdfInfo.grad[contactIdx]);
++    // Senua: an anchored-friction anchor for the appended contact, so that the anchors stay one to a contact.
++    // The contact is open, so its anchor is where the sample is.
++    if (!current.frictionAnchor.empty()) {
++      current.frictionAnchor.push_back(stageStart.posColliding[contactIdx]);
++    }
+     if (isMappedCollider) {
+       current.jacColliderFromWorld.push_back(stageStart.jacColliderFromWorld[contactIdx]);
+       current.jacColliderFromWorldStageStart.push_back(stageStart.jacColliderFromWorld[contactIdx]);

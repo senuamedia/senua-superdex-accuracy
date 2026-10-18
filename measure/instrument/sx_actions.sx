@@ -1,0 +1,32 @@
+// measure/instrument/sx_actions.sx -- preregistrations/PREREGISTRATION_01.md: the seeded commands
+// played into every source of a scene. Uniform over the action range, one integer in -32767 .. 32767 per actuated
+// degree of freedom per control step, from the engine's seeded generator. Printed as text: a header
+// "<episodes> <control_steps> <actions_per_step>", then one control step a line.
+// usage: sx_actions <seed> <episodes> <control_steps> <actions_per_step>  > actions.txt      exit 42 = written
+extern fn malloc(size: i64) -> i64;
+extern fn free(ptr: i64);
+extern fn print_char(c: i64);
+extern fn print_int(x: i64);
+extern fn dvec_to_cstr(d: i64) -> i64;
+extern fn load_i64(base: i64, slot: i64) -> i64;
+extern fn store_i64(base: i64, slot: i64, val: i64);
+extern fn load_byte(buf: i64, off: i64) -> i64;
+extern fn store_byte(buf: i64, off: i64, val: i64);
+// use "senua_engine.sx"   // Senua AI engine: the seeded generator (not distributed)
+
+fn xa_nop() -> i64 { 0 }
+fn xa_puts(c: i64) { let mut i: i64 = 0; while load_byte(c, i) != 0 { print_char(load_byte(c, i)); i = i + 1; } }
+fn xa_lbl(s: i64) { let c: i64 = dvec_to_cstr(s); xa_puts(c); free(c); }
+fn xa_int(s: i64) -> i64 { let mut v: i64 = 0; let mut i: i64 = 0; while load_byte(s, i) != 0 { v = v * 10 + (load_byte(s, i) - 48); i = i + 1; } v }
+// one control step: per actions on a line
+fn xa_line(rp: i64, per: i64) { let mut j: i64 = 0; while j < per { if j > 0 { print_char(32); } else { let _: i64 = 0; } print_int(ef_rng(rp) % 65535 - 32767); j = j + 1; } print_char(10); }
+fn main(argc: i64, argv: i64) -> i64 {
+    let _a: i64 = xa_nop();
+    if argc < 5 { xa_lbl("usage: sx_actions <seed> <episodes> <control_steps> <actions_per_step>\n"); return 1; } else { let _: i64 = 0; }
+    let seed: i64 = xa_int(load_i64(argv, 1)); let eps: i64 = xa_int(load_i64(argv, 2)); let steps: i64 = xa_int(load_i64(argv, 3)); let per: i64 = xa_int(load_i64(argv, 4));
+    print_int(eps); print_char(32); print_int(steps); print_char(32); print_int(per); print_char(10);
+    let rp: i64 = malloc(16); store_i64(rp, 0, seed); let n: i64 = eps * steps; let mut t: i64 = 0;
+    while t < n { xa_line(rp, per); t = t + 1; }
+    free(rp);
+    42
+}

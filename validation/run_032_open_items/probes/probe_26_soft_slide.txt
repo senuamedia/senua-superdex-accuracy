@@ -1,0 +1,12 @@
+# probe 26: the soft cube's slide (sdx_deform soft_slide), stock, 0.01 s, against backward Euler's distance v0^2 / (2 mu g) - v0 dt / 2; slid = the centre's distance at the end of the play (moved_x_nm); stiffness (young), mesh (n) and friction varied; the cloth (shell) beside it. soft_fresh and shell_fresh are the fourteenth registration's floor (friction 0.45, 0.7 m/s), the same plays as run 032's stock slides at 0.01 s, and read the same; soft_reg13 is the thirteenth's floor
+soft_reg13 soft mu 0.4 v0 0.8  | slid 77238710 | per million of backward Euler's distance 994925
+soft_fresh soft mu 0.45 v0 0.7  | slid 51610301 | per million of backward Euler's distance 991446
+soft_fresh_y1e7 soft mu 0.45 v0 0.7 young=1e7 | slid 51667160 | per million of backward Euler's distance 992538
+soft_fresh_y1e8 soft mu 0.45 v0 0.7 young=1e8 | slid 51613304 | per million of backward Euler's distance 991504
+soft_fresh_n8 soft mu 0.45 v0 0.7 n=8 | slid 51611102 | per million of backward Euler's distance 991461
+soft_mu45_v08 soft mu 0.45 v0 0.8  | slid 68083027 | per million of backward Euler's distance 993008
+soft_mu40_v07 soft mu 0.4 v0 0.7  | slid 58622424 | per million of backward Euler's distance 993600
+shell_fresh shell mu 0.45 v0 0.7  | slid 52086702 | per million of backward Euler's distance 1000598
+# where the two fresh-floor slides stopped (sx_contact deformstop): the first step after settling at which the centre moves slower than a hundredth of its given speed
+soft_fresh | DEFORMSTOP dt_ns 10000000 stop_step 65 moved_at_stop_nm 52046077 furthest_nm 52046077 end_nm 51610301
+shell_fresh | DEFORMSTOP dt_ns 10000000 stop_step 65 moved_at_stop_nm 52081021 furthest_nm 52086702 end_nm 52086702

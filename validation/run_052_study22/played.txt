@@ -1,0 +1,6 @@
+build: the derived library built
+PLAYED long
+PLAYED be
+PLAYED bdf2
+PLAYED off
+PLAYED bench

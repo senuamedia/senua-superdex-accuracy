@@ -1,0 +1,10 @@
+variant | side 1/1 | side 1/16 | top 1/1 | top 1/16 (per million; T16's bound 500)
+registered | 8805 | 9644 | 8570 | 8662
+default_grid | 8805 | 9644 | 8570 | 8662
+shipped_tol | 8805 | 9644 | 8568 | 8654
+no_damping | 8991 | 13122 | 8570 | 8657
+off_patched | 8805 | 9644 | 8453 | 8477
+old_pair | 51 | 51 | 68 | 68
+
+registered side 1/1, the full line: PAIR dt_ns 10000000 momentum_at_release 8004000 largest_change 70479 per_million 8805 final_speed_a_ums 172601 final_speed_b_ums 127115 relative_mean_ums -45486 force_up_a_mN 0 force_up_b_mN 0
+headers: CONTACT dt_ns 10000000 h0_nm 0 vx0_ums 0 mu_ppm 0 mass_g 4177 steps 50 / CONTACT dt_ns 10000000 h0_nm 20000000 vx0_ums 1160000 mu_ppm 0 mass_g 698 steps 50

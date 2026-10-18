@@ -1,0 +1,9 @@
+BENCH cart_pole off against stock : identical
+BENCH cart_pole zero against stock : identical
+BENCH cart_pole rec_nof_noFlib against rec_nof : identical
+BENCH half_cheetah off against stock : identical
+BENCH half_cheetah zero against stock : identical
+BENCH half_cheetah rec_nof_noFlib against rec_nof : identical
+BENCH ant off against stock : identical
+BENCH ant zero against stock : identical
+BENCH ant rec_nof_noFlib against rec_nof : identical

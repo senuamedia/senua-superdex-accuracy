@@ -1,0 +1,23 @@
+STATS rotvec cases 40 real_bits 64
+STATS rotvec cases 40 real_bits 64
+STATS rotvec cases 40 real_bits 64
+played off
+played rec
+played stock_e
+played rec_e
+JOINTS off identical to the registered stock files 40 of 40
+JOINTS patched identical to the registered stock files 40 of 40
+IDENTITY benchmark 38 of 38
+STATS source e1 scene half_cheetah integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 9 solver_steps 21600 converged 21598 stopped
+STATS source e1 scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged 21394 stopped 206 div
+STATS source e1 scene cart_pole integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 2 solver_steps 21600 converged 21600 stopped 0 
+STATS source y1 scene half_cheetah integ be maxiter 200 sub 1 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 21600 converged 21594 stopped
+STATS source y2 scene half_cheetah integ be maxiter 200 sub 2 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 43200 converged 43194 stopped
+STATS source y4 scene half_cheetah integ be maxiter 200 sub 4 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 86400 converged 86396 stopped
+STATS source y8 scene half_cheetah integ be maxiter 200 sub 8 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 172800 converged 172798 stopp
+STATS source y16 scene half_cheetah integ be maxiter 200 sub 16 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 345600 converged 345600 sto
+STATS source y1 scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged 21593 stopped 7 dive
+STATS source y2 scene ant integ be maxiter 200 sub 2 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 43200 converged 43193 stopped 7 dive
+STATS source y4 scene ant integ be maxiter 200 sub 4 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 86400 converged 86395 stopped 5 dive
+STATS source y8 scene ant integ be maxiter 200 sub 8 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 172800 converged 172794 stopped 6 di
+STATS source y16 scene ant integ be maxiter 200 sub 16 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 345600 converged 345595 stopped 5 

@@ -1,0 +1,11 @@
+b15 hold | CREEP dt_ns 10000000 steps 100 mean_speed_ums 0 friction_over_normal_per_10000 3000 friction_limit_per_10000 5000
+b15 teleport | CREEP dt_ns 10000000 steps 100 mean_speed_ums 110 friction_over_normal_per_10000 2998 friction_limit_per_10000 5000
+b15 visc 1/1 identical
+b15 visc 1/2 identical
+b15 stopped/diverged: 0 0
+b14 hold | CREEP dt_ns 10000000 steps 100 mean_speed_ums 0 friction_over_normal_per_10000 3000 friction_limit_per_10000 5000
+b14 teleport | CREEP dt_ns 10000000 steps 100 mean_speed_ums -189 friction_over_normal_per_10000 3000 friction_limit_per_10000 5000
+b14 visc 1/1 differ
+b14 visc 1/2 differ
+b14 stopped/diverged: 0 0
+32-bit rig on build 15 = stock 32-bit rig (cart_pole maxiter 3)

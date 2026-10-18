@@ -1,0 +1,3 @@
+off: identical to stock
+stock:   ROTVEC cases 6 real_bits 64 bound_ppm 1 ; at_or_under_2e-9_rad 5 passed 1 ; larger 1 passed 1 ; largest_distance_ppm 1414214
+patched: ROTVEC cases 6 real_bits 64 bound_ppm 1 ; at_or_under_2e-9_rad 5 passed 5 ; larger 1 passed 1 ; largest_distance_ppm 0

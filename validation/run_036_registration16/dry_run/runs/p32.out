@@ -1,0 +1,1 @@
+STATS scene cart_pole integ be maxiter 3 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 2 solver_steps 21600 converged 21543 stopped 57 diverged 0 unset 0 most_iterations 3 enc_min -4145 enc_max 4147 wall_s 1.8 real_bits 32 worst_residual 1.39e+03 extra none

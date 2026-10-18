@@ -1,0 +1,21 @@
+## with the ground
+ground_stock: steps 2400 converged 2379 stopped 21 at_the_limit 21 earlier 0 diverged 0 iterations_in_all 19185 most_iterations 200 largest_converged_residual_u 8359 stopped_residual_u 9260 to 738155
+ground_d: steps 2400 converged 2376 stopped 24 at_the_limit 24 earlier 0 diverged 0 iterations_in_all 19194 most_iterations 200 largest_converged_residual_u 6705 stopped_residual_u 13405 to 3531086
+## without the ground (nothing touches the agent from outside)
+noground_stock: steps 2400 converged 2400 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 5487 most_iterations 3 largest_converged_residual_u 8166 stopped_residual_u -1 to 0
+noground_d: steps 2400 converged 2400 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 6039 most_iterations 3 largest_converged_residual_u 7587 stopped_residual_u -1 to 0
+## does the limit patch change the motion without the ground? (so limits are being met)
+yes: streams differ in 3395 bytes of     4800
+## with the ground: stopped steps by episode (200 solver steps an episode), stock then D
+ground_stock: 1 1 1 6 3 2 2 1 1 0 2 1 
+ground_d: 0 2 1 4 1 2 1 2 2 2 4 3 
+## with the ground: where in an episode the stops are (reading 0-39, 40-79, 80-119, 120-159, 160-199)
+ground_stock: 4 4 5 3 5 
+ground_d: 5 6 4 6 3 
+## residual of stopped steps in millionths: smallest, median, largest
+ground_stock: 9260 111078 738155
+ground_d: 13405 95941 3531086
+## the same steps? stopped in both, only stock, only D
+both 3 only stock 18 only D 21
+## when do the two runs part? first reading at which the encoder streams differ, by episode
+17 20 13 17 40 12 19 32 22 24 25 18 

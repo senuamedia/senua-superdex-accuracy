@@ -1,0 +1,50 @@
+# probe 31: the accurate configuration (BDF2 at 1/16, patches A to G, Newton-Euler, contact damping 5, falloff 0.03) on contact at SuperDex's shipped tolerances (ship) and the final configuration's (t48): a throwaway cube on the point-cloud sheet (1.15 kg, half-size 0.032 m, friction 0.44, cell 1/32, smoothing 1 mm; pushes 2.97528 N and 5.95056 N, lift 33.81 N) and the deformable bodies on a throwaway floor (friction 0.48, 0.75 m/s, tilt 0.32 rad). Steps stopped and diverged, and the measured lines. Library build 14
+cloud ship oblique | stopped 0 diverged 0 
+cloud ship slide | stopped 0 diverged 0 
+cloud ship rest | stopped 0 diverged 0 
+cloud ship hold | stopped 0 diverged 0 
+cloud ship slip | stopped 0 diverged 0 
+cloud ship lift | stopped 0 diverged 0 
+cloud ship impact | IMPACT dt_ns 625000 steps 4 horizontal_lost_ums 529265 vertical_given_ums 1190543 ratio_per_10000 4445 friction_per_10000 4400 still_sliding_ums 2470735
+cloud ship slide | CREEP dt_ns 625000 steps 400 mean_speed_ums 1871510 friction_over_normal_per_10000 4420 friction_limit_per_10000 4400
+cloud ship hold | CREEP dt_ns 625000 steps 1600 mean_speed_ums 0 friction_over_normal_per_10000 2639 friction_limit_per_10000 4400
+cloud ship slip | SLIP dt_ns 625000 mean_speed_ums 851600 predicted_ums 863000 push_mN 5951 friction_limit_mN 4958
+deform ship shell rest | stopped 0 diverged 0 
+deform ship shell slide | stopped 0 diverged 0 
+deform ship shell hold | stopped 0 diverged 0 
+deform ship shell slide stop | DEFORMSTOP dt_ns 625000 stop_step 1053 moved_at_stop_nm 59783417 furthest_nm 59784433 end_nm 59484769
+deform ship soft rest | stopped 0 diverged 0 
+deform ship soft slide | stopped 0 diverged 0 
+deform ship soft hold | stopped 0 diverged 0 
+deform ship soft slide stop | DEFORMSTOP dt_ns 625000 stop_step 1051 moved_at_stop_nm 59680245 furthest_nm 59684562 end_nm 58726941
+cloud t48 oblique | stopped 74 diverged 0 
+cloud t48 slide | stopped 260 diverged 0 
+cloud t48 rest | stopped 2583 diverged 0 
+cloud t48 hold | stopped 237 diverged 0 
+cloud t48 slip | stopped 558 diverged 0 
+cloud t48 lift | stopped 67 diverged 0 
+cloud t48 impact | IMPACT dt_ns 625000 steps 4 horizontal_lost_ums 529265 vertical_given_ums 1190543 ratio_per_10000 4445 friction_per_10000 4400 still_sliding_ums 2470735
+cloud t48 slide | CREEP dt_ns 625000 steps 400 mean_speed_ums 1871505 friction_over_normal_per_10000 4420 friction_limit_per_10000 4400
+cloud t48 hold | CREEP dt_ns 625000 steps 1600 mean_speed_ums 0 friction_over_normal_per_10000 2639 friction_limit_per_10000 4400
+cloud t48 slip | SLIP dt_ns 625000 mean_speed_ums 851600 predicted_ums 863000 push_mN 5951 friction_limit_mN 4958
+deform t48 shell rest | stopped 0 diverged 0 
+deform t48 shell slide | stopped 0 diverged 0 
+deform t48 shell hold | stopped 0 diverged 0 
+deform t48 shell slide stop | DEFORMSTOP dt_ns 625000 stop_step 1053 moved_at_stop_nm 59785742 furthest_nm 59786832 end_nm 59487197
+deform t48 soft rest | stopped 1 diverged 0 
+deform t48 soft slide | stopped 0 diverged 0 
+deform t48 soft hold | stopped 0 diverged 0 
+deform t48 soft slide stop | DEFORMSTOP dt_ns 625000 stop_step 1051 moved_at_stop_nm 59686233 furthest_nm 59690648 end_nm 58732754
+# probe 31b: the same cloud plays with the solver's trace (sx_contact trace, limit 200): every stop is 'earlier', on SuperDex's rule for an update too small to matter, none at the iteration limit. The trace's residual is SuperDex's residualNorm, not the weighted norm its tolerance tests (converged steps read up to 11,244 millionths at the shipped absolute tolerance of 1,000)
+cloud ship oblique | TRACE from_step 0 limit 200 steps 480 converged 480 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 783 most_iterations 8 largest_converged_residual_u 7149 stopped_residual_u -1 to 0
+cloud ship slide | TRACE from_step 0 limit 200 steps 800 converged 800 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 1949 most_iterations 5 largest_converged_residual_u 8537 stopped_residual_u -1 to 0
+cloud ship rest | TRACE from_step 0 limit 200 steps 3200 converged 3200 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 793 most_iterations 2 largest_converged_residual_u 11244 stopped_residual_u -1 to 0
+cloud ship hold | TRACE from_step 0 limit 200 steps 3200 converged 3200 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 1046 most_iterations 3 largest_converged_residual_u 11230 stopped_residual_u -1 to 0
+cloud ship slip | TRACE from_step 0 limit 200 steps 3200 converged 3200 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 7882 most_iterations 4 largest_converged_residual_u 11230 stopped_residual_u -1 to 0
+cloud ship lift | TRACE from_step 0 limit 200 steps 640 converged 640 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 778 most_iterations 2 largest_converged_residual_u 10539 stopped_residual_u -1 to 0
+cloud t48 oblique | TRACE from_step 0 limit 200 steps 480 converged 406 stopped 74 at_the_limit 0 earlier 74 diverged 0 iterations_in_all 861 most_iterations 9 largest_converged_residual_u 753 stopped_residual_u 810 to 6232
+cloud t48 slide | TRACE from_step 0 limit 200 steps 800 converged 540 stopped 260 at_the_limit 0 earlier 260 diverged 0 iterations_in_all 2243 most_iterations 5 largest_converged_residual_u 865 stopped_residual_u 536 to 6455
+cloud t48 rest | TRACE from_step 0 limit 200 steps 3200 converged 617 stopped 2583 at_the_limit 0 earlier 2583 diverged 0 iterations_in_all 3412 most_iterations 3 largest_converged_residual_u 1093 stopped_residual_u 1140 to 6762
+cloud t48 hold | TRACE from_step 0 limit 200 steps 3200 converged 2963 stopped 237 at_the_limit 0 earlier 237 diverged 0 iterations_in_all 1364 most_iterations 3 largest_converged_residual_u 1122 stopped_residual_u 712 to 7002
+cloud t48 slip | TRACE from_step 0 limit 200 steps 3200 converged 2642 stopped 558 at_the_limit 0 earlier 558 diverged 0 iterations_in_all 8537 most_iterations 5 largest_converged_residual_u 1122 stopped_residual_u 550 to 6815
+cloud t48 lift | TRACE from_step 0 limit 200 steps 640 converged 573 stopped 67 at_the_limit 0 earlier 67 diverged 0 iterations_in_all 863 most_iterations 3 largest_converged_residual_u 1093 stopped_residual_u 1140 to 6762

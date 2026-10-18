@@ -1,0 +1,1 @@
+29d2bbc Seventeenth registration: the whole record of Studies 3 to 13 made again on library build 15, each study by its own scripts in a fresh clone, 2,099 registered files compared; a play script for Study 5 written from its record; the reproduce guide corrected for Studies 5, 10 and 12; committed before any run

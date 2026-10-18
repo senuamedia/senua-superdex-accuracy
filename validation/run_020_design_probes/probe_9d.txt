@@ -1,0 +1,39 @@
+stock: suite 1: runs 39 steps 48090 stopped 15 diverged 0 ; SUITE passed 6 of 10
+stock: suite 2: runs 18 steps 35530 stopped 424 diverged 0
+stock_e: suite 1: runs 39 steps 48090 stopped 0 diverged 0 ; SUITE passed 6 of 10
+stock_e: suite 2: runs 18 steps 35530 stopped 0 diverged 0
+rec: suite 1: runs 39 steps 48090 stopped 212 diverged 0 ; SUITE passed 9 of 10
+rec: suite 2: runs 18 steps 35530 stopped 799 diverged 0
+rec_e: suite 1: runs 39 steps 48090 stopped 0 diverged 0 ; SUITE passed 9 of 10
+rec_e: suite 2: runs 18 steps 35530 stopped 0 diverged 0
+## does the switch change where anything ends? last line of every file, stock against stock_e, then rec against rec_e: files whose last lines differ
+  suite chain_16.txt: 1599 -650822 0 2871 19220 0 | 1599 -650811 0 2870 19219 0
+  suite chain_32.txt: 3199 1143074 0 30594 0 0 | 3199 1143094 0 30595 0 0
+  suite chain_64.txt: 6399 -1686034 0 -545292 190780 0 | 6399 -1686400 0 -545229 190900 0
+  suite drop_16.txt: 799 1144172 0 -116541 0 0 | 799 1144175 0 -116544 0 0
+  suite drop_32.txt: 1599 8259381 0 356850 0 0 | 1599 8259327 0 356852 0 0
+  suite drop_4.txt: 199 -657933 0 0 19619 0 | 199 -657423 0 0 19591 0
+  suite drop_64.txt: 3199 30752290 0 -467912 0 0 | 3199 30752142 0 -467914 0 0
+  suite drop_8.txt: 399 -678865 0 4174 20833 0 | 399 -678886 0 4177 20834 0
+  suite lift_16.txt: 639 101471502 0 1995500 0 0 | 639 101471335 0 1995499 0 0
+  suite oblique_4.txt: 119 -624320 2832676 371 17787 -7134 | 119 -624319 2832674 371 17787 -7134
+  suite2 land_4.txt: 599 -307831 0 0 9792 0 | 599 -307832 0 0 9792 0
+  suite2 land_64.txt: 9599 3538567 0 -64218 0 0 | 9599 3538519 0 -64222 0 0
+  suite2 stop_64.txt: 9599 -307491 0 -735 9780 0 | 9599 -307504 0 -735 9781 0
+stock against stock_e: last line differs in 13 of 67 files
+  suite chain_1.txt: 99 -657590 0 0 19600 7 | 99 -657590 0 0 19600 12
+  suite chain_16.txt: 1599 -657578 0 0 19599 -2 | 1599 -657628 0 0 19602 -2
+  suite chain_32.txt: 3199 -657477 0 0 19594 -1 | 3199 -657478 0 0 19594 -1
+  suite chain_4.txt: 399 -657590 0 0 19600 1 | 399 -657590 0 0 19600 2
+  suite drop_2.txt: 99 -657527 0 0 19596 0 | 99 -657526 0 0 19596 0
+  suite drop_32.txt: 1599 -657783 0 0 19611 0 | 1599 -657255 0 0 19581 0
+  suite drop_4.txt: 199 -657671 0 0 19605 0 | 199 -657672 0 0 19605 0
+  suite lift_16.txt: 639 100050451 0 1981230 0 0 | 639 100050452 0 1981230 0 0
+  suite oblique_64.txt: 1919 -671324 2823579 2555 20128 -8061 | 1919 -671324 2823578 2555 20128 -8061
+  suite rebound_16.txt: 799 -644571 0 -393 18911 0 | 799 -644571 0 -394 18911 0
+  suite2 land_1.txt: 149 -308040 0 0 9800 4 | 149 -308040 0 0 9800 6
+  suite2 land_16.txt: 2399 -307913 0 0 9795 0 | 2399 -308276 0 0 9809 0
+  suite2 land_4.txt: 599 -308041 0 0 9800 2 | 599 -308041 0 0 9800 1
+  suite2 stop_1.txt: 149 -308040 0 0 9800 4 | 149 -308040 0 0 9800 6
+  suite2 stop_64.txt: 9599 -308039 0 0 9800 0 | 9599 -308040 0 0 9800 0
+rec against rec_e: last line differs in 15 of 67 files

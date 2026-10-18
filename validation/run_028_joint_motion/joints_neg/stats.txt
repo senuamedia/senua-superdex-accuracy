@@ -1,0 +1,30 @@
+STATS run spin_be_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=1
+STATS run torque_be_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra torque=1.5 newtoneuler=1
+STATS run swing_be_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 1 dofs 1 steps 300 converged 300 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=1
+STATS run spin_be_4 joint dt 0.0025 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 400 converged 400 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=1
+STATS run torque_be_4 joint dt 0.0025 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 400 converged 400 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra torque=1.5 newtoneuler=1
+STATS run swing_be_4 joint dt 0.0025 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 1 dofs 1 steps 1200 converged 1200 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=1
+STATS run spin_be_16 joint dt 0.000625 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 1600 converged 1600 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra newtoneuler=1
+STATS run torque_be_16 joint dt 0.000625 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 1600 converged 1600 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra torque=1.5 newtoneuler=1
+STATS run swing_be_16 joint dt 0.000625 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 1 dofs 1 steps 4800 converged 4800 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=1
+STATS run spin_be_64 joint dt 0.00015625 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 6400 converged 6400 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra newtoneuler=1
+STATS run torque_be_64 joint dt 0.00015625 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 6400 converged 6400 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra torque=1.5 newtoneuler=1
+STATS run swing_be_64 joint dt 0.00015625 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 1 dofs 1 steps 19200 converged 19200 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra newtoneuler=1
+STATS run spin_bdf2_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra integ=bdf2 newtoneuler=1
+STATS run torque_bdf2_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra torque=1.5 integ=bdf2 newtoneuler=1
+STATS run swing_bdf2_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 1 dofs 1 steps 300 converged 300 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra integ=bdf2 newtoneuler=1
+STATS run spin_dirk33_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra integ=dirk33 newtoneuler=1
+STATS run torque_dirk33_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra torque=1.5 integ=dirk33 newtoneuler=1
+STATS run swing_dirk33_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 1 dofs 1 steps 300 converged 300 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra integ=dirk33 newtoneuler=1
+STATS run spinrate1_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra newtoneuler=1
+STATS run spinrate2_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=1
+STATS run spinrate4_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=1
+STATS run spinrate8_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra newtoneuler=1
+STATS run hold_shipped_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 1 dofs 1 steps 200 converged 200 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra coulomb=12 newtoneuler=1
+STATS run hold_tight_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 1 dofs 1 steps 200 converged 200 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra coulomb=12 falloff=0.000001 newtoneuler=1
+STATS run slip_shipped_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra coulomb=2 torque=3 newtoneuler=1
+STATS run slip_tight_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra coulomb=2 torque=3 falloff=0.000001 newtoneuler=1
+STATS run hold_shipped_16 joint dt 0.000625 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 1 dofs 1 steps 3200 converged 3200 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra coulomb=12 newtoneuler=1
+STATS run hold_tight_16 joint dt 0.000625 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 1 dofs 1 steps 3200 converged 3200 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra coulomb=12 falloff=0.000001 newtoneuler=1
+STATS run slip_shipped_16 joint dt 0.000625 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 1600 converged 1600 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra coulomb=2 torque=3 newtoneuler=1
+STATS run slip_tight_16 joint dt 0.000625 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 0 dofs 1 steps 1600 converged 1600 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra coulomb=2 torque=3 falloff=0.000001 newtoneuler=1

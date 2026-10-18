@@ -1,0 +1,44 @@
+diff --git a/superdex_physics/libraries/mochi/mochi_core/include/mochi_core/utils/quaternion_inl.h b/superdex_physics/libraries/mochi/mochi_core/include/mochi_core/utils/quaternion_inl.h
+index 71fa687..31f1872 100644
+--- a/superdex_physics/libraries/mochi/mochi_core/include/mochi_core/utils/quaternion_inl.h
++++ b/superdex_physics/libraries/mochi/mochi_core/include/mochi_core/utils/quaternion_inl.h
+@@ -18,6 +18,8 @@
+ 
+ #include "quaternion.h" // For IntelliSense
+ 
++#include <cstdlib>
++
+ namespace mochi {
+ 
+ /************************************************************************************
+@@ -119,6 +121,19 @@ inline real Quaternion::GetAngle() const {
+   return GetAngleImpl(qPositiveNormalized, vectorMag);
+ }
+ 
++// Senua: the axis of a rotation smaller than 2e-9 rad. As shipped, a quaternion whose vector part is no longer than
++// 1e-9 is given the x axis whatever its own axis is, so the rotation vector of such a rotation points along x. With
++// SUPERDEX_ROTATION_AXIS_EXACT set, the axis is the vector part over its own length whenever that length is not
++// zero. Read once. Off, nothing changes.
++inline bool QuaternionSmallAngleAxisExact() {
++  // on when set to anything but empty or 0
++  static bool const kOn = [] {
++    char const* v = std::getenv("SUPERDEX_ROTATION_AXIS_EXACT");
++    return v != nullptr && v[0] != 0 && !(v[0] == '0' && v[1] == 0);
++  }();
++  return kOn;
++}
++
+ inline void Quaternion::ToAxisAngle(Real3* outAxis, real* outAngleRad) const {
+   Quaternion qPositiveNormalized MOCHI_NO_INIT;
+   real vectorMag MOCHI_NO_INIT;
+@@ -126,6 +141,10 @@ inline void Quaternion::ToAxisAngle(Real3* outAxis, real* outAngleRad) const {
+   auto axis =
+       vectorMag > 1e-9_r ? (qPositiveNormalized.data / vectorMag) : Vec4r{1_r, 0_r, 0_r, 0_r};
+   *outAxis = Real3{axis[0], axis[1], axis[2]};
++  if (!(vectorMag > 1e-9_r) && vectorMag > 0_r && QuaternionSmallAngleAxisExact()) {
++    auto const axisExact = qPositiveNormalized.data / vectorMag;
++    *outAxis = Real3{axisExact[0], axisExact[1], axisExact[2]};
++  }
+ }
+ 
+ inline void Quaternion::ToAxisAngle(Vec4r* outAxis, real* outAngleRad) const {

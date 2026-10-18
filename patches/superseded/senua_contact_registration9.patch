@@ -1,0 +1,1103 @@
+diff --git a/superdex_physics/libraries/mochi/mochi_core/include/mochi_core/contact/contact_utils.h b/superdex_physics/libraries/mochi/mochi_core/include/mochi_core/contact/contact_utils.h
+index 4fbf0d5..e72df74 100644
+--- a/superdex_physics/libraries/mochi/mochi_core/include/mochi_core/contact/contact_utils.h
++++ b/superdex_physics/libraries/mochi/mochi_core/include/mochi_core/contact/contact_utils.h
+@@ -16,6 +16,8 @@
+ 
+ #pragma once
+ 
++#include <cstdlib>
++
+ #include <concepts>
+ 
+ #include <mochi_core/contact/contact_params.h>
+@@ -259,6 +261,14 @@ struct ContactDetectionResult {
+    */
+   DynamicArray<Real3> posCollidingStageStart = {};
+ 
++  /**
++   * @brief Optional: stick anchor of each contact point in the collider's local space (anchored
++   * Coulomb friction). Friction acts on the tangential displacement from this anchor instead of
++   * the displacement since stage start, so a contact can hold with zero velocity.
++   * @note Empty (anchored friction off) or 1-to-1 with sampleIndices.
++   */
++  DynamicArray<Real3> frictionAnchor = {};
++
+   /**
+    * @brief SDF information about each contact point (distance, gradient).
+    * @note Each array in the struct is 1-to-1 with sampleIndices.
+@@ -352,6 +362,7 @@ struct ContactDetectionResult {
+       (var).empty() || ((var).size() == 1) || ((var).size() == sampleIndices.size()))
+     MOCHI_ASSERT_FULL(posColliding);
+     MOCHI_ASSERT_EMPTY_OR_FULL(posCollidingStageStart);
++    MOCHI_ASSERT_EMPTY_OR_FULL(frictionAnchor);
+     MOCHI_ASSERT_FULL(sdfInfo);
+     MOCHI_ASSERT_EMPTY_OR_FULL(sdfInfoStageStart);
+     MOCHI_ASSERT_EMPTY_OR_FULL(normalColliding);
+@@ -371,6 +382,7 @@ struct ContactDetectionResult {
+     sampleIndices.clear();
+     posColliding.clear();
+     posCollidingStageStart.clear();
++    frictionAnchor.clear();
+     sdfInfo.clear();
+     sdfInfoStageStart.clear();
+     normalColliding.clear();
+@@ -456,6 +468,71 @@ struct CollisionResponseResult : public NoCopy {
+ };
+ 
+ // Runtime settings that define how contact is evaluated
++/**
++ * @brief Elastic stick distance [m] for anchored Coulomb friction; 0 disables it.
++ * @details Read once from the environment variable SUPERDEX_STICK_DISTANCE. When > 0, a contact
++ * sticks to an anchor and friction rises smoothly with the tangential displacement from it,
++ * reaching mu*N at this distance; beyond it the anchor is dragged (return mapping) and friction
++ * stays at mu*N. This replaces the velocity-regularised smoothing width (frictionFalloffVel * dt),
++ * which cannot hold a contact at rest.
++ */
++inline real FrictionStickDistance() {
++  static real const kStick = [] {
++    char const* v = std::getenv("SUPERDEX_STICK_DISTANCE");
++    return v != nullptr ? static_cast<real>(std::atof(v)) : 0_r;
++  }();
++  return kStick;
++}
++
++/**
++ * @brief Contact damping that cannot pull. Off unless the environment variable
++ * SUPERDEX_DAMPING_UNILATERAL is set.
++ * @details With normal viscous damping on, the normal force of a contact is the penalty force times
++ * (1 - c * vn), the penalty part plus the damping part. As shipped that factor is not bounded below,
++ * so a body leaving the surface faster than 1 / c is pulled back by it. With this on, the damping
++ * part can cancel the penalty part and no more: the normal force never goes below zero.
++ */
++inline bool ContactDampingUnilateral() {
++  static bool const kOn = std::getenv("SUPERDEX_DAMPING_UNILATERAL") != nullptr;
++  return kOn;
++}
++
++/**
++ * @brief Friction on the full normal force. Off unless the environment variable
++ * SUPERDEX_FRICTION_FULL_NORMAL is set.
++ * @details As shipped, Coulomb and viscous friction are proportional to the penalty part of the normal
++ * force alone, so with normal viscous damping on friction is short of the coefficient times the normal
++ * force by the damping part. With this on, friction is proportional to the whole normal force.
++ */
++inline bool FrictionOnFullNormalForce() {
++  static bool const kOn = std::getenv("SUPERDEX_FRICTION_FULL_NORMAL") != nullptr;
++  return kOn;
++}
++
++/**
++ * @brief Damped stick for anchored Coulomb friction. Off unless the environment variable
++ * SUPERDEX_STICK_DAMPING is set; needs SUPERDEX_STICK_DISTANCE > 0 and frictionFalloffVel > 0.
++ * @details Anchored friction acts on u, the tangential offset of a contact from its stick anchor. On its
++ * own that is a spring with no loss, and a body that slides to a stop rings on it. With this on, friction
++ * acts on u / stickDistance + v / frictionFalloffVel, the anchored offset and the shipped velocity term
++ * inside one saturation: at rest it holds as before, while sliding it is mu * N as before, and in between
++ * the velocity term is the loss (the bristle damping of the LuGre friction law).
++ */
++inline bool FrictionStickDamped() {
++  static bool const kOn = std::getenv("SUPERDEX_STICK_DAMPING") != nullptr;
++  return kOn;
++}
++
++/**
++ * @brief Whether any of the contact corrections is switched on (see FrictionStickDistance,
++ * ContactDampingUnilateral, FrictionOnFullNormalForce). When none is, the shipped kernel runs.
++ */
++inline bool SenuaContactPatchOn() {
++  static bool const kOn =
++      FrictionStickDistance() > 0_r || ContactDampingUnilateral() || FrictionOnFullNormalForce();
++  return kOn;
++}
++
+ struct ContactEvalConfig {
+   // Project dresidual to PSD
+   bool psdDRes = false;
+@@ -1223,6 +1300,683 @@ MOCHI_FORCE_INLINE
+   }
+ }
+ 
++/*************************************************************************************************/
++// The patched contact kernel. It is a copy of the two functions above with three corrections, each
++// off unless its environment variable is set (FrictionStickDistance, ContactDampingUnilateral,
++// FrictionOnFullNormalForce). The functions above are exactly as shipped, and the library calls
++// these copies only when a switch is set (see ComputeCollisionResponseRange), so with no switch
++// set the shipped code path is the one that runs.
++
++template <int kBatchSize, GradTarget kGradTarget>
++MOCHI_FORCE_INLINE void ComputeBatchContactDissipationForceDForceSenua(
++    BatchDouble<kBatchSize>& outEnergy,
++    BatchReal3<kBatchSize>& outForce,
++    BatchDForce<kBatchSize, kGradTarget>& outDForce,
++    BatchReal<kBatchSize> const& fPenalty,
++    BatchReal<kBatchSize> const& dFPenalty,
++    BatchReal3<kBatchSize> const& sdfGrad,
++    BatchReal3<kBatchSize> const& nColliding,
++    BatchReal3<kBatchSize> const& pRel,
++    ContactParams const& params,
++    ContactEvalConfig const& config,
++    real dtFactor,
++    bool assemEnergy,
++    bool assemForce,
++    bool assemDForce,
++    bool isSdfGradUnitary,
++    BatchReal<kBatchSize> const& fPenaltyNow,
++    BatchReal<kBatchSize> const& dFPenaltyNow,
++    BatchReal3<kBatchSize> const& pRelStep) {
++  static_assert(
++      kCollResponseMaxBatchSize == 8,
++      "Please update batched contact functions if the max batch size changes");
++  static_assert(kBatchSize > 0 && kBatchSize <= kCollResponseMaxBatchSize, "Invalid batch size");
++  MOCHI_ASSERT_VERBOSE(
++      params.coulombFrictionCoefficient >= 0_r && params.viscousFrictionCoefficient >= 0_r &&
++          params.normalViscousDampingCoefficient >= 0_r,
++      "Invalid dissipation params.");
++
++  using V = BatchReal<kBatchSize>;
++  using Vd = BatchDouble<kBatchSize>;
++  using V3 = BatchReal3<kBatchSize>;
++
++  // Define the normal for dissipation.
++  // If the colliding normal is invalid, override any request to use the colliding normal.
++  V3 normal MOCHI_NO_INIT;
++  bool const useColliderNormal = params.frictionWithColliderNormal || !config.validCollidingNormals;
++  if (useColliderNormal) {
++    // Normalize the SDF gradient to get the collider normal direction.
++    normal = sdfGrad;
++    real constexpr kNormalIsZeroThreshold = 100_r * kDefaultNearEqualEpsilon<real>;
++    [[maybe_unused]] real constexpr kNormalIsUnitThreshold = 10_r * kDefaultNearEqualEpsilon<real>;
++    if (!isSdfGradUnitary) {
++      V norm = Norm(normal);
++      normal *= 1_r / norm;
++
++      V isNearZero = norm < kNormalIsZeroThreshold;
++      if (AnyTrue(isNearZero))
++        MOCHI_UNLIKELY {
++          // TODO: Support member-wise Select with NdArray
++          if (config.validCollidingNormals) {
++            normal[0] = Select(isNearZero, -nColliding[0], normal[0]);
++            normal[1] = Select(isNearZero, -nColliding[1], normal[1]);
++            normal[2] = Select(isNearZero, -nColliding[2], normal[2]);
++          } else {
++            normal[0] = Select(isNearZero, V{0_r}, normal[0]);
++            normal[1] = Select(isNearZero, V{0_r}, normal[1]);
++            normal[2] = Select(isNearZero, V{0_r}, normal[2]);
++          }
++        }
++    }
++    MOCHI_ASSERT_VERBOSE(
++        (NearEqual<kBatchSize, real, V::kSize, real>(Norm(normal), V{1_r}, kNormalIsUnitThreshold)),
++        "Collider normal must be unitary.");
++  } else {
++    normal = -nColliding;
++  }
++
++  // Project the relative displacement
++  V const pRelNScalar = Dot(pRel, normal);
++  V3 const pRelN = pRelNScalar * normal;
++  V3 const pRelT = pRel - pRelN;
++  V pRelTNorm = Norm(pRelT);
++
++  // The step's own tangential displacement. With anchored friction pRel is the offset from the stick
++  // anchor, and viscous friction must still act on the velocity.
++  V3 const pStepT = pRelStep - Dot(pRelStep, normal) * normal;
++  V const pStepTNorm = Norm(pStepT);
++  // Damped stick (see FrictionStickDamped): Coulomb friction acts on the anchored offset plus the step's
++  // displacement scaled to the stick distance. Its derivative gains the factor 1 + stickRate and its
++  // energy loses it.
++  real const stickFalloffStep = params.frictionFalloffVel * dtFactor;
++  real const stickRate =
++      (FrictionStickDamped() && FrictionStickDistance() > 0_r && stickFalloffStep > 0_r)
++          ? FrictionStickDistance() / stickFalloffStep
++          : 0_r;
++  real const stickHessScale = 1_r + stickRate;
++  V3 pFricT = pRelT;
++  V pFricTNorm = pRelTNorm;
++  if (stickRate > 0_r) {
++    pFricT = pRelT + stickRate * pStepT;
++    pFricTNorm = Norm(pFricT);
++  }
++
++  // Contact damping that cannot pull, and friction on the full normal force (both off unless their
++  // environment variables are set; see ContactDampingUnilateral and FrictionOnFullNormalForce).
++  bool const hasNormalDamping = params.normalViscousDampingCoefficient > 0_r;
++  bool const unilateralDamping = hasNormalDamping && ContactDampingUnilateral();
++  bool const fullNormalFriction = hasNormalDamping && FrictionOnFullNormalForce();
++  V pRelNClamp = pRelNScalar; // the normal displacement the damping force acts on
++  V dampActive = V{}; // lanes where the damping is not at its bound
++  V dampScale = V{1_r}; // the whole normal force over its penalty part, never below zero
++  if (unilateralDamping || fullNormalFriction) {
++    // The normal displacement over the step at which the damping part cancels the penalty force of the step
++    // being solved. The damping part is built on fPenalty, which is the force at the start of the step unless
++    // the implicit setting is on, so the bound is scaled by the ratio of the two forces.
++    real const dampLimitBase = dtFactor / params.normalViscousDampingCoefficient;
++    V const hasForce = fPenalty > 0_r;
++    V const forceRatio = Select(hasForce, fPenaltyNow / Select(hasForce, fPenalty, V{1_r}), V{1_r});
++    V const dampLimit = dampLimitBase * forceRatio;
++    dampActive = pRelNScalar < dampLimit;
++    V const clamped = Select(dampActive, pRelNScalar, dampLimit);
++    if (unilateralDamping) {
++      pRelNClamp = clamped;
++    }
++    // For friction: the whole normal force over its penalty part, both taken as friction takes the penalty
++    // part (the start of the step unless the implicit setting is on), and never below zero.
++    dampScale =
++        Max(V{0_r}, V{1_r} - V{params.normalViscousDampingCoefficient / dtFactor} * pRelNScalar);
++  }
++  V const fFriction = fullNormalFriction ? fPenalty * dampScale : fPenalty;
++  V3 const pRelNDamp = unilateralDamping ? pRelNClamp * normal : pRelN;
++
++  // Eigenvalues for dforce accumulation. The dforce matrix can be decomposed as:
++  // dforce = eigP * P + eigN * n ⊗ n + eigDeltaT * t ⊗ t
++  // where P = I - n ⊗ n is the tangent plane projection matrix.
++  V eigP MOCHI_NO_INIT; // Eigenvalue for tangent plane
++  V eigN MOCHI_NO_INIT; // Eigenvalue along normal direction
++  V eigDeltaT MOCHI_NO_INIT; // Eigenvalue delta along tangent (Coulomb unfitted only)
++  V3 tangent MOCHI_NO_INIT; // Unit tangent direction
++
++  // Energy factor. The full dissipation energy can be obtained as contactForce * energyFactor.
++  // With GradTarget::Previous, this term is also needed for the gradient, and its derivative for
++  // the Hessian.
++  Vd energyFactor MOCHI_NO_INIT;
++  V3 dEnergyFactor MOCHI_NO_INIT;
++  bool const computeEnergyFactor =
++      assemEnergy || (kGradTarget == GradTarget::Previous && assemForce);
++
++  // Coulomb friction
++  if (params.coulombFrictionCoefficient > 0) {
++    real const coulombCoefficient = params.coulombFrictionCoefficient;
++
++    MOCHI_ASSERT_VERBOSE(params.frictionFalloffVel >= 0_r, "Invalid friction falloff velocity.");
++    real const stickDistance = FrictionStickDistance();
++    V const falloffFriction =
++        V{stickDistance > 0_r ? stickDistance : params.frictionFalloffVel * dtFactor};
++
++    // Compute friction smoothing function.
++    // Note: falloffFriction serves as the transition width `t` for IPC (compact support) and as the
++    // regularization parameter `eps` for CinfRegularized (no compact support). Both control the
++    // smoothing scale near the stick-slip transition; the semantics differ but the numerical value
++    // (frictionFalloffVel * dtFactor) is shared.
++    V smoother, dSmoother, ddSmoother, dSmoother_ptNorm;
++    switch (config.frictionModel) {
++      case CoulombFrictionModel::CinfRegularized:
++        CinfRegularized<V>(
++            pFricTNorm, falloffFriction, smoother, dSmoother, ddSmoother, dSmoother_ptNorm);
++        break;
++      case CoulombFrictionModel::C1Regularized:
++        IPCstepC1<V>(pFricTNorm, falloffFriction, smoother, dSmoother, ddSmoother, dSmoother_ptNorm);
++        break;
++      default:
++        MOCHI_ASSERT_VERBOSE(false, "Invalid friction model.");
++    }
++
++    // Output energy
++    if (computeEnergyFactor) {
++      energyFactor = static_cast<double>(coulombCoefficient) * StaticCast<Vd>(smoother);
++      if (fullNormalFriction) {
++        energyFactor = energyFactor * StaticCast<Vd>(dampScale);
++      }
++      if (stickRate > 0_r) {
++        energyFactor = energyFactor * (1.0 / static_cast<double>(stickHessScale));
++      }
++    }
++
++    if (assemForce || assemDForce) {
++      V tmp = (coulombCoefficient * fFriction) * dSmoother_ptNorm;
++
++      // Output force
++      if (assemForce) {
++        // force = -kC * fN * dSmoother * t
++        if constexpr (kGradTarget == GradTarget::Previous) {
++          // Flip the sign for GradTarget::Previous
++          outForce += tmp * pFricT;
++        } else {
++          outForce -= tmp * pFricT;
++        }
++      }
++
++      // Output dforce
++      if (assemDForce) {
++        // For simplicity, we define alpha = kC * fN
++        // dforce = -alpha * dSmoother * dpRelTUnit/dpRelT * P
++        //          -alpha  * ddSmoother * t * dpRelTNorm/dpRelT * P
++        // With dpRelTUnit/dpRelT = 1/pFricTNorm * (I - t ⊗ t) and dpRelTNorm/dpRelT = tT:
++        // dforce = -alpha * dSmoother * 1/pFricTNorm * P * (I - t ⊗ t)
++        //          -alpha * ddSmoother * t ⊗ t
++        // It is easiest to build dforce through eigen-decomposition on an orthonormal frame
++        // {n, t, b = n x t}:
++        // dforce = eigT * t ⊗ t + eigB * b ⊗ b
++        // eigT = -alpha * ddSmoother, eigB = -alpha * dSmoother / pFricTNorm, eigN = 0.
++        // However, for eigT we use the Hessian of a fitted quadratic potential, which performs
++        // better globally. Then the term is exactly the same as for eigB.
++        // Note the d(fN) term is dropped even if implicitNormalForceForDissipation is true (see
++        // rationale above).
++        MOCHI_ASSERT_VERBOSE(AllTrue(tmp >= 0_r), "eigP must not be positive.");
++        eigP = -tmp;
++        if (stickRate > 0_r) {
++          eigP = stickHessScale * eigP;
++        }
++        // Anchored friction needs the exact Hessian: the fitted (secant) one acts as an extra brake
++        // once friction saturates, delaying breakaway beyond mu*N.
++        if (!config.useFittedHessian || FrictionStickDistance() > 0_r) {
++          V ptMask = (pFricTNorm > 1e-11_r);
++          V eigT = ((-coulombCoefficient) * fFriction) * ddSmoother;
++          if (stickRate > 0_r) {
++            eigT = stickHessScale * eigT;
++          }
++          MOCHI_ASSERT_VERBOSE(AllTrue(eigT <= 0_r), "eigT must not be positive.");
++          V ptNormInv = 1_r / (pFricTNorm + std::numeric_limits<real>::min());
++          MOCHI_ASSERT_VERBOSE(IsFinite(ptNormInv), "Inverse norm is not finite.");
++          tangent = pFricT * ptNormInv;
++          eigDeltaT = Select(ptMask, eigT - eigP, V{});
++        }
++
++        // dEnergyFactor term needed for GradTarget::Previous
++        if constexpr (kGradTarget == GradTarget::Previous) {
++          dEnergyFactor = coulombCoefficient * dSmoother_ptNorm * pFricT;
++          if (fullNormalFriction) {
++            dEnergyFactor = dampScale * dEnergyFactor;
++          }
++        }
++      }
++    }
++  } else {
++    if (computeEnergyFactor) {
++      energyFactor = {};
++    }
++
++    if (assemDForce) {
++      eigP = {};
++      if constexpr (kGradTarget == GradTarget::Previous) {
++        dEnergyFactor = {};
++      }
++    }
++  }
++
++  // Viscous friction
++  if (params.viscousFrictionCoefficient > 0) {
++    real const viscousCoefficient = params.viscousFrictionCoefficient / dtFactor;
++
++    // Output energy
++    if (computeEnergyFactor) {
++      Vd viscousEnergy =
++          0.5 * static_cast<double>(viscousCoefficient) * Sqr(StaticCast<Vd>(pStepTNorm));
++      if (fullNormalFriction) {
++        viscousEnergy = viscousEnergy * StaticCast<Vd>(dampScale);
++      }
++      energyFactor += viscousEnergy;
++    }
++
++    if (assemForce || assemDForce) {
++      V tmp = viscousCoefficient * fFriction;
++
++      // Output force
++      if (assemForce) {
++        // force = -k * fN * pStepT / dtFactor
++        if constexpr (kGradTarget == GradTarget::Previous) {
++          // Flip the sign for GradTarget::Previous
++          outForce += tmp * pStepT;
++        } else {
++          outForce -= tmp * pStepT;
++        }
++      }
++
++      // Output dforce
++      if (assemDForce) {
++        // dforce = -k * fN / dtFactor * P. The d(fN) term is dropped even if
++        // implicitNormalForceForDissipation is true (see rationale above).
++        MOCHI_ASSERT_VERBOSE(AllTrue(tmp >= 0_r), "eigP must not be positive.");
++        eigP -= tmp;
++
++        // dEnergyFactor term needed for GradTarget::Previous
++        if constexpr (kGradTarget == GradTarget::Previous) {
++          V3 dViscous = viscousCoefficient * pStepT;
++          if (fullNormalFriction) {
++            dViscous = dampScale * dViscous;
++          }
++          dEnergyFactor += dViscous;
++        }
++      }
++    }
++  }
++
++  // Normal viscous damping
++  // Analogous to tangential viscous friction, but acting in the normal direction and depending on
++  // the normal component of velocity. Force is proportional to the elastic normal force and the
++  // normal velocity.
++  if (params.normalViscousDampingCoefficient > 0) {
++    real const normalDampingCoefficient = params.normalViscousDampingCoefficient / dtFactor;
++
++    // Output energy
++    if (computeEnergyFactor) {
++      if (unilateralDamping) {
++        // The damping energy, continued in a straight line beyond the bound so that its slope stays there.
++        Vd const pc = StaticCast<Vd>(pRelNClamp);
++        Vd const pn = StaticCast<Vd>(pRelNScalar);
++        energyFactor +=
++            static_cast<double>(normalDampingCoefficient) * (0.5 * Sqr(pc) + pc * (pn - pc));
++      } else {
++        energyFactor +=
++            0.5 * static_cast<double>(normalDampingCoefficient) * Sqr(StaticCast<Vd>(pRelNScalar));
++      }
++    }
++
++    if (assemForce || assemDForce) {
++      V tmp = normalDampingCoefficient * fPenalty;
++
++      // Output force: force = -coeff * fN * pn / dtFactor (damping in normal direction)
++      if (assemForce) {
++        if constexpr (kGradTarget == GradTarget::Previous) {
++          outForce += tmp * pRelNDamp;
++        } else {
++          outForce -= tmp * pRelNDamp;
++        }
++      }
++
++      // Output dforce: The full derivative of the damping force includes both the derivative
++      // with respect to the normal velocity and the derivative of the normal force.
++      // force_damping = -coeff * fN * pRelN
++      // dforce = -coeff * fN * (n ⊗ n)
++      // As in viscous friction, the derivative of fN is dropped, even when fN is implicit.
++      if (assemDForce) {
++        MOCHI_ASSERT_VERBOSE(AllTrue(tmp >= 0_r), "eigN must not be positive.");
++        // At its bound the damping part is minus the penalty force of the step, so its derivative is minus the
++        // penalty force derivative: the two cancel and the contact has no normal stiffness there.
++        eigN = unilateralDamping ? Select(dampActive, -tmp, dFPenaltyNow) : -tmp;
++
++        // dEnergyFactor term needed for GradTarget::Previous
++        if constexpr (kGradTarget == GradTarget::Previous) {
++          dEnergyFactor += normalDampingCoefficient * pRelNDamp;
++        }
++      }
++    }
++  } else {
++    if (assemDForce) {
++      eigN = {};
++    }
++  }
++
++  // Write accumulated eigenvalues to dforce.
++  if (assemDForce) {
++    if constexpr (kGradTarget == GradTarget::Previous) {
++      // Flip the sign of the eigenvalues
++      eigP = -eigP;
++      eigN = -eigN;
++    }
++    V eigDeltaN = eigN - eigP;
++    V3 auxN = eigDeltaN * normal;
++    outDForce[0] += eigP + auxN[0] * normal[0]; // xx
++    outDForce[1] += eigP + auxN[1] * normal[1]; // yy
++    outDForce[2] += eigP + auxN[2] * normal[2]; // zz
++    outDForce[3] += auxN[0] * normal[1]; // xy
++    outDForce[4] += auxN[0] * normal[2]; // xz
++    outDForce[5] += auxN[1] * normal[2]; // yz
++    if constexpr (kGradTarget == GradTarget::Previous) {
++      outDForce[6] += auxN[0] * normal[1]; // yx
++      outDForce[7] += auxN[0] * normal[2]; // zx
++      outDForce[8] += auxN[1] * normal[2]; // zy
++    }
++
++    // Extra pass for tangent contribution (Coulomb unfitted only)
++    if ((!config.useFittedHessian || FrictionStickDistance() > 0_r) &&
++        (params.coulombFrictionCoefficient > 0)) {
++      if constexpr (kGradTarget == GradTarget::Previous) {
++        // Flip the sign of the eigenvalues
++        eigDeltaT = -eigDeltaT;
++      }
++      V3 auxT = eigDeltaT * tangent;
++      outDForce[0] += auxT[0] * tangent[0];
++      outDForce[1] += auxT[1] * tangent[1];
++      outDForce[2] += auxT[2] * tangent[2];
++      outDForce[3] += auxT[0] * tangent[1];
++      outDForce[4] += auxT[0] * tangent[2];
++      outDForce[5] += auxT[1] * tangent[2];
++      if constexpr (kGradTarget == GradTarget::Previous) {
++        outDForce[6] += auxT[0] * tangent[1];
++        outDForce[7] += auxT[0] * tangent[2];
++        outDForce[8] += auxT[1] * tangent[2];
++      }
++    }
++  }
++
++  // Output energy. Add to current value.
++  if (assemEnergy) {
++    outEnergy += StaticCast<Vd>(fPenalty) * energyFactor;
++  }
++
++  // Add Previous-target terms from differentiating the explicit stage-start penalty force.
++  if constexpr (kGradTarget == GradTarget::Previous) {
++    // sdfGrad stores the appropriate gradient of the SDF (explicit or implicit).
++    if (assemForce) {
++      V const dFPenaltyTimesEnergyFactor = dFPenalty * StaticCast<V>(energyFactor);
++      outForce += dFPenaltyTimesEnergyFactor * sdfGrad;
++    }
++    if (assemDForce) {
++      V3 const row0 = dFPenalty * dEnergyFactor[0] * sdfGrad;
++      V3 const row1 = dFPenalty * dEnergyFactor[1] * sdfGrad;
++      V3 const row2 = dFPenalty * dEnergyFactor[2] * sdfGrad;
++      outDForce[0] += row0[0]; // xx
++      outDForce[1] += row1[1]; // yy
++      outDForce[2] += row2[2]; // zz
++      outDForce[3] += row0[1]; // xy
++      outDForce[4] += row0[2]; // xz
++      outDForce[5] += row1[2]; // yz
++      outDForce[6] += row1[0]; // yx
++      outDForce[7] += row2[0]; // zx
++      outDForce[8] += row2[1]; // zy
++    }
++  }
++}
++
++template <int kBatchSize, GradTarget kGradTarget>
++MOCHI_NO_INLINE
++    void ComputeBatchCollisionForceDForceSenua(
++        Span<double> outEnergy,
++        Span<Real3> outForce,
++        Span<VMatrix3x3r> outDForce,
++        Span<real const> distance,
++        Span<Real3 const> distanceGrad,
++        Span<real const> distanceStageStart,
++        Span<Real3 const> distanceGradStageStart,
++        Span<Real3 const> normalColliding,
++        Span<Real3 const> posColliding,
++        Span<Real3 const> posCollidingStageStart,
++        ContactParams const& params,
++        ContactEvalConfig const& config,
++        real dtFactor,
++        bool assemEnergy,
++        bool assemForce,
++        bool assemDForce,
++        bool isSdfGradUnitary,
++        Span<Real3 const> frictionAnchor = {}) {
++  static_assert(
++      kCollResponseMaxBatchSize == 8,
++      "Please update batched contact functions if the max batch size changes");
++  static_assert(kBatchSize > 0 && kBatchSize <= kCollResponseMaxBatchSize, "Invalid batch size");
++  static_assert(
++      kGradTarget == GradTarget::Current || kGradTarget == GradTarget::Previous,
++      "Contact assembly should be called only for GradTarget::Current or GradTarget::Previous");
++
++  MOCHI_ASSERT_VERBOSE(!assemEnergy || (outEnergy.size() == kBatchSize));
++  MOCHI_ASSERT_VERBOSE(!assemForce || (outForce.size() == kBatchSize));
++  MOCHI_ASSERT_VERBOSE(!assemDForce || (outDForce.size() == kBatchSize));
++  MOCHI_ASSERT_VERBOSE(
++      distance.size() == kBatchSize && distanceGrad.size() == kBatchSize &&
++      posColliding.size() == kBatchSize && posCollidingStageStart.size() == kBatchSize);
++  MOCHI_ASSERT_VERBOSE(!config.validCollidingNormals || normalColliding.size() == kBatchSize);
++  MOCHI_ASSERT_VERBOSE(
++      !config.explicitNormals ||
++      (distanceStageStart.size() == kBatchSize && distanceGradStageStart.size() == kBatchSize));
++  MOCHI_ASSERT_VERBOSE(
++      params.penaltyCoefficient > 0_r && params.penaltySmoothingHalfDistance >= 0_r,
++      "Invalid contact params.");
++  MOCHI_ASSERT_VERBOSE(
++      params.maxAlignmentNormals >= -1_r && params.maxAlignmentNormals <= 1_r,
++      "maxAlignmentNormals must be in [-1, 1].");
++
++  // Forbid unsupported combinations
++  MOCHI_ASSERT_VERBOSE(
++      !(config.implicitNormalForceForDissipation && config.explicitNormals),
++      "implicitNormalForceForDissipation = true with explicitNormals = true is not supported.");
++  MOCHI_ASSERT_VERBOSE(
++      kGradTarget == GradTarget::Current ||
++          (!config.implicitNormalForceForDissipation && config.explicitNormals),
++      "GradTarget::Previous requires implicitNormalForceForDissipation = false and explicitNormals = true.");
++
++  using V = BatchReal<kBatchSize>;
++  using Vd = BatchDouble<kBatchSize>;
++  using V3 = BatchReal3<kBatchSize>;
++
++  // Create SIMD locals for outputs
++  Vd energy MOCHI_NO_INIT;
++  V3 force MOCHI_NO_INIT;
++  BatchDForce<kBatchSize, kGradTarget> dForce MOCHI_NO_INIT;
++  V fPenalty MOCHI_NO_INIT;
++  V dFPenalty MOCHI_NO_INIT;
++
++  // Load input distance and distance gradient
++  V const d = Load<kBatchSize, V>(&distance[0]);
++
++  V3 sdfGrad MOCHI_NO_INIT;
++  LoadTransposed<kBatchSize>(&distanceGrad[0][0], sdfGrad);
++
++  // Load collider normal, explicit or implicit
++  V3 nCollider = sdfGrad;
++  if (config.explicitNormals) {
++    LoadTransposed<kBatchSize>(&distanceGradStageStart[0][0], nCollider);
++  }
++
++  // Load colliding normals if valid
++  V3 nColliding MOCHI_NO_INIT;
++  if (config.validCollidingNormals) {
++    LoadTransposed<kBatchSize>(&normalColliding[0][0], nColliding);
++  }
++
++  // Normally, the gradient of signed distance (nCollider) points in the opposite direction of the
++  // surface normal at the sample point (nColliding). If they point in the same direction, then it
++  // means that the contact force would be pulling the object apart instead of compressing the
++  // object. That happens when one collider gets embedded within another one. The contact energy
++  // would normally trap the collider preventing it from escaping. We prevent that contact energy to
++  // allow it to escape.
++  V const alignmentNormals = config.validCollidingNormals ? Dot(nCollider, nColliding) : V{-1_r};
++  V const maxAlignment = V{params.maxAlignmentNormals};
++  V const alignmentMask = alignmentNormals <= maxAlignment;
++  // maxAlignmentNormals == -1 leaves no nonzero fade interval. Use an unfaded factor instead of
++  // evaluating the degenerate endpoint formula.
++  bool const useAlignmentFading =
++      config.fadeFriction && config.validCollidingNormals && params.maxAlignmentNormals > -1_r;
++  // Compute alignment fading for dissipation
++  V const alignmentFactor =
++      useAlignmentFading ? (maxAlignment - alignmentNormals) / (maxAlignment + 1_r) : V{1_r};
++
++  // Compute penalty force with current data.
++  bool constexpr kAssemPenalty =
++      IsAssemblyNeeded(StateDependency::ZeroOrder, false /*inputDependency*/, kGradTarget);
++  bool const hasDissipation = params.coulombFrictionCoefficient > 0_r ||
++      params.viscousFrictionCoefficient > 0_r || params.normalViscousDampingCoefficient > 0_r;
++  bool const useImplicitNormalForceForDissipation =
++      config.implicitNormalForceForDissipation && hasDissipation;
++  if constexpr (kAssemPenalty) {
++    ComputeBatchContactPenaltyForceDForce<kBatchSize>(
++        energy,
++        force,
++        dForce,
++        fPenalty,
++        d,
++        sdfGrad,
++        alignmentMask,
++        alignmentFactor,
++        params,
++        config,
++        assemEnergy,
++        assemForce,
++        assemDForce,
++        useImplicitNormalForceForDissipation);
++  } else {
++    // Ensure containers are initialized for GradTarget::Previous
++    if (assemEnergy) {
++      energy = {};
++    }
++    if (assemForce) {
++      force = {};
++    }
++    if (assemDForce) {
++      dForce = {};
++    }
++  }
++
++  // Compute dissipation force.
++  if (hasDissipation) {
++    // Load positions and compute relative displacement
++    V3 pColliding MOCHI_NO_INIT;
++    LoadTransposed<kBatchSize>(&posColliding[0][0], pColliding);
++
++    V3 pCollidingStageStart MOCHI_NO_INIT;
++    LoadTransposed<kBatchSize>(&posCollidingStageStart[0][0], pCollidingStageStart);
++
++    V3 const pRel = pColliding - pCollidingStageStart;
++
++    // Anchored friction: tangential displacement from each contact's stick anchor.
++    V3 pRelFriction = pRel;
++    if (frictionAnchor.size() == kBatchSize && FrictionStickDistance() > 0_r) {
++      V3 pAnchor MOCHI_NO_INIT;
++      LoadTransposed<kBatchSize>(&frictionAnchor[0][0], pAnchor);
++      pRelFriction = pColliding - pAnchor;
++    }
++
++    // Compute penalty force with stage-start data.
++    if (!useImplicitNormalForceForDissipation) {
++      // Distance for penalty force computation (stage-start data)
++      V dStageStart MOCHI_NO_INIT;
++
++      if (config.explicitNormals) {
++        // Use stage-start distance
++        dStageStart = Load<kBatchSize, V>(&distanceStageStart[0]);
++      } else {
++        // Estimate stage-start distance using current gradient.
++        dStageStart = d - Dot(sdfGrad, pRel);
++      }
++
++      // We need dForceNorm for GradTarget::Previous force or dforce.
++      bool const assemDForceNorm =
++          kGradTarget == GradTarget::Previous && (assemForce || assemDForce);
++      ComputeBatchContactPenaltyForceNormDForceNorm<kBatchSize>(
++          fPenalty,
++          dFPenalty,
++          dStageStart,
++          alignmentMask,
++          alignmentFactor,
++          params,
++          config,
++          assemDForceNorm);
++    }
++
++    // The penalty force of the step being solved and its derivative, which bound the damping part
++    // (ContactDampingUnilateral).
++    V fPenaltyNow = fPenalty;
++    V dFPenaltyNow = V{};
++    if (ContactDampingUnilateral() && params.normalViscousDampingCoefficient > 0_r) {
++      ComputeBatchContactPenaltyForceNormDForceNorm<kBatchSize>(
++          fPenaltyNow, dFPenaltyNow, d, alignmentMask, alignmentFactor, params, config, true);
++    }
++
++    ComputeBatchContactDissipationForceDForceSenua<kBatchSize, kGradTarget>(
++        energy,
++        force,
++        dForce,
++        fPenalty,
++        dFPenalty,
++        nCollider,
++        nColliding,
++        pRelFriction,
++        params,
++        config,
++        dtFactor,
++        assemEnergy,
++        assemForce,
++        assemDForce,
++        isSdfGradUnitary,
++        fPenaltyNow,
++        dFPenaltyNow,
++        pRel);
++  }
++
++  // Store outputs to Spans
++  if (assemEnergy) {
++    Store<kBatchSize>(outEnergy.data(), energy);
++  }
++
++  if (assemForce) {
++    StoreTransposed<kBatchSize>(&outForce[0][0], force);
++  }
++
++  if (assemDForce) {
++    // TODO: outDForce should be either:
++    //   1. Nine dense arrays of real, in which case this loop would be 9 vector Stores.
++    //   2. A dense array of Matrix3x3, in which case this loop would still be needed.
++    for (int i = 0; i < kBatchSize; ++i) {
++      if constexpr (kGradTarget == GradTarget::Current) {
++        // outDForce is symmetric and stored in a 6-value array.
++        outDForce[i] = VMatrix3x3r{
++            Vec4r{dForce[0][i], dForce[3][i], dForce[4][i]}, // xx, xy, xz
++            Vec4r{dForce[3][i], dForce[1][i], dForce[5][i]}, // xy, yy, yz
++            Vec4r{dForce[4][i], dForce[5][i], dForce[2][i]}}; // xz, yz, zz
++      } else {
++        // outDForce is asymmetric and stored in a 9-value array.
++        outDForce[i] = VMatrix3x3r{
++            Vec4r{dForce[0][i], dForce[3][i], dForce[4][i]}, // xx, xy, xz
++            Vec4r{dForce[6][i], dForce[1][i], dForce[5][i]}, // yx, yy, yz
++            Vec4r{dForce[7][i], dForce[8][i], dForce[2][i]}}; // zx, zy, zz
++      }
++    }
++    // NOTE: outDForce is expected to be PSD. If it is not, a projection onto the PSD cone must be
++    // added here.
++  }
++}
++
+ #undef MOCHI_SIMD_FROM_STRUCT_MEMBER_INDEXED
+ 
+ template <GradTarget kGradTarget>
+diff --git a/superdex_physics/libraries/mochi/mochi_core/src/contact/contact_utils.cpp b/superdex_physics/libraries/mochi/mochi_core/src/contact/contact_utils.cpp
+index 6ba8f3f..8f4aaf3 100644
+--- a/superdex_physics/libraries/mochi/mochi_core/src/contact/contact_utils.cpp
++++ b/superdex_physics/libraries/mochi/mochi_core/src/contact/contact_utils.cpp
+@@ -58,6 +58,106 @@ static void ApplyColliderWeightsToCollisionResponse(
+   }
+ }
+ 
++// The patched contact response: the function below, calling the patched kernel. The library calls it
++// only when a contact correction is switched on (SenuaContactPatchOn).
++template <GradTarget kGradTarget>
++MOCHI_NO_INLINE static void ComputeCollisionResponseRangeSenua(
++    Interval<int> pointRange,
++    ContactDetectionResult const& contactQuery,
++    ContactParams const& params,
++    ContactEvalConfig const& config,
++    real dtStage,
++    bool assemEnergy,
++    bool assemForce,
++    bool assemDForce,
++    CollisionResponseResult& outResponse) {
++  MOCHI_PROFILE_SCOPE();
++
++  // Outputs should already be the correct size
++  MOCHI_ASSERT(!assemEnergy || (outResponse.energy.size() == isize(contactQuery.sampleIndices)));
++  MOCHI_ASSERT(!assemForce || (outResponse.force.size() == isize(contactQuery.sampleIndices)));
++  MOCHI_ASSERT(!assemDForce || (outResponse.dforce.size() == isize(contactQuery.sampleIndices)));
++
++  MOCHI_ASSERT_VERBOSE(
++      !config.explicitNormals ||
++          contactQuery.sdfInfo.size() == contactQuery.sdfInfoStageStart.size(),
++      "Explicit normals require stage-start sdf info");
++  auto const& sdfInfoImplicit = contactQuery.sdfInfo;
++  auto const& sdfInfoExplicit = contactQuery.sdfInfoStageStart;
++
++  MOCHI_ASSERT_VERBOSE(
++      !config.validCollidingNormals ||
++          contactQuery.sdfInfo.size() == contactQuery.normalColliding.size(),
++      "Valid colliding normals require normalColliding");
++
++  // Compute the contact response of all contact samples, in batches to improve performance.
++  constexpr int kBatchSize = Min(2 * Simd<real>::kSize, kCollResponseMaxBatchSize);
++  for (int s = pointRange.Min(); s <= pointRange.Max(); s += kBatchSize) {
++    int const numPoints = Min(pointRange.Max() - s + 1, kBatchSize);
++
++#define MOCHI_COMPUTE_BATCH_COLLISION_FORCE_DFORCE_SENUA(N)                                          \
++  ComputeBatchCollisionForceDForceSenua<N, kGradTarget>(                                            \
++      assemEnergy ? MakeSpan(outResponse.energy).subspan(s, N) : Span<double>{},               \
++      assemForce ? MakeSpan(outResponse.force).subspan(s, N) : Span<Real3>{},                  \
++      assemDForce ? MakeSpan(outResponse.dforce).subspan(s, N) : Span<VMatrix3x3r>{},          \
++      MakeConstSpan(sdfInfoImplicit.val).subspan(s, N),                                        \
++      MakeConstSpan(sdfInfoImplicit.grad).subspan(s, N),                                       \
++      config.explicitNormals ? MakeConstSpan(sdfInfoExplicit.val).subspan(s, N)                \
++                             : Span<real const>{},                                             \
++      config.explicitNormals ? MakeConstSpan(sdfInfoExplicit.grad).subspan(s, N)               \
++                             : Span<Real3 const>{},                                            \
++      config.validCollidingNormals ? MakeConstSpan(contactQuery.normalColliding).subspan(s, N) \
++                                   : Span<Real3 const>{},                                      \
++      MakeConstSpan(contactQuery.posColliding).subspan(s, N),                                  \
++      MakeConstSpan(contactQuery.posCollidingStageStart).subspan(s, N),                        \
++      params,                                                                                  \
++      config,                                                                                  \
++      dtStage,                                                                                 \
++      assemEnergy,                                                                             \
++      assemForce,                                                                              \
++      assemDForce,                                                                             \
++      contactQuery.isSdfGradUnitary,                                                           \
++      contactQuery.frictionAnchor.empty() ? Span<Real3 const>{}                                \
++                                          : MakeConstSpan(contactQuery.frictionAnchor).subspan(s, N));
++
++    // Compute contact response
++    switch (numPoints) {
++      case 1:
++        MOCHI_COMPUTE_BATCH_COLLISION_FORCE_DFORCE_SENUA(1);
++        break;
++      case 2:
++        MOCHI_COMPUTE_BATCH_COLLISION_FORCE_DFORCE_SENUA(2);
++        break;
++      case 3:
++        MOCHI_COMPUTE_BATCH_COLLISION_FORCE_DFORCE_SENUA(3);
++        break;
++      case 4:
++        MOCHI_COMPUTE_BATCH_COLLISION_FORCE_DFORCE_SENUA(4);
++        break;
++      case 5:
++        MOCHI_COMPUTE_BATCH_COLLISION_FORCE_DFORCE_SENUA(5);
++        break;
++      case 6:
++        MOCHI_COMPUTE_BATCH_COLLISION_FORCE_DFORCE_SENUA(6);
++        break;
++      case 7:
++        MOCHI_COMPUTE_BATCH_COLLISION_FORCE_DFORCE_SENUA(7);
++        break;
++      case 8:
++        MOCHI_COMPUTE_BATCH_COLLISION_FORCE_DFORCE_SENUA(8);
++        break;
++      default:
++        static_assert(kCollResponseMaxBatchSize == 8, "Please update this switch statement");
++        MOCHI_ASSERT(false, "Unsupported batch size (%d).", numPoints);
++    }
++  }
++
++#undef MOCHI_COMPUTE_BATCH_COLLISION_FORCE_DFORCE_SENUA
++
++  // Apply collider integration weights (e.g., for shell/shell contact).
++  ApplyColliderWeightsToCollisionResponse(contactQuery, pointRange, outResponse);
++}
++
+ template <GradTarget kGradTarget>
+ void mochi::ComputeCollisionResponseRange(
+     Interval<int> pointRange,
+@@ -71,6 +171,14 @@ void mochi::ComputeCollisionResponseRange(
+     CollisionResponseResult& outResponse) {
+   MOCHI_PROFILE_SCOPE();
+ 
++  // With a contact correction switched on, the patched kernel computes the response. With none, everything
++  // below runs exactly as shipped.
++  if (SenuaContactPatchOn()) {
++    ComputeCollisionResponseRangeSenua<kGradTarget>(
++        pointRange, contactQuery, params, config, dtStage, assemEnergy, assemForce, assemDForce, outResponse);
++    return;
++  }
++
+   // Outputs should already be the correct size
+   MOCHI_ASSERT(!assemEnergy || (outResponse.energy.size() == isize(contactQuery.sampleIndices)));
+   MOCHI_ASSERT(!assemForce || (outResponse.force.size() == isize(contactQuery.sampleIndices)));
+diff --git a/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.cpp b/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.cpp
+index eefde8a..e9ea349 100644
+--- a/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.cpp
++++ b/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.cpp
+@@ -16,6 +16,10 @@
+ 
+ #include "mochi_contact.h"
+ 
++#include <map>
++#include <mutex>
++#include <tuple>
++
+ #include "mochi_articulated_body.h"
+ #include "mochi_blended.h"
+ #include "mochi_contact_filter.h"
+@@ -689,6 +693,9 @@ static void DistributeContactDetectionResultToPartitions(
+         if constexpr (kTimeStep == TimeStep::Current) {
+           sourceResult.posCollidingStageStart[firstPartitionCount] =
+               sourceResult.posCollidingStageStart[i];
++          if (!sourceResult.frictionAnchor.empty()) {
++            sourceResult.frictionAnchor[firstPartitionCount] = sourceResult.frictionAnchor[i];
++          }
+           if (explicitNormals) {
+             sourceResult.sdfInfoStageStart.grad[firstPartitionCount] =
+                 sourceResult.sdfInfoStageStart.grad[i];
+@@ -708,6 +715,9 @@ static void DistributeContactDetectionResultToPartitions(
+       targetPartition.sdfInfo.val.push_back(sourceResult.sdfInfo.val[i]);
+       if constexpr (kTimeStep == TimeStep::Current) {
+         targetPartition.posCollidingStageStart.push_back(sourceResult.posCollidingStageStart[i]);
++        if (!sourceResult.frictionAnchor.empty()) {
++          targetPartition.frictionAnchor.push_back(sourceResult.frictionAnchor[i]);
++        }
+         if (explicitNormals) {
+           targetPartition.sdfInfoStageStart.push_back(
+               sourceResult.sdfInfoStageStart.val[i], sourceResult.sdfInfoStageStart.grad[i]);
+@@ -721,6 +731,9 @@ static void DistributeContactDetectionResultToPartitions(
+   sourceResult.sdfInfo.resize(firstPartitionCount);
+   if constexpr (kTimeStep == TimeStep::Current) {
+     sourceResult.posCollidingStageStart.resize(firstPartitionCount);
++    if (!sourceResult.frictionAnchor.empty()) {
++      sourceResult.frictionAnchor.resize(firstPartitionCount);
++    }
+     if (explicitNormals) {
+       sourceResult.sdfInfoStageStart.resize(firstPartitionCount);
+     }
+@@ -988,6 +1001,74 @@ static void DetectCollisionsWithSingleCollider(
+   }
+ }
+ 
++// Anchored Coulomb friction: persistent stick anchors per (colliding, collider, sample), in the
++// collider's local space. Updated by return mapping at each stage start: the anchor follows the
++// contact only when the tangential offset exceeds the stick distance, so friction holds a contact
++// at rest and saturates at mu*N while sliding. Idempotent within a step (uses stage-start data).
++namespace {
++struct FrictionAnchorEntry {
++  Real3 anchor;
++  Real3 lastStageStart;
++};
++std::mutex gFrictionAnchorMutex;
++std::map<std::tuple<void const*, uint32_t, uint32_t, int>, FrictionAnchorEntry> gFrictionAnchors;
++
++void UpdateFrictionAnchors(
++    entt::registry const& reg,
++    entt::entity colliding,
++    entt::entity collider,
++    real stickDistance,
++    ContactDetectionResult& result) {
++  // A sample whose stage-start position jumped further than this since it was last seen has
++  // re-entered contact: it starts a fresh stick.
++  real const kReentryJump = 0.005_r;
++  // With the damped stick on (SUPERDEX_STICK_DAMPING): a contact that carries no normal force at the
++  // stage start holds no stick, so its anchor starts afresh. This is the return mapping onto a
++  // friction limit of zero; without it a body that leaves the surface and lands again is pulled
++  // towards where it stuck before. The stage-start distance is estimated as the kernel estimates it.
++  bool const freshWhenOpen = FrictionStickDamped() &&
++                             result.sdfInfo.val.size() == result.sampleIndices.size() &&
++                             result.posColliding.size() == result.sampleIndices.size();
++  real const openDistance =
++      freshWhenOpen ? reg.get<CContactParams const>(collider).GetPenaltyThresholdDist(true) : 0_r;
++  result.frictionAnchor.resize_noinit(result.sampleIndices.size());
++  std::lock_guard<std::mutex> lock(gFrictionAnchorMutex);
++  for (int i = 0; i < isize(result.sampleIndices); ++i) {
++    Real3 const p0 = result.posCollidingStageStart[i];
++    Real3 anchor = p0;
++    auto key = std::make_tuple(
++        static_cast<void const*>(&reg),
++        static_cast<uint32_t>(entt::to_integral(colliding)),
++        static_cast<uint32_t>(entt::to_integral(collider)),
++        result.sampleIndices[i]);
++    auto it = gFrictionAnchors.find(key);
++    bool isOpen = false;
++    if (freshWhenOpen) {
++      real const dStageStart =
++          result.sdfInfo.val[i] - Dot(result.sdfInfo.grad[i], result.posColliding[i] - p0);
++      isOpen = dStageStart >= openDistance;
++    }
++    if (!isOpen && it != gFrictionAnchors.end() &&
++        Norm(p0 - it->second.lastStageStart) < kReentryJump) {
++      Real3 n = result.sdfInfo.grad[i];
++      real const nNorm = Norm(n);
++      n = nNorm > 0_r ? n / nNorm : n;
++      Real3 const d = p0 - it->second.anchor;
++      Real3 const dt = d - Dot(d, n) * n;
++      real const dtNorm = Norm(dt);
++      anchor = dtNorm > stickDistance ? p0 - dt * (stickDistance / dtNorm) : p0 - dt;
++    }
++    gFrictionAnchors[key] = {anchor, p0};
++    result.frictionAnchor[i] = anchor;
++  }
++}
++} // namespace
++
++void mochi::ClearFrictionAnchors() {
++  std::lock_guard<std::mutex> lock(gFrictionAnchorMutex);
++  gFrictionAnchors.clear();
++}
++
+ static void EvalStageStartContactWithSingleCollider(
+     entt::registry const& reg,
+     entt::entity colliding,
+@@ -1123,6 +1204,10 @@ static void EvalStageStartContactWithSingleCollider(
+       outResult.jacColliderFromWorldStageStart = jacColliderFromWorldTemp;
+     }
+   }
++
++  if (real const stick = FrictionStickDistance(); stick > 0_r) {
++    UpdateFrictionAnchors(reg, colliding, collider, stick, outResult);
++  }
+   outResult.culledIndicesBuffer.clear(); // = outIndices
+   outResult.culledPositionsBuffer.clear(); // = positionsInColliding
+ }
+diff --git a/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.h b/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.h
+index 6d7546c..feaed2a 100644
+--- a/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.h
++++ b/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.h
+@@ -959,6 +959,12 @@ inline bool ValidCollidingNormals(ContactAssemblyReg const& reg, entt::entity co
+ 
+ void UpdateStageStartDataPipeline(entt::registry& reg, CIslandDescendants const& descendants);
+ 
++/**
++ * @brief Forget every anchored-friction stick anchor (see SUPERDEX_STICK_DISTANCE). Called when a scene is
++ * created or destroyed so a new scene never inherits anchors from an old one.
++ */
++void ClearFrictionAnchors();
++
+ template <TimeStep kTimeStep>
+ MOCHI_API void CollisionDetectionPipeline(
+     entt::registry& reg,
+diff --git a/superdex_physics/libraries/mochi/mochi_physics/src/mochi_context.cpp b/superdex_physics/libraries/mochi/mochi_physics/src/mochi_context.cpp
+index 25f358d..74eb018 100644
+--- a/superdex_physics/libraries/mochi/mochi_physics/src/mochi_context.cpp
++++ b/superdex_physics/libraries/mochi/mochi_physics/src/mochi_context.cpp
+@@ -16,6 +16,8 @@
+ 
+ #include "mochi_context.h"
+ 
++#include "mochi_contact.h"
++
+ #include "mochi_hdf5.h"
+ #include "mochi_rod.h"
+ #include "mochi_scene.h"
+@@ -573,6 +575,7 @@ void ContextImpl::ClearFileFromCache(std::string_view filePath) {
+ }
+ 
+ Scene* ContextImpl::CreateScene(std::string_view name) {
++  ClearFrictionAnchors();
+   // Create a new scene
+   auto newScene = std::make_unique<SceneImpl>(this, name, GenerateNewHandle());
+   Scene* sceneRawPtr = newScene.get();
+@@ -589,6 +592,7 @@ Scene* ContextImpl::CreateScene(std::string_view name) {
+ }
+ 
+ void ContextImpl::DestroyScene(Scene* scene) {
++  ClearFrictionAnchors();
+   std::unique_ptr<SceneImpl> sceneToDestroy;
+   {
+     std::lock_guard lock(_mutex);

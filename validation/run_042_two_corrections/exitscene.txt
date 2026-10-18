@@ -1,0 +1,5 @@
+stock off exit 0 ERROR SUMMARY: 0 errors
+b14 off exit 0 ERROR SUMMARY: 0 errors
+b14 abcd exit 0 ERROR SUMMARY: 0 errors
+b15 off exit 0 ERROR SUMMARY: 0 errors
+b15 abcd exit 0 ERROR SUMMARY: 0 errors

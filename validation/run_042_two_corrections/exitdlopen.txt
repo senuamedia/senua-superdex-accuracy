@@ -1,0 +1,5 @@
+stock off exit 0 ERROR SUMMARY: 0 errors 1 destroyed
+b14 off exit 0 ERROR SUMMARY: 0 errors 1 destroyed
+b14 abcd exit 99 ERROR SUMMARY: 120 errors 1 destroyed
+b15 off exit 0 ERROR SUMMARY: 0 errors 1 destroyed
+b15 abcd exit 0 ERROR SUMMARY: 0 errors 1 destroyed

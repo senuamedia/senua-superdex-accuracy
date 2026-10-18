@@ -1,0 +1,20 @@
+# residuals in millionths; the absolute tolerance is 1,000 unless said
+## the collision at 1/64 of the step, by the stiffness of the rotation constraint (shipped default 1e6)
+side64_rotk1e4                 steps  3200 stopped    0 (at the limit    0) diverged 0 ; iterations in all    3250 ; largest converged residual   1291
+side64_rotk1e5                 steps  3200 stopped    0 (at the limit    0) diverged 0 ; iterations in all   12460 ; largest converged residual   1291
+side64_rotk1e6                 steps  3200 stopped 2110 (at the limit 2110) diverged 0 ; iterations in all  428319 ; largest converged residual   1291 ; stopped residual 1071 to 3998
+side64_rotk1e7                 steps  3200 stopped 1196 (at the limit 1196) diverged 0 ; iterations in all  267849 ; largest converged residual   1291 ; stopped residual 1252 to 29557
+side64_rotk1e8                 steps  3200 stopped    0 (at the limit    0) diverged 0 ; iterations in all   44514 ; largest converged residual   1291
+## the same at the shipped 10 ms step
+side1_rotk1e6                  steps    50 stopped    0 (at the limit    0) diverged 0 ; iterations in all     153 ; largest converged residual    641
+side1_rotk1e7                  steps    50 stopped    0 (at the limit    0) diverged 0 ; iterations in all     184 ; largest converged residual    641
+side1_rotk1e8                  steps    50 stopped    0 (at the limit    0) diverged 0 ; iterations in all     218 ; largest converged residual    641
+side1_rotk1e9                  steps    50 stopped    0 (at the limit    0) diverged 0 ; iterations in all     165 ; largest converged residual    641
+## default stiffness at 1/64, by the solver's absolute tolerance (shipped 1e-3)
+side64_abstol1e-3              steps  3200 stopped 2110 (at the limit 2110) diverged 0 ; iterations in all  428319 ; largest converged residual   1291 ; stopped residual 1071 to 3998
+side64_abstol3e-3              steps  3200 stopped 1146 (at the limit 1146) diverged 0 ; iterations in all  243221 ; largest converged residual   1837 ; stopped residual 248 to 3992
+side64_abstol1e-2              steps  3200 stopped    2 (at the limit    2) diverged 0 ; iterations in all   13194 ; largest converged residual   4000 ; stopped residual 2064 to 2930
+## is the motion the same? cube B's file under the three tolerances, and under stiffness 1e5 against 1e6
+abstol 3e-3: differs from 1e-3 in 14 bytes; last lines: 3199 393473046 -568646 0 0 0 | 3199 393473046 -568646 0 0 0
+abstol 1e-2: differs from 1e-3 in 55 bytes; last lines: 3199 393473046 -568646 0 0 0 | 3199 393473046 -568646 0 0 0
+last line of B, stiffness 1e5: 3199 393473046 -568646 0 0 0 ; 1e6: 3199 393473046 -568646 0 0 0 ; 1e8: 3199 393473046 -568646 0 0 0

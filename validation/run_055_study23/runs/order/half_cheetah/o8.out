@@ -1,0 +1,1 @@
+STATS scene half_cheetah integ be maxiter 200 sub 8 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 172800 converged 172800 stopped 0 diverged 0 unset 0 most_iterations 178 enc_min -1462 enc_max 1909 wall_s 234.7 real_bits 64 worst_residual 0.0132 extra ndamp=5 falloff=0.03 newtoneuler=1 abstol=1e-4 reltol=1e-8

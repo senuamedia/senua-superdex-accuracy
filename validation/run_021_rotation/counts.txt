@@ -1,0 +1,112 @@
+=== half_cheetah, the fifth registration's commands: the recommended configuration with the rotation correction added (y1 .. y16)
+TIME half_cheetah y1 against y2 readings 0 to 5 summed_difference 3026 more_than_1_count 464 largest 13
+TIME half_cheetah y1 against y2 readings 5 to 10 summed_difference 3436 more_than_1_count 447 largest 26
+TIME half_cheetah y1 against y2 readings 10 to 20 summed_difference 18269 more_than_1_count 1009 largest 67
+TIME half_cheetah y1 against y2 readings 20 to 40 summed_difference 56862 more_than_1_count 2075 largest 115
+TIME half_cheetah y1 against y2 readings 40 to 80 summed_difference 126987 more_than_1_count 4172 largest 141
+TIME half_cheetah y1 against y2 readings 80 to 120 summed_difference 144445 more_than_1_count 4176 largest 140
+TIME half_cheetah y1 against y2 readings 120 to 160 summed_difference 150649 more_than_1_count 4208 largest 261
+TIME half_cheetah y1 against y2 readings 160 to 200 summed_difference 169975 more_than_1_count 4214 largest 460
+PARTING half_cheetah y1 against y2 summed_difference 673649 episodes 108 never_part 0 earliest 0 quarter 0 median 0 three_quarters 0 latest 12
+TIME half_cheetah y2 against y4 readings 0 to 5 summed_difference 1636 more_than_1_count 392 largest 7
+TIME half_cheetah y2 against y4 readings 5 to 10 summed_difference 1830 more_than_1_count 387 largest 14
+TIME half_cheetah y2 against y4 readings 10 to 20 summed_difference 10294 more_than_1_count 956 largest 47
+TIME half_cheetah y2 against y4 readings 20 to 40 summed_difference 34804 more_than_1_count 2018 largest 73
+TIME half_cheetah y2 against y4 readings 40 to 80 summed_difference 76563 more_than_1_count 4078 largest 115
+TIME half_cheetah y2 against y4 readings 80 to 120 summed_difference 84174 more_than_1_count 4073 largest 85
+TIME half_cheetah y2 against y4 readings 120 to 160 summed_difference 85885 more_than_1_count 4107 largest 107
+TIME half_cheetah y2 against y4 readings 160 to 200 summed_difference 93284 more_than_1_count 4121 largest 269
+PARTING half_cheetah y2 against y4 summed_difference 388470 episodes 108 never_part 0 earliest 0 quarter 0 median 1 three_quarters 2 latest 13
+TIME half_cheetah y4 against y8 readings 0 to 5 summed_difference 882 more_than_1_count 273 largest 4
+TIME half_cheetah y4 against y8 readings 5 to 10 summed_difference 928 more_than_1_count 269 largest 7
+TIME half_cheetah y4 against y8 readings 10 to 20 summed_difference 6027 more_than_1_count 864 largest 37
+TIME half_cheetah y4 against y8 readings 20 to 40 summed_difference 23522 more_than_1_count 1926 largest 56
+TIME half_cheetah y4 against y8 readings 40 to 80 summed_difference 45431 more_than_1_count 3896 largest 71
+TIME half_cheetah y4 against y8 readings 80 to 120 summed_difference 46728 more_than_1_count 3928 largest 55
+TIME half_cheetah y4 against y8 readings 120 to 160 summed_difference 50043 more_than_1_count 3968 largest 155
+TIME half_cheetah y4 against y8 readings 160 to 200 summed_difference 53318 more_than_1_count 3937 largest 211
+PARTING half_cheetah y4 against y8 summed_difference 226879 episodes 108 never_part 0 earliest 0 quarter 1 median 2 three_quarters 6 latest 20
+TIME half_cheetah y8 against y16 readings 0 to 5 summed_difference 421 more_than_1_count 69 largest 2
+TIME half_cheetah y8 against y16 readings 5 to 10 summed_difference 498 more_than_1_count 100 largest 4
+TIME half_cheetah y8 against y16 readings 10 to 20 summed_difference 3437 more_than_1_count 719 largest 24
+TIME half_cheetah y8 against y16 readings 20 to 40 summed_difference 15191 more_than_1_count 1815 largest 32
+TIME half_cheetah y8 against y16 readings 40 to 80 summed_difference 25976 more_than_1_count 3584 largest 39
+TIME half_cheetah y8 against y16 readings 80 to 120 summed_difference 25238 more_than_1_count 3607 largest 34
+TIME half_cheetah y8 against y16 readings 120 to 160 summed_difference 27906 more_than_1_count 3705 largest 118
+TIME half_cheetah y8 against y16 readings 160 to 200 summed_difference 32315 more_than_1_count 3565 largest 149
+PARTING half_cheetah y8 against y16 summed_difference 130982 episodes 108 never_part 0 earliest 2 quarter 3 median 7 three_quarters 12 latest 33
+CELL half_cheetah Y fold 0
+  gap y1 against y2 ; plain 3604769
+  gap y2 against y4 ; plain 2196909
+  gap y4 against y8 ; plain 1274563
+  gap y8 against y16 ; plain 724002
+  plain_in_order 1
+CELL half_cheetah Y fold 1
+  gap y1 against y2 ; plain 4291128
+  gap y2 against y4 ; plain 2353748
+  gap y4 against y8 ; plain 1435891
+  gap y8 against y16 ; plain 849675
+  plain_in_order 1
+CELL half_cheetah Y fold 2
+  gap y1 against y2 ; plain 3438474
+  gap y2 against y4 ; plain 2092878
+  gap y4 against y8 ; plain 1370115
+  gap y8 against y16 ; plain 808086
+  plain_in_order 1
+PLAIN half_cheetah Y folds_in_order 3
+=== ant, the fifth registration's commands: the recommended configuration with the rotation correction added (y1 .. y16)
+TIME ant y1 against y2 readings 0 to 5 summed_difference 7775 more_than_1_count 510 largest 69
+TIME ant y1 against y2 readings 5 to 10 summed_difference 17284 more_than_1_count 527 largest 187
+TIME ant y1 against y2 readings 10 to 20 summed_difference 47554 more_than_1_count 1045 largest 313
+TIME ant y1 against y2 readings 20 to 40 summed_difference 113345 more_than_1_count 2042 largest 557
+TIME ant y1 against y2 readings 40 to 80 summed_difference 335600 more_than_1_count 4169 largest 865
+TIME ant y1 against y2 readings 80 to 120 summed_difference 394748 more_than_1_count 4161 largest 966
+TIME ant y1 against y2 readings 120 to 160 summed_difference 412391 more_than_1_count 4171 largest 1407
+TIME ant y1 against y2 readings 160 to 200 summed_difference 436996 more_than_1_count 4170 largest 1355
+PARTING ant y1 against y2 summed_difference 1765693 episodes 108 never_part 0 earliest 0 quarter 0 median 0 three_quarters 0 latest 5
+TIME ant y2 against y4 readings 0 to 5 summed_difference 4156 more_than_1_count 460 largest 47
+TIME ant y2 against y4 readings 5 to 10 summed_difference 9304 more_than_1_count 498 largest 108
+TIME ant y2 against y4 readings 10 to 20 summed_difference 25010 more_than_1_count 1012 largest 205
+TIME ant y2 against y4 readings 20 to 40 summed_difference 60532 more_than_1_count 1959 largest 267
+TIME ant y2 against y4 readings 40 to 80 summed_difference 208122 more_than_1_count 4043 largest 1128
+TIME ant y2 against y4 readings 80 to 120 summed_difference 276290 more_than_1_count 4073 largest 1731
+TIME ant y2 against y4 readings 120 to 160 summed_difference 315493 more_than_1_count 4086 largest 1371
+TIME ant y2 against y4 readings 160 to 200 summed_difference 342973 more_than_1_count 4100 largest 1605
+PARTING ant y2 against y4 summed_difference 1241880 episodes 108 never_part 0 earliest 0 quarter 0 median 0 three_quarters 1 latest 8
+TIME ant y4 against y8 readings 0 to 5 summed_difference 1810 more_than_1_count 364 largest 21
+TIME ant y4 against y8 readings 5 to 10 summed_difference 3988 more_than_1_count 450 largest 40
+TIME ant y4 against y8 readings 10 to 20 summed_difference 11455 more_than_1_count 975 largest 78
+TIME ant y4 against y8 readings 20 to 40 summed_difference 32220 more_than_1_count 1793 largest 168
+TIME ant y4 against y8 readings 40 to 80 summed_difference 116191 more_than_1_count 3820 largest 284
+TIME ant y4 against y8 readings 80 to 120 summed_difference 171544 more_than_1_count 3909 largest 671
+TIME ant y4 against y8 readings 120 to 160 summed_difference 203935 more_than_1_count 3928 largest 815
+TIME ant y4 against y8 readings 160 to 200 summed_difference 242155 more_than_1_count 3917 largest 1299
+PARTING ant y4 against y8 summed_difference 783298 episodes 108 never_part 0 earliest 0 quarter 0 median 1 three_quarters 2 latest 9
+TIME ant y8 against y16 readings 0 to 5 summed_difference 819 more_than_1_count 212 largest 7
+TIME ant y8 against y16 readings 5 to 10 summed_difference 2015 more_than_1_count 371 largest 21
+TIME ant y8 against y16 readings 10 to 20 summed_difference 5945 more_than_1_count 863 largest 34
+TIME ant y8 against y16 readings 20 to 40 summed_difference 16705 more_than_1_count 1505 largest 92
+TIME ant y8 against y16 readings 40 to 80 summed_difference 59840 more_than_1_count 3519 largest 153
+TIME ant y8 against y16 readings 80 to 120 summed_difference 94397 more_than_1_count 3635 largest 395
+TIME ant y8 against y16 readings 120 to 160 summed_difference 140253 more_than_1_count 3642 largest 644
+TIME ant y8 against y16 readings 160 to 200 summed_difference 158005 more_than_1_count 3549 largest 610
+PARTING ant y8 against y16 summed_difference 477979 episodes 108 never_part 0 earliest 1 quarter 2 median 3 three_quarters 5 latest 14
+CELL ant Y fold 0
+  gap y1 against y2 ; plain 13040743
+  gap y2 against y4 ; plain 10758338
+  gap y4 against y8 ; plain 7283164
+  gap y8 against y16 ; plain 3798411
+  plain_in_order 1
+CELL ant Y fold 1
+  gap y1 against y2 ; plain 9456774
+  gap y2 against y4 ; plain 6817883
+  gap y4 against y8 ; plain 3907266
+  gap y8 against y16 ; plain 3149750
+  plain_in_order 1
+CELL ant Y fold 2
+  gap y1 against y2 ; plain 13273026
+  gap y2 against y4 ; plain 7139015
+  gap y4 against y8 ; plain 4549931
+  gap y8 against y16 ; plain 2699763
+  plain_in_order 1
+PLAIN ant Y folds_in_order 3

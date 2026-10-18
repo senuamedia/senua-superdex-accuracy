@@ -1,0 +1,12 @@
+r032/runs/bench/ant_accurate.tr | g3: steps 345600 stopped 0 diverged 0 most_iterations 88 | build 15: steps 345600 stopped 0 diverged 0 most_iterations 117
+r032/runs/bench/ant_final.tr | g3: steps 21600 stopped 0 diverged 0 most_iterations 124 | build 15: steps 21600 stopped 0 diverged 0 most_iterations 124
+r032/runs/bench/ant_stock.tr | g3: steps 21600 stopped 199 diverged 0 most_iterations 200 | build 15: steps 21600 stopped 199 diverged 0 most_iterations 200
+r032/runs/bench/cart_pole_accurate.tr | g3: steps 345600 stopped 0 diverged 0 most_iterations 3 | build 15: steps 345600 stopped 0 diverged 0 most_iterations 3
+r032/runs/bench/cart_pole_final.tr | g3: steps 21600 stopped 0 diverged 0 most_iterations 7 | build 15: steps 21600 stopped 0 diverged 0 most_iterations 7
+r032/runs/bench/cart_pole_stock.tr | g3: steps 21600 stopped 0 diverged 0 most_iterations 7 | build 15: steps 21600 stopped 0 diverged 0 most_iterations 7
+r032/runs/bench/half_cheetah_accurate.tr | g3: steps 345600 stopped 0 diverged 0 most_iterations 114 | build 15: steps 345600 stopped 0 diverged 0 most_iterations 85
+r032/runs/bench/half_cheetah_final.tr | g3: steps 21600 stopped 9 diverged 0 most_iterations 200 | build 15: steps 21600 stopped 9 diverged 0 most_iterations 200
+r032/runs/bench/half_cheetah_stock.tr | g3: steps 21600 stopped 3 diverged 0 most_iterations 200 | build 15: steps 21600 stopped 3 diverged 0 most_iterations 200
+r034/accurate14/runs/bench/ant_accurate.tr | g3: steps 345600 stopped 0 diverged 0 most_iterations 93 | build 15: steps 345600 stopped 0 diverged 0 most_iterations 99
+r034/accurate14/runs/bench/cart_pole_accurate.tr | g3: steps 345600 stopped 0 diverged 0 most_iterations 3 | build 15: steps 345600 stopped 0 diverged 0 most_iterations 4
+r034/accurate14/runs/bench/half_cheetah_accurate.tr | g3: steps 345600 stopped 0 diverged 0 most_iterations 111 | build 15: steps 345600 stopped 0 diverged 0 most_iterations 122

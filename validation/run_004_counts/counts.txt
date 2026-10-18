@@ -1,0 +1,128 @@
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 a block 7200
+COUNT cart_pole S_solver_convergence reference sref readings 21600 min -4143 max 4143 at_ceiling 0
+  rung s1 min -4150 max 4171 at_ceiling 0 identical_to_reference 0 readings_differing 19685 more_than_1_count 16289 largest 8269 episodes_parting 108 earliest_step 1
+  rung s2 min -4148 max 4149 at_ceiling 0 identical_to_reference 0 readings_differing 9106 more_than_1_count 5929 largest 55 episodes_parting 58 earliest_step 20
+  rung s4 min -4144 max 4143 at_ceiling 0 identical_to_reference 0 readings_differing 1092 more_than_1_count 482 largest 7 episodes_parting 9 earliest_step 24
+  rung s8 min -4143 max 4143 at_ceiling 0 identical_to_reference 1 readings_differing 0 more_than_1_count 0 largest 0 episodes_parting 0 earliest_step -1
+  rung s16 min -4143 max 4143 at_ceiling 0 identical_to_reference 1 readings_differing 0 more_than_1_count 0 largest 0 episodes_parting 0 earliest_step -1
+  refined sref2 min -4143 max 4143 at_ceiling 0 identical_to_reference 1 readings_differing 0 more_than_1_count 0 largest 0 episodes_parting 0 earliest_step -1
+COUNT cart_pole T_time_step_chain readings 21600
+  source sref min -4143 max 4143 at_ceiling 0
+  source t2 min -4143 max 4143 at_ceiling 0
+  source t4 min -4143 max 4144 at_ceiling 0
+  source t8 min -4143 max 4144 at_ceiling 0
+  source t16 min -4143 max 4144 at_ceiling 0
+  gap sref against t2 identical 0 readings_differing 5742 more_than_1_count 3686 largest 2446 episodes_parting 108 earliest_step 0
+  gap t2 against t4 identical 0 readings_differing 4945 more_than_1_count 3601 largest 1433 episodes_parting 108 earliest_step 0
+  gap t4 against t8 identical 0 readings_differing 4346 more_than_1_count 3377 largest 1178 episodes_parting 108 earliest_step 0
+  gap t8 against t16 identical 0 readings_differing 3972 more_than_1_count 3036 largest 1326 episodes_parting 108 earliest_step 0
+COUNT cart_pole C_contact_smoothing_chain readings 21600
+  source c10 min -4143 max 4143 at_ceiling 0
+  source sref min -4143 max 4143 at_ceiling 0
+  source c2 min -4143 max 4143 at_ceiling 0
+  source c1 min -4143 max 4143 at_ceiling 0
+  source c06 min -4143 max 4143 at_ceiling 0
+  source c03 min -4143 max 4143 at_ceiling 0
+  gap c10 against sref identical 1 readings_differing 0 more_than_1_count 0 largest 0 episodes_parting 0 earliest_step -1
+  gap sref against c2 identical 1 readings_differing 0 more_than_1_count 0 largest 0 episodes_parting 0 earliest_step -1
+  gap c2 against c1 identical 1 readings_differing 0 more_than_1_count 0 largest 0 episodes_parting 0 earliest_step -1
+  gap c1 against c06 identical 1 readings_differing 0 more_than_1_count 0 largest 0 episodes_parting 0 earliest_step -1
+  gap c06 against c03 identical 1 readings_differing 0 more_than_1_count 0 largest 0 episodes_parting 0 earliest_step -1
+COUNT cart_pole N_no_causal_tie reference sref readings 21600 min -4143 max 4143 at_ceiling 0
+  rung nref min -4143 max 4143 at_ceiling 0 identical_to_reference 1 readings_differing 0 more_than_1_count 0 largest 0 episodes_parting 0 earliest_step -1
+COUNT cart_pole P_precision_reported reference s4 readings 21600 min -4144 max 4143 at_ceiling 0
+  rung ship32 min -4144 max 4143 at_ceiling 0 identical_to_reference 0 readings_differing 31 more_than_1_count 0 largest 1 episodes_parting 0 earliest_step -1
+COUNT cart_pole Q_solver_tolerance_reported reference sref readings 21600 min -4143 max 4143 at_ceiling 0
+  rung tight min -4143 max 4143 at_ceiling 0 identical_to_reference 0 readings_differing 2081 more_than_1_count 896 largest 56 episodes_parting 83 earliest_step 16
+COUNT cart_pole H_second_order_at_fine_step_reported reference t16 readings 21600 min -4143 max 4144 at_ceiling 0
+  rung b16 min -4146 max 4146 at_ceiling 0 identical_to_reference 0 readings_differing 21343 more_than_1_count 19591 largest 1903 episodes_parting 108 earliest_step 1
+COUNT cart_pole B_second_order_refined_reported reference b32 readings 21600 min -4145 max 4145 at_ceiling 0
+  rung b16 min -4146 max 4146 at_ceiling 0 identical_to_reference 0 readings_differing 18228 more_than_1_count 12679 largest 816 episodes_parting 108 earliest_step 3
+COUNT cart_pole X_default_against_finest_step_reported reference t16 readings 21600 min -4143 max 4144 at_ceiling 0
+  rung ship32 min -4144 max 4143 at_ceiling 0 identical_to_reference 0 readings_differing 8334 more_than_1_count 4590 largest 4394 episodes_parting 108 earliest_step 0
+  rung sref min -4143 max 4143 at_ceiling 0 identical_to_reference 0 readings_differing 7562 more_than_1_count 4112 largest 4394 episodes_parting 108 earliest_step 0
+COUNT half_cheetah S_solver_convergence reference sref readings 21600 min -1467 max 1740 at_ceiling 0
+  rung s1 min -1444 max 1603 at_ceiling 0 identical_to_reference 0 readings_differing 20757 more_than_1_count 20318 largest 1228 episodes_parting 108 earliest_step 4
+  rung s2 min -1481 max 1609 at_ceiling 0 identical_to_reference 0 readings_differing 20139 more_than_1_count 19989 largest 1060 episodes_parting 108 earliest_step 9
+  rung s4 min -1501 max 1557 at_ceiling 0 identical_to_reference 0 readings_differing 19940 more_than_1_count 19665 largest 887 episodes_parting 108 earliest_step 10
+  rung s8 min -1470 max 1740 at_ceiling 0 identical_to_reference 0 readings_differing 18714 more_than_1_count 16381 largest 332 episodes_parting 108 earliest_step 11
+  rung s16 min -1468 max 1740 at_ceiling 0 identical_to_reference 0 readings_differing 10601 more_than_1_count 4969 largest 65 episodes_parting 95 earliest_step 11
+  refined sref2 min -1467 max 1740 at_ceiling 0 identical_to_reference 1 readings_differing 0 more_than_1_count 0 largest 0 episodes_parting 0 earliest_step -1
+COUNT half_cheetah T_time_step_chain readings 21600
+  source sref min -1467 max 1740 at_ceiling 0
+  source t2 min -1489 max 1779 at_ceiling 0
+  source t4 min -1508 max 1798 at_ceiling 0
+  source t8 min -1513 max 1808 at_ceiling 0
+  source t16 min -1504 max 1818 at_ceiling 0
+  gap sref against t2 identical 0 readings_differing 21334 more_than_1_count 20823 largest 351 episodes_parting 108 earliest_step 0
+  gap t2 against t4 identical 0 readings_differing 21151 more_than_1_count 20348 largest 325 episodes_parting 108 earliest_step 0
+  gap t4 against t8 identical 0 readings_differing 21079 more_than_1_count 19995 largest 440 episodes_parting 108 earliest_step 0
+  gap t8 against t16 identical 0 readings_differing 20887 more_than_1_count 19756 largest 504 episodes_parting 108 earliest_step 1
+COUNT half_cheetah C_contact_smoothing_chain readings 21600
+  source c10 min -1468 max 1739 at_ceiling 0
+  source sref min -1467 max 1740 at_ceiling 0
+  source c2 min -1467 max 1740 at_ceiling 0
+  source c1 min -1467 max 1739 at_ceiling 0
+  source c06 min -1467 max 1739 at_ceiling 0
+  source c03 min -1467 max 1739 at_ceiling 0
+  gap c10 against sref identical 0 readings_differing 18596 more_than_1_count 15368 largest 98 episodes_parting 108 earliest_step 10
+  gap sref against c2 identical 0 readings_differing 17681 more_than_1_count 12890 largest 91 episodes_parting 108 earliest_step 10
+  gap c2 against c1 identical 0 readings_differing 16145 more_than_1_count 9361 largest 57 episodes_parting 108 earliest_step 10
+  gap c1 against c06 identical 0 readings_differing 13061 more_than_1_count 5292 largest 38 episodes_parting 105 earliest_step 11
+  gap c06 against c03 identical 0 readings_differing 12948 more_than_1_count 5841 largest 32 episodes_parting 105 earliest_step 11
+COUNT half_cheetah N_no_causal_tie reference sref readings 21600 min -1467 max 1740 at_ceiling 0
+  rung nref min -1467 max 1740 at_ceiling 0 identical_to_reference 0 readings_differing 907 more_than_1_count 69 largest 6 episodes_parting 1 earliest_step 74
+COUNT half_cheetah P_precision_reported reference s4 readings 21600 min -1501 max 1557 at_ceiling 0
+  rung ship32 min -1501 max 1557 at_ceiling 0 identical_to_reference 0 readings_differing 1917 more_than_1_count 450 largest 158 episodes_parting 15 earliest_step 14
+COUNT half_cheetah Q_solver_tolerance_reported reference sref readings 21600 min -1467 max 1740 at_ceiling 0
+  rung tight min -1467 max 1740 at_ceiling 0 identical_to_reference 0 readings_differing 1010 more_than_1_count 3 largest 2 episodes_parting 1 earliest_step 193
+COUNT half_cheetah H_second_order_at_fine_step_reported reference t16 readings 21600 min -1504 max 1818 at_ceiling 0
+  rung b16 min -1479 max 1778 at_ceiling 0 identical_to_reference 0 readings_differing 21153 more_than_1_count 20439 largest 1115 episodes_parting 108 earliest_step 2
+COUNT half_cheetah B_second_order_refined_reported reference b32 readings 21600 min -1460 max 1881 at_ceiling 0
+  rung b16 min -1479 max 1778 at_ceiling 0 identical_to_reference 0 readings_differing 19789 more_than_1_count 17969 largest 1201 episodes_parting 108 earliest_step 7
+COUNT half_cheetah X_default_against_finest_step_reported reference t16 readings 21600 min -1504 max 1818 at_ceiling 0
+  rung ship32 min -1501 max 1557 at_ceiling 0 identical_to_reference 0 readings_differing 21510 more_than_1_count 21332 largest 1149 episodes_parting 108 earliest_step 0
+  rung sref min -1467 max 1740 at_ceiling 0 identical_to_reference 0 readings_differing 21488 more_than_1_count 21265 largest 731 episodes_parting 108 earliest_step 0
+COUNT ant S_solver_convergence reference sref readings 21600 min -1943 max 1907 at_ceiling 0
+  rung s1 min -1984 max 1990 at_ceiling 0 identical_to_reference 0 readings_differing 21469 more_than_1_count 21329 largest 3008 episodes_parting 108 earliest_step 0
+  rung s2 min -1879 max 1945 at_ceiling 0 identical_to_reference 0 readings_differing 21192 more_than_1_count 20511 largest 2912 episodes_parting 108 earliest_step 0
+  rung s4 min -1942 max 1905 at_ceiling 0 identical_to_reference 0 readings_differing 17972 more_than_1_count 13858 largest 732 episodes_parting 108 earliest_step 0
+  rung s8 min -1943 max 1907 at_ceiling 0 identical_to_reference 0 readings_differing 8763 more_than_1_count 4756 largest 548 episodes_parting 94 earliest_step 0
+  rung s16 min -1943 max 1907 at_ceiling 0 identical_to_reference 0 readings_differing 5528 more_than_1_count 2927 largest 696 episodes_parting 54 earliest_step 0
+  refined sref2 min -1943 max 1907 at_ceiling 0 identical_to_reference 0 readings_differing 425 more_than_1_count 75 largest 5 episodes_parting 8 earliest_step 24
+COUNT ant T_time_step_chain readings 21600
+  source sref min -1943 max 1907 at_ceiling 0
+  source t2 min -1979 max 1956 at_ceiling 0
+  source t4 min -2004 max 1984 at_ceiling 0
+  source t8 min -2018 max 1991 at_ceiling 0
+  source t16 min -2025 max 1997 at_ceiling 0
+  gap sref against t2 identical 0 readings_differing 21179 more_than_1_count 20323 largest 837 episodes_parting 108 earliest_step 0
+  gap t2 against t4 identical 0 readings_differing 20820 more_than_1_count 19352 largest 635 episodes_parting 108 earliest_step 0
+  gap t4 against t8 identical 0 readings_differing 20323 more_than_1_count 17789 largest 446 episodes_parting 108 earliest_step 0
+  gap t8 against t16 identical 0 readings_differing 19499 more_than_1_count 16068 largest 392 episodes_parting 108 earliest_step 1
+COUNT ant C_contact_smoothing_chain readings 21600
+  source c10 min -1944 max 1907 at_ceiling 0
+  source sref min -1943 max 1907 at_ceiling 0
+  source c2 min -1943 max 1908 at_ceiling 0
+  source c1 min -1943 max 1908 at_ceiling 0
+  source c06 min -1943 max 1909 at_ceiling 0
+  source c03 min -1943 max 1909 at_ceiling 0
+  gap c10 against sref identical 0 readings_differing 15731 more_than_1_count 11438 largest 875 episodes_parting 108 earliest_step 0
+  gap sref against c2 identical 0 readings_differing 13058 more_than_1_count 8113 largest 700 episodes_parting 108 earliest_step 0
+  gap c2 against c1 identical 0 readings_differing 10939 more_than_1_count 5783 largest 360 episodes_parting 108 earliest_step 2
+  gap c1 against c06 identical 0 readings_differing 10588 more_than_1_count 5641 largest 660 episodes_parting 108 earliest_step 2
+  gap c06 against c03 identical 0 readings_differing 10452 more_than_1_count 5270 largest 170 episodes_parting 108 earliest_step 2
+COUNT ant N_no_causal_tie reference sref readings 21600 min -1943 max 1907 at_ceiling 0
+  rung nref min -1943 max 1907 at_ceiling 0 identical_to_reference 0 readings_differing 669 more_than_1_count 123 largest 58 episodes_parting 10 earliest_step 24
+COUNT ant P_precision_reported reference s4 readings 21600 min -1942 max 1905 at_ceiling 0
+  rung ship32 min -1943 max 1904 at_ceiling 0 identical_to_reference 0 readings_differing 14144 more_than_1_count 10574 largest 840 episodes_parting 108 earliest_step 13
+COUNT ant Q_solver_tolerance_reported reference sref readings 21600 min -1943 max 1907 at_ceiling 0
+  rung tight min -1943 max 1907 at_ceiling 0 identical_to_reference 0 readings_differing 398 more_than_1_count 35 largest 5 episodes_parting 4 earliest_step 126
+COUNT ant H_second_order_at_fine_step_reported reference t16 readings 21600 min -2025 max 1997 at_ceiling 0
+  rung b16 min -2040 max 2017 at_ceiling 0 identical_to_reference 0 readings_differing 20220 more_than_1_count 17661 largest 586 episodes_parting 108 earliest_step 0
+COUNT ant B_second_order_refined_reported reference b32 readings 21600 min -2037 max 2011 at_ceiling 0
+  rung b16 min -2040 max 2017 at_ceiling 0 identical_to_reference 0 readings_differing 19391 more_than_1_count 15842 largest 617 episodes_parting 108 earliest_step 1
+COUNT ant X_default_against_finest_step_reported reference t16 readings 21600 min -2025 max 1997 at_ceiling 0
+  rung ship32 min -1943 max 1904 at_ceiling 0 identical_to_reference 0 readings_differing 21337 more_than_1_count 20882 largest 775 episodes_parting 108 earliest_step 0
+  rung sref min -1943 max 1907 at_ceiling 0 identical_to_reference 0 readings_differing 21355 more_than_1_count 20870 largest 777 episodes_parting 108 earliest_step 0
+STAGE 1 counted; the instrument has read nothing

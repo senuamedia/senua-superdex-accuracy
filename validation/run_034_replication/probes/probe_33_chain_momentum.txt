@@ -1,0 +1,19 @@
+# probe 33: the twelfth registration's free chain (1.2 and 0.6 kg, half-size 0.04 m, centres 0.25 and 0.2 m, joints 0.5 m apart, the second at -0.9 rad, turning at 2.5 and 1.5 rad/s, no gravity, 2 s), Newton-Euler, no contact in the play and only patch G's switch set where named: BDF2 with patch G (bdf2_g), BDF2 without it (bdf2_nog), backward Euler with it (be_g); the final configuration's tolerances (t48) and converged (tight: 1e-9, 1e-12); steps 1/4, 1/16, 1/64. Kinetic energy at the end per million of the start, and the angular momentum's drift in parts per million (sx_contact chain). Library build 14. After run 034
+bdf2_g t48 1/4 | kinetic_end_per_million_of_start 999929 momentum_drift_ppm -6270 momentum_largest_drift_ppm 6270 | stopped 0 
+bdf2_g t48 1/16 | kinetic_end_per_million_of_start 1000004 momentum_drift_ppm -1540 momentum_largest_drift_ppm 1540 | stopped 0 
+bdf2_g t48 1/64 | kinetic_end_per_million_of_start 1000053 momentum_drift_ppm -371 momentum_largest_drift_ppm 372 | stopped 0 
+bdf2_g tight 1/4 | kinetic_end_per_million_of_start 999927 momentum_drift_ppm -6270 momentum_largest_drift_ppm 6270 | stopped 0 
+bdf2_g tight 1/16 | kinetic_end_per_million_of_start 999996 momentum_drift_ppm -1542 momentum_largest_drift_ppm 1542 | stopped 0 
+bdf2_g tight 1/64 | kinetic_end_per_million_of_start 1000000 momentum_drift_ppm -383 momentum_largest_drift_ppm 384 | stopped 195 
+bdf2_nog t48 1/4 | kinetic_end_per_million_of_start 956686 momentum_drift_ppm -18114 momentum_largest_drift_ppm 18114 | stopped 0 
+bdf2_nog t48 1/16 | kinetic_end_per_million_of_start 988703 momentum_drift_ppm -4671 momentum_largest_drift_ppm 4671 | stopped 0 
+bdf2_nog t48 1/64 | kinetic_end_per_million_of_start 997144 momentum_drift_ppm -1176 momentum_largest_drift_ppm 1178 | stopped 0 
+bdf2_nog tight 1/4 | kinetic_end_per_million_of_start 956680 momentum_drift_ppm -18117 momentum_largest_drift_ppm 18117 | stopped 0 
+bdf2_nog tight 1/16 | kinetic_end_per_million_of_start 988703 momentum_drift_ppm -4672 momentum_largest_drift_ppm 4672 | stopped 0 
+bdf2_nog tight 1/64 | kinetic_end_per_million_of_start 997145 momentum_drift_ppm -1177 momentum_largest_drift_ppm 1177 | stopped 162 
+be_g t48 1/4 | kinetic_end_per_million_of_start 1000015 momentum_drift_ppm 0 momentum_largest_drift_ppm 6 | stopped 0 
+be_g t48 1/16 | kinetic_end_per_million_of_start 1000007 momentum_drift_ppm 0 momentum_largest_drift_ppm 2 | stopped 0 
+be_g t48 1/64 | kinetic_end_per_million_of_start 1000016 momentum_drift_ppm 2 momentum_largest_drift_ppm 4 | stopped 0 
+be_g tight 1/4 | kinetic_end_per_million_of_start 1000011 momentum_drift_ppm 0 momentum_largest_drift_ppm 1 | stopped 0 
+be_g tight 1/16 | kinetic_end_per_million_of_start 1000000 momentum_drift_ppm 0 momentum_largest_drift_ppm 1 | stopped 0 
+be_g tight 1/64 | kinetic_end_per_million_of_start 1000000 momentum_drift_ppm 0 momentum_largest_drift_ppm 1 | stopped 174 

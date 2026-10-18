@@ -1,0 +1,6 @@
+75def9201a45216a76f8f2896a9f5aba542a4bf630d213e16025d41604266a86  build-stock/bin/libmochi_physics_double.so
+eee7cca1423650df64c5bc7f6f13fc225c83bd4ef2bab9fcca5742cd1751e694  build-patched/bin/libmochi_physics_double.so
+
+real	11m49.175s
+user	67m19.614s
+sys	2m7.429s

@@ -1,0 +1,5 @@
+COMPARE off_bdf2 24 of 24
+COMPARE off_be 24 of 24
+COMPARE be_acc 42 of 42
+COMPARE be_tight 42 of 42
+COMPARE bench_rec 6 of 6

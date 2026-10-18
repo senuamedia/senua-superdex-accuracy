@@ -1,0 +1,10 @@
+PLAYED identity abcde rc 0
+PLAYED identity stock rc 0
+PLAYED identity off rc 0
+PLAYED identity abcd rc 0
+PLAYED hop b15_abcd rc 0
+PLAYED hop b14_abcd rc 0
+PLAYED hop b15_c rc 0
+PLAYED hop b14_c rc 0
+PLAYED hop stock rc 0
+PLAYED hop b15_off rc 0

@@ -1,0 +1,142 @@
+--- a/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.cpp
++++ b/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.cpp
+@@ -48,7 +48,10 @@
+ #include <mochi_core/utils/sparsity_utils.h>
+ 
+ #include <array>
++#include <atomic>
+ #include <cmath>
++#include <cstdio>
++#include <cstdlib>
+ #include <functional>
+ #include <memory>
+ #include <optional>
+@@ -3316,6 +3319,105 @@
+     entt::registry const& reg,
+     Span<entt::entity const> actors);
+ 
++// ---- PROBE ONLY (review of patch F; not part of any patch). With SDX_KPROBE set and SDX_KPROBE_ON=1, every
++// sync contact pair's evaluated range prints one line to stderr: the weighted forces on the colliding body (N, in
++// the collider's frame) split into the penalty force, the normal damping and the tangential friction, and the
++// normal forces friction can be given: SuperDex's friction normal at the step's distance (fade included), at the
++// estimated stage-start distance (what stock friction uses), patch F's (step's penalty plus applied damping), and
++// the normal component of the force actually applied.
++static std::atomic<long> gSdxProbePass{0};
++static bool SdxProbeEnabled() {
++  static bool const kOn = std::getenv("SDX_KPROBE") != nullptr;
++  return kOn;
++}
++static bool SdxProbeNow() {
++  if (!SdxProbeEnabled()) return false;
++  char const* v = std::getenv("SDX_KPROBE_ON");
++  return v != nullptr && v[0] == '1';
++}
++static real SdxProbeForceNorm(real d, ContactParams const& params, ContactEvalConfig const& config) {
++  BatchReal<1> fn MOCHI_NO_INIT;
++  BatchReal<1> dfn MOCHI_NO_INIT;
++  BatchReal<1> const dv{d};
++  BatchReal<1> const one{1_r};
++  BatchReal<1> const mask = (BatchReal<1>{0_r} <= one);
++  ComputeBatchContactPenaltyForceNormDForceNorm<1>(fn, dfn, dv, mask, one, params, config, false);
++  return fn[0];
++}
++static void SdxProbePair(
++    long pass, entt::entity e0, entt::entity e1, Interval<int> range, ContactDetectionResult const& q,
++    CollisionResponseResult const& resp, Span<real const> weights, ContactParams const& params,
++    ContactEvalConfig const& config, real dtStage, bool assemObj, bool assemRes, bool assemDRes) {
++  double W = 0, P[3] = {0, 0, 0}, Fr[3] = {0, 0, 0}, Dm[3] = {0, 0, 0}, T[3] = {0, 0, 0};
++  double frMag = 0, fnNow = 0, fnSS = 0, fnF = 0, nAct = 0, fnRawG = 0;
++  double tiltPx = 0, tiltPy = 0, tiltFrx = 0, tiltFnNow = 0, tiltFnSS = 0, ySum = 0;
++  double xmin = 1e9, xmax = -1e9;
++  int nAll = 0, nActive = 0, nTilt = 0;
++  bool const fade = config.fadeFriction && config.validCollidingNormals && params.maxAlignmentNormals > -1_r;
++  bool const useColliderNormal = params.frictionWithColliderNormal || !config.validCollidingNormals;
++  for (int s = range.Min(); s <= range.Max(); ++s) {
++    ++nAll;
++    real const w = weights[q.sampleIndices[s]];
++    real const d = q.sdfInfo.val[s];
++    Real3 const g = q.sdfInfo.grad[s];
++    Real3 const p = q.posColliding[s];
++    Real3 const p0 = q.posCollidingStageStart[s];
++    Real3 const f = resp.force[s];
++    Real3 const nC = config.validCollidingNormals ? q.normalColliding[s] : Real3{0_r, 0_r, 0_r};
++    real const align = config.validCollidingNormals ? Dot(g, nC) : -1_r;
++    bool const on = align <= params.maxAlignmentNormals;
++    real const af = fade ? (params.maxAlignmentNormals - align) / (params.maxAlignmentNormals + 1_r) : 1_r;
++    real const raw = on ? SdxProbeForceNorm(d, params, config) : 0_r;
++    Real3 const pRel = p - p0;
++    real const dSS = d - Dot(g, pRel);
++    real const rawSS = on ? SdxProbeForceNorm(dSS, params, config) : 0_r;
++    real const gn = Norm(g);
++    Real3 const minusNC{-nC[0], -nC[1], -nC[2]};
++    Real3 const n = useColliderNormal ? (gn > 0_r ? g / gn : minusNC) : minusNC;
++    Real3 const pen = raw * g;
++    Real3 const diss = f - pen;
++    real const dn = Dot(diss, n);
++    Real3 const dmp = dn * n;
++    Real3 const fr = diss - dmp;
++    for (int c = 0; c < 3; ++c) {
++      P[c] += w * pen[c];
++      Fr[c] += w * fr[c];
++      Dm[c] += w * dmp[c];
++      T[c] += w * f[c];
++    }
++    W += w;
++    frMag += w * Norm(fr);
++    fnNow += w * af * raw;
++    fnSS += w * af * rawSS;
++    fnF += w * Max(0_r, af * raw + dn);
++    nAct += w * (raw * Dot(g, n) + dn);
++    fnRawG += w * raw * gn;
++    if (raw > 0_r) {
++      ++nActive;
++      ySum += p[1];
++      xmin = Min(xmin, static_cast<double>(p[0]));
++      xmax = Max(xmax, static_cast<double>(p[0]));
++      if (std::abs(g[0]) > 1e-6_r || std::abs(g[2]) > 1e-6_r) {
++        ++nTilt;
++        tiltPx += w * pen[0];
++        tiltPy += w * pen[1];
++        tiltFrx += w * fr[0];
++        tiltFnNow += w * af * raw;
++        tiltFnSS += w * af * rawSS;
++      }
++    }
++  }
++  std::fprintf(
++      stderr,
++      "KP %ld %u %u %d %d %d %d %d %d %d %.9g %.9g %.9g %.9g %.9g %.9g %.9g %.9g %.9g %.9g %.9g %.9g %.9g %.9g %.9g "
++      "%.9g %.9g %.9g %.9g %d %.9g %.9g %.9g %.9g %.9g %.9g %.9g %.9g %.6g\n",
++      pass, static_cast<unsigned>(entt::to_integral(e0)), static_cast<unsigned>(entt::to_integral(e1)), range.Min(),
++      range.Max(), assemObj ? 1 : 0, assemRes ? 1 : 0, assemDRes ? 1 : 0, nAll, nActive, W, T[0], T[1], T[2], P[0],
++      P[1], P[2], Fr[0], Fr[1], Fr[2], Dm[0], Dm[1], Dm[2], frMag, fnNow, fnSS, fnF, nAct, fnRawG, nTilt, tiltPx,
++      tiltPy, tiltFrx, tiltFnNow, tiltFnSS, nActive > 0 ? ySum / nActive : 0.0, nActive > 0 ? xmin : 0.0,
++      nActive > 0 ? xmax : 0.0, static_cast<double>(dtStage));
++}
++
+ template <GradTarget kGradTarget>
+ static void AssembleAllSyncContactPairs(
+     entt::registry const& reg,
+@@ -3331,6 +3433,7 @@
+   bool const assemObj = (outObj != nullptr);
+   bool const assemRes = !outRes.empty();
+   bool const assemDRes = (GetNumValues(outDRes) > 0);
++  long const sdxProbePass = SdxProbeEnabled() ? gSdxProbePass.fetch_add(1) : 0; // PROBE ONLY
+ 
+   // This function can be VERY expensive. The interaction matrix can have many thousands of non-zero
+   // values, even for a single object contacting the hands. Most of the cost comes from from adding
+@@ -3563,6 +3666,14 @@
+           assemRes,
+           assemDRes,
+           response);
++      // PROBE ONLY
++      if constexpr (kGradTarget == GradTarget::Current) {
++        if (assemRes && SdxProbeNow() && isize(response.force) > pairWork.pointRange.Max()) {
++          SdxProbePair(
++              sdxProbePass, entity0, entity1, pairWork.pointRange, query, response, MakeConstSpan(samples.weights),
++              contactParams, configPair, dtStage, assemObj, assemRes, assemDRes);
++        }
++      }
+ 
+       // Perform assembly
+       auto jacs = (pair.jacRange.size() > 0)

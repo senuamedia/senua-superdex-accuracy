@@ -1,0 +1,10 @@
+== build4: ~/code/superdex-build-f64/bin_build4/libmochi_physics_double.dylib
+library sha256 77708fa8b023ed18
+stream vs registered: SAME; STATS line vs registered: SAME
+stream vs run037: DIFFERS char 3411, line 11; STATS line vs run037: DIFFERS
+STATS converged 21444 stopped 35 diverged 121
+== build15: ~/code/superdex-build-f64/bin_build15/libmochi_physics_double.dylib
+library sha256 471d5d5bd856f37c
+stream vs registered: DIFFERS char 3411, line 11; STATS line vs registered: DIFFERS
+stream vs run037: SAME; STATS line vs run037: SAME
+STATS converged 21446 stopped 34 diverged 120

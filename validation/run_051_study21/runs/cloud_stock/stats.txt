@@ -1,0 +1,7 @@
+STATS run oblique_1 contact dt 0.01 h0 0.076 vx0 3.09 mu 0.391 lock 1 mass 1.157 radius 0.0316 steps 30 converged 25 stopped 5 diverged 0 most_iterations 200 real_bits 64 extra floor=cloud cloudwid=0.16
+STATS run oblique_4 contact dt 0.0025 h0 0.076 vx0 3.09 mu 0.391 lock 1 mass 1.157 radius 0.0316 steps 120 converged 116 stopped 4 diverged 0 most_iterations 200 real_bits 64 extra floor=cloud cloudwid=0.16
+STATS run slide_1 contact dt 0.01 h0 0 vx0 3.98 mu 0.391 lock 1 mass 1.157 radius 0.0316 steps 50 converged 31 stopped 19 diverged 0 most_iterations 200 real_bits 64 extra floor=cloud cloudwid=0.16
+STATS run rest_1 contact dt 0.01 h0 0 vx0 0 mu 0 lock 1 mass 1.157 radius 0.0316 steps 200 converged 200 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra floor=cloud cloudwid=0.16
+STATS run hold_1 contact dt 0.01 h0 0 vx0 0 mu 0.406 lock 1 mass 1.157 radius 0.0316 steps 200 converged 200 stopped 0 diverged 0 most_iterations 4 real_bits 64 extra push=2.76208296 pushat=0.5 floor=cloud cloudwid=0.16
+STATS run slip_1 contact dt 0.01 h0 0 vx0 0 mu 0.406 lock 1 mass 1.157 radius 0.0316 steps 200 converged 194 stopped 6 diverged 0 most_iterations 200 real_bits 64 extra push=5.52416592 pushat=0.5 floor=cloud cloudwid=0.16
+STATS run lift_1 contact dt 0.01 h0 0 vx0 0 mu 0 lock 1 mass 1.157 radius 0.0316 steps 40 converged 40 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra lift=34.0158 liftat=0.3 floor=cloud cloudwid=0.16

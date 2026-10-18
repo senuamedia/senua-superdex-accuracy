@@ -1,0 +1,237 @@
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 detection bar 219 noise slot 18
+CELL cart_pole T fold 0
+  gap sref against t2 level 1064 of 6084 magnitude 1902180 ; calibration level 217 detected 1 ; plain 2189682
+  gap t2 against t4 level 1046 of 6084 magnitude 944641 ; calibration level 173 detected 1 ; plain 1108814
+  gap t4 against t8 level 937 of 6084 magnitude 468669 ; calibration level 109 detected 1 ; plain 562389
+  gap t8 against t16 level 774 of 6084 magnitude 239981 ; calibration level 8 detected 1 ; plain 310285
+  gap t16 against t32 level 659 of 6084 magnitude 94400 ; calibration level 33 detected 1 ; plain 129761
+  gap t32 against t64 level 454 of 6084 magnitude 25438 ; calibration level 20 detected 1 ; plain 43894
+  detected 6 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+CELL cart_pole T fold 1
+  gap sref against t2 level 1100 of 6084 magnitude 30770224 ; calibration level 124 detected 1 ; plain 31102509
+  gap t2 against t4 level 925 of 6084 magnitude 1193690 ; calibration level 99 detected 1 ; plain 1383158
+  gap t4 against t8 level 734 of 6084 magnitude 534118 ; calibration level 15 detected 1 ; plain 655841
+  gap t8 against t16 level 738 of 6084 magnitude 226413 ; calibration level 73 detected 1 ; plain 294097
+  gap t16 against t32 level 706 of 6084 magnitude 120519 ; calibration level 96 detected 1 ; plain 163003
+  gap t32 against t64 level 419 of 6084 magnitude 19267 ; calibration level 99 detected 1 ; plain 40492
+  detected 6 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+CELL cart_pole T fold 2
+  gap sref against t2 level 1030 of 6084 magnitude 11790417 ; calibration level 101 detected 1 ; plain 12109368
+  gap t2 against t4 level 936 of 6084 magnitude 22365807 ; calibration level 32 detected 1 ; plain 22562429
+  gap t4 against t8 level 842 of 6084 magnitude 909842 ; calibration level 19 detected 1 ; plain 1015323
+  gap t8 against t16 level 772 of 6084 magnitude 340159 ; calibration level 5 detected 1 ; plain 413291
+  gap t16 against t32 level 794 of 6084 magnitude 118684 ; calibration level 109 detected 1 ; plain 153753
+  gap t32 against t64 level 573 of 6084 magnitude 30097 ; calibration level 119 detected 1 ; plain 52528
+  detected 6 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+PART cart_pole T cells_same 3 of 3 calibration_level 1451 calibration_windows 109512
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 detection bar 219 noise slot 19
+CELL cart_pole S fold 0
+  gap s1 against sref level 5000 of 6084 magnitude 4134476 ; calibration level 71 detected 1 ; plain 4247347
+  gap s2 against sref level 2140 of 6084 magnitude 203338 ; calibration level 88 detected 1 ; plain 223325
+  gap s4 against sref level 194 of 6084 magnitude 6968 ; calibration level 127 detected 0 ; plain 18464
+  gap s8 against sref IDENTICAL streams ; plain 0
+  gap s16 against sref IDENTICAL streams ; plain 0
+  detected 2 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+CELL cart_pole S fold 1
+  gap s1 against sref level 5038 of 6084 magnitude 33378176 ; calibration level 26 detected 1 ; plain 33510131
+  gap s2 against sref level 3431 of 6084 magnitude 533477 ; calibration level 46 detected 1 ; plain 563062
+  gap s4 against sref level 401 of 6084 magnitude 19141 ; calibration level 119 detected 1 ; plain 25623
+  gap s8 against sref IDENTICAL streams ; plain 0
+  gap s16 against sref IDENTICAL streams ; plain 0
+  detected 3 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+CELL cart_pole S fold 2
+  gap s1 against sref level 5355 of 6084 magnitude 35992311 ; calibration level 86 detected 1 ; plain 36061983
+  gap s2 against sref level 2837 of 6084 magnitude 391292 ; calibration level 1 detected 1 ; plain 432812
+  gap s4 against sref level 685 of 6084 magnitude 41326 ; calibration level 52 detected 1 ; plain 47617
+  gap s8 against sref IDENTICAL streams ; plain 0
+  gap s16 against sref IDENTICAL streams ; plain 0
+  detected 3 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+PART cart_pole S cells_same 3 of 3 calibration_level 616 calibration_windows 54756
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 detection bar 219 noise slot 20
+CELL half_cheetah T fold 0
+  gap sref against t2 level 6070 of 6084 magnitude 4141157 ; calibration level 39 detected 1 ; plain 4144564
+  gap t2 against t4 level 6058 of 6084 magnitude 3198598 ; calibration level 147 detected 1 ; plain 3200618
+  gap t4 against t8 level 5942 of 6084 magnitude 4675196 ; calibration level 143 detected 1 ; plain 4688047
+  gap t8 against t16 level 5928 of 6084 magnitude 8011549 ; calibration level 53 detected 1 ; plain 8051707
+  gap t16 against t32 level 5829 of 6084 magnitude 9909207 ; calibration level 46 detected 1 ; plain 9965728
+  gap t32 against t64 level 5928 of 6084 magnitude 9997846 ; calibration level 107 detected 1 ; plain 10027632
+  detected 6 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+CELL half_cheetah T fold 1
+  gap sref against t2 level 6038 of 6084 magnitude 4258630 ; calibration level 50 detected 1 ; plain 4266572
+  gap t2 against t4 level 5839 of 6084 magnitude 3361269 ; calibration level 57 detected 1 ; plain 3388408
+  gap t4 against t8 level 5811 of 6084 magnitude 4664691 ; calibration level 93 detected 1 ; plain 4711505
+  gap t8 against t16 level 5857 of 6084 magnitude 6992401 ; calibration level 83 detected 1 ; plain 7035001
+  gap t16 against t32 level 5991 of 6084 magnitude 8798764 ; calibration level 72 detected 1 ; plain 8822762
+  gap t32 against t64 level 5868 of 6084 magnitude 8619477 ; calibration level 78 detected 1 ; plain 8673072
+  detected 6 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+CELL half_cheetah T fold 2
+  gap sref against t2 level 6000 of 6084 magnitude 3496160 ; calibration level 51 detected 1 ; plain 3504062
+  gap t2 against t4 level 6013 of 6084 magnitude 3044192 ; calibration level 140 detected 1 ; plain 3053908
+  gap t4 against t8 level 6003 of 6084 magnitude 3400709 ; calibration level 107 detected 1 ; plain 3415118
+  gap t8 against t16 level 5836 of 6084 magnitude 5628196 ; calibration level 116 detected 1 ; plain 5662877
+  gap t16 against t32 level 5915 of 6084 magnitude 7887928 ; calibration level 55 detected 1 ; plain 7949081
+  gap t32 against t64 level 5875 of 6084 magnitude 7924712 ; calibration level 95 detected 1 ; plain 7982630
+  detected 6 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+PART half_cheetah T cells_same 3 of 3 calibration_level 1532 calibration_windows 109512
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 detection bar 219 noise slot 21
+CELL half_cheetah G fold 0
+  gap g1 against g2 level 5912 of 6084 magnitude 2680474 ; calibration level 16 detected 1 ; plain 2706016
+  gap g2 against g4 level 5740 of 6084 magnitude 1470160 ; calibration level 65 detected 1 ; plain 1500647
+  gap g4 against g8 level 5486 of 6084 magnitude 776709 ; calibration level 110 detected 1 ; plain 804733
+  gap g8 against g16 level 4258 of 6084 magnitude 356286 ; calibration level 86 detected 1 ; plain 411653
+  detected 4 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+CELL half_cheetah G fold 1
+  gap g1 against g2 level 6033 of 6084 magnitude 2493701 ; calibration level 50 detected 1 ; plain 2499612
+  gap g2 against g4 level 6049 of 6084 magnitude 1384560 ; calibration level 153 detected 1 ; plain 1385238
+  gap g4 against g8 level 5421 of 6084 magnitude 712983 ; calibration level 47 detected 1 ; plain 742798
+  gap g8 against g16 level 3711 of 6084 magnitude 306024 ; calibration level 43 detected 1 ; plain 381279
+  detected 4 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+CELL half_cheetah G fold 2
+  gap g1 against g2 level 6025 of 6084 magnitude 2331514 ; calibration level 204 detected 1 ; plain 2338801
+  gap g2 against g4 level 5755 of 6084 magnitude 1293490 ; calibration level 103 detected 1 ; plain 1311616
+  gap g4 against g8 level 5043 of 6084 magnitude 644909 ; calibration level 125 detected 1 ; plain 688374
+  gap g8 against g16 level 3830 of 6084 magnitude 288983 ; calibration level 36 detected 1 ; plain 355058
+  detected 4 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+PART half_cheetah G cells_same 3 of 3 calibration_level 1038 calibration_windows 73008
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 detection bar 219 noise slot 22
+CELL half_cheetah C fold 0
+  gap c10 against sref level 3619 of 6084 magnitude 757144 ; calibration level 0 detected 1 ; plain 886501
+  gap sref against c2 level 4187 of 6084 magnitude 570909 ; calibration level 143 detected 1 ; plain 617348
+  gap c2 against c1 level 3344 of 6084 magnitude 340477 ; calibration level 138 detected 1 ; plain 393759
+  gap c1 against c06 level 2760 of 6084 magnitude 214122 ; calibration level 154 detected 1 ; plain 263567
+  gap c06 against c03 level 2628 of 6084 magnitude 251786 ; calibration level 41 detected 1 ; plain 314568
+  detected 5 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+CELL half_cheetah C fold 1
+  gap c10 against sref level 4647 of 6084 magnitude 850436 ; calibration level 84 detected 1 ; plain 898055
+  gap sref against c2 level 4279 of 6084 magnitude 512397 ; calibration level 121 detected 1 ; plain 549168
+  gap c2 against c1 level 3107 of 6084 magnitude 307154 ; calibration level 61 detected 1 ; plain 367841
+  gap c1 against c06 level 2641 of 6084 magnitude 234916 ; calibration level 76 detected 1 ; plain 282548
+  gap c06 against c03 level 3183 of 6084 magnitude 281878 ; calibration level 212 detected 1 ; plain 319560
+  detected 5 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+CELL half_cheetah C fold 2
+  gap c10 against sref level 4777 of 6084 magnitude 727337 ; calibration level 160 detected 1 ; plain 757930
+  gap sref against c2 level 4097 of 6084 magnitude 420227 ; calibration level 183 detected 1 ; plain 458579
+  gap c2 against c1 level 2982 of 6084 magnitude 228507 ; calibration level 9 detected 1 ; plain 290085
+  gap c1 against c06 level 1962 of 6084 magnitude 115758 ; calibration level 57 detected 1 ; plain 172796
+  gap c06 against c03 level 2151 of 6084 magnitude 155534 ; calibration level 77 detected 1 ; plain 209373
+  detected 5 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+PART half_cheetah C cells_same 3 of 3 calibration_level 1516 calibration_windows 91260
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 detection bar 219 noise slot 23
+CELL half_cheetah S fold 0
+  gap s1 against sref level 6065 of 6084 magnitude 36040907 ; calibration level 97 detected 1 ; plain 36060151
+  gap s2 against sref level 5913 of 6084 magnitude 30795186 ; calibration level 40 detected 1 ; plain 30942524
+  gap s4 against sref level 5924 of 6084 magnitude 19654627 ; calibration level 112 detected 1 ; plain 19727194
+  gap s8 against sref level 5031 of 6084 magnitude 2706407 ; calibration level 34 detected 1 ; plain 2764388
+  gap s16 against sref level 2184 of 6084 magnitude 419320 ; calibration level 151 detected 1 ; plain 471411
+  detected 5 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+CELL half_cheetah S fold 1
+  gap s1 against sref level 6043 of 6084 magnitude 33358166 ; calibration level 256 detected 1 ; plain 33397996
+  gap s2 against sref level 6026 of 6084 magnitude 30987287 ; calibration level 183 detected 1 ; plain 31049536
+  gap s4 against sref level 5926 of 6084 magnitude 17698991 ; calibration level 34 detected 1 ; plain 17769691
+  gap s8 against sref level 4850 of 6084 magnitude 2772833 ; calibration level 92 detected 1 ; plain 2830885
+  gap s16 against sref level 1455 of 6084 magnitude 150516 ; calibration level 76 detected 1 ; plain 208369
+  detected 5 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+CELL half_cheetah S fold 2
+  gap s1 against sref level 6039 of 6084 magnitude 33737351 ; calibration level 32 detected 1 ; plain 33777929
+  gap s2 against sref level 6017 of 6084 magnitude 33301152 ; calibration level 78 detected 1 ; plain 33351506
+  gap s4 against sref level 5912 of 6084 magnitude 16758046 ; calibration level 54 detected 1 ; plain 16803787
+  gap s8 against sref level 4933 of 6084 magnitude 1789721 ; calibration level 61 detected 1 ; plain 1841891
+  gap s16 against sref level 1207 of 6084 magnitude 108236 ; calibration level 82 detected 1 ; plain 169002
+  detected 5 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+PART half_cheetah S cells_same 3 of 3 calibration_level 1382 calibration_windows 91260
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 detection bar 219 noise slot 24
+CELL ant T fold 0
+  gap sref against t2 level 5467 of 6084 magnitude 8588327 ; calibration level 19 detected 1 ; plain 8773448
+  gap t2 against t4 level 5021 of 6084 magnitude 4147395 ; calibration level 26 detected 1 ; plain 4265563
+  gap t4 against t8 level 4718 of 6084 magnitude 2375770 ; calibration level 112 detected 1 ; plain 2504577
+  gap t8 against t16 level 4379 of 6084 magnitude 1507753 ; calibration level 118 detected 1 ; plain 1609182
+  gap t16 against t32 level 3628 of 6084 magnitude 1290660 ; calibration level 38 detected 1 ; plain 1453377
+  gap t32 against t64 level 3300 of 6084 magnitude 1632432 ; calibration level 26 detected 1 ; plain 1859910
+  detected 6 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+CELL ant T fold 1
+  gap sref against t2 level 5523 of 6084 magnitude 10237471 ; calibration level 19 detected 1 ; plain 10374235
+  gap t2 against t4 level 5094 of 6084 magnitude 4789169 ; calibration level 71 detected 1 ; plain 4933983
+  gap t4 against t8 level 4945 of 6084 magnitude 2815719 ; calibration level 178 detected 1 ; plain 2910289
+  gap t8 against t16 level 4103 of 6084 magnitude 1539057 ; calibration level 71 detected 1 ; plain 1666059
+  gap t16 against t32 level 4146 of 6084 magnitude 1600460 ; calibration level 124 detected 1 ; plain 1708935
+  gap t32 against t64 level 3666 of 6084 magnitude 2300579 ; calibration level 51 detected 1 ; plain 2453463
+  detected 6 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+CELL ant T fold 2
+  gap sref against t2 level 5364 of 6084 magnitude 11678785 ; calibration level 51 detected 1 ; plain 11813878
+  gap t2 against t4 level 5187 of 6084 magnitude 6602031 ; calibration level 145 detected 1 ; plain 6702443
+  gap t4 against t8 level 3868 of 6084 magnitude 3516808 ; calibration level 11 detected 1 ; plain 3747664
+  gap t8 against t16 level 4312 of 6084 magnitude 2896140 ; calibration level 149 detected 1 ; plain 2987318
+  gap t16 against t32 level 4061 of 6084 magnitude 1647190 ; calibration level 129 detected 1 ; plain 1753552
+  gap t32 against t64 level 3618 of 6084 magnitude 3166298 ; calibration level 17 detected 1 ; plain 3314748
+  detected 6 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+PART ant T cells_same 3 of 3 calibration_level 1355 calibration_windows 109512
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 detection bar 219 noise slot 25
+CELL ant G fold 0
+  gap g1 against g2 level 5577 of 6084 magnitude 7656093 ; calibration level 61 detected 1 ; plain 7763092
+  gap g2 against g4 level 5103 of 6084 magnitude 3416011 ; calibration level 134 detected 1 ; plain 3518317
+  gap g4 against g8 level 4434 of 6084 magnitude 1834483 ; calibration level 161 detected 1 ; plain 1959527
+  gap g8 against g16 level 3501 of 6084 magnitude 1118961 ; calibration level 94 detected 1 ; plain 1240413
+  detected 4 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+CELL ant G fold 1
+  gap g1 against g2 level 5811 of 6084 magnitude 8530301 ; calibration level 134 detected 1 ; plain 8578761
+  gap g2 against g4 level 5384 of 6084 magnitude 4427809 ; calibration level 134 detected 1 ; plain 4533357
+  gap g4 against g8 level 4180 of 6084 magnitude 2531729 ; calibration level 46 detected 1 ; plain 2710896
+  gap g8 against g16 level 3248 of 6084 magnitude 1059218 ; calibration level 31 detected 1 ; plain 1229790
+  detected 4 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+CELL ant G fold 2
+  gap g1 against g2 level 5781 of 6084 magnitude 9690762 ; calibration level 182 detected 1 ; plain 9719125
+  gap g2 against g4 level 4705 of 6084 magnitude 5837317 ; calibration level 137 detected 1 ; plain 6006797
+  gap g4 against g8 level 4089 of 6084 magnitude 2368185 ; calibration level 135 detected 1 ; plain 2488569
+  gap g8 against g16 level 3693 of 6084 magnitude 1672259 ; calibration level 43 detected 1 ; plain 1786433
+  detected 4 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+PART ant G cells_same 3 of 3 calibration_level 1292 calibration_windows 73008
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 detection bar 219 noise slot 26
+CELL ant C fold 0
+  gap c10 against sref level 2663 of 6084 magnitude 4295854 ; calibration level 61 detected 1 ; plain 4556465
+  gap sref against c2 level 1339 of 6084 magnitude 392324 ; calibration level 50 detected 1 ; plain 520932
+  gap c2 against c1 level 1477 of 6084 magnitude 203026 ; calibration level 56 detected 1 ; plain 261202
+  gap c1 against c06 level 1490 of 6084 magnitude 375760 ; calibration level 152 detected 1 ; plain 443497
+  gap c06 against c03 level 1045 of 6084 magnitude 99713 ; calibration level 39 detected 1 ; plain 165720
+  detected 5 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+CELL ant C fold 1
+  gap c10 against sref level 3023 of 6084 magnitude 6611205 ; calibration level 115 detected 1 ; plain 6817425
+  gap sref against c2 level 1872 of 6084 magnitude 676270 ; calibration level 74 detected 1 ; plain 784559
+  gap c2 against c1 level 1473 of 6084 magnitude 396350 ; calibration level 12 detected 1 ; plain 491521
+  gap c1 against c06 level 1950 of 6084 magnitude 422982 ; calibration level 92 detected 1 ; plain 485594
+  gap c06 against c03 level 1554 of 6084 magnitude 555255 ; calibration level 70 detected 1 ; plain 654704
+  detected 5 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+CELL ant C fold 2
+  gap c10 against sref level 2729 of 6084 magnitude 6847868 ; calibration level 13 detected 1 ; plain 7015324
+  gap sref against c2 level 2357 of 6084 magnitude 1706106 ; calibration level 147 detected 1 ; plain 1822143
+  gap c2 against c1 level 1945 of 6084 magnitude 359049 ; calibration level 125 detected 1 ; plain 421056
+  gap c1 against c06 level 1732 of 6084 magnitude 326393 ; calibration level 32 detected 1 ; plain 399284
+  gap c06 against c03 level 1590 of 6084 magnitude 824941 ; calibration level 54 detected 1 ; plain 916592
+  detected 5 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+PART ant C cells_same 3 of 3 calibration_level 1092 calibration_windows 91260
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 detection bar 219 noise slot 27
+CELL ant S fold 0
+  gap s1 against sref level 6060 of 6084 magnitude 116462455 ; calibration level 56 detected 1 ; plain 116486235
+  gap s2 against sref level 5733 of 6084 magnitude 35990060 ; calibration level 33 detected 1 ; plain 36180729
+  gap s4 against sref level 3548 of 6084 magnitude 3247119 ; calibration level 150 detected 1 ; plain 3391769
+  gap s8 against sref level 1032 of 6084 magnitude 250389 ; calibration level 78 detected 1 ; plain 313389
+  gap s16 against sref level 586 of 6084 magnitude 209073 ; calibration level 12 detected 1 ; plain 256840
+  detected 5 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+CELL ant S fold 1
+  gap s1 against sref level 6067 of 6084 magnitude 109226392 ; calibration level 26 detected 1 ; plain 109231981
+  gap s2 against sref level 5929 of 6084 magnitude 42833217 ; calibration level 114 detected 1 ; plain 42874438
+  gap s4 against sref level 3785 of 6084 magnitude 2951798 ; calibration level 69 detected 1 ; plain 3133185
+  gap s8 against sref level 1507 of 6084 magnitude 514647 ; calibration level 47 detected 1 ; plain 613617
+  gap s16 against sref level 1208 of 6084 magnitude 362077 ; calibration level 124 detected 1 ; plain 408226
+  detected 5 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+CELL ant S fold 2
+  gap s1 against sref level 6084 of 6084 magnitude 99095421 ; calibration level 75 detected 1 ; plain 99092286
+  gap s2 against sref level 5892 of 6084 magnitude 51399046 ; calibration level 49 detected 1 ; plain 51543793
+  gap s4 against sref level 3675 of 6084 magnitude 5597490 ; calibration level 77 detected 1 ; plain 5845228
+  gap s8 against sref level 1665 of 6084 magnitude 555878 ; calibration level 32 detected 1 ; plain 669296
+  gap s16 against sref level 928 of 6084 magnitude 377020 ; calibration level 12 detected 1 ; plain 490406
+  detected 5 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+PART ant S cells_same 3 of 3 calibration_level 954 calibration_windows 91260
+I0 pooled calibration level 12228 of 894348 in_10000 136 ; held 1
+I1 cells the instrument and plain subtraction order alike 30 of 30 ; held 1
+STAGE1 all held 0
+THESIS the instrument orders as arithmetic does (I0, I1), the rig repeats and its stepping converges with nothing touching the agent (R1, R2), the scenes do not amplify (N1), and half_cheetah's time-step chain is out of order with the ground (E1): FAIL

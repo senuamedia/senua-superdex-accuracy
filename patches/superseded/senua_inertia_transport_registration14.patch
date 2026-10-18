@@ -1,0 +1,285 @@
+diff --git a/superdex_physics/libraries/mochi/mochi_physics/src/mochi_articulated_body.cpp b/superdex_physics/libraries/mochi/mochi_physics/src/mochi_articulated_body.cpp
+index 0e2b658..a308ab9 100644
+--- a/superdex_physics/libraries/mochi/mochi_physics/src/mochi_articulated_body.cpp
++++ b/superdex_physics/libraries/mochi/mochi_physics/src/mochi_articulated_body.cpp
+@@ -58,6 +58,70 @@ using namespace mochi;
+ using namespace mochi::articulated;
+ using namespace mochi::dmap;
+ 
++// Senua AI patch G (off unless SUPERDEX_INERTIA_TRANSPORT is set): the Jacobian of the start of the
++// stage of each articulated body, kept so that the translational inertial force of its links can be
++// projected onto the joints with it (the discrete null space method).
++#include <cstdlib>
++#include <mutex>
++#include <unordered_map>
++namespace mochi::rigid {
++bool SenuaInertiaTransportOn();
++bool SenuaInertiaTransportLoad(void const* key, real* out);
++} // namespace mochi::rigid
++namespace {
++struct SenuaStageStartJacobian {
++  std::vector<real> pose;
++  std::vector<real> jac; // row major, rows x cols
++  int rows = 0;
++  int cols = 0;
++};
++std::mutex gSenuaJacobianMutex;
++std::unordered_map<void const*, SenuaStageStartJacobian> gSenuaJacobian;
++// The pose each step starts from, for the multi-step integrators (under the same mutex).
++std::unordered_map<void const*, std::vector<real>> gSenuaStepStartPose;
++// Where the stage's translational inertial force is radial for a body turning freely about a joint, as a
++// share of the way from the current Jacobian to the one of the start: 1 backward Euler (the start of the
++// stage), 1/3 BDF2 (two thirds of the way from the start of the step to the current pose). 0 for the
++// integrators this has not been derived and validated for.
++real SenuaTransportShare(CTimeIntegratorState const& s) {
++  if (s.numStages != 1) {
++    return 0_r;
++  }
++  if (s.numSteps == 1 && s.bTilde.Cols() == 1) {
++    if (s.bTilde(0) == 1_r) {
++      return 1_r;
++    }
++    return 0_r;
++  }
++  if (s.numSteps == 2 && s.alpha.Cols() == 2 && Abs(s.alpha(0) - 4_r / 3_r) < 1e-12_r &&
++      Abs(s.alpha(1) + 1_r / 3_r) < 1e-12_r) {
++    return 1_r / 3_r;
++  }
++  return 0_r;
++}
++void SenuaCaptureStageStartJacobian(
++    void const* key,
++    ColumnVector<real> const& pose,
++    RowMatrix<real> const& jac) {
++  std::lock_guard<std::mutex> lock(gSenuaJacobianMutex);
++  auto& entry = gSenuaJacobian[key];
++  entry.rows = static_cast<int>(jac.Rows());
++  entry.cols = static_cast<int>(jac.Cols());
++  int const poseSize = static_cast<int>(pose.size());
++  entry.pose.resize(static_cast<size_t>(poseSize));
++  for (int i = 0; i < poseSize; ++i) {
++    entry.pose[static_cast<size_t>(i)] = pose(i);
++  }
++  entry.jac.resize(static_cast<size_t>(entry.rows) * static_cast<size_t>(entry.cols));
++  for (int r = 0; r < entry.rows; ++r) {
++    for (int c = 0; c < entry.cols; ++c) {
++      entry.jac[static_cast<size_t>(r) * static_cast<size_t>(entry.cols) + static_cast<size_t>(c)] =
++          jac(r, c);
++    }
++  }
++}
++} // namespace
++
+ static constexpr real kDResRegularizationCoefficient = 1e-6_r;
+ 
+ /*
+@@ -2655,6 +2719,70 @@ void articulated::compound::EntityAssemble(
+           "Unexpected grad target");
+       outCompoundSnle.reducedResidual.Resize(props.reducedDofsDim);
+       outCompoundSnle.reducedResidual = jacobian.value.Transpose() * outCompoundSnle.fullResidual;
++      // Senua AI patch G: the translational inertial force of each link is projected with the Jacobian
++      // of the start of the stage, not the current one. Nothing is added while the pose is the stage's
++      // start (the two Jacobians are then the same one), or when no Jacobian of that start is held.
++      // The share of that correction belongs to the integrator: 1 for backward Euler, 1/3 for BDF2 (the
++      // Jacobian of the step's start then weighs 1/3 and the current one 2/3), and 0 for the integrators
++      // it has not been derived and validated for. A body turning freely about a joint keeps its speed.
++      real const senuaShare = gradTarget == GradTarget::Current && mochi::rigid::SenuaInertiaTransportOn()
++          ? SenuaTransportShare(intState) : 0_r;
++      bool const senuaMultiStep = intState.numSteps > 1;
++      if (gradTarget == GradTarget::Current && mochi::rigid::SenuaInertiaTransportOn() &&
++          senuaShare != 0_r) {
++        void const* const senuaKey = &outCompoundSnle;
++        int const senuaDofs = static_cast<int>(stageStartPose.value.size());
++        bool senuaAtStart = !senuaMultiStep && static_cast<int>(currPose.value.size()) == senuaDofs;
++        for (int i = 0; senuaAtStart && i < senuaDofs; ++i) {
++          senuaAtStart = currPose.value(i) == stageStartPose.value(i);
++        }
++        if (senuaAtStart) {
++          SenuaCaptureStageStartJacobian(senuaKey, stageStartPose.value, jacobian.value);
++        } else {
++          std::lock_guard<std::mutex> senuaLock(gSenuaJacobianMutex);
++          auto const senuaIt = gSenuaJacobian.find(senuaKey);
++          bool senuaValid = senuaIt != gSenuaJacobian.end() &&
++              senuaIt->second.rows == static_cast<int>(jacobian.value.Rows()) &&
++              senuaIt->second.cols == static_cast<int>(jacobian.value.Cols()) &&
++              static_cast<int>(senuaIt->second.pose.size()) == senuaDofs &&
++              senuaIt->second.cols == static_cast<int>(outCompoundSnle.reducedResidual.size());
++          // A one-step integrator's Jacobian held must be the stage start's; BDF2's must be the step start's
++          auto const senuaStep = gSenuaStepStartPose.find(senuaKey);
++          if (senuaMultiStep) {
++            senuaValid = senuaValid && senuaStep != gSenuaStepStartPose.end() &&
++                static_cast<int>(senuaStep->second.size()) == senuaDofs;
++          }
++          for (int i = 0; senuaValid && i < senuaDofs; ++i) {
++            senuaValid = senuaIt->second.pose[static_cast<size_t>(i)] ==
++                (senuaMultiStep ? senuaStep->second[static_cast<size_t>(i)] : stageStartPose.value(i));
++          }
++          if (senuaValid) {
++            auto const& senuaStart = senuaIt->second;
++            for (auto bodyEntity : groupMembers.actors) {
++              auto const& senuaBodySnle = reg.get<CActorSnle const>(bodyEntity);
++              int const senuaOffset = reg.get<CDofOffset const>(bodyEntity).dofsOffset;
++              real senuaForce[3] = {0_r, 0_r, 0_r};
++              if (senuaOffset + 3 > senuaStart.rows ||
++                  !mochi::rigid::SenuaInertiaTransportLoad(&senuaBodySnle, senuaForce)) {
++                continue;
++              }
++              for (int c = 0; c < senuaStart.cols; ++c) {
++                real senuaAdd = 0_r;
++                for (int k = 0; k < 3; ++k) {
++                  real const senuaJn = senuaStart.jac[
++                      static_cast<size_t>(senuaOffset + k) * static_cast<size_t>(senuaStart.cols) +
++                      static_cast<size_t>(c)];
++                  senuaAdd += (senuaJn - jacobian.value(senuaOffset + k, c)) * senuaForce[k];
++                }
++                if (senuaShare != 1_r) {
++                  senuaAdd *= senuaShare;
++                }
++                outCompoundSnle.reducedResidual(c) += senuaAdd;
++              }
++            }
++          }
++        }
++      }
+     }
+   }
+ 
+@@ -2917,8 +3045,25 @@ static void CompoundEntityPreStep(
+   }
+ }
+ 
++// Senua AI patch G: keep the pose the step starts from, which BDF2's correction is checked against.
++static void SenuaCaptureStepStartPose(
++    ecs::Included<TagArticulatedActor>,
++    CArticulatedReducedPose<TimeStep::Current> const& pose,
++    CActorSnle const& snle) {
++  std::lock_guard<std::mutex> lock(gSenuaJacobianMutex);
++  auto& start = gSenuaStepStartPose[&snle];
++  int const poseSize = static_cast<int>(pose.value.size());
++  start.resize(static_cast<size_t>(poseSize));
++  for (int i = 0; i < poseSize; ++i) {
++    start[static_cast<size_t>(i)] = pose.value(i);
++  }
++}
++
+ void articulated::compound::PreStepPipeline(entt::registry& reg) {
+   ecs::InvokeForEachGlobal(&CompoundEntityPreStep, reg);
++  if (mochi::rigid::SenuaInertiaTransportOn()) {
++    ecs::InvokeForEachGlobal(&SenuaCaptureStepStartPose, reg);
++  }
+   ecs::InvokeForEachGlobal(&articulated::rigid::EntityPreStep, reg);
+ }
+ 
+@@ -2955,6 +3100,15 @@ void articulated::compound::PostStagePipeline(
+   ecs::InvokeForEach(&ResolveSkinning<TimeStep::Current>, reg, entities);
+ }
+ 
++// Senua AI patch G: keep the Jacobian of the end of the step with the pose it belongs to.
++static void SenuaCaptureAtStepEnd(
++    ecs::Included<TagArticulatedActor>,
++    CArticulatedJacobian const& jacobian,
++    CArticulatedReducedPose<TimeStep::Current> const& pose,
++    CActorSnle const& snle) {
++  SenuaCaptureStageStartJacobian(&snle, pose.value, jacobian.value);
++}
++
+ void articulated::compound::PostLastStagePipeline(
+     entt::registry& reg,
+     Span<entt::entity const> entities) {
+@@ -2966,6 +3120,10 @@ void articulated::compound::PostLastStagePipeline(
+ 
+   // Update the Jacobian to match the step-end pose.
+   ecs::InvokeForEach(&articulated::compound::UpdateJacobianState<TimeStep::Current>, reg, entities);
++  // Senua AI patch G: that Jacobian is the one of the start of the next step; keep it.
++  if (mochi::rigid::SenuaInertiaTransportOn()) {
++    ecs::InvokeForEach(&SenuaCaptureAtStepEnd, reg, entities);
++  }
+ 
+   // Then, update the rigid actors in the compound (if any).
+   ecs::InvokeForEach(&articulated::rigid::EntityPostLastStage, reg, entities);
+diff --git a/superdex_physics/libraries/mochi/mochi_physics/src/mochi_rigid.cpp b/superdex_physics/libraries/mochi/mochi_physics/src/mochi_rigid.cpp
+index 8fc31eb..df1199d 100644
+--- a/superdex_physics/libraries/mochi/mochi_physics/src/mochi_rigid.cpp
++++ b/superdex_physics/libraries/mochi/mochi_physics/src/mochi_rigid.cpp
+@@ -52,6 +52,40 @@
+ using namespace mochi;
+ using namespace mochi::dmap;
+ 
++// Senua AI patch G (off unless SUPERDEX_INERTIA_TRANSPORT is set): the translational inertial force of
++// each rigid body is kept here, so that the articulated assembly can project it onto the joints with the
++// Jacobian of the start of the stage (the discrete null space method).
++#include <array>
++#include <cstdlib>
++#include <mutex>
++#include <unordered_map>
++namespace mochi::rigid {
++bool SenuaInertiaTransportOn();
++void SenuaInertiaTransportStore(void const* key, real fx, real fy, real fz);
++bool SenuaInertiaTransportLoad(void const* key, real* out);
++bool SenuaInertiaTransportOn() {
++  static bool const kOn = std::getenv("SUPERDEX_INERTIA_TRANSPORT") != nullptr;
++  return kOn;
++}
++static std::mutex gSenuaInertiaForceMutex;
++static std::unordered_map<void const*, std::array<real, 3>> gSenuaInertiaForce;
++void SenuaInertiaTransportStore(void const* key, real fx, real fy, real fz) {
++  std::lock_guard<std::mutex> lock(gSenuaInertiaForceMutex);
++  gSenuaInertiaForce[key] = std::array<real, 3>{fx, fy, fz};
++}
++bool SenuaInertiaTransportLoad(void const* key, real* out) {
++  std::lock_guard<std::mutex> lock(gSenuaInertiaForceMutex);
++  auto const it = gSenuaInertiaForce.find(key);
++  if (it == gSenuaInertiaForce.end()) {
++    return false;
++  }
++  out[0] = it->second[0];
++  out[1] = it->second[1];
++  out[2] = it->second[2];
++  return true;
++}
++} // namespace mochi::rigid
++
+ /*****************************************************************************************************
+   Utilities
+ */
+@@ -711,6 +745,13 @@ void mochi::rigid::EntityAssemble(
+         currPose.value, rigidInertia, ToReal3(sceneGravity->accel), energy, gradient);
+   }
+ 
++  // Senua AI patch G: the translational inertial force of this body, for the articulated assembly.
++  bool const senuaTransport =
++      SenuaInertiaTransportOn() && params.assemRes && gradTarget == GradTarget::Current;
++  if (senuaTransport) {
++    SenuaInertiaTransportStore(&outActorSnle, 0_r, 0_r, 0_r);
++  }
++
+   // Compute inertial terms
+   if (hasInertiaTag && IsFinite(intState.dtStage) &&
+       IsAssemblyNeeded(StateDependency::SecondOrder, false /*inputDependency*/, gradTarget)) {
+@@ -720,6 +761,12 @@ void mochi::rigid::EntityAssemble(
+     RigidHessian tempInertiaHessian{};
+     RigidHessian* inertiaHessian =
+         (params.assemDRes && params.psdDRes) ? &tempInertiaHessian : hessian;
++    real senuaBefore[3] = {0_r, 0_r, 0_r};
++    if (senuaTransport) {
++      senuaBefore[0] = tempGradient.data()[0];
++      senuaBefore[1] = tempGradient.data()[1];
++      senuaBefore[2] = tempGradient.data()[2];
++    }
+     inertiaFunc(
+         rigidInertia.GetMass(),
+         useNewtonEulerInertia ? rigidInertia.GetMomentOfInertiaLocal()
+@@ -731,6 +778,13 @@ void mochi::rigid::EntityAssemble(
+         energy,
+         gradient,
+         inertiaHessian);
++    if (senuaTransport) {
++      SenuaInertiaTransportStore(
++          &outActorSnle,
++          tempGradient.data()[0] - senuaBefore[0],
++          tempGradient.data()[1] - senuaBefore[1],
++          tempGradient.data()[2] - senuaBefore[2]);
++    }
+ 
+     if (params.assemDRes && params.psdDRes) {
+       VMatrix3x3r outHessian, outInertiaHessian;

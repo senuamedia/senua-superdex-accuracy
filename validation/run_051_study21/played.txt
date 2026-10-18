@@ -1,0 +1,15 @@
+PLAYED suites final rc 0
+PLAYED suites nof rc 0
+PLAYED items
+PLAYED arm
+PLAYED chain
+PLAYED joints
+PLAYED limits
+PLAYED rotvec rc 0
+PLAYED cloud
+deform stock played on tools/sdx_deform64_stock
+PLAYED deform
+grip stock played on tools/sdx_grip64_stock
+PLAYED grip
+PLAYED bench
+PLAYED order

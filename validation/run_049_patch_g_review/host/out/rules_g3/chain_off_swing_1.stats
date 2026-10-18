@@ -1,0 +1,1 @@
+STATS chain dt 0.01 mass1 0.9 mass2 0.7 radius 0.035 arm1 0.22 len1 0.45 arm2 0.18 gravity 1 dofs 2 steps 200 converged 200 stopped 0 diverged 0 most_iterations 5 real_bits 64 extra newtoneuler=0 arms_by=order

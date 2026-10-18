@@ -1,0 +1,119 @@
+--- a/superdex_physics/libraries/mochi/mochi_core/include/mochi_core/contact/contact_utils.h
++++ b/superdex_physics/libraries/mochi/mochi_core/include/mochi_core/contact/contact_utils.h
+@@ -530,28 +530,6 @@
+   // on when set to anything but empty or 0
+   static bool const kOn = [] {
+     char const* v = std::getenv("SUPERDEX_STICK_DAMPING");
+-    return v != nullptr && v[0] != 0 && !(v[0] == '0' && v[1] == 0);
+-  }();
+-  return kOn;
+-}
+-
+-/**
+- * @brief Friction on the normal force of the step being solved. Off unless the environment variable
+- * SUPERDEX_FRICTION_STEP_NORMAL is set.
+- * @details As shipped, friction takes the normal force of the start of the step, so at an impact it arrives
+- * one step late. The shipped switch implicitNormalForceForDissipation moves friction AND contact damping to
+- * the force of the step being solved, and the damping term's derivative is then incomplete. With this on,
+- * Coulomb friction alone takes the whole normal force of the step being solved (the penalty force at the
+- * current distance plus the damping part as it is applied to the body, never below zero). Contact damping
+- * and viscous friction keep the start-of-step force, so their derivatives stay exact. The derivative of the
+- * step's normal force is left out of friction's own derivative, as SuperDex leaves it out for its implicit
+- * setting, and friction's Hessian is then SuperDex's fitted one: the exact one is not positive definite once
+- * the normal force moves within the step, and the solver diverged on it.
+- */
+-inline bool FrictionOnStepNormalForce() {
+-  // on when set to anything but empty or 0
+-  static bool const kOn = [] {
+-    char const* v = std::getenv("SUPERDEX_FRICTION_STEP_NORMAL");
+     return v != nullptr && v[0] != 0 && !(v[0] == '0' && v[1] == 0);
+   }();
+   return kOn;
+@@ -564,7 +542,7 @@
+  */
+ inline bool SenuaContactPatchOn() {
+   static bool const kOn = FrictionStickDistance() > 0_r || ContactDampingUnilateral() ||
+-                          FrictionOnFullNormalForce() || FrictionOnStepNormalForce();
++                          FrictionOnFullNormalForce();
+   return kOn;
+ }
+ 
+@@ -1464,23 +1442,7 @@
+         Max(V{0_r}, V{1_r} - V{params.normalViscousDampingCoefficient / dtFactor} * pRelNScalar);
+   }
+   V fFriction = fullNormalFriction ? fPenalty * dampScale : fPenalty;
+-  // Viscous friction keeps the start-of-step force even with friction on the step's force, as its energy does.
+-  V const fViscous = fFriction;
+   V3 const pRelNDamp = unilateralDamping ? pRelNClamp * normal : pRelN;
+-  // Friction on the normal force of the step being solved (FrictionOnStepNormalForce): the penalty force at
+-  // the current distance, plus the damping part exactly as it is applied to the body just below, never below
+-  // zero. The energy of this term is kept apart, because it is no longer a multiple of fPenalty.
+-  bool const stepNormalFriction = FrictionOnStepNormalForce();
+-  Vd energyFriction = {};
+-  if (stepNormalFriction) {
+-    V fNormalStep = fPenaltyNow;
+-    if (hasNormalDamping) {
+-      V const dampPart = (V{params.normalViscousDampingCoefficient / dtFactor} * fPenalty) *
+-                         (unilateralDamping ? pRelNClamp : pRelNScalar);
+-      fNormalStep = fNormalStep - dampPart;
+-    }
+-    fFriction = Max(V{0_r}, fNormalStep);
+-  }
+ 
+   // Eigenvalues for dforce accumulation. The dforce matrix can be decomposed as:
+   // dforce = eigP * P + eigN * n ⊗ n + eigDeltaT * t ⊗ t
+@@ -1534,14 +1496,6 @@
+       if (stickRate > 0_r) {
+         energyFactor = energyFactor * (1.0 / static_cast<double>(stickHessScale));
+       }
+-      if (stepNormalFriction) {
+-        // Friction's energy is its own normal force times its own factor; nothing of it is left on fPenalty.
+-        energyFriction = static_cast<double>(coulombCoefficient) * StaticCast<Vd>(smoother);
+-        if (stickRate > 0_r) {
+-          energyFriction = energyFriction * (1.0 / static_cast<double>(stickHessScale));
+-        }
+-        energyFactor = {};
+-      }
+     }
+ 
+     if (assemForce || assemDForce) {
+@@ -1594,10 +1548,6 @@
+           MOCHI_ASSERT_VERBOSE(IsFinite(ptNormInv), "Inverse norm is not finite.");
+           tangent = pFricT * ptNormInv;
+           eigDeltaT = Select(ptMask, eigT - eigP, V{});
+-          if (stepNormalFriction) {
+-            // Friction on the step's normal force takes SuperDex's fitted Hessian (see FrictionOnStepNormalForce).
+-            eigDeltaT = V{};
+-          }
+         }
+ 
+         // dEnergyFactor term needed for GradTarget::Previous
+@@ -1637,7 +1587,7 @@
+     }
+ 
+     if (assemForce || assemDForce) {
+-      V tmp = viscousCoefficient * fViscous;
++      V tmp = viscousCoefficient * fFriction;
+ 
+       // Output force
+       if (assemForce) {
+@@ -1771,9 +1721,6 @@
+   // Output energy. Add to current value.
+   if (assemEnergy) {
+     outEnergy += StaticCast<Vd>(fPenalty) * energyFactor;
+-    if (stepNormalFriction) {
+-      outEnergy += StaticCast<Vd>(fFriction) * energyFriction;
+-    }
+   }
+ 
+   // Add Previous-target terms from differentiating the explicit stage-start penalty force.
+@@ -1987,8 +1934,7 @@
+     // (ContactDampingUnilateral).
+     V fPenaltyNow = fPenalty;
+     V dFPenaltyNow = V{};
+-    if ((ContactDampingUnilateral() && params.normalViscousDampingCoefficient > 0_r) ||
+-        FrictionOnStepNormalForce()) {
++    if (ContactDampingUnilateral() && params.normalViscousDampingCoefficient > 0_r) {
+       ComputeBatchContactPenaltyForceNormDForceNorm<kBatchSize>(
+           fPenaltyNow, dFPenaltyNow, d, alignmentMask, alignmentFactor, params, config, true);
+     }

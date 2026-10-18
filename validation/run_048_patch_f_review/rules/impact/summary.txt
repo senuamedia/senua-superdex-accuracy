@@ -1,0 +1,7 @@
+c2 nof T05 per 10,000 at steps 1 to 1/64: 2255 2049 1847 2090 2396 2573 2686
+c2 f T05 per 10,000 at steps 1 to 1/64: 2799 2799 2799 2799 2799 2799 2799
+c3 nof T05 per 10,000 at steps 1 to 1/64: 2933 2543 2752 2900 3277 3501 3653
+c3 f T05 per 10,000 at steps 1 to 1/64: 3799 3799 3799 3799 3799 3799 3799
+c4 nof T05 per 10,000 at steps 1 to 1/64: 2035 1880 1723 1766 2132 2309 2399
+c4 f T05 per 10,000 at steps 1 to 1/64: 2499 2499 2500 2499 2499 2499 2500
+(c2 law 2800 mass 0.9 r 0.038 h0 0.11 vx0 2.6; c3 law 3800 mass 1.7 r 0.05 h0 0.06 vx0 1.9; c4 law 2500 mass 0.65 r 0.032 h0 0.095 vx0 3.2; recommended configuration, nof = without patch F)

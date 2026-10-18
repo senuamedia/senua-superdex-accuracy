@@ -1,0 +1,102 @@
+# probe 34: rows of run 034's own play files behind three of its failed rules (columns of the rig sdx_deform: step, the centre's x, the tracked node's x with its start of -50 mm added back, the tracked node's y, the centre's speed along x in um/s, the largest distance of a node from the rest shape; nm)
+## V6_slides_stop_final_shipped_step: the soft cube under the final configuration at 0.01 s, steps 58 to 78. deformstop takes the first step under 9,000 um/s (1/100 of 0.9 m/s): the speed goes from +18,002 to -17,459 between steps 67 and 68, so the first step under it is 72, after the cube has rocked back
+58 58901427 58384305 278599 458733 764557
+59 62997007 62465379 302152 409558 785966
+60 66603976 66062305 318556 360697 800719
+61 69723131 69178263 323796 311916 805389
+62 72353824 71810550 321201 263069 803031
+63 74495011 73954875 316093 214119 798413
+64 76145968 75608224 312210 165096 794897
+65 77306465 76769623 310749 116050 793572
+66 77976620 77439550 311121 67015 793911
+67 78156644 77618913 312195 18002 794886
+68 77982057 77529426 201927 -17459 668996
+69 77669755 77430135 -58180 -31230 361394
+70 77373159 77361251 -299983 -29660 50101
+71 77180554 77317024 -427925 -19260 198069
+72 77109219 77291939 -457365 -7134 262493
+73 77131636 77282239 -428604 2242 217789
+74 77201663 77283450 -374483 7003 124633
+75 77275469 77290097 -319669 7381 42231
+76 77325776 77297270 -281594 5031 66073
+77 77344792 77302002 -267500 1902 84312
+78 77338761 77303549 -273599 -603 74881
+## the same for stock at 0.01 s, steps 62 to 74 (its rule held, read at step 72 as well)
+62 72342803 71781195 351381 262627 830701
+63 74485942 73947721 315550 214314 796693
+64 76141778 75618768 290999 165584 773948
+65 77305876 76784216 287367 116410 771257
+66 77976196 77446117 299312 67032 783167
+67 78153414 77613182 314902 17722 798060
+68 78041671 77634108 150982 -11174 608107
+69 77811437 77634395 -125395 -23023 273407
+70 77595497 77625963 -341278 -21594 63529
+71 77469457 77615514 -437401 -12604 219007
+72 77443062 77605797 -442132 -2640 240963
+73 77486296 77598423 -398369 4323 171397
+74 77555509 77594869 -339896 6921 77517
+## V6_accurate_contact_within_the_stick_distance: the soft cube on the floor tilted by 0.35 rad under the accurate configuration (0.000625 s; the tilt applied at step 800), every 40th step from 1,000: the centre's x and the tracked node's y (micrometres). The tracked node is the uphill bottom corner
+1000 centre_x_um 565 node_x_um 277 node_y_um 13
+1040 centre_x_um 861 node_x_um 357 node_y_um 288
+1080 centre_x_um 812 node_x_um 372 node_y_um 195
+1120 centre_x_um 553 node_x_um 300 node_y_um -33
+1160 centre_x_um 581 node_x_um 287 node_y_um 11
+1200 centre_x_um 779 node_x_um 338 node_y_um 202
+1240 centre_x_um 767 node_x_um 351 node_y_um 167
+1280 centre_x_um 603 node_x_um 308 node_y_um 12
+1320 centre_x_um 605 node_x_um 296 node_y_um 29
+1360 centre_x_um 733 node_x_um 328 node_y_um 154
+1400 centre_x_um 736 node_x_um 339 node_y_um 143
+1440 centre_x_um 632 node_x_um 313 node_y_um 42
+1480 centre_x_um 626 node_x_um 304 node_y_um 46
+1520 centre_x_um 708 node_x_um 323 node_y_um 126
+1560 centre_x_um 715 node_x_um 332 node_y_um 125
+1600 centre_x_um 650 node_x_um 316 node_y_um 61
+1640 centre_x_um 641 node_x_um 309 node_y_um 59
+1680 centre_x_um 693 node_x_um 321 node_y_um 110
+1720 centre_x_um 701 node_x_um 327 node_y_um 113
+1760 centre_x_um 660 node_x_um 317 node_y_um 72
+1800 centre_x_um 652 node_x_um 312 node_y_um 68
+1840 centre_x_um 684 node_x_um 320 node_y_um 101
+1880 centre_x_um 692 node_x_um 324 node_y_um 105
+1920 centre_x_um 666 node_x_um 318 node_y_um 79
+1960 centre_x_um 659 node_x_um 314 node_y_um 75
+2000 centre_x_um 680 node_x_um 319 node_y_um 95
+2040 centre_x_um 686 node_x_um 322 node_y_um 99
+2080 centre_x_um 669 node_x_um 318 node_y_um 83
+2120 centre_x_um 664 node_x_um 316 node_y_um 79
+2160 centre_x_um 677 node_x_um 319 node_y_um 92
+2200 centre_x_um 682 node_x_um 321 node_y_um 95
+2240 centre_x_um 671 node_x_um 319 node_y_um 85
+2280 centre_x_um 667 node_x_um 317 node_y_um 82
+2320 centre_x_um 675 node_x_um 318 node_y_um 90
+2360 centre_x_um 679 node_x_um 320 node_y_um 93
+## the same under the final configuration at 0.001 s (the tilt applied at step 500), every 35th step from 805
+805 centre_x_um 505 node_x_um 198 node_y_um 27
+840 centre_x_um 571 node_x_um 206 node_y_um 100
+875 centre_x_um 601 node_x_um 221 node_y_um 120
+910 centre_x_um 531 node_x_um 202 node_y_um 54
+945 centre_x_um 573 node_x_um 209 node_y_um 99
+980 centre_x_um 580 node_x_um 215 node_y_um 100
+1015 centre_x_um 547 node_x_um 205 node_y_um 70
+1050 centre_x_um 572 node_x_um 210 node_y_um 96
+1085 centre_x_um 570 node_x_um 212 node_y_um 92
+1120 centre_x_um 555 node_x_um 207 node_y_um 79
+1155 centre_x_um 569 node_x_um 210 node_y_um 93
+1190 centre_x_um 566 node_x_um 211 node_y_um 89
+1225 centre_x_um 560 node_x_um 208 node_y_um 84
+1260 centre_x_um 568 node_x_um 210 node_y_um 91
+1295 centre_x_um 565 node_x_um 210 node_y_um 88
+1330 centre_x_um 563 node_x_um 209 node_y_um 86
+1365 centre_x_um 566 node_x_um 210 node_y_um 90
+1400 centre_x_um 565 node_x_um 210 node_y_um 88
+1435 centre_x_um 564 node_x_um 209 node_y_um 87
+1470 centre_x_um 566 node_x_um 210 node_y_um 89
+## V3_final_stops_no_more_than_1_in_1000: the final configuration's point-cloud plays (statistics of each play)
+run oblique_1 steps 30 stopped 0 most_iterations 13 
+run oblique_4 steps 120 stopped 1 most_iterations 8 
+run slide_1 steps 50 stopped 0 most_iterations 10 
+run rest_1 steps 200 stopped 0 most_iterations 4 
+run hold_1 steps 200 stopped 0 most_iterations 5 
+run slip_1 steps 200 stopped 0 most_iterations 19 
+run lift_1 steps 40 stopped 0 most_iterations 4 

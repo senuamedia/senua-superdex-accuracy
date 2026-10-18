@@ -1,0 +1,48 @@
+# probe 27: run 032's own deformable plays, measured after the run. Slides: where each stopped (sx_contact deformstop, a measure added in the fifteenth registration; no registered measure changed), against backward Euler's distance (52,055,556 nm at 0.01 s, 55,205,556 at 0.001 s) and Coulomb's (55,555,556); end = where the play ended. Holds on the tilted floor under the final configuration (sx_contact deform): end_com_x_nm = where the centre ended, end_vx_ums = its speed at the last step, tail_largest_vx_ums = its largest speed over the last tenth of the play, crossings = upward crossings of the tracked node through its resting place (the first nine count), period_ns = their period, tip_along_x_nm = how far the tracked contact node moved along the floor
+deform_accurate/shell_slide_0.000625.txt | DEFORMSTOP dt_ns 625000 stop_step 1051 moved_at_stop_nm 55546961 furthest_nm 55550037 end_nm 55250272
+deform_accurate/soft_slide_0.000625.txt | DEFORMSTOP dt_ns 625000 stop_step 1051 moved_at_stop_nm 55458364 furthest_nm 55462541 end_nm 54523255
+deform_final/shell_slide_0.001.txt | DEFORMSTOP dt_ns 1000000 stop_step 657 moved_at_stop_nm 55204907 furthest_nm 55204907 end_nm 54904909
+deform_final/shell_slide_0.01.txt | DEFORMSTOP dt_ns 10000000 stop_step 65 moved_at_stop_nm 52040067 furthest_nm 52074077 end_nm 51774063
+deform_final/soft_slide_0.001.txt | DEFORMSTOP dt_ns 1000000 stop_step 657 moved_at_stop_nm 55150029 furthest_nm 55150029 end_nm 54294093
+deform_final/soft_slide_0.01.txt | DEFORMSTOP dt_ns 10000000 stop_step 65 moved_at_stop_nm 52003485 furthest_nm 52043041 end_nm 51257502
+deform_stock/shell_slide_0.001.txt | DEFORMSTOP dt_ns 1000000 stop_step 657 moved_at_stop_nm 55199157 furthest_nm 55204762 end_nm 55204762
+deform_stock/shell_slide_0.01.txt | DEFORMSTOP dt_ns 10000000 stop_step 65 moved_at_stop_nm 52081021 furthest_nm 52086702 end_nm 52086702
+deform_stock/soft_slide_0.001.txt | DEFORMSTOP dt_ns 1000000 stop_step 656 moved_at_stop_nm 55087683 furthest_nm 55091503 end_nm 54347058
+deform_stock/soft_slide_0.01.txt | DEFORMSTOP dt_ns 10000000 stop_step 65 moved_at_stop_nm 52046077 furthest_nm 52046077 end_nm 51610301
+deform_final/shell_hold_0.001.txt | end_com_x_nm 132293 end_vx_ums 0 tip_along_x_nm 132293 tail_largest_vx_ums 0 crossings 7 period_ns 95557000 
+deform_final/shell_hold_0.01.txt | end_com_x_nm 132294 end_vx_ums 0 tip_along_x_nm 132294 tail_largest_vx_ums 0 crossings 2 period_ns 49730000 
+deform_final/soft_hold_0.001.txt | end_com_x_nm 442493 end_vx_ums 15 tip_along_x_nm 144329 tail_largest_vx_ums 51 crossings 9 period_ns 98359000 
+deform_final/soft_hold_0.01.txt | end_com_x_nm 442698 end_vx_ums 0 tip_along_x_nm 144401 tail_largest_vx_ums 0 crossings 4 period_ns 120180000 
+deform_accurate/shell_hold_0.000625.txt | end_com_x_nm 132266 end_vx_ums 0 tip_along_x_nm 132266 tail_largest_vx_ums 0 crossings 9 period_ns 60928750 
+deform_accurate/soft_hold_0.000625.txt | end_com_x_nm 447423 end_vx_ums 133 tip_along_x_nm 149806 tail_largest_vx_ums 303 crossings 9 period_ns 146578125 
+# the slides' rows at the stop and at the end, from the play files (columns of the rig: step, the centre's x, the tracked node's x with its start of -50 mm added back, the tracked node's y, the largest distance of a node from the rest shape carried with the centre and not turned; nm). The tracked node is node 0: for the soft cube its rear bottom corner, which rests 0.31 mm into the floor's contact (y about -308,000); for the cloth a corner of the sheet
+deform_accurate/soft_slide_0.000625.txt stop_step 1051
+  stop step 1051 centre_x 55458364 node_x 54828038 node_y 489359 shape 927147
+  end  step 2399 centre_x 54523255 node_x 54520462 node_y -303576 shape 36833
+deform_final/soft_slide_0.001.txt stop_step 657
+  stop step 657 centre_x 55150029 node_x 54612154 node_y 327985 shape 793708
+  end  step 1499 centre_x 54294093 node_x 54296351 node_y -308067 shape 33571
+deform_final/soft_slide_0.01.txt stop_step 65
+  stop step 65 centre_x 52003485 node_x 51547693 node_y 199514 shape 672714
+  end  step 149 centre_x 51257502 node_x 51260164 node_y -308482 shape 33543
+deform_stock/soft_slide_0.001.txt stop_step 656
+  stop step 656 centre_x 55087683 node_x 54360120 node_y 642366 shape 1067924
+  end  step 1499 centre_x 54347058 node_x 54350684 node_y -310823 shape 36977
+deform_stock/soft_slide_0.01.txt stop_step 65
+  stop step 65 centre_x 52046077 node_x 51630723 node_y 149182 shape 615204
+  end  step 149 centre_x 51610301 node_x 51609955 node_y -307294 shape 33180
+deform_accurate/shell_slide_0.000625.txt stop_step 1051
+  stop step 1051 centre_x 55546961 node_x 5546960 node_y 489404 shape 4
+  end  step 2399 centre_x 55250272 node_x 5250272 node_y 489393 shape 1
+deform_final/shell_slide_0.001.txt stop_step 657
+  stop step 657 centre_x 55204907 node_x 5204907 node_y 489406 shape 0
+  end  step 1499 centre_x 54904909 node_x 4904909 node_y 489406 shape 0
+deform_final/shell_slide_0.01.txt stop_step 65
+  stop step 65 centre_x 52040067 node_x 2040064 node_y 489406 shape 5
+  end  step 149 centre_x 51774063 node_x 1774061 node_y 489406 shape 4
+deform_stock/shell_slide_0.001.txt stop_step 657
+  stop step 657 centre_x 55199157 node_x 5199158 node_y 489406 shape 1
+  end  step 1499 centre_x 55204762 node_x 5204762 node_y 489406 shape 2
+deform_stock/shell_slide_0.01.txt stop_step 65
+  stop step 65 centre_x 52081021 node_x 2081021 node_y 489406 shape 2
+  end  step 149 centre_x 52086702 node_x 2086702 node_y 489406 shape 2

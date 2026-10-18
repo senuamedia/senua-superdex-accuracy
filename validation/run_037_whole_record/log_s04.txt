@@ -1,0 +1,14 @@
+played 80 runs; stopped steps in: 22 of them
+STATS source d1 scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged 21591 stopped 9 diverged 0 unset 0 most_iterations 200 enc_min -1928 e
+STATS source d2 scene ant integ be maxiter 200 sub 2 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 43200 converged 43193 stopped 7 diverged 0 unset 0 most_iterations 200 enc_min -1966 e
+STATS source d4 scene ant integ be maxiter 200 sub 4 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 86400 converged 86399 stopped 1 diverged 0 unset 0 most_iterations 200 enc_min -1988 e
+STATS source d8 scene ant integ be maxiter 200 sub 8 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 172800 converged 172797 stopped 3 diverged 0 unset 0 most_iterations 200 enc_min -2000
+STATS source d16 scene ant integ be maxiter 200 sub 16 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 345600 converged 345599 stopped 1 diverged 0 unset 0 most_iterations 200 enc_min -20
+STATS source d32 scene ant integ be maxiter 200 sub 32 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 691200 converged 691200 stopped 0 diverged 0 unset 0 most_iterations 176 enc_min -20
+STATS source d64 scene ant integ be maxiter 200 sub 64 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 1382400 converged 1382400 stopped 0 diverged 0 unset 0 most_iterations 117 enc_min -
+STATS source d1 scene half_cheetah integ be maxiter 200 sub 1 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 21600 converged 21598 stopped 2 diverged 0 unset 0 most_iterations 200 enc_min 
+STATS source d2 scene half_cheetah integ be maxiter 200 sub 2 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 43200 converged 43198 stopped 2 diverged 0 unset 0 most_iterations 200 enc_min 
+STATS source d4 scene half_cheetah integ be maxiter 200 sub 4 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 86400 converged 86400 stopped 0 diverged 0 unset 0 most_iterations 163 enc_min 
+STATS source d8 scene half_cheetah integ be maxiter 200 sub 8 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 172800 converged 172800 stopped 0 diverged 0 unset 0 most_iterations 180 enc_mi
+STATS source d16 scene half_cheetah integ be maxiter 200 sub 16 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 345600 converged 345600 stopped 0 diverged 0 unset 0 most_iterations 84 enc_m
+STATS source d32 scene half_cheetah integ be maxiter 200 sub 32 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 691200 converged 691200 stopped 0 diverged 0 unset 0 most_iterations 50 enc_m

@@ -1,0 +1,28 @@
+ant, throwaway commands, shipped step. 10c: set 0 of seed 9100 (108 episodes), the joint limit patch (D) with SuperDex's own switches.
+d: steps 21600 stopped 249 at_the_limit 249 diverged 0 iterations_in_all 183997 most_iterations 200 stopped_residual_u 5165 to 8006716
+d_expn: steps 21600 stopped 12 at_the_limit 12 diverged 0 iterations_in_all 136433 most_iterations 200 stopped_residual_u 4745 to 568407
+d_implicit: steps 21600 stopped 0 at_the_limit 0 diverged 0 iterations_in_all 152390 most_iterations 115 stopped_residual_u -1 to 0
+d_expn_armijo: steps 21600 stopped 12 at_the_limit 12 diverged 0 iterations_in_all 145185 most_iterations 200 stopped_residual_u 4745 to 568407
+
+10b: four sets of 108 episodes drawn in sequence from seed 9100: stock, D, stock with the first command of every episode larger by 1 N m, and both without the ground
+set | stopped: stock, D, nudged stock | D minus stock, nudge minus stock | without the ground: stopped stock, D; most iterations stock, D | iterations in all with the ground: stock, D
+0 | 223 249 214 | 26 -9 | 0 0 ; 3 3 | 181733 183997
+1 | 234 257 228 | 23 -6 | 0 0 ; 7 3 | 183165 184878
+2 | 204 226 221 | 22 17 | 0 0 ; 7 3 | 178296 177118
+3 | 204 245 212 | 41 8 | 0 0 ; 4 3 | 180880 184167
+## per episode (200 steps): how often D has more stopped steps than stock, fewer, the same; then the same for the nudge
+d set 0: more 46 fewer 35 same 27 ; sum of differences 26 ; sum of squares 306
+d set 1: more 43 fewer 34 same 31 ; sum of differences 23 ; sum of squares 297
+d set 2: more 45 fewer 32 same 31 ; sum of differences 22 ; sum of squares 336
+d set 3: more 50 fewer 35 same 23 ; sum of differences 41 ; sum of squares 321
+nudge set 0: more 32 fewer 37 same 39 ; sum of differences -9 ; sum of squares 169
+nudge set 1: more 37 fewer 40 same 31 ; sum of differences -6 ; sum of squares 194
+nudge set 2: more 42 fewer 32 same 34 ; sum of differences 17 ; sum of squares 177
+nudge set 3: more 38 fewer 31 same 39 ; sum of differences 8 ; sum of squares 162
+## does the limit patch change the motion without the ground? bytes of 43,200 that differ, by set
+30561 30349 30367 30978 
+## residual of stopped steps with the ground, millionths: smallest and largest, stock then D, by set
+0: 5066 2142041 ; 5165 8006716
+1: 4459 13488105 ; 4459 5651723
+2: 6132 3612931 ; 4903 7783623
+3: 4140 2328464 ; 4963 10985508

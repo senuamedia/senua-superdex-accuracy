@@ -1,0 +1,23 @@
+Patch F review probes, 15 October 2026. Probe material only: nothing here is registered or decides anything.
+Made on the EC2 host superdex in ~/work/probeF (Ubuntu 24.04, Clang 18), copied here.
+
+Libraries (64-bit, built as run 039's build.sh, -j4):
+  build-15 (read only, ~/work/sdx/build-patched)  eee7cca1...  record patches, library build 15
+  build-kp   ce607e7d... then 628cee14... (after the probe fix)  build 15 + probe_kp.patch (prints forces, changes no play)
+  build-noF  511e116d...  build 15 + noF.patch (patch F's lines removed), for the strict "F off = no F" check
+Rigs: rigs.sha256, rigs/*.build.txt. sdx_pair_probe.cpp = tools/sdx_pair.cpp + probe window, STEP markers, explicitn, nofade.
+
+Scripts: build_probe.sh, build_rig.sh, build_rig32.sh, probe_t15.sh (plain, kp, controls), t15_32.sh, t15_full.sh,
+probe_rules.sh (suites, bench), measure_rules.sh, impact_probe.sh, kp_steps.sh (per-step reduction), kp_bins.sh.
+
+T15 mechanism (the eleventh registration's pair, replayed to find a cause):
+  t15/plain.txt     B and A over 0.7 to 0.9 s, stock / F alone / A-E / A-F, own grid and 1/32, steps 1 to 1/16
+  t15/kp_same.txt   the probe library's 40 plays against build 15's: 40 of 40 byte-identical
+  t15/bins.txt      per 20 ms from 0.82 s: Fy, Px, Frx, Rfric = friction / (mu x applied normal), RF, RSS, xmin
+  t15/kp/*.steps    per step (columns in kp_steps.sh); t15/kp/*_b.txt the plays
+  t15/controls.txt  explicitNormals, fadeFriction off, box collider, tolerances 1e-9/1e-12
+  t15/plain32.txt   the same pair in 32-bit (library build 15, 32-bit)
+  t15/full.txt      the pair under the full recommended configuration
+Rules F0 to F6 on probe numbers (cube 1.25 kg r 0.045 mu 0.32; pair 3.2/0.27 and 0.55/0.032 mu 0.37; commands from
+seeds 91101 to 91103, actions/; none used by any registration, Study 21's draft included):
+  rules/reading.txt, rules/identity_suites.txt, rules/identity_bench.txt, rules/bench/stats.txt, rules/impact/

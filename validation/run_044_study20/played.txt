@@ -1,0 +1,7 @@
+PLAYED s20_id32_final rc 0
+PLAYED s20_id32_stock rc 0
+PLAYED s20_64_final rc 0
+PLAYED s20_32_final rc 0
+PLAYED s20_32_off rc 0
+PLAYED s20_32_stock rc 0
+PLAYED s20_64_stock rc 0

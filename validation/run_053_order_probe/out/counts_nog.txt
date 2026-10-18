@@ -1,0 +1,112 @@
+=== half_cheetah, the fifth registration's commands: the recommended configuration without patch G and Newton-Euler inertia (nog1 .. nog16)
+TIME half_cheetah nog1 against nog2 readings 0 to 5 summed_difference 3026 more_than_1_count 464 largest 13
+TIME half_cheetah nog1 against nog2 readings 5 to 10 summed_difference 3430 more_than_1_count 447 largest 26
+TIME half_cheetah nog1 against nog2 readings 10 to 20 summed_difference 16851 more_than_1_count 1000 largest 59
+TIME half_cheetah nog1 against nog2 readings 20 to 40 summed_difference 47839 more_than_1_count 2049 largest 89
+TIME half_cheetah nog1 against nog2 readings 40 to 80 summed_difference 114832 more_than_1_count 4162 largest 131
+TIME half_cheetah nog1 against nog2 readings 80 to 120 summed_difference 139677 more_than_1_count 4174 largest 277
+TIME half_cheetah nog1 against nog2 readings 120 to 160 summed_difference 139570 more_than_1_count 4193 largest 206
+TIME half_cheetah nog1 against nog2 readings 160 to 200 summed_difference 143959 more_than_1_count 4195 largest 210
+PARTING half_cheetah nog1 against nog2 summed_difference 609184 episodes 108 never_part 0 earliest 0 quarter 0 median 0 three_quarters 0 latest 13
+TIME half_cheetah nog2 against nog4 readings 0 to 5 summed_difference 1637 more_than_1_count 392 largest 7
+TIME half_cheetah nog2 against nog4 readings 5 to 10 summed_difference 1830 more_than_1_count 387 largest 14
+TIME half_cheetah nog2 against nog4 readings 10 to 20 summed_difference 9022 more_than_1_count 941 largest 34
+TIME half_cheetah nog2 against nog4 readings 20 to 40 summed_difference 28200 more_than_1_count 1991 largest 60
+TIME half_cheetah nog2 against nog4 readings 40 to 80 summed_difference 67811 more_than_1_count 4027 largest 92
+TIME half_cheetah nog2 against nog4 readings 80 to 120 summed_difference 80481 more_than_1_count 4089 largest 102
+TIME half_cheetah nog2 against nog4 readings 120 to 160 summed_difference 84378 more_than_1_count 4126 largest 166
+TIME half_cheetah nog2 against nog4 readings 160 to 200 summed_difference 92581 more_than_1_count 4123 largest 200
+PARTING half_cheetah nog2 against nog4 summed_difference 365940 episodes 108 never_part 0 earliest 0 quarter 0 median 1 three_quarters 2 latest 14
+TIME half_cheetah nog4 against nog8 readings 0 to 5 summed_difference 880 more_than_1_count 272 largest 4
+TIME half_cheetah nog4 against nog8 readings 5 to 10 summed_difference 926 more_than_1_count 269 largest 7
+TIME half_cheetah nog4 against nog8 readings 10 to 20 summed_difference 4687 more_than_1_count 849 largest 17
+TIME half_cheetah nog4 against nog8 readings 20 to 40 summed_difference 15572 more_than_1_count 1839 largest 39
+TIME half_cheetah nog4 against nog8 readings 40 to 80 summed_difference 37080 more_than_1_count 3784 largest 57
+TIME half_cheetah nog4 against nog8 readings 80 to 120 summed_difference 41919 more_than_1_count 3848 largest 55
+TIME half_cheetah nog4 against nog8 readings 120 to 160 summed_difference 45177 more_than_1_count 3938 largest 123
+TIME half_cheetah nog4 against nog8 readings 160 to 200 summed_difference 46397 more_than_1_count 3894 largest 126
+PARTING half_cheetah nog4 against nog8 summed_difference 192638 episodes 108 never_part 0 earliest 0 quarter 1 median 2 three_quarters 6 latest 17
+TIME half_cheetah nog8 against nog16 readings 0 to 5 summed_difference 422 more_than_1_count 69 largest 2
+TIME half_cheetah nog8 against nog16 readings 5 to 10 summed_difference 498 more_than_1_count 100 largest 4
+TIME half_cheetah nog8 against nog16 readings 10 to 20 summed_difference 2383 more_than_1_count 671 largest 8
+TIME half_cheetah nog8 against nog16 readings 20 to 40 summed_difference 8139 more_than_1_count 1581 largest 20
+TIME half_cheetah nog8 against nog16 readings 40 to 80 summed_difference 19138 more_than_1_count 3276 largest 28
+TIME half_cheetah nog8 against nog16 readings 80 to 120 summed_difference 21870 more_than_1_count 3433 largest 35
+TIME half_cheetah nog8 against nog16 readings 120 to 160 summed_difference 23073 more_than_1_count 3577 largest 54
+TIME half_cheetah nog8 against nog16 readings 160 to 200 summed_difference 24042 more_than_1_count 3569 largest 66
+PARTING half_cheetah nog8 against nog16 summed_difference 99565 episodes 108 never_part 0 earliest 2 quarter 3 median 7 three_quarters 12 latest 24
+CELL half_cheetah NOG fold 0
+  gap nog1 against nog2 ; plain 3064450
+  gap nog2 against nog4 ; plain 1766308
+  gap nog4 against nog8 ; plain 925604
+  gap nog8 against nog16 ; plain 521188
+  plain_in_order 1
+CELL half_cheetah NOG fold 1
+  gap nog1 against nog2 ; plain 3400416
+  gap nog2 against nog4 ; plain 2198811
+  gap nog4 against nog8 ; plain 1098987
+  gap nog8 against nog16 ; plain 548063
+  plain_in_order 1
+CELL half_cheetah NOG fold 2
+  gap nog1 against nog2 ; plain 2825566
+  gap nog2 against nog4 ; plain 1835512
+  gap nog4 against nog8 ; plain 996128
+  gap nog8 against nog16 ; plain 489941
+  plain_in_order 1
+PLAIN half_cheetah NOG folds_in_order 3
+=== ant, the fifth registration's commands: the recommended configuration without patch G and Newton-Euler inertia (nog1 .. nog16)
+TIME ant nog1 against nog2 readings 0 to 5 summed_difference 6893 more_than_1_count 497 largest 44
+TIME ant nog1 against nog2 readings 5 to 10 summed_difference 12393 more_than_1_count 524 largest 65
+TIME ant nog1 against nog2 readings 10 to 20 summed_difference 19179 more_than_1_count 1023 largest 63
+TIME ant nog1 against nog2 readings 20 to 40 summed_difference 50425 more_than_1_count 1987 largest 219
+TIME ant nog1 against nog2 readings 40 to 80 summed_difference 248359 more_than_1_count 4147 largest 444
+TIME ant nog1 against nog2 readings 80 to 120 summed_difference 402231 more_than_1_count 4153 largest 908
+TIME ant nog1 against nog2 readings 120 to 160 summed_difference 388348 more_than_1_count 4180 largest 1390
+TIME ant nog1 against nog2 readings 160 to 200 summed_difference 433732 more_than_1_count 4179 largest 1411
+PARTING ant nog1 against nog2 summed_difference 1561560 episodes 108 never_part 0 earliest 0 quarter 0 median 0 three_quarters 0 latest 6
+TIME ant nog2 against nog4 readings 0 to 5 summed_difference 3464 more_than_1_count 451 largest 23
+TIME ant nog2 against nog4 readings 5 to 10 summed_difference 6290 more_than_1_count 504 largest 34
+TIME ant nog2 against nog4 readings 10 to 20 summed_difference 10151 more_than_1_count 972 largest 32
+TIME ant nog2 against nog4 readings 20 to 40 summed_difference 28727 more_than_1_count 1870 largest 122
+TIME ant nog2 against nog4 readings 40 to 80 summed_difference 154219 more_than_1_count 4021 largest 487
+TIME ant nog2 against nog4 readings 80 to 120 summed_difference 254790 more_than_1_count 4087 largest 1346
+TIME ant nog2 against nog4 readings 120 to 160 summed_difference 255933 more_than_1_count 4062 largest 1263
+TIME ant nog2 against nog4 readings 160 to 200 summed_difference 299446 more_than_1_count 4098 largest 1325
+PARTING ant nog2 against nog4 summed_difference 1013020 episodes 108 never_part 0 earliest 0 quarter 0 median 0 three_quarters 1 latest 7
+TIME ant nog4 against nog8 readings 0 to 5 summed_difference 1731 more_than_1_count 364 largest 11
+TIME ant nog4 against nog8 readings 5 to 10 summed_difference 3165 more_than_1_count 450 largest 18
+TIME ant nog4 against nog8 readings 10 to 20 summed_difference 5244 more_than_1_count 875 largest 16
+TIME ant nog4 against nog8 readings 20 to 40 summed_difference 15667 more_than_1_count 1672 largest 65
+TIME ant nog4 against nog8 readings 40 to 80 summed_difference 85177 more_than_1_count 3800 largest 214
+TIME ant nog4 against nog8 readings 80 to 120 summed_difference 140600 more_than_1_count 3920 largest 338
+TIME ant nog4 against nog8 readings 120 to 160 summed_difference 179233 more_than_1_count 3931 largest 828
+TIME ant nog4 against nog8 readings 160 to 200 summed_difference 222254 more_than_1_count 3938 largest 1303
+PARTING ant nog4 against nog8 summed_difference 653071 episodes 108 never_part 0 earliest 0 quarter 0 median 1 three_quarters 2 latest 14
+TIME ant nog8 against nog16 readings 0 to 5 summed_difference 883 more_than_1_count 235 largest 6
+TIME ant nog8 against nog16 readings 5 to 10 summed_difference 1649 more_than_1_count 377 largest 9
+TIME ant nog8 against nog16 readings 10 to 20 summed_difference 2702 more_than_1_count 719 largest 9
+TIME ant nog8 against nog16 readings 20 to 40 summed_difference 8064 more_than_1_count 1332 largest 34
+TIME ant nog8 against nog16 readings 40 to 80 summed_difference 44124 more_than_1_count 3417 largest 84
+TIME ant nog8 against nog16 readings 80 to 120 summed_difference 77796 more_than_1_count 3532 largest 241
+TIME ant nog8 against nog16 readings 120 to 160 summed_difference 115301 more_than_1_count 3632 largest 604
+TIME ant nog8 against nog16 readings 160 to 200 summed_difference 139613 more_than_1_count 3675 largest 611
+PARTING ant nog8 against nog16 summed_difference 390132 episodes 108 never_part 0 earliest 0 quarter 1 median 2 three_quarters 6 latest 21
+CELL ant NOG fold 0
+  gap nog1 against nog2 ; plain 12147808
+  gap nog2 against nog4 ; plain 7890753
+  gap nog4 against nog8 ; plain 5878964
+  gap nog8 against nog16 ; plain 3159772
+  plain_in_order 1
+CELL ant NOG fold 1
+  gap nog1 against nog2 ; plain 9169177
+  gap nog2 against nog4 ; plain 6574090
+  gap nog4 against nog8 ; plain 3602711
+  gap nog8 against nog16 ; plain 2306526
+  plain_in_order 1
+CELL ant NOG fold 2
+  gap nog1 against nog2 ; plain 10421421
+  gap nog2 against nog4 ; plain 6236259
+  gap nog4 against nog8 ; plain 3678310
+  gap nog8 against nog16 ; plain 2172817
+  plain_in_order 1
+PLAIN ant NOG folds_in_order 3

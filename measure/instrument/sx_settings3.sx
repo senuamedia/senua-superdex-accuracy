@@ -1,0 +1,357 @@
+// measure/instrument/sx_settings3.sx -- preregistrations/PREREGISTRATION_03.md: WHO OWNS the order
+// failures of the second registration: the instrument, the rig, the scene or the engine. Most of this harness is
+// plain subtraction of the rig's noiseless streams (no instrument, no noise): how far two sources are apart at each
+// part of an episode, and when a nudged run first parts from the run it was nudged from.
+// Sources of a scene: <dir>/<scene>/<source>_enc.pcm, written by the public rig sdx_player (one reading a shipped
+// simulation step, counts of a 14-bit encoder).
+// usage: sx_settings3 time <streams dir> <scene> <episodes> <readings> <source> <source> [<source> ...]
+//          a chain of sources, each against the next: the plain gap in each part of the episode, and the reading at
+//          which each episode first parts by more than a count. No instrument.
+// exit 42 = ran
+extern fn malloc(size: i64) -> i64;
+extern fn free(ptr: i64);
+extern fn print_char(c: i64);
+extern fn print_int(x: i64);
+extern fn dvec_to_cstr(d: i64) -> i64;
+extern fn load_i64(base: i64, slot: i64) -> i64;
+extern fn store_i64(base: i64, slot: i64, val: i64);
+extern fn load_byte(buf: i64, off: i64) -> i64;
+extern fn store_byte(buf: i64, off: i64, val: i64);
+// use "senua_engine.sx"   // Senua AI engine: the gap instrument, the sensor noise, the seeded generator (not distributed)
+
+fn s3_nop() -> i64 { 0 }
+// the geometry and the one noise state: g [0] episodes [1] readings an episode [2] episodes a block [3] rng buffer
+// [4] pooled calibration: level-flagged windows [5] pooled calibration: windows [6] the detection bar
+fn s3_eps(g: i64) -> i64 { load_i64(g, 0) }
+fn s3_steps(g: i64) -> i64 { load_i64(g, 1) }
+fn s3_n(g: i64) -> i64 { load_i64(g, 0) * load_i64(g, 1) }
+fn s3_new(eps: i64, steps: i64) -> i64 { let g: i64 = malloc(64); let rp: i64 = malloc(16); store_i64(rp, 0, 4201); store_i64(g, 0, eps); store_i64(g, 1, steps); store_i64(g, 2, intdiv(eps, 3)); store_i64(g, 3, rp); store_i64(g, 4, 0); store_i64(g, 5, 0); store_i64(g, 6, 0); g }
+fn s3_puts(c: i64) { let mut i: i64 = 0; while load_byte(c, i) != 0 { print_char(load_byte(c, i)); i = i + 1; } }
+fn s3_lbl(s: i64) { let c: i64 = dvec_to_cstr(s); s3_puts(c); free(c); }
+fn s3_num(s: i64, v: i64) { s3_lbl(s); print_int(v); }
+fn s3_is(a: i64, lit_dv: i64) -> i64 { let b: i64 = dvec_to_cstr(lit_dv); let mut i: i64 = 0; let mut r: i64 = 2; while r == 2 { let x: i64 = load_byte(a, i); if x != load_byte(b, i) { r = 0; } else { if x == 0 { r = 1; } else { i = i + 1; } } } free(b); r }
+fn s3_int(s: i64) -> i64 { let mut v: i64 = 0; let mut i: i64 = 0; while load_byte(s, i) != 0 { v = v * 10 + (load_byte(s, i) - 48); i = i + 1; } v }
+fn s3_abs(x: i64) -> i64 { if x < 0 { 0 - x } else { x } }
+fn s3_put(dst: i64, o: i64, s: i64) -> i64 { let mut k: i64 = 0; while load_byte(s, k) != 0 { store_byte(dst, o + k, load_byte(s, k)); k = k + 1; } o + k }
+// "<dir>/<scene>/<source>_enc.pcm" as readings vals[episode * readings + step]; 0 when absent or the wrong size
+fn s3_load(g: i64, dir: i64, scene: i64, src: i64) -> i64 {
+    let tail: i64 = dvec_to_cstr("_enc.pcm");
+    let p: i64 = malloc(cstr_len(dir) + cstr_len(scene) + cstr_len(src) + cstr_len(tail) + 8);
+    let mut o: i64 = s3_put(p, 0, dir); store_byte(p, o, 47); o = o + 1; o = s3_put(p, o, scene); store_byte(p, o, 47); o = o + 1; o = s3_put(p, o, src); o = s3_put(p, o, tail); store_byte(p, o, 0);
+    free(tail);
+    if os_file_access(p) != 0 { free(p); return 0; } else { let _: i64 = 0; }
+    let meta: i64 = malloc(16); let b: i64 = os_file_read_all(p, meta); let nb: i64 = load_i64(meta, 0); free(p);
+    if b == 0 { free(meta); return 0; } else { let _: i64 = 0; }
+    let vals: i64 = ns_vec_pcm_to_vals(b, nb, 1, meta); let nf: i64 = load_i64(meta, 0); free(b); free(meta);
+    if nf != s3_n(g) { free(vals); return 0; } else { let _: i64 = 0; }
+    vals
+}
+// THE PARTS OF AN EPISODE (registered): readings [0, 5) [5, 10) [10, 20) [20, 40) [40, 80) [80, 120) [120, 160)
+// [160, readings). Eight parts; the early ones are short because that is where a refinement can still be told from
+// its amplification.
+fn s3_parts() -> i64 { 8 }
+fn s3_part_hi(b: i64, st: i64) -> i64 { if b == 0 { 5 } else { if b == 1 { 10 } else { if b == 2 { 20 } else { if b == 3 { 40 } else { if b == 4 { 80 } else { if b == 5 { 120 } else { if b == 6 { 160 } else { st } } } } } } } }
+fn s3_part_lo(b: i64) -> i64 { if b == 0 { 0 } else { s3_part_hi(b - 1, 0) } }
+// one episode of one pair into the parts: l1[b] the summed absolute difference, ov[b] readings more than a count
+// apart, mx[b] the largest difference
+fn s3_time_ep(g: i64, x: i64, y: i64, ep: i64, l1: i64, ov: i64, mx: i64) {
+    let st: i64 = s3_steps(g); let mut t: i64 = 0; let mut b: i64 = 0; let mut o: i64 = ep * st;
+    while t < st {
+        if t >= s3_part_hi(b, st) { b = b + 1; } else { let _: i64 = 0; }
+        let d: i64 = s3_abs(load_i64(x, o) - load_i64(y, o));
+        store_i64(l1, b, load_i64(l1, b) + d);
+        if d > 1 { store_i64(ov, b, load_i64(ov, b) + 1); } else { let _: i64 = 0; }
+        if d > load_i64(mx, b) { store_i64(mx, b, d); } else { let _: i64 = 0; }
+        t = t + 1; o = o + 1;
+    }
+}
+// the reading at which one episode of a pair first parts by more than a count; the episode's length when it never does
+fn s3_first_ep(g: i64, x: i64, y: i64, ep: i64) -> i64 {
+    let st: i64 = s3_steps(g); let mut t: i64 = 0; let mut r: i64 = st; let mut go: i64 = 1; let mut o: i64 = ep * st;
+    while go == 1 {
+        if t >= st { go = 0; } else { if s3_abs(load_i64(x, o) - load_i64(y, o)) > 1 { r = t; go = 0; } else { t = t + 1; o = o + 1; } }
+    }
+    r
+}
+fn s3_sort_in(v: i64, i: i64) { let x: i64 = load_i64(v, i); let mut j: i64 = i - 1; let mut go: i64 = 1; while go == 1 { if j < 0 { go = 0; } else { if load_i64(v, j) > x { store_i64(v, j + 1, load_i64(v, j)); j = j - 1; } else { go = 0; } } } store_i64(v, j + 1, x); }
+fn s3_sort(v: i64, n: i64) { let mut i: i64 = 1; while i < n { s3_sort_in(v, i); i = i + 1; } }
+fn s3_zero8(v: i64) { let mut b: i64 = 0; while b < 8 { store_i64(v, b, 0); b = b + 1; } }
+fn s3_time_fill(g: i64, x: i64, y: i64, l1: i64, ov: i64, mx: i64, fs: i64) -> i64 {
+    let mut ep: i64 = 0; let mut never: i64 = 0;
+    while ep < s3_eps(g) {
+        s3_time_ep(g, x, y, ep, l1, ov, mx);
+        let f: i64 = s3_first_ep(g, x, y, ep); store_i64(fs, ep, f);
+        if f >= s3_steps(g) { never = never + 1; } else { let _: i64 = 0; }
+        ep = ep + 1;
+    }
+    never
+}
+// one pair: a line for each part of the episode, then when the episodes first part
+fn s3_time_pair(g: i64, scene: i64, na: i64, nb: i64, x: i64, y: i64) {
+    let l1: i64 = malloc(64); let ov: i64 = malloc(64); let mx: i64 = malloc(64); let fs: i64 = malloc(s3_eps(g) * 8 + 64);
+    s3_zero8(l1); s3_zero8(ov); s3_zero8(mx);
+    let never: i64 = s3_time_fill(g, x, y, l1, ov, mx, fs);
+    let e: i64 = s3_eps(g); let st: i64 = s3_steps(g); let mut b: i64 = 0; let mut tot: i64 = 0;
+    while b < s3_parts() {
+        s3_lbl("TIME "); s3_puts(scene); print_char(32); s3_puts(na); s3_lbl(" against "); s3_puts(nb);
+        s3_num(" readings ", s3_part_lo(b)); s3_num(" to ", s3_part_hi(b, st)); s3_num(" summed_difference ", load_i64(l1, b)); s3_num(" more_than_1_count ", load_i64(ov, b)); s3_num(" largest ", load_i64(mx, b)); print_char(10);
+        tot = tot + load_i64(l1, b); b = b + 1;
+    }
+    s3_sort(fs, e);
+    s3_lbl("PARTING "); s3_puts(scene); print_char(32); s3_puts(na); s3_lbl(" against "); s3_puts(nb);
+    s3_num(" summed_difference ", tot); s3_num(" episodes ", e); s3_num(" never_part ", never); s3_num(" earliest ", load_i64(fs, 0)); s3_num(" quarter ", load_i64(fs, intdiv(e, 4))); s3_num(" median ", load_i64(fs, intdiv(e, 2))); s3_num(" three_quarters ", load_i64(fs, intdiv(e * 3, 4))); s3_num(" latest ", load_i64(fs, e - 1)); print_char(10);
+    free(l1); free(ov); free(mx); free(fs);
+}
+fn s3_time(g: i64, dir: i64, scene: i64, argc: i64, argv: i64) -> i64 {
+    let n: i64 = argc - 6; let raws: i64 = malloc(n * 8 + 64); let mut i: i64 = 0; let mut miss: i64 = 0;
+    while i < n {
+        let v: i64 = s3_load(g, dir, scene, load_i64(argv, 6 + i)); store_i64(raws, i, v);
+        if v == 0 { miss = 1; s3_lbl("MISSING "); s3_puts(scene); print_char(47); s3_puts(load_i64(argv, 6 + i)); print_char(10); } else { let _: i64 = 0; }
+        i = i + 1;
+    }
+    if miss == 1 { return 1; } else { let _: i64 = 0; }
+    i = 0;
+    while i < n - 1 { s3_time_pair(g, scene, load_i64(argv, 6 + i), load_i64(argv, 7 + i), load_i64(raws, i), load_i64(raws, i + 1)); i = i + 1; }
+    42
+}
+// ---- the instrument beside plain subtraction (the same windows, the same episodes) ----
+// roles by block of episodes, as the second registration: fold f declares on block (f + 1) mod 3 and reads block
+// (f + 2) mod 3. 1 normal, 2 test.
+fn s3_role(g: i64, ep: i64, f: i64) -> i64 { (intdiv(ep, load_i64(g, 2)) % 3 + 3 - f) % 3 }
+fn s3_both(a: i64, b: i64) -> i64 { if a != 0 { if b != 0 { 1 } else { 0 } } else { 0 } }
+// one run of a source under the world's sensor model, drawn from the one noise state (a fresh array)
+fn s3_noisy(g: i64, vals: i64) -> i64 {
+    let n: i64 = s3_n(g); let v: i64 = malloc(n * 8 + 64); let rp: i64 = load_i64(g, 3); let mut t: i64 = 0;
+    while t < n { store_i64(v, t, gw_clip16(load_i64(vals, t) + gw_noise(rp, 1))); t = t + 1; }
+    v
+}
+fn s3_same(g: i64, x: i64, y: i64) -> i64 { let n: i64 = s3_n(g); let mut same: i64 = 1; let mut t: i64 = 0; while t < n { if load_i64(x, t) != load_i64(y, t) { same = 0; t = n; } else { t = t + 1; } } same }
+// fold f's declared normal: runs A and B of the reference over the normal block's episodes, in order
+fn s3_normal(g: i64, a: i64, b: i64, f: i64) -> i64 {
+    let n0: i64 = s3_n(g); let st: i64 = s3_steps(g); let xa: i64 = malloc(n0 * 8 + 64); let xb: i64 = malloc(n0 * 8 + 64); let mut n: i64 = 0; let mut ep: i64 = 0;
+    while ep < s3_eps(g) {
+        if s3_role(g, ep, f) == 1 { let mut t: i64 = 0; while t < st { store_i64(xa, n, load_i64(a, ep * st + t)); store_i64(xb, n, load_i64(b, ep * st + t)); n = n + 1; t = t + 1; } } else { let _: i64 = 0; }
+        ep = ep + 1;
+    }
+    let h: i64 = rxg_declare(xa, xb, n); free(xa); free(xb); h
+}
+// one source's test episodes of fold f against run A of the reference: res = the module's six slots
+fn s3_test(g: i64, h: i64, src: i64, a: i64, f: i64, res: i64) {
+    let st: i64 = s3_steps(g); let r: i64 = malloc(st * 8 + 64); let mut z: i64 = 0; let mut ep: i64 = 0;
+    while z < 6 { store_i64(res, z, 0); z = z + 1; }
+    while ep < s3_eps(g) {
+        if s3_role(g, ep, f) == 2 {
+            rxg_residual(ptr_add(src, ep * st * 8), ptr_add(a, ep * st * 8), st, r);
+            rxg_read(h, r, st, res, 0);
+        } else { let _: i64 = 0; }
+        ep = ep + 1;
+    }
+    free(r);
+}
+// PLAIN SUBTRACTION, one episode starting at reading o: over every window of L readings, the absolute value of the
+// window's summed difference between the two noiseless streams. This is the instrument's gated magnitude with the
+// gate, the declared normal and the sensor noise all taken away: arithmetic only.
+fn s3_wabs(x: i64, y: i64, o: i64, L: i64, st: i64) -> i64 {
+    let mut s: i64 = 0; let mut k: i64 = 0; let mut tot: i64 = 0;
+    while k < st {
+        s = s + load_i64(x, o + k) - load_i64(y, o + k);
+        if k >= L { s = s - load_i64(x, o + k - L) + load_i64(y, o + k - L); } else { let _: i64 = 0; }
+        if k >= L - 1 { tot = tot + s3_abs(s); } else { let _: i64 = 0; }
+        k = k + 1;
+    }
+    tot
+}
+// plain subtraction over the test episodes of fold f
+fn s3_plain(g: i64, x: i64, y: i64, f: i64) -> i64 {
+    let st: i64 = s3_steps(g); let L: i64 = csc_lib_window(); let mut tot: i64 = 0; let mut ep: i64 = 0; let mut o: i64 = 0;
+    while ep < s3_eps(g) {
+        if s3_role(g, ep, f) == 2 { tot = tot + s3_wabs(x, y, o, L, st); } else { let _: i64 = 0; }
+        ep = ep + 1; o = o + st;
+    }
+    tot
+}
+// NOISE SLOTS, as the second registration: one sequence (seed 4201), slot k starts 12,000,000 draws after slot
+// k - 1. Slots 0 .. 17 were the second registration's; the third takes slots from 18.
+fn s3_skip_slot(rp: i64) { let mut s: i64 = load_i64(rp, 0); let mut i: i64 = 0; while i < 12000000 { s = ef_rng_next(s); i = i + 1; } store_i64(rp, 0, s); }
+fn s3_skip(g: i64, slots: i64) { let rp: i64 = load_i64(g, 3); let mut k: i64 = 0; while k < slots { s3_skip_slot(rp); k = k + 1; } }
+// A LIST of sources of one scene, as a slab ls: [0] scene [1] label [2] argv [3] the first source's position in argv
+// [4] sources [5] their readings [6] kind: 0 a chain (each source against the next finer one), 1 a ladder (each
+// source against the last, the reference) [7] magnitudes [8] detected [9] plain, each [fold * 16 + gap].
+fn s3_ix(f: i64, i: i64) -> i64 { f * 16 + i }
+fn s3_name(ls: i64, i: i64) -> i64 { load_i64(load_i64(ls, 2), load_i64(ls, 3) + i) }
+fn s3_fine(ls: i64, i: i64) -> i64 { if load_i64(ls, 6) == 0 { i + 1 } else { load_i64(ls, 4) - 1 } }
+// one gap of one fold by the instrument (the second registration's reading, unchanged: three noisy runs of the finer
+// source, the declared normal from two of them, the calibration reading from the third, then the coarser source).
+// Returns 1 detected, 0 not detected, 2 the two streams are identical, 3 the declared normal was not usable.
+// out [0] magnitude [1] level-flagged windows [2] windows [3] the calibration reading's level-flagged windows.
+fn s3_gap(g: i64, coarse: i64, fine: i64, f: i64, out: i64) -> i64 {
+    store_i64(out, 0, 0); store_i64(out, 1, 0); store_i64(out, 2, 0); store_i64(out, 3, 0);
+    if s3_same(g, coarse, fine) == 1 { return 2; } else { let _: i64 = 0; }
+    let a: i64 = s3_noisy(g, fine); let b: i64 = s3_noisy(g, fine); let c: i64 = s3_noisy(g, fine);
+    let h: i64 = s3_normal(g, a, b, f);
+    if rxg_ok(h) == 0 { free(a); free(b); free(c); rxg_free(h); return 3; } else { let _: i64 = 0; }
+    let rc: i64 = malloc(64); let res: i64 = malloc(64);
+    s3_test(g, h, c, a, f, rc);
+    store_i64(g, 4, load_i64(g, 4) + rxg_level(rc)); store_i64(g, 5, load_i64(g, 5) + rxg_windows(rc));
+    let nz: i64 = s3_noisy(g, coarse); s3_test(g, h, nz, a, f, res); free(nz);
+    let det: i64 = if rxg_level(res) > load_i64(g, 6) { 1 } else { 0 };
+    store_i64(out, 0, rxg_magnitude(res)); store_i64(out, 1, rxg_level(res)); store_i64(out, 2, rxg_windows(res)); store_i64(out, 3, rxg_level(rc));
+    free(a); free(b); free(c); free(rc); free(res); rxg_free(h);
+    det
+}
+// every gap of one fold: the instrument's line and the plain subtraction beside it
+fn s3_fold_read(g: i64, ls: i64, f: i64, inst: i64) {
+    let raws: i64 = load_i64(ls, 5); let ng: i64 = load_i64(ls, 4) - 1; let out: i64 = malloc(64); let mut i: i64 = 0;
+    s3_lbl("CELL "); s3_puts(load_i64(ls, 0)); print_char(32); s3_puts(load_i64(ls, 1)); s3_num(" fold ", f); print_char(10);
+    while i < ng {
+        let coarse: i64 = load_i64(raws, i); let fine: i64 = load_i64(raws, s3_fine(ls, i));
+        let same: i64 = s3_same(g, coarse, fine);
+        let u: i64 = if same == 1 { 0 } else { s3_plain(g, coarse, fine, f) };
+        store_i64(load_i64(ls, 9), s3_ix(f, i), u);
+        s3_lbl("  gap "); s3_puts(s3_name(ls, i)); s3_lbl(" against "); s3_puts(s3_name(ls, s3_fine(ls, i)));
+        if inst == 1 {
+            let d: i64 = s3_gap(g, coarse, fine, f, out);
+            store_i64(load_i64(ls, 7), s3_ix(f, i), load_i64(out, 0)); store_i64(load_i64(ls, 8), s3_ix(f, i), d);
+            if d == 2 { s3_lbl(" IDENTICAL streams"); } else { if d == 3 { s3_lbl(" normal not usable"); } else { s3_num(" level ", load_i64(out, 1)); s3_num(" of ", load_i64(out, 2)); s3_num(" magnitude ", load_i64(out, 0)); s3_num(" ; calibration level ", load_i64(out, 3)); s3_num(" detected ", d); } }
+        } else { if same == 1 { s3_lbl(" IDENTICAL streams"); } else { let _: i64 = 0; } }
+        s3_num(" ; plain ", u); print_char(10);
+        i = i + 1;
+    }
+    free(out);
+}
+// one fold's order, twice over the SAME gaps (the ones the instrument detected): by the instrument's magnitude and by
+// plain subtraction. In order = falls at every step toward the fine end. Returns 1 when the two say the same.
+// Also printed, for continuity with the second registration: G1 (the coarsest gap that is not identical is detected)
+// and A1 (in order by the instrument, and no gap that is not detected lies coarser than one that is).
+fn s3_fold_order(ls: i64, f: i64) -> i64 {
+    let ng: i64 = load_i64(ls, 4) - 1; let mv: i64 = load_i64(ls, 7); let dv: i64 = load_i64(ls, 8); let uv: i64 = load_i64(ls, 9);
+    let mut i: i64 = 0; let mut first: i64 = 0 - 1; let mut g1: i64 = 0; let mut oi: i64 = 1; let mut op: i64 = 1; let mut undet: i64 = 0; let mut late: i64 = 0; let mut pm: i64 = 0 - 1; let mut pu: i64 = 0 - 1; let mut nd: i64 = 0; let mut bad: i64 = 0;
+    while i < ng {
+        let d: i64 = load_i64(dv, s3_ix(f, i)); let m: i64 = load_i64(mv, s3_ix(f, i)); let u: i64 = load_i64(uv, s3_ix(f, i));
+        if d == 3 { bad = 1; } else { let _: i64 = 0; }
+        if d == 1 {
+            if first < 0 { first = i; g1 = 1; } else { let _: i64 = 0; }
+            nd = nd + 1;
+            if undet == 1 { late = 1; } else { let _: i64 = 0; }
+            if pm >= 0 { if m >= pm { oi = 0; } else { let _: i64 = 0; } if u >= pu { op = 0; } else { let _: i64 = 0; } } else { let _: i64 = 0; }
+            pm = m; pu = u;
+        } else { let _: i64 = 0; }
+        if d == 0 { if first < 0 { first = i; g1 = 0; } else { let _: i64 = 0; } undet = 1; } else { let _: i64 = 0; }
+        i = i + 1;
+    }
+    let same: i64 = if bad == 1 { 0 } else { if oi == op { 1 } else { 0 } };
+    let a1: i64 = if late == 1 { 0 } else { oi };
+    s3_num("  detected ", nd); s3_num(" ; in_order_by_instrument ", oi); s3_num(" in_order_by_subtraction ", op); s3_num(" same ", same); s3_num(" ; G1 ", g1); s3_num(" A1 ", a1); print_char(10);
+    same
+}
+// the plain subtraction's own order over EVERY gap that is not identical (no instrument at all): 1 in order
+fn s3_fold_plain_order(ls: i64, f: i64) -> i64 {
+    let ng: i64 = load_i64(ls, 4) - 1; let uv: i64 = load_i64(ls, 9); let mut i: i64 = 0; let mut op: i64 = 1; let mut pu: i64 = 0 - 1;
+    while i < ng {
+        let u: i64 = load_i64(uv, s3_ix(f, i));
+        if u > 0 { if pu >= 0 { if u >= pu { op = 0; } else { let _: i64 = 0; } } else { let _: i64 = 0; } pu = u; } else { let _: i64 = 0; }
+        i = i + 1;
+    }
+    s3_num("  plain_in_order ", op); print_char(10);
+    op
+}
+fn s3_list_new(g: i64, dir: i64, scene: i64, label: i64, kind: i64, argc: i64, argv: i64, at: i64) -> i64 {
+    let n: i64 = argc - at; let raws: i64 = malloc(n * 8 + 64); let mut i: i64 = 0; let mut miss: i64 = 0;
+    while i < n {
+        let v: i64 = s3_load(g, dir, scene, load_i64(argv, at + i)); store_i64(raws, i, v);
+        if v == 0 { miss = 1; s3_lbl("MISSING "); s3_puts(scene); print_char(47); s3_puts(load_i64(argv, at + i)); print_char(10); } else { let _: i64 = 0; }
+        i = i + 1;
+    }
+    if miss == 1 { return 0; } else { let _: i64 = 0; }
+    if n > 16 { return 0; } else { let _: i64 = 0; }
+    let ls: i64 = malloc(128);
+    store_i64(ls, 0, scene); store_i64(ls, 1, label); store_i64(ls, 2, argv); store_i64(ls, 3, at); store_i64(ls, 4, n); store_i64(ls, 5, raws); store_i64(ls, 6, kind);
+    store_i64(ls, 7, malloc(512)); store_i64(ls, 8, malloc(512)); store_i64(ls, 9, malloc(512));
+    ls
+}
+// plain <dir> <scene> <episodes> <readings> <chain|ladder> <label> <source> ...: no instrument
+fn s3_mode_plain(g: i64, ls: i64) -> i64 {
+    let mut f: i64 = 0; let mut ok: i64 = 0;
+    while f < 3 { s3_fold_read(g, ls, f, 0); ok = ok + s3_fold_plain_order(ls, f); f = f + 1; }
+    s3_lbl("PLAIN "); s3_puts(load_i64(ls, 0)); print_char(32); s3_puts(load_i64(ls, 1)); s3_num(" folds_in_order ", ok); print_char(10);
+    42
+}
+// read <dir> <scene> <episodes> <readings> <bar> <slot> <chain|ladder> <label> <source> ...: the instrument and the
+// plain subtraction on the same gaps
+fn s3_mode_read(g: i64, ls: i64) -> i64 {
+    let mut f: i64 = 0; let mut same: i64 = 0;
+    while f < 3 { s3_fold_read(g, ls, f, 1); same = same + s3_fold_order(ls, f); f = f + 1; }
+    s3_lbl("PART "); s3_puts(load_i64(ls, 0)); print_char(32); s3_puts(load_i64(ls, 1)); s3_num(" cells_same ", same); s3_num(" of 3 calibration_level ", load_i64(g, 4)); s3_num(" calibration_windows ", load_i64(g, 5)); print_char(10);
+    42
+}
+// same <dir> <scene> <episodes> <readings> <source> <source>: 1 when the two encoder streams are the same reading
+// for reading
+fn s3_mode_same(g: i64, dir: i64, scene: i64, na: i64, nb: i64) -> i64 {
+    let x: i64 = s3_load(g, dir, scene, na); let y: i64 = s3_load(g, dir, scene, nb);
+    if s3_both(x, y) == 0 { s3_lbl("an input is missing\n"); return 1; } else { let _: i64 = 0; }
+    s3_lbl("SAME "); s3_puts(scene); print_char(32); s3_puts(na); print_char(32); s3_puts(nb); s3_num(" identical ", s3_same(g, x, y)); print_char(10);
+    42
+}
+fn s3_arg(argv: i64, i: i64) -> i64 { s3_int(load_i64(argv, i)) }
+fn s3_eq(a: i64, b: i64) -> i64 { if a == b { 1 } else { 0 } }
+fn s3_all4(a: i64, b: i64, c: i64, d: i64) -> i64 { s3_both(s3_both(a, b), s3_both(c, d)) }
+// verdict1 <encoder streams identical> <state files identical> <of> <cart_pole T folds in order> <half_cheetah G>
+// <ant G> <half_cheetah T> <episodes> <n9 never part: cart_pole half_cheetah ant> <n6 never part: the same three>
+// Stage 1's four rules, from stage 1's own lines. No instrument has read anything.
+fn s3_verdict1(argv: i64) -> i64 {
+    let enc: i64 = s3_arg(argv, 2); let sta: i64 = s3_arg(argv, 3); let of: i64 = s3_arg(argv, 4);
+    let r1: i64 = s3_both(s3_eq(enc, of), s3_eq(sta, of));
+    let r2: i64 = s3_both(s3_eq(s3_arg(argv, 5), 3), s3_both(s3_eq(s3_arg(argv, 6), 3), s3_eq(s3_arg(argv, 7), 3)));
+    let e1: i64 = s3_eq(s3_arg(argv, 8), 0); let eps: i64 = s3_arg(argv, 9);
+    let n9: i64 = s3_both(s3_eq(s3_arg(argv, 10), eps), s3_both(s3_eq(s3_arg(argv, 11), eps), s3_eq(s3_arg(argv, 12), eps)));
+    let n6: i64 = s3_both(s3_eq(s3_arg(argv, 13), eps), s3_both(s3_eq(s3_arg(argv, 14), eps), s3_eq(s3_arg(argv, 15), eps)));
+    let n1: i64 = s3_both(n9, n6);
+    s3_num("R1 the rig repeats: encoder streams identical ", enc); s3_num(" state files identical ", sta); s3_num(" of ", of); s3_num(" ; held ", r1); print_char(10);
+    s3_num("R2 in order with nothing touching the agent: cart_pole folds ", s3_arg(argv, 5)); s3_num(" half_cheetah folds ", s3_arg(argv, 6)); s3_num(" ant folds ", s3_arg(argv, 7)); s3_num(" of 3 ; held ", r2); print_char(10);
+    s3_num("N1 episodes that never part from the reference: n9 ", s3_arg(argv, 10)); print_char(32); print_int(s3_arg(argv, 11)); print_char(32); print_int(s3_arg(argv, 12)); s3_num(" n6 ", s3_arg(argv, 13)); print_char(32); print_int(s3_arg(argv, 14)); print_char(32); print_int(s3_arg(argv, 15)); s3_num(" of ", eps); s3_num(" ; held ", n1); print_char(10);
+    s3_num("E1 half_cheetah with the ground, folds in order ", s3_arg(argv, 8)); s3_num(" of 3 ; held (none in order) ", e1); print_char(10);
+    s3_num("STAGE1 R1 ", r1); s3_num(" R2 ", r2); s3_num(" N1 ", n1); s3_num(" E1 ", e1); s3_num(" all ", s3_all4(r1, r2, n1, e1)); print_char(10);
+    42
+}
+// verdict2 <stage 1 all held> then, for each of the ten lists: <cells the same> <calibration level> <calibration
+// windows>. The instrument's two rules and the thesis.
+fn s3_verdict2(argc: i64, argv: i64) -> i64 {
+    let st1: i64 = s3_arg(argv, 2); let mut i: i64 = 3; let mut cells: i64 = 0; let mut pl: i64 = 0; let mut pw: i64 = 0; let mut parts: i64 = 0;
+    while i + 2 < argc { cells = cells + s3_arg(argv, i); pl = pl + s3_arg(argv, i + 1); pw = pw + s3_arg(argv, i + 2); parts = parts + 1; i = i + 3; }
+    if parts != 10 { s3_num("VERDICT needs ten lists, got ", parts); print_char(10); return 1; } else { let _: i64 = 0; }
+    let i0: i64 = if pl * 100 <= 2 * pw { 1 } else { 0 }; let i1: i64 = s3_eq(cells, parts * 3);
+    s3_num("I0 pooled calibration level ", pl); s3_num(" of ", pw); s3_num(" in_10000 ", intdiv(intdiv(pl * 100, 9) * 100, intdiv(pw, 9))); s3_num(" ; held ", i0); print_char(10);
+    s3_num("I1 cells the instrument and plain subtraction order alike ", cells); s3_num(" of ", parts * 3); s3_num(" ; held ", i1); print_char(10);
+    s3_num("STAGE1 all held ", st1); print_char(10);
+    s3_lbl("THESIS the instrument orders as arithmetic does (I0, I1), the rig repeats and its stepping converges with nothing touching the agent (R1, R2), the scenes do not amplify (N1), and half_cheetah's time-step chain is out of order with the ground (E1): ");
+    s3_lbl(if s3_both(st1, s3_both(i0, i1)) == 1 { "PASS" } else { "FAIL" }); print_char(10);
+    42
+}
+fn s3_usage() -> i64 { s3_lbl("usage: sx_settings3 time <streams dir> <scene> <episodes> <readings> <source> <source> [...] | same <streams dir> <scene> <episodes> <readings> <source> <source> | plain <streams dir> <scene> <episodes> <readings> <chain|ladder> <label> <source> ... | read <streams dir> <scene> <episodes> <readings> <bar> <slot> <chain|ladder> <label> <source> ... | verdict1 <14 numbers> | verdict2 <stage 1 held> <cells level windows> x 10\n"); 1 }
+fn main(argc: i64, argv: i64) -> i64 {
+    let _a: i64 = s3_nop(); let _b: i64 = csc_nop(); let _c: i64 = vor_nop(); let _d: i64 = ns_marker(); let _e: i64 = gw_nop(); let _f: i64 = rxg_nop();
+    if argc < 3 { return s3_usage(); } else { let _: i64 = 0; }
+    if s3_is(load_i64(argv, 1), "verdict1") == 1 { if argc < 16 { return s3_usage(); } else { let _: i64 = 0; } return s3_verdict1(argv); } else { let _: i64 = 0; }
+    if s3_is(load_i64(argv, 1), "verdict2") == 1 { return s3_verdict2(argc, argv); } else { let _: i64 = 0; }
+    if argc < 8 { return s3_usage(); } else { let _: i64 = 0; }
+    let mode: i64 = load_i64(argv, 1);
+    let g: i64 = s3_new(s3_int(load_i64(argv, 4)), s3_int(load_i64(argv, 5)));
+    if s3_is(mode, "time") == 1 { return s3_time(g, load_i64(argv, 2), load_i64(argv, 3), argc, argv); } else { let _: i64 = 0; }
+    if s3_is(mode, "same") == 1 { return s3_mode_same(g, load_i64(argv, 2), load_i64(argv, 3), load_i64(argv, 6), load_i64(argv, 7)); } else { let _: i64 = 0; }
+    if s3_is(mode, "plain") == 1 {
+        if argc < 10 { return s3_usage(); } else { let _: i64 = 0; }
+        let lp: i64 = s3_list_new(g, load_i64(argv, 2), load_i64(argv, 3), load_i64(argv, 7), s3_is(load_i64(argv, 6), "ladder"), argc, argv, 8);
+        if lp == 0 { s3_lbl("an input is missing\n"); return 1; } else { let _: i64 = 0; }
+        return s3_mode_plain(g, lp);
+    } else { let _: i64 = 0; }
+    if s3_is(mode, "read") == 1 {
+        if argc < 12 { return s3_usage(); } else { let _: i64 = 0; }
+        store_i64(g, 6, s3_int(load_i64(argv, 6))); let slot: i64 = s3_int(load_i64(argv, 7));
+        let lr: i64 = s3_list_new(g, load_i64(argv, 2), load_i64(argv, 3), load_i64(argv, 9), s3_is(load_i64(argv, 8), "ladder"), argc, argv, 10);
+        if lr == 0 { s3_lbl("an input is missing\n"); return 1; } else { let _: i64 = 0; }
+        s3_skip(g, slot);
+        s3_num("LIBRARY window ", csc_lib_window()); s3_num(" pfa ", csc_lib_pfa_num()); s3_num(" / ", csc_lib_pfa_den()); s3_num(" declared normal needs ", rxg_need()); s3_num(" episodes ", s3_eps(g)); s3_num(" readings each ", s3_steps(g)); s3_num(" detection bar ", load_i64(g, 6)); s3_num(" noise slot ", slot); print_char(10);
+        return s3_mode_read(g, lr);
+    } else { let _: i64 = 0; }
+    s3_usage()
+}

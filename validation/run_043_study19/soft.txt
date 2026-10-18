@@ -1,0 +1,15 @@
+SAME off_against_stock 1
+SAME 14_against_15 c 1
+SAME 14_against_15 abcd 1
+SAME off_against_stock 4
+SAME 14_against_15 c 4
+SAME 14_against_15 abcd 4
+SAME off_against_stock 16
+SAME 14_against_15 c 16
+SAME 14_against_15 abcd 16
+SAME off_against_stock 32
+DIFFERS 14_against_15 c 32 byte 45803, line 1438
+DIFFERS 14_against_15 abcd 32 byte 54662, line 1697
+SAME off_against_stock 64
+DIFFERS 14_against_15 c 64 byte 63683, line 1978
+SAME 14_against_15 abcd 64

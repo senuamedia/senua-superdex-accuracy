@@ -1,0 +1,183 @@
+// measure/instrument/sx_settings.sx -- preregistrations/PREREGISTRATION_01.md (pre-registered
+// 2026-10-13): the validated gap instrument (unchanged) on SuperDex's own accuracy
+// settings, over Meta's three published benchmark scenes. Every source of a scene is the same 108 seeded episodes of
+// 200 encoder readings (<streams>/<scene>/<source>_enc.pcm, written by the public rig sdx_player). The streams carry
+// no sensor noise; the World's sensor noise (-1 .. +1 count before the ceiling, from the engine's seeded generator)
+// is applied as each is read: a ladder's reference three times (runs A, B, C; seeds 401, 402, 403),
+// each rung once (seed 410 + its position).
+// Roles by block of 36 episodes: fold f declares its normal on block (f + 1) mod 3 (B minus A), reads block
+// (f + 2) mod 3.
+// usage: sx_settings count <streams dir>     stage 1: readings, range, saturation, rungs identical to their reference
+//        sx_settings run <streams dir>       stage 2: the instrument, once; the verdicts are printed
+// exit 42 = ran
+extern fn malloc(size: i64) -> i64;
+extern fn free(ptr: i64);
+extern fn print_char(c: i64);
+extern fn print_int(x: i64);
+extern fn dvec_to_cstr(d: i64) -> i64;
+extern fn load_i64(base: i64, slot: i64) -> i64;
+extern fn store_i64(base: i64, slot: i64, val: i64);
+extern fn load_byte(buf: i64, off: i64) -> i64;
+extern fn store_byte(buf: i64, off: i64, val: i64);
+// use "senua_engine.sx"   // Senua AI engine: the gap instrument, the sensor noise, the seeded generator (not distributed)
+
+fn ss_nop() -> i64 { 0 }
+fn ss_eps() -> i64 { 108 }
+fn ss_steps() -> i64 { 200 }
+fn ss_block() -> i64 { 36 }
+fn ss_puts(c: i64) { let mut i: i64 = 0; while load_byte(c, i) != 0 { print_char(load_byte(c, i)); i = i + 1; } }
+fn ss_lbl(s: i64) { let c: i64 = dvec_to_cstr(s); ss_puts(c); free(c); }
+fn ss_num(s: i64, v: i64) { ss_lbl(s); print_int(v); }
+fn ss_both(a: i64, b: i64) -> i64 { if a != 0 { if b != 0 { 1 } else { 0 } } else { 0 } }
+fn ss_is(a: i64, lit_dv: i64) -> i64 { let b: i64 = dvec_to_cstr(lit_dv); let mut i: i64 = 0; let mut r: i64 = 2; while r == 2 { let x: i64 = load_byte(a, i); if x != load_byte(b, i) { r = 0; } else { if x == 0 { r = 1; } else { i = i + 1; } } } free(b); r }
+// 1 normal, 2 test (0 unused): by block of 36 episodes
+fn ss_role(ep: i64, f: i64) -> i64 { (intdiv(ep, ss_block()) % 3 + 3 - f) % 3 }
+fn ss_put(dst: i64, o: i64, s: i64) -> i64 { let mut k: i64 = 0; while load_byte(s, k) != 0 { store_byte(dst, o + k, load_byte(s, k)); k = k + 1; } o + k }
+// "<dir>/<scene>/<source>_enc.pcm" as readings vals[episode * steps + step]; 0 when absent or not 108 x 200
+fn ss_load(dir: i64, scene: i64, src: i64) -> i64 {
+    let tail: i64 = dvec_to_cstr("_enc.pcm");
+    let p: i64 = malloc(cstr_len(dir) + cstr_len(scene) + cstr_len(src) + cstr_len(tail) + 8);
+    let mut o: i64 = ss_put(p, 0, dir); store_byte(p, o, 47); o = o + 1; o = ss_put(p, o, scene); store_byte(p, o, 47); o = o + 1; o = ss_put(p, o, src); o = ss_put(p, o, tail); store_byte(p, o, 0);
+    free(tail);
+    let meta: i64 = malloc(16); let b: i64 = os_file_read_all(p, meta); let nb: i64 = load_i64(meta, 0); free(p);
+    if b == 0 { free(meta); return 0; } else { let _: i64 = 0; }
+    let vals: i64 = ns_vec_pcm_to_vals(b, nb, 1, meta); let nf: i64 = load_i64(meta, 0); free(b); free(meta);
+    if nf != ss_eps() * ss_steps() { free(vals); return 0; } else { let _: i64 = 0; }
+    vals
+}
+// one run of a source under the world's sensor model, from its own seed (a fresh array)
+fn ss_noisy(vals: i64, seed: i64) -> i64 {
+    let n: i64 = ss_eps() * ss_steps(); let v: i64 = malloc(n * 8 + 64); let rp: i64 = malloc(16); store_i64(rp, 0, seed); let mut t: i64 = 0;
+    while t < n { store_i64(v, t, gw_clip16(load_i64(vals, t) + gw_noise(rp, 1))); t = t + 1; }
+    free(rp); v
+}
+// 1 when two noiseless streams are the same reading for reading
+fn ss_same(x: i64, y: i64) -> i64 { let n: i64 = ss_eps() * ss_steps(); let mut same: i64 = 1; let mut t: i64 = 0; while t < n { if load_i64(x, t) != load_i64(y, t) { same = 0; } else { let _: i64 = 0; } t = t + 1; } same }
+// fold f's declared normal: runs A and B of the reference over the normal block's episodes, in order
+fn ss_normal(a: i64, b: i64, f: i64) -> i64 {
+    let n0: i64 = ss_eps() * ss_steps(); let xa: i64 = malloc(n0 * 8 + 64); let xb: i64 = malloc(n0 * 8 + 64); let mut n: i64 = 0; let mut ep: i64 = 0;
+    while ep < ss_eps() {
+        if ss_role(ep, f) == 1 { let mut t: i64 = 0; while t < ss_steps() { store_i64(xa, n, load_i64(a, ep * ss_steps() + t)); store_i64(xb, n, load_i64(b, ep * ss_steps() + t)); n = n + 1; t = t + 1; } } else { let _: i64 = 0; }
+        ep = ep + 1;
+    }
+    let h: i64 = rxg_declare(xa, xb, n); free(xa); free(xb); h
+}
+// one source's test episodes of fold f against run A of the reference: res = the module's six slots
+fn ss_test(h: i64, src: i64, a: i64, f: i64, res: i64) {
+    let r: i64 = malloc(ss_steps() * 8 + 64); let mut z: i64 = 0; let mut ep: i64 = 0;
+    while z < 6 { store_i64(res, z, 0); z = z + 1; }
+    while ep < ss_eps() {
+        if ss_role(ep, f) == 2 {
+            rxg_residual(ptr_add(src, ep * ss_steps() * 8), ptr_add(a, ep * ss_steps() * 8), ss_steps(), r);
+            rxg_read(h, r, ss_steps(), res, 0);
+        } else { let _: i64 = 0; }
+        ep = ep + 1;
+    }
+    free(r);
+}
+fn ss_line(name: i64, res: i64) {
+    ss_lbl("  "); ss_puts(name); ss_num(" level ", rxg_level(res)); ss_num(" of ", rxg_windows(res)); ss_num(" change ", rxg_change(res)); ss_num(" magnitude ", rxg_magnitude(res)); print_char(10);
+}
+// the range of a noiseless stream: out [0] min [1] max [2] readings at the s16 ceiling
+fn ss_range(v: i64, out: i64) {
+    let n: i64 = ss_eps() * ss_steps(); let mut lo: i64 = 32767; let mut hi: i64 = 0 - 32767; let mut sat: i64 = 0; let mut t: i64 = 0;
+    while t < n { let x: i64 = load_i64(v, t); if x < lo { lo = x; } else { let _: i64 = 0; } if x > hi { hi = x; } else { let _: i64 = 0; } if x >= 32767 { sat = sat + 1; } else { if x <= 0 - 32767 { sat = sat + 1; } else { let _: i64 = 0; } } t = t + 1; }
+    store_i64(out, 0, lo); store_i64(out, 1, hi); store_i64(out, 2, sat);
+}
+// rung i of a ladder's name list (C strings in slots)
+fn ss_rung(names: i64, i: i64) -> i64 { load_i64(names, i) }
+// A ladder of one scene. names[0, nr) = the rungs coarse to fine, ref = its reference, ship = the shipped rung's
+// position (-1 none). kind 0 a ladder (G0, G1, A1), 1 the control with no causal tie (G0, N0), 2 reported only (G0).
+// stage 1 (count != 0) prints structure and reads nothing with the instrument.
+// Returns 1 every fold held, 0 one fired, -1 an input is missing.
+fn ss_ladder(dir: i64, scene: i64, lname: i64, ref: i64, names: i64, nr: i64, ship: i64, kind: i64, count: i64) -> i64 {
+    let ref0: i64 = ss_load(dir, scene, ref);
+    if ref0 == 0 { ss_lbl("MISSING "); ss_puts(scene); print_char(47); ss_puts(ref); print_char(10); return 0 - 1; } else { let _: i64 = 0; }
+    let raw: i64 = malloc(nr * 8 + 64); let same: i64 = malloc(nr * 8 + 64); let mut miss: i64 = 0; let mut i: i64 = 0;
+    while i < nr { let v: i64 = ss_load(dir, scene, ss_rung(names, i)); store_i64(raw, i, v); if v == 0 { miss = 1; ss_lbl("MISSING "); ss_puts(scene); print_char(47); ss_puts(ss_rung(names, i)); print_char(10); store_i64(same, i, 0); } else { store_i64(same, i, ss_same(v, ref0)); } i = i + 1; }
+    if miss == 1 { return 0 - 1; } else { let _: i64 = 0; }
+    if count != 0 { return ss_count(scene, lname, ref, ref0, names, raw, same, nr); } else { let _: i64 = 0; }
+    let a: i64 = ss_noisy(ref0, 401); let b: i64 = ss_noisy(ref0, 402); let c: i64 = ss_noisy(ref0, 403);
+    let nz: i64 = malloc(nr * 8 + 64); i = 0;
+    while i < nr { store_i64(nz, i, ss_noisy(load_i64(raw, i), 411 + i)); i = i + 1; }
+    let rc: i64 = malloc(64); let rr: i64 = malloc(nr * 64 + 64); let mut ok: i64 = 1; let mut f: i64 = 0;
+    while f < 3 {
+        let h: i64 = ss_normal(a, b, f);
+        ss_lbl("CELL "); ss_puts(scene); print_char(32); ss_puts(lname); ss_num(" fold ", f); ss_num(" normal usable ", rxg_ok(h)); print_char(10);
+        if rxg_ok(h) == 0 { ok = 0; } else { if ss_fold(h, a, c, nz, same, names, nr, ship, kind, f, rc, rr) == 0 { ok = 0; } else { let _: i64 = 0; } }
+        rxg_free(h);
+        f = f + 1;
+    }
+    ok
+}
+// stage 1 for one ladder
+fn ss_count(scene: i64, lname: i64, ref: i64, ref0: i64, names: i64, raw: i64, same: i64, nr: i64) -> i64 {
+    let rg: i64 = malloc(32); ss_range(ref0, rg);
+    ss_lbl("COUNT "); ss_puts(scene); print_char(32); ss_puts(lname); ss_lbl(" reference "); ss_puts(ref); ss_num(" readings ", ss_eps() * ss_steps()); ss_num(" min ", load_i64(rg, 0)); ss_num(" max ", load_i64(rg, 1)); ss_num(" at_ceiling ", load_i64(rg, 2)); print_char(10);
+    let mut i: i64 = 0;
+    while i < nr { ss_range(load_i64(raw, i), rg); ss_lbl("  rung "); ss_puts(ss_rung(names, i)); ss_num(" min ", load_i64(rg, 0)); ss_num(" max ", load_i64(rg, 1)); ss_num(" at_ceiling ", load_i64(rg, 2)); ss_num(" identical_to_reference ", load_i64(same, i)); print_char(10); i = i + 1; }
+    free(rg); 1
+}
+// one fold of one ladder: prints every line and the verdicts; returns 1 when the cell held
+fn ss_fold(h: i64, a: i64, c: i64, nz: i64, same: i64, names: i64, nr: i64, ship: i64, kind: i64, f: i64, rc: i64, rr: i64) -> i64 {
+    ss_test(h, c, a, f, rc);
+    let refname: i64 = dvec_to_cstr("reference_C"); ss_line(refname, rc); free(refname);
+    let g0: i64 = if rxg_level(rc) * 100 <= 2 * rxg_windows(rc) { 1 } else { 0 };
+    let mut i: i64 = 0; let mut first: i64 = 0 - 1; let mut anydet: i64 = 0; let mut undet_seen: i64 = 0; let mut prev: i64 = 0 - 1; let mut a1: i64 = 1; let mut finest: i64 = 0 - 1; let mut g1: i64 = 0;
+    while i < nr {
+        let res: i64 = ptr_add(rr, i * 64);
+        if load_i64(same, i) == 1 { ss_lbl("  "); ss_puts(ss_rung(names, i)); ss_lbl(" IS the reference (identical stream)\n"); } else {
+            ss_test(h, load_i64(nz, i), a, f, res); ss_line(ss_rung(names, i), res);
+            let det: i64 = ss_both(if rxg_level(res) > rxg_level(rc) { 1 } else { 0 }, if rxg_level(res) * 100 > 2 * rxg_windows(res) { 1 } else { 0 });
+            if first < 0 { first = i; g1 = det; } else { let _: i64 = 0; }
+            if det == 1 {
+                anydet = 1; finest = i;
+                if undet_seen == 1 { a1 = 0; } else { let _: i64 = 0; }
+                if prev >= 0 { if rxg_magnitude(res) >= prev { a1 = 0; } else { let _: i64 = 0; } } else { let _: i64 = 0; }
+                prev = rxg_magnitude(res);
+            } else { undet_seen = 1; }
+        }
+        i = i + 1;
+    }
+    let mut held: i64 = g0;
+    ss_num("  G0 ", g0);
+    if kind == 0 { if first < 0 { ss_lbl(" ladder empty (every rung is the reference)"); } else { ss_num(" G1 ", g1); ss_num(" A1 ", a1); held = ss_both(g0, ss_both(g1, a1)); } } else { let _: i64 = 0; }
+    if kind == 1 { let n0: i64 = if anydet == 0 { 1 } else { 0 }; ss_num(" N0 ", n0); held = ss_both(g0, n0); } else { let _: i64 = 0; }
+    ss_num(" ; finest detected rung ", finest);
+    if ship >= 0 { if load_i64(same, ship) == 0 { ss_num(" ; shipped rung magnitude ", rxg_magnitude(ptr_add(rr, ship * 64))); } else { ss_lbl(" ; shipped rung is the reference"); } } else { let _: i64 = 0; }
+    print_char(10);
+    held
+}
+fn ss_names(n0: i64, n1: i64, n2: i64, n3: i64, n4: i64) -> i64 {
+    let p: i64 = malloc(64); store_i64(p, 0, dvec_to_cstr(n0)); store_i64(p, 1, dvec_to_cstr(n1)); store_i64(p, 2, dvec_to_cstr(n2)); store_i64(p, 3, dvec_to_cstr(n3)); store_i64(p, 4, dvec_to_cstr(n4)); p
+}
+// one scene: ladders S, T, C and the two reported sources. ctl = 1 when the scene has no contact (C is the control).
+fn ss_scene(dir: i64, scene_dv: i64, ctl: i64, count: i64) -> i64 {
+    let scene: i64 = dvec_to_cstr(scene_dv);
+    let ls: i64 = dvec_to_cstr("S_solver_convergence"); let lt: i64 = dvec_to_cstr("T_time_integration"); let lc: i64 = dvec_to_cstr("C_contact_compliance"); let lx: i64 = dvec_to_cstr("X_reported_against_T_reference");
+    let base: i64 = dvec_to_cstr("base"); let tref: i64 = dvec_to_cstr("tref"); let cref: i64 = dvec_to_cstr("cref");
+    let s: i64 = ss_ladder(dir, scene, ls, base, ss_names("s1", "s2", "s4", "s8", "s16"), 5, 2, 0, count);
+    let t: i64 = ss_ladder(dir, scene, lt, tref, ss_names("base", "t2", "t4", "t8", "t8"), 4, 0, 0, count);
+    let c: i64 = ss_ladder(dir, scene, lc, cref, ss_names("c10", "base", "c2", "c1", "c1"), 4, 1, ctl, count);
+    let x: i64 = ss_ladder(dir, scene, lx, tref, ss_names("s4", "b1", "b1", "b1", "b1"), 2, 0 - 1, 2, count);
+    if s < 0 { return 0 - 1; } else { let _: i64 = 0; }
+    if t < 0 { return 0 - 1; } else { let _: i64 = 0; }
+    if c < 0 { return 0 - 1; } else { let _: i64 = 0; }
+    if x < 0 { return 0 - 1; } else { let _: i64 = 0; }
+    ss_lbl("SCENE "); ss_puts(scene); ss_num(" S ", s); ss_num(" T ", t); ss_num(" C ", c); ss_num(" reported_G0 ", x); print_char(10);
+    ss_both(s, ss_both(t, ss_both(c, x)))
+}
+fn main(argc: i64, argv: i64) -> i64 {
+    let _a: i64 = ss_nop(); let _b: i64 = csc_nop(); let _c: i64 = vor_nop(); let _d: i64 = ns_marker(); let _e: i64 = gw_nop(); let _f: i64 = rxg_nop();
+    if argc < 3 { ss_lbl("usage: sx_settings count|run <streams dir>\n"); return 1; } else { let _: i64 = 0; }
+    let count: i64 = ss_is(load_i64(argv, 1), "count"); let dir: i64 = load_i64(argv, 2);
+    if count == 0 { if ss_is(load_i64(argv, 1), "run") == 0 { ss_lbl("usage: sx_settings count|run <streams dir>\n"); return 1; } else { let _: i64 = 0; } } else { let _: i64 = 0; }
+    ss_num("LIBRARY window ", csc_lib_window()); ss_num(" pfa ", csc_lib_pfa_num()); ss_num(" / ", csc_lib_pfa_den()); ss_num(" declared normal needs ", rxg_need()); ss_num(" episodes ", ss_eps()); ss_num(" readings each ", ss_steps()); ss_num(" a block ", ss_block() * ss_steps()); print_char(10);
+    let cp: i64 = ss_scene(dir, "cart_pole", 1, count); let hc: i64 = ss_scene(dir, "half_cheetah", 0, count); let an: i64 = ss_scene(dir, "ant", 0, count);
+    if cp < 0 { ss_lbl("a cart_pole input is missing\n"); return 1; } else { let _: i64 = 0; }
+    if hc < 0 { ss_lbl("a half_cheetah input is missing\n"); return 1; } else { let _: i64 = 0; }
+    if an < 0 { ss_lbl("an ant input is missing\n"); return 1; } else { let _: i64 = 0; }
+    if count != 0 { ss_lbl("STAGE 1 counted; the instrument has read nothing\n"); return 42; } else { let _: i64 = 0; }
+    ss_lbl("THESIS every cell (G0; G1 and A1 on each ladder; N0 on the control): "); ss_lbl(if ss_both(cp, ss_both(hc, an)) == 1 { "PASS" } else { "FAIL" }); print_char(10);
+    42
+}

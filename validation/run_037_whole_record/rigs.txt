@@ -1,0 +1,14 @@
+The rigs of run 037: name, sha256, the library folder it loads (rpath), that library's sha256
+sdx_chain64 c01c87422bf397f6 superdex-build-f64/bin 471d5d5bd856f37c
+sdx_contact64 1d61eb0ecfacb477 superdex-build-f64/bin 471d5d5bd856f37c
+sdx_contact64_stock 1d61eb0ecfacb477 superdex-build-f64/bin 471d5d5bd856f37c
+sdx_deform64 03e301593bcd1356 superdex-build-f64/bin 471d5d5bd856f37c
+sdx_grip64 ef2aaa27332213ee superdex-build-f64/bin 471d5d5bd856f37c
+sdx_joint64 34aeb50595e79934 superdex-build-f64/bin 471d5d5bd856f37c
+sdx_joint64_stock 34aeb50595e79934 superdex-build-f64/bin 471d5d5bd856f37c
+sdx_pair64 623103dfc911cac8 superdex-build-f64/bin 471d5d5bd856f37c
+sdx_pair64_stock 623103dfc911cac8 superdex-build-f64/bin 471d5d5bd856f37c
+sdx_player64 a16dbe0099b26db6 superdex-build-f64/bin 471d5d5bd856f37c
+sdx_player64_stock a16dbe0099b26db6 superdex-build-f64/bin 471d5d5bd856f37c
+sdx_rotvec64 31609523f2570d4f superdex-build-f64/bin 471d5d5bd856f37c
+sdx_rotvec64_stock 31609523f2570d4f superdex-build-f64/bin 471d5d5bd856f37c

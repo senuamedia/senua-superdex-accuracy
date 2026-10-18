@@ -1,0 +1,116 @@
+run_028_joint_motion/chain/off/free_1	sdx_chain	yes	dt=.010000000000 mass1=1.2 mass2=0.6 radius=0.04 arm1=0.25 len1=0.5 arm2=0.2 gravity=0 angle2=-0.9 omega1=2.5 omega2=1.5 secs=2 newtoneuler=0
+run_028_joint_motion/chain/off/free_4	sdx_chain	yes	dt=.002500000000 mass1=1.2 mass2=0.6 radius=0.04 arm1=0.25 len1=0.5 arm2=0.2 gravity=0 angle2=-0.9 omega1=2.5 omega2=1.5 secs=2 newtoneuler=0
+run_028_joint_motion/chain/off/free_16	sdx_chain	yes	dt=.000625000000 mass1=1.2 mass2=0.6 radius=0.04 arm1=0.25 len1=0.5 arm2=0.2 gravity=0 angle2=-0.9 omega1=2.5 omega2=1.5 secs=2 newtoneuler=0
+run_028_joint_motion/chain/off/swing_1	sdx_chain	yes	dt=.010000000000 mass1=1.2 mass2=0.6 radius=0.04 arm1=0.25 len1=0.5 arm2=0.2 gravity=1 angle1=0.4 angle2=-0.7 secs=2 newtoneuler=0
+run_028_joint_motion/chain/off/swing_4	sdx_chain	yes	dt=.002500000000 mass1=1.2 mass2=0.6 radius=0.04 arm1=0.25 len1=0.5 arm2=0.2 gravity=1 angle1=0.4 angle2=-0.7 secs=2 newtoneuler=0
+run_028_joint_motion/chain/off/swing_16	sdx_chain	yes	dt=.000625000000 mass1=1.2 mass2=0.6 radius=0.04 arm1=0.25 len1=0.5 arm2=0.2 gravity=1 angle1=0.4 angle2=-0.7 secs=2 newtoneuler=0
+run_028_joint_motion/chain/ne/free_1	sdx_chain	yes	dt=.010000000000 mass1=1.2 mass2=0.6 radius=0.04 arm1=0.25 len1=0.5 arm2=0.2 gravity=0 angle2=-0.9 omega1=2.5 omega2=1.5 secs=2 newtoneuler=1
+run_028_joint_motion/chain/ne/free_4	sdx_chain	yes	dt=.002500000000 mass1=1.2 mass2=0.6 radius=0.04 arm1=0.25 len1=0.5 arm2=0.2 gravity=0 angle2=-0.9 omega1=2.5 omega2=1.5 secs=2 newtoneuler=1
+run_028_joint_motion/chain/ne/free_16	sdx_chain	yes	dt=.000625000000 mass1=1.2 mass2=0.6 radius=0.04 arm1=0.25 len1=0.5 arm2=0.2 gravity=0 angle2=-0.9 omega1=2.5 omega2=1.5 secs=2 newtoneuler=1
+run_028_joint_motion/chain/ne/swing_1	sdx_chain	yes	dt=.010000000000 mass1=1.2 mass2=0.6 radius=0.04 arm1=0.25 len1=0.5 arm2=0.2 gravity=1 angle1=0.4 angle2=-0.7 secs=2 newtoneuler=1
+run_028_joint_motion/chain/ne/swing_4	sdx_chain	yes	dt=.002500000000 mass1=1.2 mass2=0.6 radius=0.04 arm1=0.25 len1=0.5 arm2=0.2 gravity=1 angle1=0.4 angle2=-0.7 secs=2 newtoneuler=1
+run_028_joint_motion/chain/ne/swing_16	sdx_chain	yes	dt=.000625000000 mass1=1.2 mass2=0.6 radius=0.04 arm1=0.25 len1=0.5 arm2=0.2 gravity=1 angle1=0.4 angle2=-0.7 secs=2 newtoneuler=1
+run_029_end_to_end/runs/deform_stock/rod_fall_0.01	sdx_deform	no	dt=0.01 case=rod_fall lin=0.12 ea=150 len=0.6 ei=3
+run_029_end_to_end/runs/deform_stock/shell_fall_0.01	sdx_deform	no	dt=0.01 case=shell_fall rhoa=1.2 mmu=500 mlambda=0 len=0.4
+run_029_end_to_end/runs/deform_stock/soft_fall_0.01	sdx_deform	no	dt=0.01 case=soft_fall rho=1100 young=2e6 nu=0 len=0.4
+run_029_end_to_end/runs/deform_stock/rod_hang_0.01	sdx_deform	no	dt=0.01 case=rod_hang lin=0.12 ea=150 len=0.6 ei=3
+run_029_end_to_end/runs/deform_stock/shell_hang_0.01	sdx_deform	no	dt=0.01 case=shell_hang rhoa=1.2 mmu=500 mlambda=0 len=0.4
+run_029_end_to_end/runs/deform_stock/soft_hang_0.01	sdx_deform	no	dt=0.01 case=soft_hang rho=1100 young=2e6 nu=0 len=0.4
+run_029_end_to_end/runs/deform_stock/shell_rest_0.01	sdx_deform	no	dt=0.01 case=shell_rest mu=0.4
+run_029_end_to_end/runs/deform_stock/shell_slide_0.01	sdx_deform	no	dt=0.01 case=shell_slide mu=0.4 v0=0.8
+run_029_end_to_end/runs/deform_stock/shell_hold_0.01	sdx_deform	no	dt=0.01 case=shell_hold mu=0.4 tilt=0.25
+run_029_end_to_end/runs/deform_stock/soft_rest_0.01	sdx_deform	no	dt=0.01 case=soft_rest mu=0.4
+run_029_end_to_end/runs/deform_stock/soft_slide_0.01	sdx_deform	no	dt=0.01 case=soft_slide mu=0.4 v0=0.8
+run_029_end_to_end/runs/deform_stock/soft_hold_0.01	sdx_deform	no	dt=0.01 case=soft_hold mu=0.4 tilt=0.25
+run_029_end_to_end/runs/deform_stock/rod_fall_0.001	sdx_deform	no	dt=0.001 case=rod_fall lin=0.12 ea=150 len=0.6 ei=3
+run_029_end_to_end/runs/deform_stock/shell_fall_0.001	sdx_deform	no	dt=0.001 case=shell_fall rhoa=1.2 mmu=500 mlambda=0 len=0.4
+run_029_end_to_end/runs/deform_stock/soft_fall_0.001	sdx_deform	no	dt=0.001 case=soft_fall rho=1100 young=2e6 nu=0 len=0.4
+run_029_end_to_end/runs/deform_stock/rod_hang_0.001	sdx_deform	no	dt=0.001 case=rod_hang lin=0.12 ea=150 len=0.6 ei=3
+run_029_end_to_end/runs/deform_stock/shell_hang_0.001	sdx_deform	no	dt=0.001 case=shell_hang rhoa=1.2 mmu=500 mlambda=0 len=0.4
+run_029_end_to_end/runs/deform_stock/soft_hang_0.001	sdx_deform	no	dt=0.001 case=soft_hang rho=1100 young=2e6 nu=0 len=0.4
+run_029_end_to_end/runs/deform_stock/shell_rest_0.001	sdx_deform	no	dt=0.001 case=shell_rest mu=0.4
+run_029_end_to_end/runs/deform_stock/shell_slide_0.001	sdx_deform	no	dt=0.001 case=shell_slide mu=0.4 v0=0.8
+run_029_end_to_end/runs/deform_stock/shell_hold_0.001	sdx_deform	no	dt=0.001 case=shell_hold mu=0.4 tilt=0.25
+run_029_end_to_end/runs/deform_stock/soft_rest_0.001	sdx_deform	no	dt=0.001 case=soft_rest mu=0.4
+run_029_end_to_end/runs/deform_stock/soft_slide_0.001	sdx_deform	no	dt=0.001 case=soft_slide mu=0.4 v0=0.8
+run_029_end_to_end/runs/deform_stock/soft_hold_0.001	sdx_deform	no	dt=0.001 case=soft_hold mu=0.4 tilt=0.25
+run_029_end_to_end/runs/deform_stock/cantilever_n32_0.01	sdx_deform	no	dt=0.01 case=rod_cantilever lin=0.12 ea=150 len=0.6 ei=3 n=32
+run_029_end_to_end/runs/deform_stock/cantilever_n64_0.01	sdx_deform	no	dt=0.01 case=rod_cantilever lin=0.12 ea=150 len=0.6 ei=3 n=64
+run_029_end_to_end/runs/deform_stock/cantilever_n128_0.01	sdx_deform	no	dt=0.01 case=rod_cantilever lin=0.12 ea=150 len=0.6 ei=3 n=128
+run_029_end_to_end/runs/grip_stock/built_8	sdx_grip	yes	gripper=built assets=~/code/superdex-src/superdex_physics/assets mass=0.15 half=0.012 mu=0.45 grip=8
+run_029_end_to_end/runs/grip_stock/built_0.9	sdx_grip	yes	gripper=built assets=~/code/superdex-src/superdex_physics/assets mass=0.15 half=0.012 mu=0.45 grip=0.9
+run_029_end_to_end/runs/grip_stock/fr3_8	sdx_grip	yes	gripper=fr3 assets=~/code/superdex-src/superdex_physics/assets mass=0.15 half=0.012 mu=0.45 grip=8
+run_029_end_to_end/runs/grip_stock/fr3_0.9	sdx_grip	yes	gripper=fr3 assets=~/code/superdex-src/superdex_physics/assets mass=0.15 half=0.012 mu=0.45 grip=0.9
+run_032_open_items/runs/items/cant13_c0_n32	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.12 ea=150 len=0.6 ei=3 n=32 clampmid=0
+run_032_open_items/runs/items/cantf_c0_n32	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.15 ea=250 len=0.45 ei=1.2 n=32 clampmid=0
+run_032_open_items/runs/items/cant13_c1_n32	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.12 ea=150 len=0.6 ei=3 n=32 clampmid=1
+run_032_open_items/runs/items/cantf_c1_n32	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.15 ea=250 len=0.45 ei=1.2 n=32 clampmid=1
+run_032_open_items/runs/items/cant13_c0_n64	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.12 ea=150 len=0.6 ei=3 n=64 clampmid=0
+run_032_open_items/runs/items/cantf_c0_n64	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.15 ea=250 len=0.45 ei=1.2 n=64 clampmid=0
+run_032_open_items/runs/items/cant13_c1_n64	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.12 ea=150 len=0.6 ei=3 n=64 clampmid=1
+run_032_open_items/runs/items/cantf_c1_n64	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.15 ea=250 len=0.45 ei=1.2 n=64 clampmid=1
+run_032_open_items/runs/items/cant13_c0_n128	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.12 ea=150 len=0.6 ei=3 n=128 clampmid=0
+run_032_open_items/runs/items/cantf_c0_n128	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.15 ea=250 len=0.45 ei=1.2 n=128 clampmid=0
+run_032_open_items/runs/items/cant13_c1_n128	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.12 ea=150 len=0.6 ei=3 n=128 clampmid=1
+run_032_open_items/runs/items/cantf_c1_n128	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.15 ea=250 len=0.45 ei=1.2 n=128 clampmid=1
+run_032_open_items/runs/deform_stock/rod_fall_0.01	sdx_deform	no	dt=0.01 case=rod_fall lin=0.12 ea=150 len=0.6 ei=3
+run_032_open_items/runs/deform_stock/shell_fall_0.01	sdx_deform	no	dt=0.01 case=shell_fall rhoa=1.2 mmu=500 mlambda=0 len=0.4
+run_032_open_items/runs/deform_stock/soft_fall_0.01	sdx_deform	no	dt=0.01 case=soft_fall rho=1100 young=2e6 nu=0 len=0.4
+run_032_open_items/runs/deform_stock/rod_hang_0.01	sdx_deform	no	dt=0.01 case=rod_hang lin=0.12 ea=150 len=0.6 ei=3
+run_032_open_items/runs/deform_stock/shell_hang_0.01	sdx_deform	no	dt=0.01 case=shell_hang rhoa=1.2 mmu=500 mlambda=0 len=0.4
+run_032_open_items/runs/deform_stock/soft_hang_0.01	sdx_deform	no	dt=0.01 case=soft_hang rho=1100 young=2e6 nu=0 len=0.4
+run_032_open_items/runs/deform_stock/shell_rest_0.01	sdx_deform	no	dt=0.01 case=shell_rest mu=0.45
+run_032_open_items/runs/deform_stock/shell_slide_0.01	sdx_deform	no	dt=0.01 case=shell_slide mu=0.45 v0=0.7
+run_032_open_items/runs/deform_stock/shell_hold_0.01	sdx_deform	no	dt=0.01 case=shell_hold mu=0.45 tilt=0.3
+run_032_open_items/runs/deform_stock/soft_rest_0.01	sdx_deform	no	dt=0.01 case=soft_rest mu=0.45
+run_032_open_items/runs/deform_stock/soft_slide_0.01	sdx_deform	no	dt=0.01 case=soft_slide mu=0.45 v0=0.7
+run_032_open_items/runs/deform_stock/soft_hold_0.01	sdx_deform	no	dt=0.01 case=soft_hold mu=0.45 tilt=0.3
+run_032_open_items/runs/deform_stock/rod_fall_0.001	sdx_deform	no	dt=0.001 case=rod_fall lin=0.12 ea=150 len=0.6 ei=3
+run_032_open_items/runs/deform_stock/shell_fall_0.001	sdx_deform	no	dt=0.001 case=shell_fall rhoa=1.2 mmu=500 mlambda=0 len=0.4
+run_032_open_items/runs/deform_stock/soft_fall_0.001	sdx_deform	no	dt=0.001 case=soft_fall rho=1100 young=2e6 nu=0 len=0.4
+run_032_open_items/runs/deform_stock/rod_hang_0.001	sdx_deform	no	dt=0.001 case=rod_hang lin=0.12 ea=150 len=0.6 ei=3
+run_032_open_items/runs/deform_stock/shell_hang_0.001	sdx_deform	no	dt=0.001 case=shell_hang rhoa=1.2 mmu=500 mlambda=0 len=0.4
+run_032_open_items/runs/deform_stock/soft_hang_0.001	sdx_deform	no	dt=0.001 case=soft_hang rho=1100 young=2e6 nu=0 len=0.4
+run_032_open_items/runs/deform_stock/shell_rest_0.001	sdx_deform	no	dt=0.001 case=shell_rest mu=0.45
+run_032_open_items/runs/deform_stock/shell_slide_0.001	sdx_deform	no	dt=0.001 case=shell_slide mu=0.45 v0=0.7
+run_032_open_items/runs/deform_stock/shell_hold_0.001	sdx_deform	no	dt=0.001 case=shell_hold mu=0.45 tilt=0.3
+run_032_open_items/runs/deform_stock/soft_rest_0.001	sdx_deform	no	dt=0.001 case=soft_rest mu=0.45
+run_032_open_items/runs/deform_stock/soft_slide_0.001	sdx_deform	no	dt=0.001 case=soft_slide mu=0.45 v0=0.7
+run_032_open_items/runs/deform_stock/soft_hold_0.001	sdx_deform	no	dt=0.001 case=soft_hold mu=0.45 tilt=0.3
+run_032_open_items/runs/deform_stock/cantilever_n32_0.01	sdx_deform	no	dt=0.01 case=rod_cantilever lin=0.12 ea=150 len=0.6 ei=3 n=32 clampmid=1
+run_032_open_items/runs/deform_stock/cantilever_n64_0.01	sdx_deform	no	dt=0.01 case=rod_cantilever lin=0.12 ea=150 len=0.6 ei=3 n=64 clampmid=1
+run_032_open_items/runs/deform_stock/cantilever_n128_0.01	sdx_deform	no	dt=0.01 case=rod_cantilever lin=0.12 ea=150 len=0.6 ei=3 n=128 clampmid=1
+run_032_open_items/runs/grip_stock/built_8	sdx_grip	yes	gripper=built assets=~/code/superdex-src/superdex_physics/assets mass=0.15 half=0.012 mu=0.45 grip=8 dt=.010000000000
+run_032_open_items/runs/grip_stock/built_0.9	sdx_grip	yes	gripper=built assets=~/code/superdex-src/superdex_physics/assets mass=0.15 half=0.012 mu=0.45 grip=0.9 dt=.010000000000
+run_032_open_items/runs/grip_stock/fr3_8	sdx_grip	yes	gripper=fr3 assets=~/code/superdex-src/superdex_physics/assets mass=0.15 half=0.012 mu=0.45 grip=8 dt=.010000000000
+run_032_open_items/runs/grip_stock/fr3_0.9	sdx_grip	yes	gripper=fr3 assets=~/code/superdex-src/superdex_physics/assets mass=0.15 half=0.012 mu=0.45 grip=0.9 dt=.010000000000
+run_034_replication/runs/items/cant13_n64	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.12 ea=150 len=0.6 ei=3 n=64 clampmid=1 abstol=1e-4 reltol=1e-8
+run_034_replication/runs/items/canta_n64	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.2 ea=300 len=0.5 ei=5 n=64 clampmid=1 abstol=1e-4 reltol=1e-8
+run_034_replication/runs/items/cantb_n64	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.08 ea=120 len=0.7 ei=2.5 n=64 clampmid=1 abstol=1e-4 reltol=1e-8
+run_034_replication/runs/items/cant13_n128	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.12 ea=150 len=0.6 ei=3 n=128 clampmid=1 abstol=1e-4 reltol=1e-8
+run_034_replication/runs/items/canta_n128	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.2 ea=300 len=0.5 ei=5 n=128 clampmid=1 abstol=1e-4 reltol=1e-8
+run_034_replication/runs/items/cantb_n128	sdx_deform	no	case=rod_cantilever dt=0.01 lin=0.08 ea=120 len=0.7 ei=2.5 n=128 clampmid=1 abstol=1e-4 reltol=1e-8
+run_034_replication/runs/deform_stock/shell_rest_0.01	sdx_deform	no	dt=0.01 case=shell_rest mu=0.5
+run_034_replication/runs/deform_stock/shell_slide_0.01	sdx_deform	no	dt=0.01 case=shell_slide mu=0.5 v0=0.9
+run_034_replication/runs/deform_stock/shell_hold_0.01	sdx_deform	no	dt=0.01 case=shell_hold mu=0.5 tilt=0.35
+run_034_replication/runs/deform_stock/soft_rest_0.01	sdx_deform	no	dt=0.01 case=soft_rest mu=0.5
+run_034_replication/runs/deform_stock/soft_slide_0.01	sdx_deform	no	dt=0.01 case=soft_slide mu=0.5 v0=0.9
+run_034_replication/runs/deform_stock/soft_hold_0.01	sdx_deform	no	dt=0.01 case=soft_hold mu=0.5 tilt=0.35
+run_034_replication/runs/deform_stock/shell_rest_0.001	sdx_deform	no	dt=0.001 case=shell_rest mu=0.5
+run_034_replication/runs/deform_stock/shell_slide_0.001	sdx_deform	no	dt=0.001 case=shell_slide mu=0.5 v0=0.9
+run_034_replication/runs/deform_stock/shell_hold_0.001	sdx_deform	no	dt=0.001 case=shell_hold mu=0.5 tilt=0.35
+run_034_replication/runs/deform_stock/soft_rest_0.001	sdx_deform	no	dt=0.001 case=soft_rest mu=0.5
+run_034_replication/runs/deform_stock/soft_slide_0.001	sdx_deform	no	dt=0.001 case=soft_slide mu=0.5 v0=0.9
+run_034_replication/runs/deform_stock/soft_hold_0.001	sdx_deform	no	dt=0.001 case=soft_hold mu=0.5 tilt=0.35
+run_036_registration16/runs/deform_stock/shell_rest_0.01	sdx_deform	no	dt=0.01 case=shell_rest mu=0.46
+run_036_registration16/runs/deform_stock/shell_slide_0.01	sdx_deform	no	dt=0.01 case=shell_slide mu=0.46 v0=0.85
+run_036_registration16/runs/deform_stock/shell_hold_0.01	sdx_deform	no	dt=0.01 case=shell_hold mu=0.46 tilt=0.31
+run_036_registration16/runs/deform_stock/soft_rest_0.01	sdx_deform	no	dt=0.01 case=soft_rest mu=0.46
+run_036_registration16/runs/deform_stock/soft_slide_0.01	sdx_deform	no	dt=0.01 case=soft_slide mu=0.46 v0=0.85
+run_036_registration16/runs/deform_stock/soft_hold_0.01	sdx_deform	no	dt=0.01 case=soft_hold mu=0.46 tilt=0.31
+run_036_registration16/runs/deform_stock/shell_rest_0.001	sdx_deform	no	dt=0.001 case=shell_rest mu=0.46
+run_036_registration16/runs/deform_stock/shell_slide_0.001	sdx_deform	no	dt=0.001 case=shell_slide mu=0.46 v0=0.85
+run_036_registration16/runs/deform_stock/shell_hold_0.001	sdx_deform	no	dt=0.001 case=shell_hold mu=0.46 tilt=0.31
+run_036_registration16/runs/deform_stock/soft_rest_0.001	sdx_deform	no	dt=0.001 case=soft_rest mu=0.46
+run_036_registration16/runs/deform_stock/soft_slide_0.001	sdx_deform	no	dt=0.001 case=soft_slide mu=0.46 v0=0.85
+run_036_registration16/runs/deform_stock/soft_hold_0.001	sdx_deform	no	dt=0.001 case=soft_hold mu=0.46 tilt=0.31

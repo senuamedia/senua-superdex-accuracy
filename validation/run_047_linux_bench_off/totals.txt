@@ -1,0 +1,5 @@
+streams played: 38
+stock against patched with no switch, byte for byte: 38 of 38
+statistics, stock against patched with no switch (without wall_s): 38 of 38
+stock against the registered macOS stream: 34 of 38
+patched with no switch against the registered macOS stream: 34 of 38

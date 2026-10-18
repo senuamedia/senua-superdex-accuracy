@@ -1,0 +1,8 @@
+two arms on two joints, no gravity, 2 s, the joint-motion correction with SuperDex's Newton-Euler inertia:
+the solver's shipped tolerances (absolute 1e-3, relative 1e-6) against tight ones (1e-9, 1e-12)
+1/1 shipped: kinetic_end_per_million_of_start 1000391 energy_largest_drift_ppm 1341 momentum_drift_ppm -12 momentum_largest_drift_ppm 79  converged 200 stopped 0 diverged 0 most_iterations 4
+1/1 tight: kinetic_end_per_million_of_start 1000346 energy_largest_drift_ppm 1327 momentum_drift_ppm 0 momentum_largest_drift_ppm 1  converged 200 stopped 0 diverged 0 most_iterations 8
+1/16 shipped: kinetic_end_per_million_of_start 1004396 energy_largest_drift_ppm 4379 momentum_drift_ppm 1599 momentum_largest_drift_ppm 1601  converged 3200 stopped 0 diverged 0 most_iterations 3
+1/16 tight: kinetic_end_per_million_of_start 1000001 energy_largest_drift_ppm 6 momentum_drift_ppm -1 momentum_largest_drift_ppm 2  converged 3200 stopped 0 diverged 0 most_iterations 5
+1/64 shipped: kinetic_end_per_million_of_start 1002100 energy_largest_drift_ppm 2095 momentum_drift_ppm 705 momentum_largest_drift_ppm 705  converged 12800 stopped 0 diverged 0 most_iterations 2
+1/64 tight: kinetic_end_per_million_of_start 1000000 energy_largest_drift_ppm 1 momentum_drift_ppm 0 momentum_largest_drift_ppm 2  converged 12561 stopped 239 diverged 0 most_iterations 5

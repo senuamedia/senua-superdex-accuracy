@@ -1,0 +1,9 @@
+deform stock(pristine headers) vs stock(superdex-src headers): 16 bytes differ (offsets 1289-1304); sizes 59968 59968
+deform b15 rebuild vs record's tools/sdx_deform64: 16 bytes differ (offsets 1289-1304); sizes 59968 59968
+deform stock vs b15 (rpath differs): 35192 bytes differ (offsets 21-53009); sizes 59968 59968
+grip stock(pristine headers) vs stock(superdex-src headers): 16 bytes differ (offsets 1289-1304); sizes 80856 80856
+grip b15 rebuild vs record's tools/sdx_grip64: 16 bytes differ (offsets 1289-1304); sizes 80856 80856
+grip stock vs b15 (rpath differs): 44023 bytes differ (offsets 21-70617); sizes 80856 80856
+chain stock(pristine headers) vs stock(superdex-src headers): 16 bytes differ (offsets 1289-1304); sizes 40544 40544
+chain b15 rebuild vs record's tools/sdx_chain64: 16 bytes differ (offsets 1289-1304); sizes 40544 40544
+chain stock vs b15 (rpath differs): 17471 bytes differ (offsets 21-35625); sizes 40544 40544

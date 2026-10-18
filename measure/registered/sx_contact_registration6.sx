@@ -1,0 +1,410 @@
+// measure/sx_contact.sx -- preregistrations/PREREGISTRATION_04.md: the measuring for
+// the smallest contact scene (the public rig sdx_contact: one cube and the ground). The rig writes what the cube did
+// at every step as whole numbers; this reads them and measures three things that have a right answer:
+//   bounce  how high the cube comes back after it is dropped, as a share of the height it was dropped from
+//   impact  over the first impact, the horizontal speed the cube lost against the vertical speed the ground gave it
+//           (Coulomb's law while sliding: the first is the friction coefficient times the second)
+//   creep   the steady speed of a cube that is pushed along the ground with less than friction can hold
+// The rig's file: a header "CONTACT dt_ns <n> h0_nm <n> vx0_ums <n> mu_ppm <n> mass_g <n> steps <n>", then a line a
+// step: step, height of the lowest face (nm), vx (um/s), vy (um/s), contact force up (mN), contact force along x (mN).
+// usage: sx_contact bounce <file> | impact <file> | settle <file> | creep <file> | gap <base step ns> <file> <file>
+//        sx_contact verdict <52 numbers>     the registered rules, from the measured lines (sx_contact_run.sh)
+//        sx_contact pull <file> | rest <file> | slip <file> <push mN> | suite <48 numbers>   the contact suite (the patch ledger)
+// exit 42 = ran
+extern fn malloc(size: i64) -> i64;
+extern fn free(ptr: i64);
+extern fn print_char(c: i64);
+extern fn print_int(x: i64);
+extern fn dvec_to_cstr(d: i64) -> i64;
+extern fn load_i64(base: i64, slot: i64) -> i64;
+extern fn store_i64(base: i64, slot: i64, val: i64);
+extern fn load_byte(buf: i64, off: i64) -> i64;
+extern fn store_byte(buf: i64, off: i64, val: i64);
+// use "senua_engine.sx"   // Senua AI engine: reading a file and comparing strings (not distributed)
+
+fn xc_nop() -> i64 { 0 }
+fn xc_puts(c: i64) { let mut i: i64 = 0; while load_byte(c, i) != 0 { print_char(load_byte(c, i)); i = i + 1; } }
+fn xc_lbl(s: i64) { let c: i64 = dvec_to_cstr(s); xc_puts(c); free(c); }
+fn xc_num(s: i64, v: i64) { xc_lbl(s); print_int(v); }
+fn xc_is(a: i64, lit_dv: i64) -> i64 { let b: i64 = dvec_to_cstr(lit_dv); let mut i: i64 = 0; let mut r: i64 = 2; while r == 2 { let x: i64 = load_byte(a, i); if x != load_byte(b, i) { r = 0; } else { if x == 0 { r = 1; } else { i = i + 1; } } } free(b); r }
+fn xc_space(ch: i64) -> i64 { if ch == 32 { 1 } else { if ch == 10 { 1 } else { if ch == 13 { 1 } else { if ch == 9 { 1 } else { 0 } } } } }
+// the end of the token that starts at i (the first white space at or after i, or nb)
+fn xc_tok_end(b: i64, nb: i64, i: i64) -> i64 { let mut j: i64 = i; let mut go: i64 = 1; while go == 1 { if j >= nb { go = 0; } else { if xc_space(load_byte(b, j)) == 1 { go = 0; } else { j = j + 1; } } } j }
+// 1 when the token b[i, j) is a whole number: digits, with one leading minus allowed
+fn xc_tok_isnum(b: i64, i: i64, j: i64) -> i64 {
+    let mut k: i64 = i; let mut ok: i64 = 1; let mut digits: i64 = 0;
+    if load_byte(b, k) == 45 { k = k + 1; } else { let _: i64 = 0; }
+    while k < j { let ch: i64 = load_byte(b, k); if ch >= 48 { if ch <= 57 { digits = digits + 1; } else { ok = 0; } } else { ok = 0; } k = k + 1; }
+    if digits == 0 { 0 } else { ok }
+}
+fn xc_tok_val(b: i64, i: i64, j: i64) -> i64 {
+    let mut k: i64 = i; let mut neg: i64 = 0; let mut v: i64 = 0;
+    if load_byte(b, k) == 45 { neg = 1; k = k + 1; } else { let _: i64 = 0; }
+    while k < j { v = v * 10 + (load_byte(b, k) - 48); k = k + 1; }
+    if neg == 1 { 0 - v } else { v }
+}
+// every whole-number token of a text file, in order; out [0] = how many. Words (dt_ns, h0_nm) are skipped whole.
+fn xc_ints(path: i64, out: i64) -> i64 {
+    store_i64(out, 0, 0);
+    if os_file_access(path) != 0 { return 0; } else { let _: i64 = 0; }
+    let meta: i64 = malloc(16); let b: i64 = os_file_read_all(path, meta); let nb: i64 = load_i64(meta, 0); free(meta);
+    if b == 0 { return 0; } else { let _: i64 = 0; }
+    let v: i64 = malloc(nb * 8 + 64); let mut n: i64 = 0; let mut i: i64 = 0;
+    while i < nb {
+        if xc_space(load_byte(b, i)) == 1 { i = i + 1; } else {
+            let j: i64 = xc_tok_end(b, nb, i);
+            if xc_tok_isnum(b, i, j) == 1 { store_i64(v, n, xc_tok_val(b, i, j)); n = n + 1; } else { let _: i64 = 0; }
+            i = j;
+        }
+    }
+    free(b); store_i64(out, 0, n); v
+}
+// the run as a slab r: [0] the numbers [1] steps played [2] dt_ns [3] h0_nm [4] vx0_ums [5] mu_ppm; 0 when the file
+// is absent or not whole
+fn xc_load(path: i64) -> i64 {
+    let out: i64 = malloc(16); let v: i64 = xc_ints(path, out); let n: i64 = load_i64(out, 0); free(out);
+    if n < 12 { return 0; } else { let _: i64 = 0; }
+    let steps: i64 = load_i64(v, 5);
+    if n != 6 + steps * 6 { return 0; } else { let _: i64 = 0; }
+    let r: i64 = malloc(64);
+    store_i64(r, 0, v); store_i64(r, 1, steps); store_i64(r, 2, load_i64(v, 0)); store_i64(r, 3, load_i64(v, 1)); store_i64(r, 4, load_i64(v, 2)); store_i64(r, 5, load_i64(v, 3));
+    r
+}
+// column c of step s: 1 height (nm) 2 vx (um/s) 3 vy (um/s) 4 force up (mN) 5 force along x (mN)
+fn xc_at(r: i64, s: i64, c: i64) -> i64 { load_i64(load_i64(r, 0), 6 + s * 6 + c) }
+// the first step at which the ground pushes on the cube; steps when it never does
+fn xc_hit(r: i64) -> i64 { let n: i64 = load_i64(r, 1); let mut s: i64 = 0; let mut go: i64 = 1; while go == 1 { if s >= n { go = 0; } else { if xc_at(r, s, 4) > 0 { go = 0; } else { s = s + 1; } } } s }
+// the first step at or after s0 at which the cube is no longer moving down; steps when there is none
+fn xc_turn(r: i64, s0: i64) -> i64 { let n: i64 = load_i64(r, 1); let mut s: i64 = s0; let mut go: i64 = 1; while go == 1 { if s >= n { go = 0; } else { if xc_at(r, s, 3) >= 0 { go = 0; } else { s = s + 1; } } } s }
+// the highest the lowest face gets from step s0 until the cube first moves down again (or the run ends)
+fn xc_apex(r: i64, s0: i64) -> i64 {
+    let n: i64 = load_i64(r, 1); let mut s: i64 = s0; let mut best: i64 = xc_at(r, s0, 1); let mut go: i64 = 1;
+    while go == 1 { if s >= n { go = 0; } else { if xc_at(r, s, 3) < 0 { go = 0; } else { if xc_at(r, s, 1) > best { best = xc_at(r, s, 1); } else { let _: i64 = 0; } s = s + 1; } } }
+    best
+}
+fn xc_head(r: i64, what_dv: i64) { xc_lbl(what_dv); xc_num(" dt_ns ", load_i64(r, 2)); }
+// BOUNCE: the rebound as a share of the drop height, in parts of 10,000
+fn xc_bounce(r: i64) -> i64 {
+    let n: i64 = load_i64(r, 1); let hit: i64 = xc_hit(r);
+    if hit >= n { xc_head(r, "BOUNCE"); xc_lbl(" the cube never reached the ground\n"); return 1; } else { let _: i64 = 0; }
+    if hit < 1 { xc_head(r, "BOUNCE"); xc_lbl(" the cube started on the ground\n"); return 1; } else { let _: i64 = 0; }
+    let turn: i64 = xc_turn(r, hit);
+    if turn >= n { xc_head(r, "BOUNCE"); xc_lbl(" the cube was still moving down at the end\n"); return 1; } else { let _: i64 = 0; }
+    let apex: i64 = xc_apex(r, turn); let h0: i64 = load_i64(r, 3);
+    let share: i64 = if apex <= 0 { 0 } else { intdiv(intdiv(apex, 1000) * 10000, intdiv(h0, 1000)) };
+    xc_head(r, "BOUNCE"); xc_num(" speed_in_ums ", 0 - xc_at(r, hit - 1, 3)); xc_num(" steps_to_turn ", turn - hit + 1); xc_num(" rebound_nm ", apex); xc_num(" drop_nm ", h0); xc_num(" rebound_per_10000 ", share); print_char(10);
+    42
+}
+// IMPACT: from the last step before the ground pushes to the first step the cube no longer moves down: the
+// horizontal speed lost, and the vertical speed the ground gave (the change of vy plus what gravity took in that
+// time: 9.8 m/s2 is 98 um/s for every 10,000 ns). Their ratio in parts of 10,000, beside the friction coefficient.
+fn xc_impact(r: i64) -> i64 {
+    let n: i64 = load_i64(r, 1); let hit: i64 = xc_hit(r);
+    if hit >= n { xc_head(r, "IMPACT"); xc_lbl(" the cube never reached the ground\n"); return 1; } else { let _: i64 = 0; }
+    if hit < 1 { xc_head(r, "IMPACT"); xc_lbl(" the cube started on the ground\n"); return 1; } else { let _: i64 = 0; }
+    let turn: i64 = xc_turn(r, hit);
+    if turn >= n { xc_head(r, "IMPACT"); xc_lbl(" the cube was still moving down at the end\n"); return 1; } else { let _: i64 = 0; }
+    let k: i64 = turn - hit + 1;
+    let lost: i64 = xc_at(r, hit - 1, 2) - xc_at(r, turn, 2);
+    let given: i64 = xc_at(r, turn, 3) - xc_at(r, hit - 1, 3) + intdiv(98 * k * intdiv(load_i64(r, 2), 10), 1000);
+    let slow: i64 = xc_at(r, turn, 2);
+    xc_head(r, "IMPACT"); xc_num(" steps ", k); xc_num(" horizontal_lost_ums ", lost); xc_num(" vertical_given_ums ", given); xc_num(" ratio_per_10000 ", if given > 99 { intdiv(intdiv(lost, 100) * 10000, intdiv(given, 100)) } else { 0 - 1 }); xc_num(" friction_per_10000 ", intdiv(load_i64(r, 5), 100)); xc_num(" still_sliding_ums ", slow); print_char(10);
+    42
+}
+// SETTLE: as IMPACT, but from the last step before the ground pushes to 0.1 s after it: the impact and the settling
+// that follows. A friction computed from the start-of-step normal force is one step late, which the impact alone
+// counts as a shortfall; over this window what is late has arrived, and what is left is friction that is too much or
+// too little for the whole normal force.
+fn xc_settle(r: i64) -> i64 {
+    let n: i64 = load_i64(r, 1); let hit: i64 = xc_hit(r);
+    if hit >= n { xc_head(r, "SETTLE"); xc_lbl(" the cube never reached the ground\n"); return 1; } else { let _: i64 = 0; }
+    if hit < 1 { xc_head(r, "SETTLE"); xc_lbl(" the cube started on the ground\n"); return 1; } else { let _: i64 = 0; }
+    let k: i64 = intdiv(100000000, load_i64(r, 2)); let last: i64 = hit - 1 + k;
+    if last >= n { xc_head(r, "SETTLE"); xc_lbl(" the run ends before 0.1 s after the first contact\n"); return 1; } else { let _: i64 = 0; }
+    let lost: i64 = xc_at(r, hit - 1, 2) - xc_at(r, last, 2);
+    let given: i64 = xc_at(r, last, 3) - xc_at(r, hit - 1, 3) + intdiv(98 * k * intdiv(load_i64(r, 2), 10), 1000);
+    xc_head(r, "SETTLE"); xc_num(" steps ", k); xc_num(" horizontal_lost_ums ", lost); xc_num(" vertical_given_ums ", given); xc_num(" ratio_per_10000 ", if given > 99 { intdiv(intdiv(lost, 100) * 10000, intdiv(given, 100)) } else { 0 - 1 }); xc_num(" friction_per_10000 ", intdiv(load_i64(r, 5), 100)); xc_num(" still_sliding_ums ", xc_at(r, last, 2)); print_char(10);
+    42
+}
+// CREEP: over the second half of the run, the mean horizontal speed, and the friction force against the normal force
+fn xc_creep(r: i64) -> i64 {
+    let n: i64 = load_i64(r, 1); let mut s: i64 = intdiv(n, 2); let mut sv: i64 = 0; let mut c: i64 = 0; let mut fup: i64 = 0; let mut ft: i64 = 0;
+    while s < n { sv = sv + xc_at(r, s, 2); fup = fup + xc_at(r, s, 4); ft = ft + xc_at(r, s, 5); c = c + 1; s = s + 1; }
+    if c == 0 { return 1; } else { let _: i64 = 0; }
+    xc_head(r, "CREEP"); xc_num(" steps ", c); xc_num(" mean_speed_ums ", intdiv(sv, c)); xc_num(" friction_over_normal_per_10000 ", if fup > 0 { intdiv(intdiv(0 - ft, c) * 10000, intdiv(fup, c)) } else { 0 - 1 }); xc_num(" friction_limit_per_10000 ", intdiv(load_i64(r, 5), 100)); print_char(10);
+    42
+}
+// GAP: two runs of the same scene at two step sizes, compared at the instants of a common base step (the base step
+// must be a whole multiple of both): the summed absolute difference of the cube's height, in micrometres, and of its
+// horizontal speed, in mm/s. Plain subtraction, as for the benchmark scenes' encoder streams.
+fn xc_abs(x: i64) -> i64 { if x < 0 { 0 - x } else { x } }
+fn xc_int(s: i64) -> i64 { let mut v: i64 = 0; let mut i: i64 = 0; while load_byte(s, i) != 0 { v = v * 10 + (load_byte(s, i) - 48); i = i + 1; } v }
+fn xc_gap(base: i64, a: i64, b: i64) -> i64 {
+    let ka: i64 = intdiv(base, load_i64(a, 2)); let kb: i64 = intdiv(base, load_i64(b, 2));
+    if ka * load_i64(a, 2) != base { xc_lbl("GAP the base step is not a whole multiple of the first run's step\n"); return 1; } else { let _: i64 = 0; }
+    if kb * load_i64(b, 2) != base { xc_lbl("GAP the base step is not a whole multiple of the second run's step\n"); return 1; } else { let _: i64 = 0; }
+    let na: i64 = intdiv(load_i64(a, 1), ka); let nb: i64 = intdiv(load_i64(b, 1), kb); let n: i64 = if na < nb { na } else { nb };
+    let mut j: i64 = 0; let mut ia: i64 = ka - 1; let mut ib: i64 = kb - 1; let mut sy: i64 = 0; let mut sv: i64 = 0; let mut big: i64 = 0;
+    while j < n {
+        let dy: i64 = xc_abs(intdiv(xc_at(a, ia, 1), 1000) - intdiv(xc_at(b, ib, 1), 1000));
+        sy = sy + dy; if dy > big { big = dy; } else { let _: i64 = 0; }
+        sv = sv + xc_abs(intdiv(xc_at(a, ia, 2), 1000) - intdiv(xc_at(b, ib, 2), 1000));
+        j = j + 1; ia = ia + ka; ib = ib + kb;
+    }
+    xc_num("GAP base_ns ", base); xc_num(" dt_ns ", load_i64(a, 2)); xc_num(" against dt_ns ", load_i64(b, 2)); xc_num(" instants ", n); xc_num(" summed_height_difference_um ", sy); xc_num(" largest_um ", big); xc_num(" summed_speed_difference_mm_s ", sv); print_char(10);
+    42
+}
+// ---- the jointed scene (the public rig sdx_joint writes the same six columns: column 1 is the joint angle in
+// micro-radians, column 2 the joint speed in micro-radians a second) ----
+// SWING: the joint angle at its first turning points (where the joint speed changes sign), and each swing as parts
+// in 10,000 of half a turn. A frictionless arm released level comes up level on the other side: 10,000, every swing.
+fn xc_swing(r: i64) -> i64 {
+    let n: i64 = load_i64(r, 1); let mut s: i64 = 1; let mut k: i64 = 0; let mut last: i64 = xc_at(r, 0, 1) - intdiv(xc_at(r, 0, 2) * intdiv(load_i64(r, 2), 1000), 1000000);
+    xc_head(r, "SWING"); xc_num(" released_at_urad ", last);
+    while s < n {
+        let p: i64 = xc_at(r, s - 1, 2); let c: i64 = xc_at(r, s, 2); let mut turn: i64 = 0;
+        if p > 0 { if c <= 0 { turn = 1; } else { let _: i64 = 0; } } else { let _: i64 = 0; }
+        if p < 0 { if c >= 0 { turn = 1; } else { let _: i64 = 0; } } else { let _: i64 = 0; }
+        if turn == 1 {
+            if k < 4 { let a: i64 = xc_at(r, s - 1, 1); xc_num(" turn_urad ", a); xc_num(" swing_per_10000 ", intdiv(intdiv(xc_abs(a - last), 100) * 10000, 31416)); last = a; } else { let _: i64 = 0; }
+            k = k + 1;
+        } else { let _: i64 = 0; }
+        s = s + 1;
+    }
+    xc_num(" turns ", k); print_char(10);
+    42
+}
+// ---- the registered rules (preregistrations/PREREGISTRATION_04.md) ----
+fn xc_sint(s: i64) -> i64 { let mut i: i64 = 0; let mut neg: i64 = 0; let mut v: i64 = 0; if load_byte(s, 0) == 45 { neg = 1; i = 1; } else { let _: i64 = 0; } while load_byte(s, i) != 0 { v = v * 10 + (load_byte(s, i) - 48); i = i + 1; } if neg == 1 { 0 - v } else { v } }
+fn xc_arg(argv: i64, i: i64) -> i64 { xc_sint(load_i64(argv, i)) }
+fn xc_both(a: i64, b: i64) -> i64 { if a != 0 { if b != 0 { 1 } else { 0 } } else { 0 } }
+fn xc_in(v: i64, lo: i64, hi: i64) -> i64 { if v >= lo { if v <= hi { 1 } else { 0 } } else { 0 } }
+// 1 when argv[at .. at + n) falls at every step
+fn xc_falls(argv: i64, at: i64, n: i64) -> i64 { let mut i: i64 = 1; let mut ok: i64 = 1; while i < n { if xc_arg(argv, at + i) >= xc_arg(argv, at + i - 1) { ok = 0; } else { let _: i64 = 0; } i = i + 1; } ok }
+// 1 when every value of argv[at .. at + n) is between 45 and 55 parts in 100 of the one before (a first-order
+// method: each halving of the step halves the gap); prints the ratios in parts of 10,000
+fn xc_halves(argv: i64, at: i64, n: i64) -> i64 {
+    let mut i: i64 = 1; let mut ok: i64 = 1;
+    while i < n {
+        let prev: i64 = xc_arg(argv, at + i - 1); let cur: i64 = xc_arg(argv, at + i);
+        let ratio: i64 = if prev >= 100 { intdiv(cur * 100, intdiv(prev, 100)) } else { 0 - 1 };
+        print_char(32); print_int(ratio);
+        if xc_in(ratio, 4500, 5500) == 0 { ok = 0; } else { let _: i64 = 0; }
+        i = i + 1;
+    }
+    ok
+}
+// 1 when every value of argv[at .. at + n) is within lo .. hi
+fn xc_all_in(argv: i64, at: i64, n: i64, lo: i64, hi: i64) -> i64 { let mut i: i64 = 0; let mut ok: i64 = 1; while i < n { if xc_in(xc_arg(argv, at + i), lo, hi) == 0 { ok = 0; } else { let _: i64 = 0; } i = i + 1; } ok }
+fn xc_all_pos(argv: i64, at: i64, n: i64) -> i64 { let mut i: i64 = 0; let mut ok: i64 = 1; while i < n { if xc_arg(argv, at + i) <= 0 { ok = 0; } else { let _: i64 = 0; } i = i + 1; } ok }
+fn xc_list(argv: i64, at: i64, n: i64) { let mut i: i64 = 0; while i < n { print_char(32); print_int(xc_arg(argv, at + i)); i = i + 1; } }
+// verdict <friction per 10,000> <C1 creep prediction um/s> <C-infinity creep prediction um/s>
+//   <6 gaps: the chain that never reaches the ground> <2: steady sliding, friction over normal>
+//   <7 rebounds: shipped, coarse to fine> <1 rebound: third-order integrator at the finest step>
+//   <1 impact ratio: shipped at the shipped step> <7 impact ratios: implicit normal force> <1: least speed still sliding, um/s>
+//   <8 creep speeds: shipped, C-infinity, implicit normal force, explicit normals, no fade, Armijo, falloff 0.001, viscous 100>
+//   <6 gaps: shipped chain> <6 gaps: damped chain>
+//   <4 folds in order, of 3: half_cheetah shipped, half_cheetah damped, ant shipped, ant damped>
+// 52 numbers after the mode.
+fn xc_verdict(argc: i64, argv: i64) -> i64 {
+    if argc != 54 { xc_num("VERDICT needs 52 numbers, got ", argc - 2); print_char(10); return 1; } else { let _: i64 = 0; }
+    let mu: i64 = xc_arg(argv, 2); let c1: i64 = xc_arg(argv, 3); let cinf: i64 = xc_arg(argv, 4);
+    let lo: i64 = mu - intdiv(mu, 100); let hi: i64 = mu + intdiv(mu, 100);
+    xc_lbl("K0a nothing touches the cube: each gap as parts in 10,000 of the one before"); let k0a: i64 = xc_halves(argv, 5, 6); xc_num(" ; all between 4500 and 5500: held ", k0a); print_char(10);
+    let k0b: i64 = xc_all_in(argv, 11, 2, lo, hi);
+    xc_lbl("K0b steady sliding, friction over normal force per 10,000"); xc_list(argv, 11, 2); xc_num(" ; within 1 in 100 of ", mu); xc_num(": held ", k0b); print_char(10);
+    let r0: i64 = xc_arg(argv, 13); let r6: i64 = xc_arg(argv, 19); let rh: i64 = xc_arg(argv, 20);
+    let k1: i64 = xc_both(xc_both(if r0 < 500 { 1 } else { 0 }, if r6 - r0 > 5000 { 1 } else { 0 }), if rh >= 9900 { 1 } else { 0 });
+    xc_lbl("K1 rebound per 10,000 of the drop height, shipped, step 1 to 1/64:"); xc_list(argv, 13, 7); xc_num(" ; third-order integrator at 1/64: ", rh); xc_num(" ; the step sets the bounce (under 500 at the shipped step, more than 5000 higher at 1/64, the right answer 9900 or more by the third-order integrator): held ", k1); print_char(10);
+    let s0: i64 = xc_arg(argv, 21); let sliding: i64 = if xc_arg(argv, 29) > 100000 { 1 } else { 0 };
+    let k2a: i64 = if xc_in(s0, lo, hi) == 1 { 0 } else { 1 }; let k2b: i64 = xc_all_in(argv, 22, 7, lo, hi); let k2: i64 = xc_both(xc_both(k2a, k2b), sliding);
+    xc_num("K2 friction impulse over normal impulse per 10,000, shipped at the shipped step: ", s0); xc_lbl(" ; with the implicit normal force, step 1 to 1/64:"); xc_list(argv, 22, 7); xc_num(" ; Coulomb ", mu); xc_num(" ; still sliding ", sliding); xc_num(" ; shipped is off by more than 1 in 100 and the switch restores it at every step: held ", k2); print_char(10);
+    let k3a: i64 = xc_all_pos(argv, 30, 8); let k3b: i64 = xc_in(xc_arg(argv, 30), c1 - intdiv(c1, 100), c1 + intdiv(c1, 100)); let k3c: i64 = xc_in(xc_arg(argv, 31), cinf - intdiv(cinf, 100), cinf + intdiv(cinf, 100));
+    let k3: i64 = xc_both(k3a, xc_both(k3b, k3c));
+    xc_lbl("K3 creep in um/s under each friction switch (Coulomb: 0):"); xc_list(argv, 30, 8); xc_num(" ; the laws predict ", c1); xc_num(" and ", cinf); xc_num(" ; every switch creeps and the two laws are as predicted: held ", k3); print_char(10);
+    let k4a: i64 = if xc_falls(argv, 38, 6) == 1 { 0 } else { 1 }; let k4b: i64 = xc_falls(argv, 44, 6); let k4: i64 = xc_both(k4a, k4b);
+    xc_lbl("K4 the smallest scene's chain, shipped:"); xc_list(argv, 38, 6); xc_lbl(" ; damped:"); xc_list(argv, 44, 6); xc_num(" ; shipped is not in order and damped is: held ", k4); print_char(10);
+    let hs: i64 = xc_arg(argv, 50); let hd: i64 = xc_arg(argv, 51); let l1: i64 = xc_both(if hs == 0 { 1 } else { 0 }, if hd == 3 { 1 } else { 0 });
+    xc_num("L1 half_cheetah with the ground, folds in order of 3: shipped ", hs); xc_num(" damped ", hd); xc_num(" ; reported, ant: shipped ", xc_arg(argv, 52)); xc_num(" damped ", xc_arg(argv, 53)); xc_num(" ; held ", l1); print_char(10);
+    let ctl: i64 = xc_both(k0a, k0b); let all: i64 = xc_both(ctl, xc_both(xc_both(k1, k2), xc_both(xc_both(k3, k4), l1)));
+    xc_num("CONTROLS ", ctl); xc_num(" K1 ", k1); xc_num(" K2 ", k2); xc_num(" K3 ", k3); xc_num(" K4 ", k4); xc_num(" L1 ", l1); print_char(10);
+    xc_lbl("THESIS the cause is isolated in SuperDex's contact (the step sets the bounce, friction at impact is short of Coulomb's law, no switch gives a stick) and giving the contact a loss of its own puts half_cheetah's time-step chain in order: ");
+    xc_lbl(if all == 1 { "PASS" } else { "FAIL" }); print_char(10);
+    42
+}
+// ---- the contact suite (tools/contact_suite.sh): measures used by the patch ledger ----
+// PULL: the lowest the ground's force on the cube gets (a contact cannot pull: the right answer is never below 0)
+fn xc_pull(r: i64) -> i64 {
+    let n: i64 = load_i64(r, 1); let mut s: i64 = 0; let mut low: i64 = 0; let mut c: i64 = 0;
+    while s < n { let f: i64 = xc_at(r, s, 4); if f < low { low = f; } else { let _: i64 = 0; } if f < 0 - 1 { c = c + 1; } else { let _: i64 = 0; } s = s + 1; }
+    xc_head(r, "PULL"); xc_num(" lowest_ground_force_mN ", low); xc_num(" steps_pulling ", c); print_char(10);
+    42
+}
+// REST: the ground's mean force over the second half of the run, beside the cube's weight (mass x 9.8)
+fn xc_rest(r: i64) -> i64 {
+    let n: i64 = load_i64(r, 1); let mut s: i64 = intdiv(n, 2); let mut sf: i64 = 0; let mut c: i64 = 0;
+    while s < n { sf = sf + xc_at(r, s, 4); c = c + 1; s = s + 1; }
+    if c == 0 { return 1; } else { let _: i64 = 0; }
+    xc_head(r, "REST"); xc_num(" mean_ground_force_mN ", intdiv(sf, c)); xc_num(" weight_mN ", intdiv(load_i64(load_i64(r, 0), 4) * 98, 10)); print_char(10);
+    42
+}
+// SLIP: pushed with more than friction can hold, the cube accelerates at (push - friction x weight) / mass. The
+// suite sets it down and starts the push at a quarter of the run of length T, so its mean speed over the second
+// half of the run is that acceleration times half of T.
+fn xc_slip(r: i64, push_mn: i64) -> i64 {
+    let n: i64 = load_i64(r, 1); let mut s: i64 = intdiv(n, 2); let mut sv: i64 = 0; let mut c: i64 = 0;
+    while s < n { sv = sv + intdiv(xc_at(r, s, 2), 100); c = c + 1; s = s + 1; }
+    if c == 0 { return 1; } else { let _: i64 = 0; }
+    let mass_g: i64 = load_i64(load_i64(r, 0), 4); let weight: i64 = intdiv(mass_g * 98, 10);
+    let fric: i64 = intdiv(intdiv(load_i64(r, 5), 100) * weight, 10000);
+    let acc: i64 = intdiv((push_mn - fric) * 1000, mass_g);   // mm/s2
+    let t_ms: i64 = intdiv(intdiv(n * intdiv(load_i64(r, 2), 10), 1000), 100);
+    xc_head(r, "SLIP"); xc_num(" mean_speed_ums ", intdiv(sv, c) * 100); xc_num(" predicted_ums ", intdiv(acc * t_ms, 2)); xc_num(" push_mN ", push_mn); xc_num(" friction_limit_mN ", fric); print_char(10);
+    42
+}
+fn xc_within(v: i64, target: i64, parts: i64) -> i64 { let band: i64 = intdiv(xc_abs(target), parts); xc_in(v, target - band, target + band) }
+fn xc_spread(argv: i64, at: i64, n: i64) -> i64 { let mut lo: i64 = xc_arg(argv, at); let mut hi: i64 = lo; let mut i: i64 = 1; while i < n { let v: i64 = xc_arg(argv, at + i); if v < lo { lo = v; } else { let _: i64 = 0; } if v > hi { hi = v; } else { let _: i64 = 0; } i = i + 1; } hi - lo }
+fn xc_pf(ok: i64) { xc_lbl(if ok == 1 { " : PASS" } else { " : FAIL" }); print_char(10); }
+// suite <friction per 10,000> <6 gaps: never reaches the ground> <2: sliding, friction over normal> <2: at rest, mean
+//   ground force mN> <weight mN> <7 rebounds> <7 impact ratios> <1: least speed still sliding um/s> <2: held, mean
+//   speed um/s> <2: slipping, mean speed um/s> <slip predicted um/s> <6 gaps: the chain> <3: lowest ground force mN>
+//   <7 settle ratios>
+// 48 numbers after the mode. One line a test, each against its right answer.
+fn xc_suite(argc: i64, argv: i64) -> i64 {
+    if argc != 50 { xc_num("SUITE needs 48 numbers, got ", argc - 2); print_char(10); return 1; } else { let _: i64 = 0; }
+    let mu: i64 = xc_arg(argv, 2); let lo: i64 = mu - intdiv(mu, 100); let hi: i64 = mu + intdiv(mu, 100);
+    xc_lbl("T01 nothing touches the cube: each gap in parts of 10,000 of the one before (right answer 5,000):"); let t1: i64 = xc_halves(argv, 3, 6); xc_pf(t1);
+    let t2: i64 = xc_all_in(argv, 9, 2, lo, hi);
+    xc_lbl("T02 steady sliding, friction over normal force per 10,000 (right answer "); print_int(mu); xc_lbl("):"); xc_list(argv, 9, 2); xc_pf(t2);
+    let w: i64 = xc_arg(argv, 13); let t3: i64 = xc_both(xc_within(xc_arg(argv, 11), w, 100), xc_within(xc_arg(argv, 12), w, 100));
+    xc_lbl("T03 at rest, the ground carries the weight: its mean force in mN (allowed 1 in 100; right answer "); print_int(w); xc_lbl("):"); xc_list(argv, 11, 2); xc_pf(t3);
+    let sp: i64 = xc_spread(argv, 14, 7); let t4: i64 = if sp <= 500 { 1 } else { 0 };
+    xc_lbl("T04 the bounce does not depend on the step: rebound per 10,000 of the drop height, step 1 to 1/64:"); xc_list(argv, 14, 7); xc_num(" ; spread ", sp); xc_lbl(" (allowed 500)"); xc_pf(t4);
+    let sliding: i64 = if xc_arg(argv, 28) > 100000 { 1 } else { 0 }; let t5: i64 = xc_both(xc_all_in(argv, 21, 7, lo, hi), sliding);
+    xc_lbl("T05 Coulomb at impact: friction impulse over normal impulse per 10,000, step 1 to 1/64 (right answer "); print_int(mu); xc_lbl("):"); xc_list(argv, 21, 7); xc_num(" ; still sliding ", sliding); xc_pf(t5);
+    let t6: i64 = xc_both(xc_in(xc_arg(argv, 29), 0 - 10, 10), xc_in(xc_arg(argv, 30), 0 - 10, 10));
+    xc_lbl("T06 held below the friction limit: mean speed in um/s (right answer 0, allowed 10):"); xc_list(argv, 29, 2); xc_pf(t6);
+    let pred: i64 = xc_arg(argv, 33); let t7: i64 = xc_both(xc_within(xc_arg(argv, 31), pred, 33), xc_within(xc_arg(argv, 32), pred, 33));
+    xc_lbl("T07 pushed above the friction limit: mean speed in um/s over the second half (right answer "); print_int(pred); xc_lbl(", allowed 3 in 100):"); xc_list(argv, 31, 2); xc_pf(t7);
+    let t8: i64 = xc_falls(argv, 34, 6);
+    xc_lbl("T08 the refinement chain falls at every step:"); xc_list(argv, 34, 6); xc_pf(t8);
+    let t9: i64 = xc_all_in(argv, 40, 3, 0 - 1, 1000000000);
+    xc_lbl("T09 the ground never pulls: lowest ground force in mN, lifted (two steps) and on a fast rebound (right answer 0 or more):"); xc_list(argv, 40, 3); xc_pf(t9);
+    let t10: i64 = xc_both(xc_all_in(argv, 43, 7, 0, hi), xc_all_in(argv, 47, 3, lo, hi));
+    xc_lbl("T10 friction over the impact and the 0.1 s after it, per 10,000 of the normal impulse, step 1 to 1/64 (right answer "); print_int(mu); xc_lbl("; never more than 1 in 100 above it, and within 1 in 100 at the three finest steps):"); xc_list(argv, 43, 7); xc_pf(t10);
+    xc_num("SUITE passed ", t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9 + t10); xc_lbl(" of 10"); print_char(10);
+    42
+}
+// ---- the patch ledger's rules (preregistrations/PREREGISTRATION_05.md) ----
+// A configuration's suite result is ten digits, T01 to T10, 1 = passed (for example 1110001010).
+fn xc_pow10(k: i64) -> i64 { let mut p: i64 = 1; let mut i: i64 = 0; while i < k { p = p * 10; i = i + 1; } p }
+fn xc_t(code: i64, test: i64) -> i64 { intdiv(code, xc_pow10(10 - test)) % 10 }
+// 1 when a configuration passes the controls and T07 (T01, T02, T03, T07)
+fn xc_controls(code: i64) -> i64 { xc_both(xc_both(xc_t(code, 1), xc_t(code, 2)), xc_both(xc_t(code, 3), xc_t(code, 7))) }
+fn xc_show(name_dv: i64, code: i64) { xc_lbl(name_dv); print_char(32); let mut i: i64 = 1; while i <= 10 { print_int(xc_t(code, i)); i = i + 1; } }
+// ledger <suite runs identical> <of> <benchmark streams identical> <of>
+//   <stock> <implicit> <damped> <damped, patch A> <damped, patches A and B> <patch C> <recommended>
+//   <half_cheetah shipped folds in order> <half_cheetah recommended folds in order>
+//   <recommended: steps diverged, both scenes, all five steps>
+//   <half_cheetah at the shipped step: stock stopped, recommended stopped, steps> <ant: the same three>
+// recommended = contact damping 5 with patches A, B and C; the implicit setting is not part of it.
+fn xc_ledger(argc: i64, argv: i64) -> i64 {
+    if argc != 22 { xc_num("LEDGER needs 20 numbers, got ", argc - 2); print_char(10); return 1; } else { let _: i64 = 0; }
+    let si: i64 = xc_arg(argv, 2); let so: i64 = xc_arg(argv, 3); let bi: i64 = xc_arg(argv, 4); let bo: i64 = xc_arg(argv, 5);
+    let stock: i64 = xc_arg(argv, 6); let imp: i64 = xc_arg(argv, 7); let dmp: i64 = xc_arg(argv, 8); let da: i64 = xc_arg(argv, 9);
+    let dab: i64 = xc_arg(argv, 10); let stk: i64 = xc_arg(argv, 11); let rec: i64 = xc_arg(argv, 12);
+    let hs: i64 = xc_arg(argv, 13); let hp: i64 = xc_arg(argv, 14); let dvg: i64 = xc_arg(argv, 15);
+    xc_lbl("RESULTS (T01 .. T10, 1 = passed):"); xc_show(" stock", stock); xc_show(" ; implicit", imp); xc_show(" ; damped", dmp); xc_show(" ; damped+A", da); xc_show(" ; damped+A+B", dab); xc_show(" ; patch C", stk); xc_show(" ; recommended", rec); print_char(10);
+    let s0: i64 = xc_both(if si == so { 1 } else { 0 }, if bi == bo { 1 } else { 0 });
+    xc_num("S0 safe when off: suite runs byte-identical ", si); xc_num(" of ", so); xc_num(" ; benchmark streams byte-identical ", bi); xc_num(" of ", bo); xc_num(" ; held ", s0); print_char(10);
+    let s1a: i64 = if xc_t(stock, 4) + xc_t(stock, 5) + xc_t(stock, 6) + xc_t(stock, 8) == 0 { 1 } else { 0 };
+    let s1b: i64 = if xc_t(dmp, 9) + xc_t(dmp, 10) == 0 { 1 } else { 0 }; let s1: i64 = xc_both(s1a, s1b);
+    xc_num("S1 required: stock fails T04, T05, T06, T08: ", s1a); xc_num(" ; damping on stock code fails T09 and T10: ", s1b); xc_num(" ; held ", s1); print_char(10);
+    let s2a: i64 = xc_t(imp, 5); let s2b: i64 = xc_both(xc_t(dmp, 4), xc_t(dmp, 8)); let s2c: i64 = xc_t(da, 10); let s2d: i64 = xc_both(xc_t(dab, 9), xc_t(dab, 10)); let s2e: i64 = xc_t(stk, 6);
+    let s2f: i64 = if rec == 1111011111 { 1 } else { 0 };
+    let s2: i64 = xc_both(xc_both(xc_both(s2a, s2b), xc_both(s2c, s2d)), xc_both(s2e, s2f));
+    xc_num("S2 correct: implicit passes T05 ", s2a); xc_num(" ; damping passes T04 and T08 ", s2b); xc_num(" ; patch A passes T10 under damping ", s2c); xc_num(" ; patches A and B pass T09 and T10 ", s2d); xc_num(" ; patch C passes T06 ", s2e); xc_num(" ; recommended passes every test but T05 ", s2f); xc_num(" ; held ", s2); print_char(10);
+    let c: i64 = xc_both(xc_both(xc_both(xc_controls(stock), xc_controls(imp)), xc_both(xc_controls(dmp), xc_controls(da))), xc_both(xc_controls(dab), xc_both(xc_controls(stk), xc_controls(rec))));
+    let p9: i64 = xc_both(xc_both(xc_t(stock, 9), xc_t(imp, 9)), xc_both(xc_t(dab, 9), xc_both(xc_t(stk, 9), xc_t(rec, 9))));
+    let p10: i64 = xc_both(xc_both(xc_t(stock, 10), xc_t(imp, 10)), xc_both(xc_t(da, 10), xc_both(xc_t(stk, 10), xc_t(rec, 10))));
+    let s3: i64 = xc_both(c, xc_both(p9, p10));
+    xc_num("S3 nothing else gets worse: every configuration passes T01, T02, T03, T07: ", c); xc_num(" ; T09 passes wherever there is no damping or patch B is on: ", p9); xc_num(" ; T10 passes wherever there is no damping or patch A is on: ", p10); xc_num(" ; held ", s3); print_char(10);
+    let b1: i64 = xc_both(if hs < 3 { 1 } else { 0 }, if hp == 3 { 1 } else { 0 });
+    xc_num("B1 the benchmark, half_cheetah folds in order of 3: shipped ", hs); xc_num(" ; recommended ", hp); xc_num(" ; held ", b1); print_char(10);
+    let hss: i64 = xc_arg(argv, 16); let hrs: i64 = xc_arg(argv, 17); let hn: i64 = xc_arg(argv, 18); let ass: i64 = xc_arg(argv, 19); let ars: i64 = xc_arg(argv, 20); let an: i64 = xc_arg(argv, 21);
+    let b2a: i64 = if dvg == 0 { 1 } else { 0 }; let b2b: i64 = if hrs <= hss + intdiv(hn, 1000) { 1 } else { 0 }; let b2c: i64 = if ars <= ass + intdiv(an, 1000) { 1 } else { 0 };
+    let b2: i64 = xc_both(b2a, xc_both(b2b, b2c));
+    xc_num("B2 the solver with the recommended configuration: steps diverged ", dvg); xc_num(" ; at the shipped step, steps stopped without converging, half_cheetah stock ", hss); xc_num(" recommended ", hrs); xc_num(" of ", hn); xc_num(" ; ant stock ", ass); xc_num(" recommended ", ars); xc_num(" of ", an); xc_num(" ; none diverged and no more stopped than stock plus 1 in 1,000: held ", b2); print_char(10);
+    let ok: i64 = xc_both(xc_both(s0, s1), xc_both(xc_both(s2, s3), xc_both(b1, b2)));
+    xc_num("LEDGER S0 ", s0); xc_num(" S1 ", s1); xc_num(" S2 ", s2); xc_num(" S3 ", s3); xc_num(" B1 ", b1); xc_num(" B2 ", b2); print_char(10);
+    xc_lbl("THESIS one setting and three patches are required, correct and safe, and the recommended configuration keeps the benchmark in order with the solver converging: "); xc_lbl(if ok == 1 { "PASS" } else { "FAIL" }); print_char(10);
+    42
+}
+// FINAL: the last step's joint angle and joint speed (the jointed scene)
+fn xc_final(r: i64) -> i64 {
+    let n: i64 = load_i64(r, 1);
+    xc_head(r, "FINAL"); xc_num(" angle_urad ", xc_at(r, n - 1, 1)); xc_num(" speed_urads ", xc_at(r, n - 1, 2)); print_char(10);
+    42
+}
+// ---- the jointed scene's rules (preregistrations/PREREGISTRATION_06.md) ----
+// joints <release speed urad/s> <torque answer urad/s> <creep the friction law gives urad/s> <slip answer urad/s>
+//   <spin: final speed at the shipped step, at 1/64> <torque: the same two> <swing: first swing per 10,000, the same two>
+//   <hold, shipped falloff: creep at the shipped step, at 1/16> <hold, falloff 1e-6: the same two>
+//   <hold, falloff 1e-6: solver steps stopped, the same two> <slip: shipped falloff at two steps, 1e-6 at two steps>
+// 20 numbers after the mode.
+fn xc_joints(argc: i64, argv: i64) -> i64 {
+    if argc != 22 { xc_num("JOINTS needs 20 numbers, got ", argc - 2); print_char(10); return 1; } else { let _: i64 = 0; }
+    let w0: i64 = xc_arg(argv, 2); let tq: i64 = xc_arg(argv, 3); let law: i64 = xc_arg(argv, 4); let sl: i64 = xc_arg(argv, 5);
+    let s1: i64 = intdiv(intdiv(xc_arg(argv, 6), 100) * 10000, intdiv(w0, 100)); let s64: i64 = intdiv(intdiv(xc_arg(argv, 7), 100) * 10000, intdiv(w0, 100));
+    let t1: i64 = xc_within(xc_arg(argv, 8), tq, 100); let t64: i64 = xc_within(xc_arg(argv, 9), tq, 100);
+    let g1: i64 = xc_arg(argv, 10); let g64: i64 = xc_arg(argv, 11);
+    let q1a: i64 = xc_both(if s1 < 9900 { 1 } else { 0 }, xc_both(if t1 == 0 { 1 } else { 0 }, if g1 < 9900 { 1 } else { 0 }));
+    let q1b: i64 = xc_both(if s64 >= 9900 { 1 } else { 0 }, xc_both(t64, if g64 >= 9900 { 1 } else { 0 }));
+    let q1: i64 = xc_both(q1a, q1b);
+    xc_num("JT1 spin, speed left after 1 s per 10,000: shipped step ", s1); xc_num(" ; 1/64 of it ", s64); xc_lbl(" (right answer 10,000; passes at 9,900)"); print_char(10);
+    xc_num("JT2 torque, speed after 1 s in urad/s: shipped step ", xc_arg(argv, 8)); xc_num(" ; 1/64 of it ", xc_arg(argv, 9)); xc_num(" (right answer ", tq); xc_lbl("; passes within 1 in 100)"); print_char(10);
+    xc_num("JT3 swing, first swing per 10,000 of half a turn: shipped step ", g1); xc_num(" ; 1/64 of it ", g64); xc_lbl(" (right answer 10,000; passes at 9,900)"); print_char(10);
+    xc_num("Q1 as shipped all three fail: ", q1a); xc_num(" ; at 1/64 of the step all three pass: ", q1b); xc_num(" ; held ", q1); print_char(10);
+    let h1: i64 = xc_abs(xc_arg(argv, 12)); let h16: i64 = xc_abs(xc_arg(argv, 13)); let ht1: i64 = xc_abs(xc_arg(argv, 14)); let ht16: i64 = xc_abs(xc_arg(argv, 15));
+    let q2a: i64 = xc_both(xc_within(h1, law, 100), xc_within(h16, law, 100));
+    let q2b: i64 = xc_both(if ht1 <= 10 { 1 } else { 0 }, if ht16 <= 10 { 1 } else { 0 });
+    let q2c: i64 = if xc_arg(argv, 16) + xc_arg(argv, 17) == 0 { 1 } else { 0 };
+    let q2: i64 = xc_both(q2a, xc_both(q2b, q2c));
+    xc_num("JT4 hold, creep in urad/s (right answer 0; passes within 10): shipped falloff ", h1); print_char(32); print_int(h16); xc_num(" (the friction law gives ", law); xc_num(") ; falloff 1e-6 ", ht1); print_char(32); print_int(ht16); xc_num(" ; solver steps stopped with it ", xc_arg(argv, 16) + xc_arg(argv, 17)); print_char(10);
+    xc_num("Q2 as shipped it creeps as its law says: ", q2a); xc_num(" ; with the falloff at 1e-6 it holds: ", q2b); xc_num(" ; and the solver converges: ", q2c); xc_num(" ; held ", q2); print_char(10);
+    let q3: i64 = xc_both(xc_both(xc_within(xc_arg(argv, 18), sl, 33), xc_within(xc_arg(argv, 19), sl, 33)), xc_both(xc_within(xc_arg(argv, 20), sl, 33), xc_within(xc_arg(argv, 21), sl, 33)));
+    xc_lbl("JT5 slip, speed after 1 s in urad/s, shipped falloff at two steps then 1e-6 at two steps:"); xc_list(argv, 18, 4); xc_num(" (right answer ", sl); xc_lbl("; passes within 3 in 100)"); print_char(10);
+    xc_num("Q3 the setting changes nothing else: held ", q3); print_char(10);
+    xc_num("JOINTS Q1 ", q1); xc_num(" Q2 ", q2); xc_num(" Q3 ", q3); print_char(10);
+    xc_lbl("THESIS the shipped integrator owns the loss of a free, a driven and a swinging arm, and joint friction holds with its falloff at 1e-6: "); xc_lbl(if xc_both(q1, xc_both(q2, q3)) == 1 { "PASS" } else { "FAIL" }); print_char(10);
+    42
+}
+fn xc_usage() -> i64 { xc_lbl("usage: sx_contact bounce <file> | impact <file> | settle <file> | creep <file> | pull <file> | rest <file> | swing <file> | final <file> | slip <file> <push mN> | gap <base step ns> <file> <file> | verdict <52 numbers> | suite <48 numbers> | ledger <20 numbers> | joints <20 numbers>\n"); 1 }
+fn main(argc: i64, argv: i64) -> i64 {
+    let _a: i64 = xc_nop();
+    if argc < 3 { return xc_usage(); } else { let _: i64 = 0; }
+    let mode: i64 = load_i64(argv, 1);
+    if xc_is(mode, "verdict") == 1 { return xc_verdict(argc, argv); } else { let _: i64 = 0; }
+    if xc_is(mode, "suite") == 1 { return xc_suite(argc, argv); } else { let _: i64 = 0; }
+    if xc_is(mode, "ledger") == 1 { return xc_ledger(argc, argv); } else { let _: i64 = 0; }
+    if xc_is(mode, "joints") == 1 { return xc_joints(argc, argv); } else { let _: i64 = 0; }
+    if xc_is(mode, "gap") == 1 {
+        if argc < 5 { return xc_usage(); } else { let _: i64 = 0; }
+        let ga: i64 = xc_load(load_i64(argv, 3)); let gb: i64 = xc_load(load_i64(argv, 4));
+        if ga == 0 { xc_lbl("a file is missing or not whole\n"); return 1; } else { let _: i64 = 0; }
+        if gb == 0 { xc_lbl("a file is missing or not whole\n"); return 1; } else { let _: i64 = 0; }
+        return xc_gap(xc_int(load_i64(argv, 2)), ga, gb);
+    } else { let _: i64 = 0; }
+    let r: i64 = xc_load(load_i64(argv, 2));
+    if r == 0 { xc_lbl("the file is missing or not whole\n"); return 1; } else { let _: i64 = 0; }
+    if xc_is(mode, "bounce") == 1 { return xc_bounce(r); } else { let _: i64 = 0; }
+    if xc_is(mode, "impact") == 1 { return xc_impact(r); } else { let _: i64 = 0; }
+    if xc_is(mode, "settle") == 1 { return xc_settle(r); } else { let _: i64 = 0; }
+    if xc_is(mode, "creep") == 1 { return xc_creep(r); } else { let _: i64 = 0; }
+    if xc_is(mode, "pull") == 1 { return xc_pull(r); } else { let _: i64 = 0; }
+    if xc_is(mode, "swing") == 1 { return xc_swing(r); } else { let _: i64 = 0; }
+    if xc_is(mode, "final") == 1 { return xc_final(r); } else { let _: i64 = 0; }
+    if xc_is(mode, "rest") == 1 { return xc_rest(r); } else { let _: i64 = 0; }
+    if xc_is(mode, "slip") == 1 { if argc < 4 { return xc_usage(); } else { let _: i64 = 0; } return xc_slip(r, xc_int(load_i64(argv, 3))); } else { let _: i64 = 0; }
+    xc_usage()
+}

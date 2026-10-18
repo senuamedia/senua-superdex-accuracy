@@ -1,0 +1,4 @@
+# probe 28: the point-cloud hold under BDF2 at 1/16 of the step, from the fifteenth registration's dry run (a throwaway cube: 1.05 kg, half-size 0.03 m, friction 0.42, pushed with 2.4696 N from 0.5 s, 2 s; the sheet 0.16 m wide; patches A to G, Newton-Euler, contact damping 5, falloff 0.03, sdfdiv 32, smoothing 1 mm, SuperDex's shipped tolerances; library build 14). From the rig's solver trace (SDX_TRACE: step, status 1 converged 2 stopped 3 diverged, iterations, SuperDex's residualNorm in millionths)
+stopped step 889 iterations 2 residual_millionths 6500
+diverged steps 0
+converged steps 3199 residual millionths: median 491 largest 9983

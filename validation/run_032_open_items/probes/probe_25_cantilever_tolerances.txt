@@ -1,0 +1,25 @@
+# probe 25: the cantilever held across the clamp at SuperDex's shipped solver tolerances (ship), at the final configuration's 1e-4 absolute and 1e-8 relative (t48), and tighter (tight6: 1e-6 and 1e-10; tight9: 1e-9 and 1e-12); three rods: reg13 = the thirteenth registration's (0.12 kg/m, EA 150 N, EI 3 N m2, 0.6 m), fresh14 = the fourteenth's (0.15, 250, 1.2, 0.45), probe030 = run 030's throwaway rod (0.1, 200, 2, 0.5); 64 and 128 elements, clampmid 1, 0.01 s, 400 steps; stopped = solver steps stopped of 400
+reg13 n 64 ship | drop 6357415 | per million of textbook 1001104 | stopped 0 most_iterations 3 
+reg13 n 128 ship | drop 6358029 | per million of textbook 1001201 | stopped 0 most_iterations 3 
+reg13 n 64 tight6 | drop 6349500 | per million of textbook 999858 | stopped 46 most_iterations 4 
+reg13 n 128 tight6 | drop 6350112 | per million of textbook 999954 | stopped 56 most_iterations 4 
+reg13 n 64 tight9 | drop 6349497 | per million of textbook 999857 | stopped 400 most_iterations 4 
+reg13 n 128 tight9 | drop 6350107 | per million of textbook 999953 | stopped 400 most_iterations 4 
+fresh14 n 64 ship | drop 6285551 | per million of textbook 1001030 | stopped 0 most_iterations 3 
+fresh14 n 128 ship | drop 6286153 | per million of textbook 1001126 | stopped 0 most_iterations 3 
+fresh14 n 64 tight6 | drop 6277661 | per million of textbook 999773 | stopped 53 most_iterations 4 
+fresh14 n 128 tight6 | drop 6278261 | per million of textbook 999869 | stopped 61 most_iterations 4 
+fresh14 n 64 tight9 | drop 6277658 | per million of textbook 999773 | stopped 400 most_iterations 4 
+fresh14 n 128 tight9 | drop 6278257 | per million of textbook 999868 | stopped 400 most_iterations 4 
+probe030 n 64 ship | drop 3827200 | per million of textbook 999758 | stopped 0 most_iterations 3 
+probe030 n 128 ship | drop 3827561 | per million of textbook 999852 | stopped 0 most_iterations 3 
+probe030 n 64 tight6 | drop 3827576 | per million of textbook 999856 | stopped 35 most_iterations 3 
+probe030 n 128 tight6 | drop 3827937 | per million of textbook 999950 | stopped 40 most_iterations 3 
+probe030 n 64 tight9 | drop 3827574 | per million of textbook 999856 | stopped 400 most_iterations 4 
+probe030 n 128 tight9 | drop 3827935 | per million of textbook 999950 | stopped 400 most_iterations 4 
+reg13 n 64 t48 | drop 6349835 | per million of textbook 999911 | stopped 0 most_iterations 3 
+reg13 n 128 t48 | drop 6350446 | per million of textbook 1000007 | stopped 0 most_iterations 3 
+fresh14 n 64 t48 | drop 6277994 | per million of textbook 999826 | stopped 1 most_iterations 3 
+fresh14 n 128 t48 | drop 6278594 | per million of textbook 999922 | stopped 2 most_iterations 3 
+probe030 n 64 t48 | drop 3827318 | per million of textbook 999789 | stopped 1 most_iterations 3 
+probe030 n 128 t48 | drop 3827680 | per million of textbook 999883 | stopped 2 most_iterations 3 

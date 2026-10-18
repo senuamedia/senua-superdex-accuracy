@@ -1,0 +1,2 @@
+[Simple Reflection] Failed to open JSON file for reading: ~/work/sdx/superdex-src/superdex_physics/assets/benchmarks/cart_pole/cart_pole.mochi_scene
+sdx_player: load prefab: ~/work/sdx/superdex-patched-src/superdex_physics/libraries/mochi/mochi_physics/src/mochi_prefab.cpp(146): Failed to open prefab file for reading. See log (above) for details.

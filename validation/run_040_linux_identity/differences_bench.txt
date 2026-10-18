@@ -1,0 +1,18 @@
+== bench ant s4: first differs at reading 122 of 21600 (episode 1, reading 122 of it); readings differing 5637
+Linux      | converged 4550 stopped 17050 diverged 0 unset 0 most_iterations 4 enc_min -1920 enc_max 1929
+registered | converged 4559 stopped 17041 diverged 0 unset 0 most_iterations 4 enc_min -1920 enc_max 1929
+== bench ant c1: first differs at reading 12711 of 21600 (episode 64, reading 111 of it); readings differing 2
+Linux      | converged 21230 stopped 370 diverged 0 unset 0 most_iterations 200 enc_min -1928 enc_max 1931
+registered | converged 21230 stopped 370 diverged 0 unset 0 most_iterations 200 enc_min -1928 enc_max 1931
+== bench ant c06: first differs at reading 1339 of 21600 (episode 7, reading 139 of it); readings differing 262
+Linux      | converged 21165 stopped 435 diverged 0 unset 0 most_iterations 200 enc_min -1928 enc_max 1931
+registered | converged 21166 stopped 434 diverged 0 unset 0 most_iterations 200 enc_min -1928 enc_max 1931
+== bench ant c03: first differs at reading 255 of 21600 (episode 2, reading 55 of it); readings differing 482
+Linux      | converged 21172 stopped 428 diverged 0 unset 0 most_iterations 200 enc_min -1929 enc_max 1931
+registered | converged 21170 stopped 430 diverged 0 unset 0 most_iterations 200 enc_min -1929 enc_max 1931
+== benchrec half_cheetah y1: first differs at reading 219 of 21600 (episode 2, reading 19 of it); readings differing 9
+Linux      | converged 21595 stopped 5 diverged 0 unset 0 most_iterations 200 enc_min -1432 enc_max 1532
+registered | converged 21594 stopped 6 diverged 0 unset 0 most_iterations 200 enc_min -1432 enc_max 1532
+== benchrec half_cheetah y4: first differs at reading 6255 of 21600 (episode 32, reading 55 of it); readings differing 3
+Linux      | converged 86396 stopped 4 diverged 0 unset 0 most_iterations 200 enc_min -1468 enc_max 1647
+registered | converged 86396 stopped 4 diverged 0 unset 0 most_iterations 200 enc_min -1468 enc_max 1647

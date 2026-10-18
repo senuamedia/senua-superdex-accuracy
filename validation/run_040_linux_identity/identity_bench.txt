@@ -1,0 +1,8 @@
+DIFFERS benchmark ant s4
+DIFFERS benchmark ant c1
+DIFFERS benchmark ant c06
+DIFFERS benchmark ant c03
+IDENTITY bench 34 of 38
+DIFFERS benchmark under its switches half_cheetah y1
+DIFFERS benchmark under its switches half_cheetah y4
+IDENTITY benchrec 5 of 7

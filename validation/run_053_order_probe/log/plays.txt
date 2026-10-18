@@ -1,0 +1,84 @@
+2026-10-15T08:55:21Z start rec16 half_cheetah
+2026-10-15T08:55:21Z start nof16 half_cheetah
+2026-10-15T08:55:21Z start nog16 half_cheetah
+2026-10-15T08:55:21Z start shp16 half_cheetah
+2026-10-15T08:59:48Z end nof16 half_cheetah rc 0 wall_s 267
+2026-10-15T08:59:48Z start rec8 half_cheetah
+2026-10-15T09:00:51Z end shp16 half_cheetah rc 0 wall_s 330
+2026-10-15T09:00:51Z start nof8 half_cheetah
+2026-10-15T09:01:32Z end nog16 half_cheetah rc 0 wall_s 371
+2026-10-15T09:01:32Z start nog8 half_cheetah
+2026-10-15T09:01:35Z end rec16 half_cheetah rc 0 wall_s 374
+2026-10-15T09:01:35Z start shp8 half_cheetah
+2026-10-15T09:03:31Z end nof8 half_cheetah rc 0 wall_s 160
+2026-10-15T09:03:31Z start rec4 half_cheetah
+2026-10-15T09:03:45Z end rec8 half_cheetah rc 0 wall_s 237
+2026-10-15T09:03:45Z start nof4 half_cheetah
+2026-10-15T09:05:02Z end shp8 half_cheetah rc 0 wall_s 207
+2026-10-15T09:05:02Z start nog4 half_cheetah
+2026-10-15T09:05:26Z end nog8 half_cheetah rc 0 wall_s 234
+2026-10-15T09:05:26Z start shp4 half_cheetah
+2026-10-15T09:05:29Z end nof4 half_cheetah rc 0 wall_s 104
+2026-10-15T09:05:29Z start rec2 half_cheetah
+2026-10-15T09:06:11Z end rec4 half_cheetah rc 0 wall_s 160
+2026-10-15T09:06:11Z start nof2 half_cheetah
+2026-10-15T09:07:25Z end nof2 half_cheetah rc 0 wall_s 74
+2026-10-15T09:07:25Z start nog2 half_cheetah
+2026-10-15T09:07:27Z end rec2 half_cheetah rc 0 wall_s 118
+2026-10-15T09:07:27Z start shp2 half_cheetah
+2026-10-15T09:07:39Z end nog4 half_cheetah rc 0 wall_s 157
+2026-10-15T09:07:39Z start rec1 half_cheetah
+2026-10-15T09:07:45Z end shp4 half_cheetah rc 0 wall_s 139
+2026-10-15T09:07:45Z start nof1 half_cheetah
+2026-10-15T09:08:44Z end nof1 half_cheetah rc 0 wall_s 59
+2026-10-15T09:08:44Z start nog1 half_cheetah
+2026-10-15T09:09:11Z end shp2 half_cheetah rc 0 wall_s 104
+2026-10-15T09:09:11Z start shp1 half_cheetah
+2026-10-15T09:09:16Z end rec1 half_cheetah rc 0 wall_s 97
+2026-10-15T09:09:17Z start rec16 ant
+2026-10-15T09:09:22Z end nog2 half_cheetah rc 0 wall_s 117
+2026-10-15T09:09:22Z start nof16 ant
+2026-10-15T09:10:21Z end nog1 half_cheetah rc 0 wall_s 97
+2026-10-15T09:10:21Z start nog16 ant
+2026-10-15T09:10:30Z end nof16 ant rc 0 wall_s 68
+2026-10-15T09:10:30Z start shp16 ant
+2026-10-15T09:10:32Z end rec16 ant rc 0 wall_s 75
+2026-10-15T09:10:32Z start rec8 ant
+2026-10-15T09:10:37Z end shp1 half_cheetah rc 0 wall_s 86
+2026-10-15T09:10:37Z start nof8 ant
+2026-10-15T09:11:17Z end rec8 ant rc 0 wall_s 45
+2026-10-15T09:11:17Z start nog8 ant
+2026-10-15T09:11:19Z end nof8 ant rc 0 wall_s 42
+2026-10-15T09:11:19Z start shp8 ant
+2026-10-15T09:11:29Z end nog16 ant rc 0 wall_s 68
+2026-10-15T09:11:29Z start rec4 ant
+2026-10-15T09:11:32Z end shp16 ant rc 0 wall_s 62
+2026-10-15T09:11:32Z start nof4 ant
+2026-10-15T09:11:58Z end shp8 ant rc 0 wall_s 39
+2026-10-15T09:11:58Z start nog4 ant
+2026-10-15T09:11:59Z end rec4 ant rc 0 wall_s 30
+2026-10-15T09:11:59Z start shp4 ant
+2026-10-15T09:11:59Z end nog8 ant rc 0 wall_s 42
+2026-10-15T09:11:59Z start rec2 ant
+2026-10-15T09:12:00Z end nof4 ant rc 0 wall_s 28
+2026-10-15T09:12:00Z start nof2 ant
+2026-10-15T09:12:21Z end nof2 ant rc 0 wall_s 21
+2026-10-15T09:12:21Z start nog2 ant
+2026-10-15T09:12:22Z end rec2 ant rc 0 wall_s 23
+2026-10-15T09:12:22Z start shp2 ant
+2026-10-15T09:12:26Z end shp4 ant rc 0 wall_s 27
+2026-10-15T09:12:26Z start rec1 ant
+2026-10-15T09:12:27Z end nog4 ant rc 0 wall_s 29
+2026-10-15T09:12:27Z start nof1 ant
+2026-10-15T09:12:42Z end shp2 ant rc 0 wall_s 20
+2026-10-15T09:12:42Z start nog1 ant
+2026-10-15T09:12:42Z end nog2 ant rc 0 wall_s 21
+2026-10-15T09:12:42Z start shp1 ant
+2026-10-15T09:12:44Z end rec1 ant rc 0 wall_s 18
+2026-10-15T09:12:44Z worker 3 done
+2026-10-15T09:12:44Z end nof1 ant rc 0 wall_s 17
+2026-10-15T09:12:44Z worker 2 done
+2026-10-15T09:12:59Z end shp1 ant rc 0 wall_s 17
+2026-10-15T09:12:59Z worker 4 done
+2026-10-15T09:12:59Z end nog1 ant rc 0 wall_s 17
+2026-10-15T09:12:59Z worker 1 done

@@ -1,0 +1,10 @@
+rig sha256 rpath library-sha256 (built 2026-10-15 from senua-superdex-accuracy tools/*.cpp at record HEAD 890924c; stock rigs against pristine SuperDex 1d71509 headers via git archive)
+sdx_chain64_b15 4c310ed7badabb1d ~/code/superdex-build-f64/bin 471d5d5bd856f37c
+sdx_chain64_stock 502241c6dca8a287 ~/code/superdex-build-f64/bin_stock 5a213c925bc86b61
+sdx_chain64_stocklib_srchdr 1f5492393e0d84ee ~/code/superdex-build-f64/bin_stock 5a213c925bc86b61
+sdx_deform64_b15 24b44fd477d01412 ~/code/superdex-build-f64/bin 471d5d5bd856f37c
+sdx_deform64_stock 9d5872525b68469f ~/code/superdex-build-f64/bin_stock 5a213c925bc86b61
+sdx_deform64_stocklib_srchdr 6fd5e9dead6c9d30 ~/code/superdex-build-f64/bin_stock 5a213c925bc86b61
+sdx_grip64_b15 bc973ebe056fd9bf ~/code/superdex-build-f64/bin 471d5d5bd856f37c
+sdx_grip64_stock f7c190c5003b6101 ~/code/superdex-build-f64/bin_stock 5a213c925bc86b61
+sdx_grip64_stocklib_srchdr c49611fc5cd2b6ee ~/code/superdex-build-f64/bin_stock 5a213c925bc86b61

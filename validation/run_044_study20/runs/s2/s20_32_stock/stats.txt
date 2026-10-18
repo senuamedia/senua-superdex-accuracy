@@ -1,0 +1,18 @@
+STATS run stop_1 contact dt 0.01 h0 0 vx0 1 mu 0.4 lock 1 mass 1.1 radius 0.04 steps 150 converged 140 stopped 10 diverged 0 most_iterations 13 real_bits 32 extra none
+STATS run land_1 contact dt 0.01 h0 0.06 vx0 1 mu 0.4 lock 1 mass 1.1 radius 0.04 steps 150 converged 143 stopped 7 diverged 0 most_iterations 14 real_bits 32 extra none
+STATS run stop_4 contact dt 0.0025 h0 0 vx0 1 mu 0.4 lock 1 mass 1.1 radius 0.04 steps 600 converged 588 stopped 12 diverged 0 most_iterations 5 real_bits 32 extra none
+STATS run land_4 contact dt 0.0025 h0 0.06 vx0 1 mu 0.4 lock 1 mass 1.1 radius 0.04 steps 600 converged 564 stopped 36 diverged 0 most_iterations 11 real_bits 32 extra none
+STATS run stop_16 contact dt 0.000625 h0 0 vx0 1 mu 0.4 lock 1 mass 1.1 radius 0.04 steps 2400 converged 190 stopped 2210 diverged 0 most_iterations 4 real_bits 32 extra none
+STATS run land_16 contact dt 0.000625 h0 0.06 vx0 1 mu 0.4 lock 1 mass 1.1 radius 0.04 steps 2400 converged 1784 stopped 616 diverged 0 most_iterations 9 real_bits 32 extra none
+STATS run stop_64 contact dt 0.00015625 h0 0 vx0 1 mu 0.4 lock 1 mass 1.1 radius 0.04 steps 9600 converged 11 stopped 9589 diverged 0 most_iterations 3 real_bits 32 extra none
+STATS run land_64 contact dt 0.00015625 h0 0.06 vx0 1 mu 0.4 lock 1 mass 1.1 radius 0.04 steps 9600 converged 69 stopped 9531 diverged 0 most_iterations 5 real_bits 32 extra none
+STATS run rest_1 pair dt 0.01 layout stack massa 3.5 ra 0.28 massb 0.7 rb 0.035 mu 0.35 mug 0 steps 100 converged 100 stopped 0 diverged 0 most_iterations 4 real_bits 32 extra none
+STATS run carry_1 pair dt 0.01 layout stack massa 3.5 ra 0.28 massb 0.7 rb 0.035 mu 0.35 mug 0 steps 200 converged 167 stopped 33 diverged 0 most_iterations 4 real_bits 32 extra pusha=7.203 pushat=0.5
+STATS run slip_1 pair dt 0.01 layout stack massa 3.5 ra 0.28 massb 0.7 rb 0.035 mu 0.35 mug 0 steps 90 converged 87 stopped 3 diverged 0 most_iterations 12 real_bits 32 extra pusha=21.609 pushat=0.5
+STATS run side_1 pair dt 0.01 layout side massa 3.5 ra 0.28 massb 0.7 rb 0.035 mu 0 mug 0 steps 50 converged 31 stopped 19 diverged 0 most_iterations 5 real_bits 32 extra none
+STATS run top_1 pair dt 0.01 layout stack massa 3.5 ra 0.28 massb 0.7 rb 0.035 mu 0.35 mug 0 steps 150 converged 109 stopped 41 diverged 0 most_iterations 12 real_bits 32 extra none
+STATS run rest_16 pair dt 0.000625 layout stack massa 3.5 ra 0.28 massb 0.7 rb 0.035 mu 0.35 mug 0 steps 1600 converged 8 stopped 1592 diverged 0 most_iterations 2 real_bits 32 extra none
+STATS run carry_16 pair dt 0.000625 layout stack massa 3.5 ra 0.28 massb 0.7 rb 0.035 mu 0.35 mug 0 steps 3200 converged 8 stopped 3192 diverged 0 most_iterations 2 real_bits 32 extra pusha=7.203 pushat=0.5
+STATS run slip_16 pair dt 0.000625 layout stack massa 3.5 ra 0.28 massb 0.7 rb 0.035 mu 0.35 mug 0 steps 1440 converged 8 stopped 1432 diverged 0 most_iterations 3 real_bits 32 extra pusha=21.609 pushat=0.5
+STATS run side_16 pair dt 0.000625 layout side massa 3.5 ra 0.28 massb 0.7 rb 0.035 mu 0 mug 0 steps 800 converged 129 stopped 671 diverged 0 most_iterations 3 real_bits 32 extra none
+STATS run top_16 pair dt 0.000625 layout stack massa 3.5 ra 0.28 massb 0.7 rb 0.035 mu 0.35 mug 0 steps 2400 converged 1 stopped 2399 diverged 0 most_iterations 4 real_bits 32 extra none

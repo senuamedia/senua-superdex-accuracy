@@ -1,0 +1,8 @@
+plays      116, files compared 136 (registered file missing: 0)
+stock-built rig vs registered: SAME 136, DIFFERS 0
+build-15 rig vs registered:    SAME 136, DIFFERS 0
+stock-built rig vs build-15:   SAME 136, DIFFERS 0
+STATS lines: stock vs registered SAME 116 DIFFERS 0; build-15 vs registered SAME 116 DIFFERS 0
+libraries loaded (stock rigs):  136 bin_stock;
+libraries loaded (b15 rigs):    136 bin;
+nonzero exit codes: stock 0, b15 0

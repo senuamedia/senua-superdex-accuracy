@@ -1,0 +1,57 @@
+391 files of ~/work/lx45/record/validation/run_032_open_items/runs replaced by the Linux plays
+106 files of ~/work/lx45/record/validation/run_034_replication/runs replaced by the Linux plays
+119 files of ~/work/lx45/record/validation/run_034_replication/accurate14/runs replaced by the Linux plays
+DIFFERS validation/run_032_open_items/reading.txt
+DIFFERS validation/run_034_replication/reading.txt
+== validation/run_032_open_items/reading.txt: rule lines on Linux against the registered
+rule lines registered 150, made on Linux 150
+verdict differs: 0
+measured values differ (whole lines):
+< deform final, shell slide, 0.01 s | DEFORM case 7 dt_ns 10000000 steps 150 settle_steps 50 end_com_x_nm 51774063 end_com_y_nm 489406 end_vx_ums 0 end_vy_ums 0 moved_x_nm 51774063 moved_y_nm 3 tip_drop_nm 510594 tip_swing_nm 0 tip_lowest_drop_nm 541963 tip_along_x_nm 51774061 centre_drop_nm 510594 rest_centre_y_nm 489406 rest_tip_y_nm 489406 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 2 period_ns 469880000 fall_worst_nm 0 shape_worst_nm 42 slow_step 65
+> deform final, shell slide, 0.01 s | DEFORM case 7 dt_ns 10000000 steps 150 settle_steps 50 end_com_x_nm 51774064 end_com_y_nm 489406 end_vx_ums 0 end_vy_ums 0 moved_x_nm 51774064 moved_y_nm 3 tip_drop_nm 510594 tip_swing_nm 0 tip_lowest_drop_nm 541963 tip_along_x_nm 51774062 centre_drop_nm 510594 rest_centre_y_nm 489406 rest_tip_y_nm 489406 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 2 period_ns 469880000 fall_worst_nm 0 shape_worst_nm 42 slow_step 65
+< deform final, soft slide, 0.01 s | DEFORM case 12 dt_ns 10000000 steps 150 settle_steps 50 end_com_x_nm 51257502 end_com_y_nm 49659679 end_vx_ums 0 end_vy_ums 0 moved_x_nm 51257502 moved_y_nm 14 tip_drop_nm 1308482 tip_swing_nm 0 tip_lowest_drop_nm 1437946 tip_along_x_nm 51260164 centre_drop_nm 1340321 rest_centre_y_nm 49659679 rest_tip_y_nm -308482 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 4 period_ns 296150000 fall_worst_nm 0 shape_worst_nm 842644 slow_step 65
+> deform final, soft slide, 0.01 s | DEFORM case 12 dt_ns 10000000 steps 150 settle_steps 50 end_com_x_nm 51257494 end_com_y_nm 49659679 end_vx_ums 0 end_vy_ums 0 moved_x_nm 51257494 moved_y_nm 14 tip_drop_nm 1308481 tip_swing_nm 0 tip_lowest_drop_nm 1437945 tip_along_x_nm 51260154 centre_drop_nm 1340321 rest_centre_y_nm 49659679 rest_tip_y_nm -308481 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 4 period_ns 296160000 fall_worst_nm 0 shape_worst_nm 842645 slow_step 65
+< benchmark | half_cheetah stock steps 21600 stopped 3 diverged 0 most_iterations 200 wall_s 91.9
+< benchmark | half_cheetah final steps 21600 stopped 9 diverged 0 most_iterations 200 wall_s 153.3
+< benchmark | half_cheetah accurate steps 345600 stopped 0 diverged 0 most_iterations 85 wall_s 556.2
+< benchmark | ant stock steps 21600 stopped 199 diverged 0 most_iterations 200 wall_s 33.3
+< benchmark | ant final steps 21600 stopped 0 diverged 0 most_iterations 124 wall_s 32.7
+< benchmark | ant accurate steps 345600 stopped 0 diverged 0 most_iterations 117 wall_s 95.8
+< benchmark | cart_pole stock steps 21600 stopped 0 diverged 0 most_iterations 7 wall_s 2.2
+< benchmark | cart_pole final steps 21600 stopped 0 diverged 0 most_iterations 7 wall_s 2.3
+< benchmark | cart_pole accurate steps 345600 stopped 0 diverged 0 most_iterations 3 wall_s 25.6
+> benchmark | half_cheetah stock steps 21600 stopped 3 diverged 0 most_iterations 200 wall_s 46.1
+> benchmark | half_cheetah final steps 21600 stopped 9 diverged 0 most_iterations 200 wall_s 95.4
+> benchmark | half_cheetah accurate steps 345600 stopped 0 diverged 0 most_iterations 85 wall_s 279.4
+> benchmark | ant stock steps 21600 stopped 199 diverged 0 most_iterations 200 wall_s 17.4
+> benchmark | ant final steps 21600 stopped 0 diverged 0 most_iterations 124 wall_s 17.0
+> benchmark | ant accurate steps 345600 stopped 0 diverged 0 most_iterations 117 wall_s 50.7
+> benchmark | cart_pole stock steps 21600 stopped 0 diverged 0 most_iterations 7 wall_s 0.8
+> benchmark | cart_pole final steps 21600 stopped 0 diverged 0 most_iterations 7 wall_s 0.9
+> benchmark | cart_pole accurate steps 345600 stopped 0 diverged 0 most_iterations 3 wall_s 10.2
+< RULE D4_slides_final_shipped_step all_within 52055556 100 51774063 51257502 : FAILED
+> RULE D4_slides_final_shipped_step all_within 52055556 100 51774064 51257494 : FAILED
+== validation/run_034_replication/reading.txt: rule lines on Linux against the registered
+rule lines registered 121, made on Linux 121
+verdict differs: 1
+63c63
+< V8_the_tree_reads_every_other_rule_as_run_032 HELD
+---
+> V8_the_tree_reads_every_other_rule_as_run_032 FAILED
+measured values differ (whole lines):
+< deform final, shell slide, 0.01 s, where it stopped | DEFORMSTOP dt_ns 10000000 stop_step 70 moved_at_stop_nm 77946792 furthest_nm 78203096 end_nm 77903094
+< deform final, shell slide, 0.01 s (reported) | DEFORM case 7 dt_ns 10000000 steps 150 settle_steps 50 end_com_x_nm 77903094 end_com_y_nm 489406 end_vx_ums 0 end_vy_ums 0 moved_x_nm 77903094 moved_y_nm 3 tip_drop_nm 510594 tip_swing_nm 0 tip_lowest_drop_nm 541963 tip_along_x_nm 77903095 centre_drop_nm 510594 rest_centre_y_nm 489406 rest_tip_y_nm 489406 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 2 period_ns 469880000 fall_worst_nm 0 shape_worst_nm 42 slow_step 70
+> deform final, shell slide, 0.01 s, where it stopped | DEFORMSTOP dt_ns 10000000 stop_step 70 moved_at_stop_nm 77946793 furthest_nm 78203097 end_nm 77903095
+> deform final, shell slide, 0.01 s (reported) | DEFORM case 7 dt_ns 10000000 steps 150 settle_steps 50 end_com_x_nm 77903095 end_com_y_nm 489406 end_vx_ums 0 end_vy_ums 0 moved_x_nm 77903095 moved_y_nm 3 tip_drop_nm 510594 tip_swing_nm 0 tip_lowest_drop_nm 541963 tip_along_x_nm 77903097 centre_drop_nm 510594 rest_centre_y_nm 489406 rest_tip_y_nm 489406 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 2 period_ns 469880000 fall_worst_nm 0 shape_worst_nm 42 slow_step 70
+< accurate14 | benchmark | half_cheetah accurate steps 345600 stopped 0 diverged 0 most_iterations 122 wall_s 439.9
+< accurate14 | benchmark | ant accurate steps 345600 stopped 0 diverged 0 most_iterations 99 wall_s 110.2
+< accurate14 | benchmark | cart_pole accurate steps 345600 stopped 0 diverged 0 most_iterations 4 wall_s 25.0
+> accurate14 | benchmark | half_cheetah accurate steps 345600 stopped 0 diverged 0 most_iterations 122 wall_s 317.8
+> accurate14 | benchmark | ant accurate steps 345600 stopped 0 diverged 0 most_iterations 99 wall_s 61.5
+> accurate14 | benchmark | cart_pole accurate steps 345600 stopped 0 diverged 0 most_iterations 4 wall_s 10.5
+< RULE V6_slides_stop_final_shipped_step all_within 78153061 100 77946792 77109219 : FAILED
+> RULE V6_slides_stop_final_shipped_step all_within 78153061 100 77946793 77109219 : FAILED
+< RULE V8_the_tree_reads_every_other_rule_as_run_032 eq 1 1 : HELD
+> RULE V8_the_tree_reads_every_other_rule_as_run_032 eq 0 1 : FAILED
+< STUDY15 rules held 117 failed 4 ; values missing 0 ; measuring complete 1
+> STUDY15 rules held 116 failed 5 ; values missing 0 ; measuring complete 1

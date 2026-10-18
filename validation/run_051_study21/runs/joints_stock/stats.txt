@@ -1,0 +1,5 @@
+STATS run spin_1 joint dt 0.01 mass 1.556 radius 0.0449 arm 0.443 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra none
+STATS run hold_1 joint dt 0.01 mass 1.556 radius 0.0449 arm 0.443 angle0 0 gravity 1 dofs 1 steps 200 converged 200 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra coulomb=10.5381
+STATS run slip_1 joint dt 0.01 mass 1.556 radius 0.0449 arm 0.443 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra coulomb=2.05 torque=3.16
+STATS run hold_16 joint dt 0.000625 mass 1.556 radius 0.0449 arm 0.443 angle0 0 gravity 1 dofs 1 steps 3200 converged 3200 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra coulomb=10.5381
+STATS run slip_16 joint dt 0.000625 mass 1.556 radius 0.0449 arm 0.443 angle0 0 gravity 0 dofs 1 steps 1600 converged 1600 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra coulomb=2.05 torque=3.16

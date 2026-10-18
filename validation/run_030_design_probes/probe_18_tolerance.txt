@@ -1,0 +1,33 @@
+# probe 18: the twelfth registration's arm released at 3.5 rad/s, no gravity, 1 s, final configuration (A to G, Newton-Euler), library build 12; the solver's absolute and relative tolerances; final speed in micro-radians a second (right answer 3,500,000) and mean iterations a step
+## the absolute tolerance alone
+tol 1e-3 | 1/1 speed 3499956 iters 2.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3495542 iters 1.00 ; 1/64 speed 3498884 iters 1.00 ;
+tol 1e-4 | 1/1 speed 3499956 iters 2.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3495542 iters 1.00 ; 1/64 speed 3498884 iters 1.00 ;
+tol 1e-5 | 1/1 speed 3499956 iters 2.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3495542 iters 1.00 ; 1/64 speed 3498884 iters 1.00 ;
+tol 1e-6 | 1/1 speed 3499956 iters 2.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3495542 iters 1.00 ; 1/64 speed 3498884 iters 1.00 ;
+## the relative tolerance, and both
+abs 1e-3 rel 1e-6 | 1/1 speed 3499956 iters 2.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3495542 iters 1.00 ; 1/64 speed 3498884 iters 1.00 ;
+abs 1e-3 rel 1e-8 | 1/1 speed 3499956 iters 2.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3500000 iters 2.00 ; 1/64 speed 3498884 iters 1.00 ;
+abs 1e-3 rel 1e-9 | 1/1 speed 3499956 iters 2.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3500000 iters 2.00 ; 1/64 speed 3498884 iters 1.00 ;
+abs 1e-3 rel 1e-10 | 1/1 speed 3499956 iters 2.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3500000 iters 2.00 ; 1/64 speed 3498884 iters 1.00 ;
+abs 1e-3 rel 1e-12 | 1/1 speed 3499956 iters 2.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3500000 iters 2.00 ; 1/64 speed 3498884 iters 1.00 ;
+abs 1e-9 rel 1e-6 | 1/1 speed 3499956 iters 2.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3495542 iters 1.00 ; 1/64 speed 3498884 iters 1.00 ;
+abs 1e-9 rel 1e-9 | 1/1 speed 3500000 iters 3.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3500000 iters 2.00 ; 1/64 speed 3500000 iters 2.00 ;
+abs 1e-9 rel 1e-12 | 1/1 speed 3500000 iters 4.00 ; 1/4 speed 3500000 iters 3.00 ; 1/16 speed 3500000 iters 3.00 ; 1/64 speed 3500000 iters 2.00 ;
+
+## more absolute tolerances with relative 1e-8 and 1e-9, library build 13
+abs 1e-5 rel 1e-8 | 1/1 speed 3500000 iters 3.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3500000 iters 2.00 ; 1/64 speed 3500000 iters 2.00 ;
+abs 1e-5 rel 1e-9 | 1/1 speed 3500000 iters 3.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3500000 iters 2.00 ; 1/64 speed 3500000 iters 2.00 ;
+abs 1e-6 rel 1e-8 | 1/1 speed 3500000 iters 3.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3500000 iters 2.00 ; 1/64 speed 3500000 iters 2.00 ;
+abs 1e-6 rel 1e-9 | 1/1 speed 3500000 iters 3.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3500000 iters 2.00 ; 1/64 speed 3500000 iters 2.00 ;
+abs 1e-7 rel 1e-8 | 1/1 speed 3500000 iters 3.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3500000 iters 2.00 ; 1/64 speed 3500000 iters 2.00 ;
+abs 1e-7 rel 1e-9 | 1/1 speed 3500000 iters 3.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3500000 iters 2.00 ; 1/64 speed 3500000 iters 2.00 ;
+abs 1e-4 rel 1e-7 | 1/1 speed 3499956 iters 2.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3500000 iters 2.00 ; 1/64 speed 3498884 iters 1.00 ;
+abs 1e-4 rel 1e-8 | 1/1 speed 3499956 iters 2.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3500000 iters 2.00 ; 1/64 speed 3500000 iters 2.00 ;
+abs 1e-5 rel 1e-7 | 1/1 speed 3500000 iters 3.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3500000 iters 2.00 ; 1/64 speed 3498884 iters 1.00 ;
+abs 1e-5 rel 1e-8 | 1/1 speed 3500000 iters 3.00 ; 1/4 speed 3499999 iters 2.00 ; 1/16 speed 3500000 iters 2.00 ; 1/64 speed 3500000 iters 2.00 ;
+
+## the twelfth registration's free chain (kinetic energy per million of its start; largest angular momentum drift, parts per million), library build 13
+abs 1e-3 rel 1e-6 | 1/1 energy 1000208 momentum 58 ; 1/4 energy 1000136 momentum 28 ; 1/16 energy 1003630 momentum 1430 ; 1/64 energy 1001532 momentum 574 ;
+abs 1e-4 rel 1e-8 | 1/1 energy 1000202 momentum 8 ; 1/4 energy 1000015 momentum 6 ; 1/16 energy 1000007 momentum 2 ; 1/64 energy 1000016 momentum 4 ;
+abs 1e-5 rel 1e-8 | 1/1 energy 1000178 momentum 1 ; 1/4 energy 1000011 momentum 1 ; 1/16 energy 1000001 momentum 1 ; 1/64 energy 1000010 momentum 3 ;
+abs 1e-9 rel 1e-9 | 1/1 energy 1000177 momentum 1 ; 1/4 energy 1000011 momentum 1 ; 1/16 energy 1000000 momentum 1 ; 1/64 energy 1000000 momentum 1 ;

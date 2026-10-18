@@ -1,0 +1,2 @@
+IDENTITY cart_pole sref srefb encoder_identical 1 state_identical 1
+IDENTITY cart_pole sref z encoder_identical 1 state_identical 1

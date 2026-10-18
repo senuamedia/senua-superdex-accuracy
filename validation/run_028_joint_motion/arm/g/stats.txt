@@ -1,0 +1,9 @@
+STATS run spin1.5_1 joint dt 0.01 mass 2.4 radius 0.05 arm 0.45 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=0
+STATS run spin1.5_4 joint dt 0.0025 mass 2.4 radius 0.05 arm 0.45 angle0 0 gravity 0 dofs 1 steps 400 converged 400 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra newtoneuler=0
+STATS run spin1.5_16 joint dt 0.000625 mass 2.4 radius 0.05 arm 0.45 angle0 0 gravity 0 dofs 1 steps 1600 converged 1600 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra newtoneuler=0
+STATS run spin3.5_1 joint dt 0.01 mass 2.4 radius 0.05 arm 0.45 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=0
+STATS run spin3.5_4 joint dt 0.0025 mass 2.4 radius 0.05 arm 0.45 angle0 0 gravity 0 dofs 1 steps 400 converged 400 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=0
+STATS run spin3.5_16 joint dt 0.000625 mass 2.4 radius 0.05 arm 0.45 angle0 0 gravity 0 dofs 1 steps 1600 converged 1600 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra newtoneuler=0
+STATS run spin6_1 joint dt 0.01 mass 2.4 radius 0.05 arm 0.45 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=0
+STATS run spin6_4 joint dt 0.0025 mass 2.4 radius 0.05 arm 0.45 angle0 0 gravity 0 dofs 1 steps 400 converged 400 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=0
+STATS run spin6_16 joint dt 0.000625 mass 2.4 radius 0.05 arm 0.45 angle0 0 gravity 0 dofs 1 steps 1600 converged 1600 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=0

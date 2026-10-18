@@ -1,0 +1,6 @@
+STATS run free_1 chain dt 0.01 mass1 1.2 mass2 0.6 radius 0.04 arm1 0.25 len1 0.5 arm2 0.2 gravity 0 dofs 2 steps 200 converged 200 stopped 0 diverged 0 most_iterations 4 real_bits 64 extra newtoneuler=0 arms_by=order
+STATS run free_4 chain dt 0.0025 mass1 1.2 mass2 0.6 radius 0.04 arm1 0.25 len1 0.5 arm2 0.2 gravity 0 dofs 2 steps 800 converged 800 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra newtoneuler=0 arms_by=order
+STATS run free_16 chain dt 0.000625 mass1 1.2 mass2 0.6 radius 0.04 arm1 0.25 len1 0.5 arm2 0.2 gravity 0 dofs 2 steps 3200 converged 3200 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra newtoneuler=0 arms_by=order
+STATS run swing_1 chain dt 0.01 mass1 1.2 mass2 0.6 radius 0.04 arm1 0.25 len1 0.5 arm2 0.2 gravity 1 dofs 2 steps 200 converged 200 stopped 0 diverged 0 most_iterations 6 real_bits 64 extra newtoneuler=0 arms_by=order
+STATS run swing_4 chain dt 0.0025 mass1 1.2 mass2 0.6 radius 0.04 arm1 0.25 len1 0.5 arm2 0.2 gravity 1 dofs 2 steps 800 converged 800 stopped 0 diverged 0 most_iterations 4 real_bits 64 extra newtoneuler=0 arms_by=order
+STATS run swing_16 chain dt 0.000625 mass1 1.2 mass2 0.6 radius 0.04 arm1 0.25 len1 0.5 arm2 0.2 gravity 1 dofs 2 steps 3200 converged 3200 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra newtoneuler=0 arms_by=order

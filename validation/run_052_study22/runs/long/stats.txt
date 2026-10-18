@@ -1,0 +1,2 @@
+STATS run pend20_cur joint dt 0.000625 mass 2.216 radius 0.0514 arm 0.444 angle0 0 gravity 1 dofs 1 steps 32000 converged 32000 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra integ=bdf2 newtoneuler=1 abstol=1e-4 reltol=1e-8
+STATS run pend20_der joint dt 0.000625 mass 2.216 radius 0.0514 arm 0.444 angle0 0 gravity 1 dofs 1 steps 32000 converged 32000 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra integ=bdf2 newtoneuler=1 abstol=1e-4 reltol=1e-8

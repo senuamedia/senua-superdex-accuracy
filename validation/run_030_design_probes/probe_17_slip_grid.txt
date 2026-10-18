@@ -1,0 +1,14 @@
+# probe 17: the eleventh registration's light-cube slip (T15), final configuration (A to G), library build 12; B's mean acceleration 0.7 s to 0.9 s (law 4,410 mm/s2) and A's (law 6,982)
+switches set: 8
+default 1/1 | A 7013 (law 6982) B 4224 (law 4410) stopped 0
+default 1/16 | A 7014 (law 6982) B 4219 (law 4410) stopped 0
+sdfcell=0.04 1/1 | A 6986 (law 6982) B 4387 (law 4410) stopped 0
+sdfcell=0.04 1/16 | A 6989 (law 6982) B 4368 (law 4410) stopped 0
+sdfcell=0.02 1/1 | A 6982 (law 6982) B 4412 (law 4410) stopped 0
+sdfcell=0.02 1/16 | A 6982 (law 6982) B 4411 (law 4410) stopped 0
+sdfcell=0.01 1/1 | A 6982 (law 6982) B 4412 (law 4410) stopped 0
+sdfcell=0.01 1/16 | A 6982 (law 6982) B 4411 (law 4410) stopped 0
+sdfcell=0.005 1/1 | A 6982 (law 6982) B 4412 (law 4410) stopped 0
+sdfcell=0.005 1/16 | A 6982 (law 6982) B 4411 (law 4410) stopped 0
+collider=box 1/1 | A 6982 (law 6982) B 4412 (law 4410) stopped 0
+collider=box 1/16 | A 6982 (law 6982) B 4411 (law 4410) stopped 0

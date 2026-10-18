@@ -1,0 +1,122 @@
+diff --git a/superdex_physics/libraries/mochi/mochi_physics/src/mochi_constraint.cpp b/superdex_physics/libraries/mochi/mochi_physics/src/mochi_constraint.cpp
+index b45e3c26..f0324ec0 100644
+--- a/superdex_physics/libraries/mochi/mochi_physics/src/mochi_constraint.cpp
++++ b/superdex_physics/libraries/mochi/mochi_physics/src/mochi_constraint.cpp
+@@ -28,6 +28,7 @@
+ #include <mochi_core/linear_algebra/krylov_interop.h>
+ #include <mochi_core/utils/constants.h>
+ 
++#include <cstdlib>
+ #include <memory>
+ #include <vector>
+ 
+@@ -1762,6 +1763,74 @@ static void AssembleGlobalObjResDRes(
+   }
+ }
+ 
++// Joint limits that cannot pull. Off unless the environment variable SUPERDEX_LIMIT_UNILATERAL is
++// set.
++// A range constraint measures how far a degree of freedom is outside its range: c >= 0 in each
++// component. As shipped, the force along it is stiffness * c + (damping / dt) * (c - cOld). The
++// damping term is negative while the degree of freedom is coming back into range, so a damped limit
++// holds back a joint that is leaving it, and above critical damping it never lets go. A limit is
++// one-sided. With this on, the force along each component is
++//   max(0, stiffness * c + (damping / dt) * (c - cOld)),
++// which is the derivative of the energy max(0, g)^2 / (2 * (stiffness + damping / dt)), so the
++// solver still minimises an energy. Only range constraints without force saturation take this path.
++static bool LimitUnilateral() {
++  // on when set to anything but empty or 0
++  static bool const kOn = [] {
++    char const* v = std::getenv("SUPERDEX_LIMIT_UNILATERAL");
++    return v != nullptr && v[0] != 0 && !(v[0] == '0' && v[1] == 0);
++  }();
++  return kOn;
++}
++
++template <ConstraintType kType>
++static constexpr bool IsRangeConstraint() {
++  return kType == ConstraintType::ArticulatedSingleDofRange ||
++         kType == ConstraintType::Articulated3dRotationRange ||
++         kType == ConstraintType::JointRotationRange;
++}
++
++template <GradTarget kGradTarget, int kCSize, int kDofsSize>
++static void ComputeLocalObjResDResUnilateral(
++    CConstraintInfo const& info,
++    real dtStage,
++    ColumnVectorView<real const, kCSize> c,
++    ColumnVectorView<real const, kCSize> cOld,
++    RowMatrixView<real const, kCSize, kDofsSize> jac, // jac or jacOld, depending on kGradTarget
++    double* outObj,
++    ColumnVector<real, kDofsSize>* outRes,
++    Matrix<real, kDofsSize, kDofsSize>* outDRes) {
++  real const stiffness = info.stiffness;
++  real const dampingFactor = info.damping / dtStage;
++  real const slope = stiffness + dampingFactor;
++  ColumnVector<real, kCSize> g MOCHI_NO_INIT; // the force along each component, never below zero
++  RowMatrix<real, kCSize, kDofsSize> jacOn MOCHI_NO_INIT; // the rows of jac whose force is above zero
++  for (int i = 0; i < kCSize; ++i) {
++    real const gi = stiffness * c(i) + dampingFactor * (c(i) - cOld(i));
++    bool const on = gi > 0_r;
++    g(i) = on ? gi : 0_r;
++    // the rows are read only for the residual or its derivative; jac is not filled when neither is asked for
++    for (int j = 0; (outRes != nullptr || outDRes != nullptr) && j < kDofsSize; ++j) {
++      jacOn(i, j) = on ? jac(i, j) : 0_r;
++    }
++  }
++  if (outObj) {
++    *outObj =
++        slope > 0_r ? 0.5 * static_cast<double>(g.NormSqr()) / static_cast<double>(slope) : 0.0;
++  }
++  if (outRes) {
++    if constexpr (
++        kGradTarget == GradTarget::Previous || kGradTarget == GradTarget::PreviousInput) {
++      real const factor = slope > 0_r ? -dampingFactor / slope : 0_r;
++      *outRes = jac.Transpose() * ColumnVector<real, kCSize>(factor * g);
++    } else {
++      *outRes = jac.Transpose() * g;
++    }
++  }
++  if (outDRes) {
++    *outDRes = Matrix<real, kDofsSize, kCSize>(slope * jacOn.Transpose()) * jacOn;
++  }
++}
++
+ template <ConstraintType kType, GradTarget kGradTarget>
+ static void AssembleConstraintT(
+     AssemblyParams const& params,
+@@ -1846,6 +1915,34 @@ static void AssembleConstraintT(
+   double obj = 0.0;
+   ColumnVector<real, kDofsSize> res{}; // Zero-initialized to avoid "-res" UB in handleQuery
+   Matrix<real, kDofsSize, kDofsSize> dres MOCHI_NO_INIT;
++  // A joint limit that cannot pull (see LimitUnilateral); otherwise the shipped terms below.
++  bool const limitUnilateral =
++      IsRangeConstraint<kType>() && info.saturation < 0_r && LimitUnilateral();
++  if (limitUnilateral) {
++    // The one-sided force needs the constraint's value for its derivative as well. The shipped code
++    // evaluates the value only when the objective or the residual is assembled, so evaluate it here
++    // when it has not been.
++    if constexpr (IsRangeConstraint<kType>()) {
++      if (!evalC) {
++        bool unusedActive{};
++        EvalConstraintImpl<TimeStep::Current>(reg, info, data, &c, nullptr, unusedActive);
++      }
++      if (!evalCOld && info.damping > 0_r) {
++        bool unusedActive{};
++        EvalConstraintImpl<TimeStep::StageStart>(reg, info, data, &cOld, nullptr, unusedActive);
++      }
++    }
++    ComputeLocalObjResDResUnilateral<kGradTarget>(
++        info,
++        dtStage,
++        AsConstView(c),
++        AsConstView(cOld),
++        AsConstView(jac),
++        params.assemObj ? &obj : nullptr,
++        params.assemRes ? &res : nullptr,
++        params.assemDRes ? &dres : nullptr);
++  }
++  if (!limitUnilateral)
+   ComputeLocalObjResDRes<kGradTarget>(
+       info,
+       dtStage,

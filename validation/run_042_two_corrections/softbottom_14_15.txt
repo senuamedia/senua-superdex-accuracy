@@ -1,0 +1,26 @@
+SAME sb_b14_abcd_drop_1.txt
+SAME sb_b14_abcd_drop_16.txt
+SAME sb_b14_abcd_drop_4.txt
+SAME sb_b14_abcd_hold_1.txt
+SAME sb_b14_abcd_hold_16.txt
+SAME sb_b14_abcd_hold_4.txt
+SAME sb_b14_abcd_hop_1.txt
+SAME sb_b14_abcd_hop_16.txt
+SAME sb_b14_abcd_hop_4.txt
+DIFFERS sb_b14_abcd_hop_64.txt byte 60331, line 1880
+SAME sb_b14_abcd_slide_1.txt
+SAME sb_b14_abcd_slide_16.txt
+SAME sb_b14_abcd_slide_4.txt
+SAME sb_b14_c_drop_1.txt
+SAME sb_b14_c_drop_16.txt
+SAME sb_b14_c_drop_4.txt
+SAME sb_b14_c_hold_1.txt
+SAME sb_b14_c_hold_16.txt
+SAME sb_b14_c_hold_4.txt
+SAME sb_b14_c_hop_1.txt
+DIFFERS sb_b14_c_hop_16.txt byte 23016, line 735
+SAME sb_b14_c_hop_4.txt
+DIFFERS sb_b14_c_hop_64.txt byte 60943, line 1900
+SAME sb_b14_c_slide_1.txt
+SAME sb_b14_c_slide_16.txt
+SAME sb_b14_c_slide_4.txt

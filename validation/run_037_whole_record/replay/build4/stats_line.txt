@@ -1,0 +1,1 @@
+STATS source qi1 scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged 21444 stopped 35 diverged 121 unset 0 most_iterations 200 enc_min -1962 enc_max 1985 real_bits 64 worst_residual 2.56e+11 extra ndamp=5 implicitn=1

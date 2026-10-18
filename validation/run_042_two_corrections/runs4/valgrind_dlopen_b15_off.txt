@@ -1,0 +1,21 @@
+==59604== Memcheck, a memory error detector
+==59604== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==59604== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==59604== Command: tools/sdx_exit ~/work/sdx/build-patched/bin/libmochi_physics_double.so 10
+==59604== Parent PID: 59603
+==59604== 
+==59604== 
+==59604== HEAP SUMMARY:
+==59604==     in use at exit: 57,843 bytes in 750 blocks
+==59604==   total heap usage: 7,872 allocs, 7,122 frees, 6,856,315 bytes allocated
+==59604== 
+==59604== LEAK SUMMARY:
+==59604==    definitely lost: 0 bytes in 0 blocks
+==59604==    indirectly lost: 0 bytes in 0 blocks
+==59604==      possibly lost: 0 bytes in 0 blocks
+==59604==    still reachable: 57,843 bytes in 750 blocks
+==59604==         suppressed: 0 bytes in 0 blocks
+==59604== Rerun with --leak-check=full to see details of leaked memory
+==59604== 
+==59604== For lists of detected and suppressed errors, rerun with: -s
+==59604== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

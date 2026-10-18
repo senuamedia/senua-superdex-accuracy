@@ -1,0 +1,8 @@
+own stock | 1/1 B 4402 A 6983 stopped 0 diverged 0 | 1/2 B 4274 A 7005 stopped 0 diverged 0 | 1/4 B 4237 A 7011 stopped 0 diverged 0 | 1/8 B 4223 A 7013 stopped 0 diverged 0 | 1/16 B 4216 A 7014 stopped 1 diverged 0
+own f_only | 1/1 B 4220 A 7014 stopped 0 diverged 0 | 1/2 B 4230 A 7012 stopped 0 diverged 0 | 1/4 B 4228 A 7012 stopped 0 diverged 0 | 1/8 B 4221 A 7013 stopped 0 diverged 0 | 1/16 B 4216 A 7014 stopped 0 diverged 0
+own rec | 1/1 B 4392 A 6985 stopped 0 diverged 0 | 1/2 B 4259 A 7007 stopped 0 diverged 0 | 1/4 B 4229 A 7012 stopped 0 diverged 0 | 1/8 B 4220 A 7014 stopped 0 diverged 0 | 1/16 B 4215 A 7014 stopped 0 diverged 0
+own rec_f | 1/1 B 4224 A 7013 stopped 0 diverged 0 | 1/2 B 4234 A 7011 stopped 0 diverged 0 | 1/4 B 4228 A 7012 stopped 0 diverged 0 | 1/8 B 4221 A 7013 stopped 0 diverged 0 | 1/16 B 4219 A 7014 stopped 0 diverged 0
+div32 stock | 1/1 B 4411 A 6982 stopped 0 diverged 0 | 1/2 B 4410 A 6982 stopped 0 diverged 0 | 1/4 B 4413 A 6981 stopped 0 diverged 0 | 1/8 B 4410 A 6982 stopped 0 diverged 0 | 1/16 B 4409 A 6982 stopped 1 diverged 0
+div32 f_only | 1/1 B 4411 A 6982 stopped 0 diverged 0 | 1/2 B 4410 A 6982 stopped 0 diverged 0 | 1/4 B 4413 A 6981 stopped 0 diverged 0 | 1/8 B 4410 A 6982 stopped 0 diverged 0 | 1/16 B 4409 A 6982 stopped 0 diverged 0
+div32 rec | 1/1 B 4410 A 6982 stopped 0 diverged 0 | 1/2 B 4409 A 6982 stopped 0 diverged 0 | 1/4 B 4409 A 6982 stopped 0 diverged 0 | 1/8 B 4409 A 6982 stopped 0 diverged 0 | 1/16 B 4409 A 6982 stopped 0 diverged 0
+div32 rec_f | 1/1 B 4412 A 6982 stopped 0 diverged 0 | 1/2 B 4412 A 6982 stopped 0 diverged 0 | 1/4 B 4410 A 6982 stopped 0 diverged 0 | 1/8 B 4411 A 6982 stopped 0 diverged 0 | 1/16 B 4411 A 6982 stopped 0 diverged 0

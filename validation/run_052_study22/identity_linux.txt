@@ -1,0 +1,12 @@
+LINUX joint swing_be_64 | kept SAME | stock SAME
+LINUX zero joint swing_be_64 | kept SAME | stock SAME
+LINUX fg chain swing_16 | kept SAME | stock -
+LINUX fg chain tight free_16 | kept SAME | stock -
+LINUX fg joints_fc swing_be_64 | kept SAME | stock -
+LINUX fg limits_fc rel20_64 | kept SAME | stock -
+LINUX benchmark ant s4 | kept SAME | stock SAME
+LINUX benchmark ant c1 | kept SAME | stock SAME
+LINUX benchmark ant c06 | kept SAME | stock SAME
+LINUX benchmark ant c03 | kept SAME | stock SAME
+LINUX benchmark under its switches half_cheetah y1 | kept SAME | stock -
+LINUX benchmark under its switches half_cheetah y4 | kept SAME | stock -

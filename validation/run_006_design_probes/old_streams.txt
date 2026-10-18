@@ -1,0 +1,109 @@
+# the second registration's streams (streams2/, 108 episodes, already read and decided) read again by plain subtraction
+# by part of the episode
+part of the episode       0-5     5-10    10-20    20-40    40-80   80-120  120-160  160-200 | parting: never earliest median latest
+== cart_pole: sref t2 t4 t8 t16
+sref - t2              5556    10513    47985   138249    93819      579      429      288 |     0        0      0      6
+t2 - t4                2746     5052    23054    68896    59201      368      251      223 |     0        0      0      6
+t4 - t8                1351     2492    11354    34461    36137      225      170      116 |     0        0      1     10
+t8 - t16                693     1272     5842    18226    28933     1786      126       99 |     0        0      2     17
+== half_cheetah: sref t2 t4 t8 t16
+sref - t2              2644     3236    17249    72424   143919   157492   149429   154812 |     0        0      0     10
+t2 - t4                1450     1725    10849    63891   115087   104707   104353   100545 |     0        0      1     15
+t4 - t8                 742      914     7790    78878   176682   117659    98518   109422 |     0        0      3     15
+t8 - t16                404      447     5469    69199   272928   210388   176462   160089 |     0        1      9     17
+== ant: sref t2 t4 t8 t16
+sref - t2              6623    19763    55412   107520   232521   234481   224791   309237 |     0        0      0      7
+t2 - t4                2916     9273    28061    53940   123294   123022   136659   174763 |     0        0      0      7
+t4 - t8                1416     4490    13961    26215    65436    70409    86274   110689 |     0        0      1     12
+t8 - t16                652     2083     6794    15690    50270    53282    67499   102116 |     0        1      3     13
+== half_cheetah: c10 sref c2 c1 c06 c03
+c10 - sref                0        1     3468    16245    25807    18321    20576    22082 |     0       10     14     29
+sref - c2                 0        1     2257    10252    15120    11865    13121    15354 |     0       10     14     43
+c2 - c1                   0        0     1363     5869     8810     7444     8820     9456 |     0       10     15     96
+c1 - c06                  0        0      710     3483     5106     4405     5494     6098 |     3       11     23    200
+c06 - c03                 0        0      654     3844     6451     5509     5469     5803 |     3       11     34    200
+== ant: c10 sref c2 c1 c06 c03
+c10 - sref            15117    38684    84154   122462   121051    51599    29200    53873 |     0        0      0     69
+sref - c2              3372     8489    17641    27509    31825    18238    15895    63912 |     0        0      1    103
+c2 - c1                 286      874     2241     4509     9937     7779    10813    21047 |     0        2      8    195
+c1 - c06                419     1124     2518     4880    11447     6239    12800    38985 |     0        2      5    160
+c06 - c03               359      901     2117     3651     4880     5458     7999    15169 |     0        2      6    182
+== half_cheetah: nref sref
+nref - sref               0        0        3       49      178      325      246      248 |   107       74    200    200
+== half_cheetah: tight sref
+tight - sref              0        3        4       64      203      232      231      276 |   107      193    200    200
+== ant: nref sref
+nref - sref               1        2       11       31       32       58      265     1195 |    98       24    200    200
+== ant: tight sref
+tight - sref              0        0        0        1       26       70       87      276 |   104      126    200    200
+== ant: s8 sref
+s8 - sref              2390     6108    12337    18432    20574     8554    10142    31457 |    14        0     61    200
+== ant: s16 sref
+s16 - sref             1881     4817     9409    13060    14219     4374     7162    36032 |    54        0    200    200
+# the third harness's instrument mode on three of those lists (a dry run: noise slots 28 to 30, used by no registration): the instrument's size and the plain size of every gap, fold by fold
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 detection bar 219 noise slot 28
+CELL half_cheetah T fold 0
+  gap sref against t2 level 6061 of 6084 magnitude 4407186 ; calibration level 121 detected 1 ; plain 4408507
+  gap t2 against t4 level 6066 of 6084 magnitude 3594408 ; calibration level 221 detected 1 ; plain 3595249
+  gap t4 against t8 level 5971 of 6084 magnitude 4845947 ; calibration level 143 detected 1 ; plain 4861806
+  gap t8 against t16 level 5962 of 6084 magnitude 7156194 ; calibration level 133 detected 1 ; plain 7192479
+  detected 4 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+CELL half_cheetah T fold 1
+  gap sref against t2 level 6068 of 6084 magnitude 4169491 ; calibration level 33 detected 1 ; plain 4173104
+  gap t2 against t4 level 5992 of 6084 magnitude 3105049 ; calibration level 97 detected 1 ; plain 3111202
+  gap t4 against t8 level 5825 of 6084 magnitude 3702376 ; calibration level 60 detected 1 ; plain 3732758
+  gap t8 against t16 level 5906 of 6084 magnitude 6128168 ; calibration level 25 detected 1 ; plain 6148442
+  detected 4 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+CELL half_cheetah T fold 2
+  gap sref against t2 level 5979 of 6084 magnitude 4009212 ; calibration level 46 detected 1 ; plain 4027385
+  gap t2 against t4 level 5747 of 6084 magnitude 3377527 ; calibration level 56 detected 1 ; plain 3420364
+  gap t4 against t8 level 5568 of 6084 magnitude 4537689 ; calibration level 15 detected 1 ; plain 4609740
+  gap t8 against t16 level 5978 of 6084 magnitude 6838341 ; calibration level 78 detected 1 ; plain 6861139
+  detected 4 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+PART half_cheetah T cells_same 3 of 3 calibration_level 1028 calibration_windows 73008
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 detection bar 219 noise slot 29
+CELL half_cheetah C fold 0
+  gap c10 against sref level 4594 of 6084 magnitude 781973 ; calibration level 248 detected 1 ; plain 823125
+  gap sref against c2 level 4228 of 6084 magnitude 484608 ; calibration level 194 detected 1 ; plain 530790
+  gap c2 against c1 level 3328 of 6084 magnitude 284182 ; calibration level 71 detected 1 ; plain 330215
+  gap c1 against c06 level 2348 of 6084 magnitude 153685 ; calibration level 61 detected 1 ; plain 202130
+  gap c06 against c03 level 2273 of 6084 magnitude 160343 ; calibration level 60 detected 1 ; plain 223540
+  detected 5 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+CELL half_cheetah C fold 1
+  gap c10 against sref level 4525 of 6084 magnitude 717631 ; calibration level 131 detected 1 ; plain 771764
+  gap sref against c2 level 3966 of 6084 magnitude 467037 ; calibration level 23 detected 1 ; plain 516405
+  gap c2 against c1 level 3167 of 6084 magnitude 275147 ; calibration level 65 detected 1 ; plain 331567
+  gap c1 against c06 level 1742 of 6084 magnitude 108679 ; calibration level 33 detected 1 ; plain 174527
+  gap c06 against c03 level 2112 of 6084 magnitude 154564 ; calibration level 24 detected 1 ; plain 206598
+  detected 5 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+CELL half_cheetah C fold 2
+  gap c10 against sref level 4693 of 6084 magnitude 854232 ; calibration level 205 detected 1 ; plain 889988
+  gap sref against c2 level 3855 of 6084 magnitude 466610 ; calibration level 20 detected 1 ; plain 519585
+  gap c2 against c1 level 2903 of 6084 magnitude 246323 ; calibration level 18 detected 1 ; plain 305269
+  gap c1 against c06 level 2261 of 6084 magnitude 150126 ; calibration level 124 detected 1 ; plain 204947
+  gap c06 against c03 level 2188 of 6084 magnitude 153530 ; calibration level 40 detected 1 ; plain 214531
+  detected 5 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+PART half_cheetah C cells_same 3 of 3 calibration_level 1317 calibration_windows 91260
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 detection bar 219 noise slot 30
+CELL ant S fold 0
+  gap s1 against sref level 6084 of 6084 magnitude 109008313 ; calibration level 43 detected 1 ; plain 109012468
+  gap s2 against sref level 5921 of 6084 magnitude 45408791 ; calibration level 133 detected 1 ; plain 45478677
+  gap s4 against sref level 3554 of 6084 magnitude 3757964 ; calibration level 26 detected 1 ; plain 4034958
+  gap s8 against sref level 1397 of 6084 magnitude 1046070 ; calibration level 41 detected 1 ; plain 1152887
+  gap s16 against sref level 964 of 6084 magnitude 572798 ; calibration level 161 detected 1 ; plain 634903
+  detected 5 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+CELL ant S fold 1
+  gap s1 against sref level 6084 of 6084 magnitude 102957328 ; calibration level 107 detected 1 ; plain 102962947
+  gap s2 against sref level 5734 of 6084 magnitude 36489739 ; calibration level 61 detected 1 ; plain 36779593
+  gap s4 against sref level 3392 of 6084 magnitude 3299087 ; calibration level 36 detected 1 ; plain 3507432
+  gap s8 against sref level 1424 of 6084 magnitude 259178 ; calibration level 200 detected 1 ; plain 328531
+  gap s16 against sref level 573 of 6084 magnitude 597327 ; calibration level 26 detected 1 ; plain 673129
+  detected 5 ; in_order_by_instrument 0 in_order_by_subtraction 0 same 1 ; G1 1 A1 0
+CELL ant S fold 2
+  gap s1 against sref level 6076 of 6084 magnitude 117337097 ; calibration level 22 detected 1 ; plain 117340345
+  gap s2 against sref level 5811 of 6084 magnitude 37207528 ; calibration level 70 detected 1 ; plain 37335726
+  gap s4 against sref level 2777 of 6084 magnitude 1928634 ; calibration level 37 detected 1 ; plain 2270013
+  gap s8 against sref level 1133 of 6084 magnitude 379910 ; calibration level 47 detected 1 ; plain 491272
+  gap s16 against sref level 707 of 6084 magnitude 317498 ; calibration level 19 detected 1 ; plain 377504
+  detected 5 ; in_order_by_instrument 1 in_order_by_subtraction 1 same 1 ; G1 1 A1 1
+PART ant S cells_same 3 of 3 calibration_level 1029 calibration_windows 91260

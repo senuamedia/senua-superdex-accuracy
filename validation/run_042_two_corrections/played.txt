@@ -1,0 +1,8 @@
+PLAYED identity abcde rc 0
+PLAYED identity stock rc 0
+PLAYED identity off rc 0
+PLAYED identity abcd rc 0
+PLAYED soft b14_abcd rc 0
+PLAYED soft b15_abcd rc 0
+PLAYED soft b15_off rc 0
+PLAYED soft stock rc 0

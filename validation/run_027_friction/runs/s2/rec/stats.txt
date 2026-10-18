@@ -1,0 +1,18 @@
+STATS run stop_1 contact dt 0.01 h0 0 vx0 1.1 mu 0.3 lock 1 mass 1.4 radius 0.03 steps 150 converged 150 stopped 0 diverged 0 most_iterations 4 real_bits 64 extra ndamp=5 falloff=0.03
+STATS run land_1 contact dt 0.01 h0 0.05 vx0 1.1 mu 0.3 lock 1 mass 1.4 radius 0.03 steps 150 converged 150 stopped 0 diverged 0 most_iterations 5 real_bits 64 extra ndamp=5 falloff=0.03
+STATS run stop_4 contact dt 0.0025 h0 0 vx0 1.1 mu 0.3 lock 1 mass 1.4 radius 0.03 steps 600 converged 600 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra ndamp=5 falloff=0.03
+STATS run land_4 contact dt 0.0025 h0 0.05 vx0 1.1 mu 0.3 lock 1 mass 1.4 radius 0.03 steps 600 converged 600 stopped 0 diverged 0 most_iterations 4 real_bits 64 extra ndamp=5 falloff=0.03
+STATS run stop_16 contact dt 0.000625 h0 0 vx0 1.1 mu 0.3 lock 1 mass 1.4 radius 0.03 steps 2400 converged 2400 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra ndamp=5 falloff=0.03
+STATS run land_16 contact dt 0.000625 h0 0.05 vx0 1.1 mu 0.3 lock 1 mass 1.4 radius 0.03 steps 2400 converged 2400 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra ndamp=5 falloff=0.03
+STATS run stop_64 contact dt 0.00015625 h0 0 vx0 1.1 mu 0.3 lock 1 mass 1.4 radius 0.03 steps 9600 converged 9600 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra ndamp=5 falloff=0.03
+STATS run land_64 contact dt 0.00015625 h0 0.05 vx0 1.1 mu 0.3 lock 1 mass 1.4 radius 0.03 steps 9600 converged 9600 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra ndamp=5 falloff=0.03
+STATS run rest_1 pair dt 0.01 layout stack massa 3 ra 0.25 massb 0.5 rb 0.03 mu 0.45 mug 0 steps 100 converged 100 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra ndamp=5 falloff=0.03
+STATS run carry_1 pair dt 0.01 layout stack massa 3 ra 0.25 massb 0.5 rb 0.03 mu 0.45 mug 0 steps 200 converged 200 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra pusha=7.7175 pushat=0.5 ndamp=5 falloff=0.03
+STATS run slip_1 pair dt 0.01 layout stack massa 3 ra 0.25 massb 0.5 rb 0.03 mu 0.45 mug 0 steps 90 converged 90 stopped 0 diverged 0 most_iterations 5 real_bits 64 extra pusha=23.1525 pushat=0.5 ndamp=5 falloff=0.03
+STATS run side_1 pair dt 0.01 layout side massa 3 ra 0.25 massb 0.5 rb 0.03 mu 0 mug 0 steps 50 converged 50 stopped 0 diverged 0 most_iterations 4 real_bits 64 extra ndamp=5 falloff=0.03
+STATS run top_1 pair dt 0.01 layout stack massa 3 ra 0.25 massb 0.5 rb 0.03 mu 0.45 mug 0 steps 150 converged 150 stopped 0 diverged 0 most_iterations 6 real_bits 64 extra ndamp=5 falloff=0.03
+STATS run rest_16 pair dt 0.000625 layout stack massa 3 ra 0.25 massb 0.5 rb 0.03 mu 0.45 mug 0 steps 1600 converged 1600 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra ndamp=5 falloff=0.03
+STATS run carry_16 pair dt 0.000625 layout stack massa 3 ra 0.25 massb 0.5 rb 0.03 mu 0.45 mug 0 steps 3200 converged 3200 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra pusha=7.7175 pushat=0.5 ndamp=5 falloff=0.03
+STATS run slip_16 pair dt 0.000625 layout stack massa 3 ra 0.25 massb 0.5 rb 0.03 mu 0.45 mug 0 steps 1440 converged 1440 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra pusha=23.1525 pushat=0.5 ndamp=5 falloff=0.03
+STATS run side_16 pair dt 0.000625 layout side massa 3 ra 0.25 massb 0.5 rb 0.03 mu 0 mug 0 steps 800 converged 800 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra ndamp=5 falloff=0.03
+STATS run top_16 pair dt 0.000625 layout stack massa 3 ra 0.25 massb 0.5 rb 0.03 mu 0.45 mug 0 steps 2400 converged 2400 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra ndamp=5 falloff=0.03

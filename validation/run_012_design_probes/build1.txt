@@ -1,0 +1,27 @@
+# build 1 of the patch (corrections edited into the shipped kernel): the nine-test suite on the fourth registration's cube, every configuration
+stock                              T01 PASS T02 PASS T03 PASS T04 FAIL T05 FAIL T06 FAIL T07 PASS T08 FAIL T09 PASS  SUITE passed 5 of 9
+patched_off                        T01 PASS T02 PASS T03 PASS T04 FAIL T05 FAIL T06 FAIL T07 PASS T08 FAIL T09 PASS  SUITE passed 5 of 9
+implicit                           T01 PASS T02 PASS T03 PASS T04 FAIL T05 PASS T06 FAIL T07 PASS T08 FAIL T09 PASS  SUITE passed 6 of 9
+damped                             T01 PASS T02 PASS T03 PASS T04 PASS T05 FAIL T06 FAIL T07 PASS T08 PASS T09 FAIL  SUITE passed 6 of 9
+damped_implicit                    T01 PASS T02 PASS T03 PASS T04 PASS T05 FAIL T06 FAIL T07 PASS T08 PASS T09 FAIL  SUITE passed 6 of 9
+damped_implicit_full               T01 PASS T02 PASS T03 PASS T04 PASS T05 PASS T06 FAIL T07 PASS T08 PASS T09 FAIL  SUITE passed 7 of 9
+damped_implicit_unilateral         T01 PASS T02 PASS T03 PASS T04 PASS T05 FAIL T06 FAIL T07 PASS T08 PASS T09 PASS  SUITE passed 7 of 9
+damped_implicit_full_unilateral    T01 PASS T02 PASS T03 PASS T04 PASS T05 PASS T06 FAIL T07 PASS T08 PASS T09 PASS  SUITE passed 8 of 9
+stick                              T01 PASS T02 PASS T03 PASS T04 FAIL T05 FAIL T06 PASS T07 PASS T08 FAIL T09 PASS  SUITE passed 6 of 9
+stick_implicit                     T01 PASS T02 PASS T03 PASS T04 FAIL T05 PASS T06 PASS T07 PASS T08 FAIL T09 PASS  SUITE passed 7 of 9
+all                                T01 PASS T02 PASS T03 PASS T04 PASS T05 PASS T06 PASS T07 PASS T08 PASS T09 PASS  SUITE passed 9 of 9
+IDENTITY patched library with every switch off against stock: 39 runs byte-identical, 0 differ
+# build 1, benchmark streams with every switch off against the registered streams
+SAME cart_pole sref
+SAME cart_pole t8
+SAME ant sref
+DIFFERS ant c1
+SAME ant m4
+SAME ant d4
+SAME half_cheetah sref
+SAME half_cheetah c2
+SAME half_cheetah s4
+SAME half_cheetah d1
+IDENTITY benchmark streams, patched library with every switch off: 9 byte-identical, 1 differ
+# the one stream that differed: stock twice, and stock against build 1 with switches off
+stock run 1 = stock run 2 = the registered ant c1 stream; build 1 with switches off: 3 of 21,600 readings differ, each by one count (summed difference 3; no episode more than a count apart)

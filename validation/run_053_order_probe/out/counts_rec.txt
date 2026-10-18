@@ -1,0 +1,112 @@
+=== half_cheetah, the fifth registration's commands: the recommended configuration (patches A to G, Newton-Euler inertia, absTol 1e-4, relTol 1e-8) (rec1 .. rec16)
+TIME half_cheetah rec1 against rec2 readings 0 to 5 summed_difference 2994 more_than_1_count 464 largest 13
+TIME half_cheetah rec1 against rec2 readings 5 to 10 summed_difference 3466 more_than_1_count 444 largest 26
+TIME half_cheetah rec1 against rec2 readings 10 to 20 summed_difference 17335 more_than_1_count 1010 largest 60
+TIME half_cheetah rec1 against rec2 readings 20 to 40 summed_difference 47588 more_than_1_count 2053 largest 89
+TIME half_cheetah rec1 against rec2 readings 40 to 80 summed_difference 114608 more_than_1_count 4155 largest 130
+TIME half_cheetah rec1 against rec2 readings 80 to 120 summed_difference 138559 more_than_1_count 4174 largest 260
+TIME half_cheetah rec1 against rec2 readings 120 to 160 summed_difference 138964 more_than_1_count 4201 largest 215
+TIME half_cheetah rec1 against rec2 readings 160 to 200 summed_difference 143730 more_than_1_count 4200 largest 218
+PARTING half_cheetah rec1 against rec2 summed_difference 607244 episodes 108 never_part 0 earliest 0 quarter 0 median 0 three_quarters 0 latest 13
+TIME half_cheetah rec2 against rec4 readings 0 to 5 summed_difference 1623 more_than_1_count 391 largest 7
+TIME half_cheetah rec2 against rec4 readings 5 to 10 summed_difference 1837 more_than_1_count 390 largest 14
+TIME half_cheetah rec2 against rec4 readings 10 to 20 summed_difference 9246 more_than_1_count 942 largest 33
+TIME half_cheetah rec2 against rec4 readings 20 to 40 summed_difference 28054 more_than_1_count 1999 largest 60
+TIME half_cheetah rec2 against rec4 readings 40 to 80 summed_difference 67619 more_than_1_count 4035 largest 91
+TIME half_cheetah rec2 against rec4 readings 80 to 120 summed_difference 79808 more_than_1_count 4087 largest 99
+TIME half_cheetah rec2 against rec4 readings 120 to 160 summed_difference 83867 more_than_1_count 4119 largest 169
+TIME half_cheetah rec2 against rec4 readings 160 to 200 summed_difference 91600 more_than_1_count 4110 largest 200
+PARTING half_cheetah rec2 against rec4 summed_difference 363654 episodes 108 never_part 0 earliest 0 quarter 0 median 1 three_quarters 2 latest 18
+TIME half_cheetah rec4 against rec8 readings 0 to 5 summed_difference 878 more_than_1_count 274 largest 4
+TIME half_cheetah rec4 against rec8 readings 5 to 10 summed_difference 940 more_than_1_count 267 largest 7
+TIME half_cheetah rec4 against rec8 readings 10 to 20 summed_difference 4837 more_than_1_count 861 largest 18
+TIME half_cheetah rec4 against rec8 readings 20 to 40 summed_difference 15491 more_than_1_count 1824 largest 38
+TIME half_cheetah rec4 against rec8 readings 40 to 80 summed_difference 37040 more_than_1_count 3787 largest 56
+TIME half_cheetah rec4 against rec8 readings 80 to 120 summed_difference 41745 more_than_1_count 3842 largest 58
+TIME half_cheetah rec4 against rec8 readings 120 to 160 summed_difference 44757 more_than_1_count 3946 largest 125
+TIME half_cheetah rec4 against rec8 readings 160 to 200 summed_difference 46002 more_than_1_count 3889 largest 124
+PARTING half_cheetah rec4 against rec8 summed_difference 191690 episodes 108 never_part 0 earliest 0 quarter 1 median 2 three_quarters 6 latest 17
+TIME half_cheetah rec8 against rec16 readings 0 to 5 summed_difference 419 more_than_1_count 69 largest 2
+TIME half_cheetah rec8 against rec16 readings 5 to 10 summed_difference 499 more_than_1_count 99 largest 4
+TIME half_cheetah rec8 against rec16 readings 10 to 20 summed_difference 2422 more_than_1_count 668 largest 9
+TIME half_cheetah rec8 against rec16 readings 20 to 40 summed_difference 8115 more_than_1_count 1583 largest 20
+TIME half_cheetah rec8 against rec16 readings 40 to 80 summed_difference 19050 more_than_1_count 3290 largest 28
+TIME half_cheetah rec8 against rec16 readings 80 to 120 summed_difference 21860 more_than_1_count 3421 largest 35
+TIME half_cheetah rec8 against rec16 readings 120 to 160 summed_difference 22884 more_than_1_count 3574 largest 52
+TIME half_cheetah rec8 against rec16 readings 160 to 200 summed_difference 23818 more_than_1_count 3556 largest 64
+PARTING half_cheetah rec8 against rec16 summed_difference 99067 episodes 108 never_part 0 earliest 2 quarter 3 median 7 three_quarters 13 latest 25
+CELL half_cheetah REC fold 0
+  gap rec1 against rec2 ; plain 3033246
+  gap rec2 against rec4 ; plain 1746979
+  gap rec4 against rec8 ; plain 918204
+  gap rec8 against rec16 ; plain 518002
+  plain_in_order 1
+CELL half_cheetah REC fold 1
+  gap rec1 against rec2 ; plain 3392781
+  gap rec2 against rec4 ; plain 2168735
+  gap rec4 against rec8 ; plain 1080045
+  gap rec8 against rec16 ; plain 543772
+  plain_in_order 1
+CELL half_cheetah REC fold 2
+  gap rec1 against rec2 ; plain 2809433
+  gap rec2 against rec4 ; plain 1817386
+  gap rec4 against rec8 ; plain 995668
+  gap rec8 against rec16 ; plain 486354
+  plain_in_order 1
+PLAIN half_cheetah REC folds_in_order 3
+=== ant, the fifth registration's commands: the recommended configuration (patches A to G, Newton-Euler inertia, absTol 1e-4, relTol 1e-8) (rec1 .. rec16)
+TIME ant rec1 against rec2 readings 0 to 5 summed_difference 6890 more_than_1_count 497 largest 44
+TIME ant rec1 against rec2 readings 5 to 10 summed_difference 12412 more_than_1_count 525 largest 65
+TIME ant rec1 against rec2 readings 10 to 20 summed_difference 19194 more_than_1_count 1022 largest 64
+TIME ant rec1 against rec2 readings 20 to 40 summed_difference 50299 more_than_1_count 1986 largest 219
+TIME ant rec1 against rec2 readings 40 to 80 summed_difference 247820 more_than_1_count 4147 largest 448
+TIME ant rec1 against rec2 readings 80 to 120 summed_difference 407511 more_than_1_count 4148 largest 873
+TIME ant rec1 against rec2 readings 120 to 160 summed_difference 390163 more_than_1_count 4185 largest 1373
+TIME ant rec1 against rec2 readings 160 to 200 summed_difference 435050 more_than_1_count 4173 largest 1386
+PARTING ant rec1 against rec2 summed_difference 1569339 episodes 108 never_part 0 earliest 0 quarter 0 median 0 three_quarters 0 latest 6
+TIME ant rec2 against rec4 readings 0 to 5 summed_difference 3464 more_than_1_count 451 largest 23
+TIME ant rec2 against rec4 readings 5 to 10 summed_difference 6294 more_than_1_count 504 largest 34
+TIME ant rec2 against rec4 readings 10 to 20 summed_difference 10172 more_than_1_count 971 largest 32
+TIME ant rec2 against rec4 readings 20 to 40 summed_difference 28651 more_than_1_count 1865 largest 121
+TIME ant rec2 against rec4 readings 40 to 80 summed_difference 153087 more_than_1_count 4015 largest 497
+TIME ant rec2 against rec4 readings 80 to 120 summed_difference 252889 more_than_1_count 4099 largest 1361
+TIME ant rec2 against rec4 readings 120 to 160 summed_difference 265035 more_than_1_count 4068 largest 1237
+TIME ant rec2 against rec4 readings 160 to 200 summed_difference 300790 more_than_1_count 4088 largest 1297
+PARTING ant rec2 against rec4 summed_difference 1020382 episodes 108 never_part 0 earliest 0 quarter 0 median 0 three_quarters 1 latest 7
+TIME ant rec4 against rec8 readings 0 to 5 summed_difference 1731 more_than_1_count 364 largest 11
+TIME ant rec4 against rec8 readings 5 to 10 summed_difference 3166 more_than_1_count 450 largest 18
+TIME ant rec4 against rec8 readings 10 to 20 summed_difference 5235 more_than_1_count 874 largest 16
+TIME ant rec4 against rec8 readings 20 to 40 summed_difference 15618 more_than_1_count 1665 largest 65
+TIME ant rec4 against rec8 readings 40 to 80 summed_difference 84697 more_than_1_count 3793 largest 215
+TIME ant rec4 against rec8 readings 80 to 120 summed_difference 136908 more_than_1_count 3911 largest 339
+TIME ant rec4 against rec8 readings 120 to 160 summed_difference 171424 more_than_1_count 3949 largest 804
+TIME ant rec4 against rec8 readings 160 to 200 summed_difference 216388 more_than_1_count 3946 largest 1286
+PARTING ant rec4 against rec8 summed_difference 635167 episodes 108 never_part 0 earliest 0 quarter 0 median 1 three_quarters 2 latest 14
+TIME ant rec8 against rec16 readings 0 to 5 summed_difference 884 more_than_1_count 235 largest 6
+TIME ant rec8 against rec16 readings 5 to 10 summed_difference 1649 more_than_1_count 377 largest 9
+TIME ant rec8 against rec16 readings 10 to 20 summed_difference 2709 more_than_1_count 720 largest 8
+TIME ant rec8 against rec16 readings 20 to 40 summed_difference 8061 more_than_1_count 1325 largest 34
+TIME ant rec8 against rec16 readings 40 to 80 summed_difference 43824 more_than_1_count 3409 largest 83
+TIME ant rec8 against rec16 readings 80 to 120 summed_difference 78451 more_than_1_count 3559 largest 241
+TIME ant rec8 against rec16 readings 120 to 160 summed_difference 115847 more_than_1_count 3643 largest 588
+TIME ant rec8 against rec16 readings 160 to 200 summed_difference 141145 more_than_1_count 3669 largest 597
+PARTING ant rec8 against rec16 summed_difference 392570 episodes 108 never_part 0 earliest 0 quarter 1 median 2 three_quarters 6 latest 21
+CELL ant REC fold 0
+  gap rec1 against rec2 ; plain 12103629
+  gap rec2 against rec4 ; plain 7995857
+  gap rec4 against rec8 ; plain 5457076
+  gap rec8 against rec16 ; plain 3131537
+  plain_in_order 1
+CELL ant REC fold 1
+  gap rec1 against rec2 ; plain 9329471
+  gap rec2 against rec4 ; plain 6577994
+  gap rec4 against rec8 ; plain 3592983
+  gap rec8 against rec16 ; plain 2382677
+  plain_in_order 1
+CELL ant REC fold 2
+  gap rec1 against rec2 ; plain 10464636
+  gap rec2 against rec4 ; plain 6250361
+  gap rec4 against rec8 ; plain 3649607
+  gap rec8 against rec16 ; plain 2149224
+  plain_in_order 1
+PLAIN ant REC folds_in_order 3

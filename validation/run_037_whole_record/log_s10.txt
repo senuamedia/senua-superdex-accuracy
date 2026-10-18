@@ -1,0 +1,44 @@
+STATS source stock scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converge
+STATS source expn scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged
+STATS source implicit scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 conve
+STATS source armijo scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converg
+STATS source nudge scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converge
+STATS source d scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged 21
+STATS source d_expn scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converg
+STATS source ng_stock scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 conve
+STATS source ng_d scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged
+STATS source rec scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged
+STATS source rec_f scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 21600 converg
+STATS source stock scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converge
+STATS source expn scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged
+STATS source implicit scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 conve
+STATS source armijo scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converg
+STATS source nudge scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converge
+STATS source d scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged 21
+STATS source d_expn scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converg
+STATS source ng_stock scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 conve
+STATS source ng_d scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged
+STATS source rec scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged
+STATS source rec_f scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 21600 converg
+STATS source stock scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converge
+STATS source expn scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged
+STATS source implicit scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 conve
+STATS source armijo scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converg
+STATS source nudge scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converge
+STATS source d scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged 21
+STATS source d_expn scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converg
+STATS source ng_stock scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 conve
+STATS source ng_d scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged
+STATS source rec scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged
+STATS source rec_f scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 21600 converg
+STATS source stock scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converge
+STATS source expn scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged
+STATS source implicit scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 conve
+STATS source armijo scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converg
+STATS source nudge scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converge
+STATS source d scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged 21
+STATS source d_expn scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converg
+STATS source ng_stock scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 conve
+STATS source ng_d scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged
+STATS source rec scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged
+STATS source rec_f scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 21600 converg

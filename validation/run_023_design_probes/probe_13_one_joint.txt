@@ -1,0 +1,22 @@
+## one-joint arm (1.5 kg, half-size 0.06 m), 10 ms step, no gravity: spin left after 1 s per 10,000 of the release speed
+release 2 rad/s arm 0.3 newton-euler 0 transport 0: speed 1924838 urad/s = 9624 per 10,000 ; converged 100 stopped 0 diverged 0 most_iterations 2
+release 2 rad/s arm 0.3 newton-euler 0 transport 1: speed 1997943 urad/s = 9989 per 10,000 ; converged 100 stopped 0 diverged 0 most_iterations 2
+release 2 rad/s arm 0.3 newton-euler 1 transport 0: speed 1926675 urad/s = 9633 per 10,000 ; converged 100 stopped 0 diverged 0 most_iterations 2
+release 2 rad/s arm 0.3 newton-euler 1 transport 1: speed 1999997 urad/s = 9999 per 10,000 ; converged 100 stopped 0 diverged 0 most_iterations 2
+release 2 rad/s arm 0 newton-euler 0 transport 0: speed 1925207 urad/s = 9626 per 10,000 ; converged 100 stopped 0 diverged 0 most_iterations 2
+release 2 rad/s arm 0 newton-euler 0 transport 1: speed 1925207 urad/s = 9626 per 10,000 ; converged 100 stopped 0 diverged 0 most_iterations 2
+release 2 rad/s arm 0 newton-euler 1 transport 0: speed 1986797 urad/s = 9933 per 10,000 ; converged 100 stopped 0 diverged 0 most_iterations 1
+release 2 rad/s arm 0 newton-euler 1 transport 1: speed 1986797 urad/s = 9933 per 10,000 ; converged 100 stopped 0 diverged 0 most_iterations 1
+release 5 rad/s arm 0.3 newton-euler 0 transport 0: speed 4084534 urad/s = 8169 per 10,000 ; converged 100 stopped 0 diverged 0 most_iterations 2
+release 5 rad/s arm 0.3 newton-euler 0 transport 1: speed 4967916 urad/s = 9935 per 10,000 ; converged 100 stopped 0 diverged 0 most_iterations 2
+release 5 rad/s arm 0.3 newton-euler 1 transport 0: speed 4102206 urad/s = 8204 per 10,000 ; converged 100 stopped 0 diverged 0 most_iterations 2
+release 5 rad/s arm 0.3 newton-euler 1 transport 1: speed 4999740 urad/s = 9999 per 10,000 ; converged 100 stopped 0 diverged 0 most_iterations 2
+release 5 rad/s arm 0 newton-euler 0 transport 0: speed 4088959 urad/s = 8177 per 10,000 ; converged 100 stopped 0 diverged 0 most_iterations 2
+release 5 rad/s arm 0 newton-euler 0 transport 1: speed 4088959 urad/s = 8177 per 10,000 ; converged 100 stopped 0 diverged 0 most_iterations 2
+release 5 rad/s arm 0 newton-euler 1 transport 0: speed 4999740 urad/s = 9999 per 10,000 ; converged 100 stopped 0 diverged 0 most_iterations 2
+release 5 rad/s arm 0 newton-euler 1 transport 1: speed 4999740 urad/s = 9999 per 10,000 ; converged 100 stopped 0 diverged 0 most_iterations 2
+## the same arm as a pendulum under gravity, released level, 10 ms step, 4 s: final angle and speed
+newton-euler 0 transport 0: FINAL dt_ns 10000000 angle_urad -1966482 speed_urads -2211939 ; converged 400 stopped 0 diverged 0 most_iterations 3 ; largest speed 7278829 ; largest speed in the last second 3615625
+newton-euler 0 transport 1: FINAL dt_ns 10000000 angle_urad -1650669 speed_urads -4721641 ; converged 400 stopped 0 diverged 0 most_iterations 2 ; largest speed 7690129 ; largest speed in the last second 5172071
+newton-euler 1 transport 0: FINAL dt_ns 10000000 angle_urad -1965516 speed_urads -2250911 ; converged 400 stopped 0 diverged 0 most_iterations 3 ; largest speed 7288430 ; largest speed in the last second 3640201
+newton-euler 1 transport 1: FINAL dt_ns 10000000 angle_urad -1621370 speed_urads -4815711 ; converged 400 stopped 0 diverged 0 most_iterations 2 ; largest speed 7702592 ; largest speed in the last second 5244612

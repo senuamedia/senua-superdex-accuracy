@@ -1,0 +1,86 @@
+drop shipped 1/1 | BOUNCE dt_ns 10000000 speed_in_ums 1176000 steps_to_turn 2 rebound_nm -517133 drop_nm 80000000 rebound_per_10000 0
+drop shipped 1/2 | BOUNCE dt_ns 5000000 speed_in_ums 1176000 steps_to_turn 3 rebound_nm 65033 drop_nm 80000000 rebound_per_10000 8
+drop shipped 1/4 | BOUNCE dt_ns 2500000 speed_in_ums 1225000 steps_to_turn 3 rebound_nm 2827809 drop_nm 80000000 rebound_per_10000 353
+drop shipped 1/8 | BOUNCE dt_ns 1250000 speed_in_ums 1237250 steps_to_turn 5 rebound_nm 10456265 drop_nm 80000000 rebound_per_10000 1307
+drop shipped 1/16 | BOUNCE dt_ns 625000 speed_in_ums 1237250 steps_to_turn 9 rebound_nm 24646545 drop_nm 80000000 rebound_per_10000 3080
+drop shipped 1/32 | BOUNCE dt_ns 312500 speed_in_ums 1243375 steps_to_turn 15 rebound_nm 42115064 drop_nm 80000000 rebound_per_10000 5264
+drop shipped 1/64 | BOUNCE dt_ns 156250 speed_in_ums 1244906 steps_to_turn 28 rebound_nm 57188569 drop_nm 80000000 rebound_per_10000 7148
+drop third-order 1/1 | BOUNCE dt_ns 10000000 speed_in_ums 1176000 steps_to_turn 2 rebound_nm 19549408 drop_nm 80000000 rebound_per_10000 2443
+drop third-order 1/2 | BOUNCE dt_ns 5000000 speed_in_ums 1225000 steps_to_turn 2 rebound_nm 24115614 drop_nm 80000000 rebound_per_10000 3014
+drop third-order 1/4 | BOUNCE dt_ns 2500000 speed_in_ums 1225000 steps_to_turn 3 rebound_nm 54775013 drop_nm 80000000 rebound_per_10000 6846
+drop third-order 1/8 | BOUNCE dt_ns 1250000 speed_in_ums 1237250 steps_to_turn 5 rebound_nm 72045627 drop_nm 80000000 rebound_per_10000 9005
+drop third-order 1/16 | BOUNCE dt_ns 625000 speed_in_ums 1243375 steps_to_turn 8 rebound_nm 78504125 drop_nm 80000000 rebound_per_10000 9813
+drop third-order 1/32 | BOUNCE dt_ns 312500 speed_in_ums 1243375 steps_to_turn 15 rebound_nm 79789650 drop_nm 80000000 rebound_per_10000 9973
+drop third-order 1/64 | BOUNCE dt_ns 156250 speed_in_ums 1244906 steps_to_turn 28 rebound_nm 79972513 drop_nm 80000000 rebound_per_10000 9996
+drop damped 1/1 | BOUNCE dt_ns 10000000 speed_in_ums 1176000 steps_to_turn 2 rebound_nm -614906 drop_nm 80000000 rebound_per_10000 0
+drop damped 1/2 | BOUNCE dt_ns 5000000 speed_in_ums 1176000 steps_to_turn 3 rebound_nm -524938 drop_nm 80000000 rebound_per_10000 0
+drop damped 1/4 | BOUNCE dt_ns 2500000 speed_in_ums 1225000 steps_to_turn 3 rebound_nm -363819 drop_nm 80000000 rebound_per_10000 0
+drop damped 1/8 | BOUNCE dt_ns 1250000 speed_in_ums 1237250 steps_to_turn 5 rebound_nm -129965 drop_nm 80000000 rebound_per_10000 0
+drop damped 1/16 | BOUNCE dt_ns 625000 speed_in_ums 1237250 steps_to_turn 8 rebound_nm 118496 drop_nm 80000000 rebound_per_10000 14
+drop damped 1/32 | BOUNCE dt_ns 312500 speed_in_ums 1243375 steps_to_turn 14 rebound_nm 322004 drop_nm 80000000 rebound_per_10000 40
+drop damped 1/64 | BOUNCE dt_ns 156250 speed_in_ums 1244906 steps_to_turn 25 rebound_nm 458120 drop_nm 80000000 rebound_per_10000 57
+oblique shipped 1/1 | IMPACT dt_ns 10000000 steps 2 horizontal_lost_ums 304878 vertical_given_ums 1383014 ratio_per_10000 2203 friction_per_10000 4000 still_sliding_ums 3695122
+oblique shipped 1/2 | IMPACT dt_ns 5000000 steps 3 horizontal_lost_ums 319153 vertical_given_ums 1365805 ratio_per_10000 2336 friction_per_10000 4000 still_sliding_ums 3680847
+oblique shipped 1/4 | IMPACT dt_ns 2500000 steps 3 horizontal_lost_ums 297573 vertical_given_ums 1337239 ratio_per_10000 2224 friction_per_10000 4000 still_sliding_ums 3702427
+oblique shipped 1/8 | IMPACT dt_ns 1250000 steps 5 horizontal_lost_ums 470230 vertical_given_ums 1550337 ratio_per_10000 3032 friction_per_10000 4000 still_sliding_ums 3529770
+oblique shipped 1/16 | IMPACT dt_ns 625000 steps 9 horizontal_lost_ums 489424 vertical_given_ums 1546425 ratio_per_10000 3164 friction_per_10000 4000 still_sliding_ums 3510576
+oblique shipped 1/32 | IMPACT dt_ns 312500 steps 15 horizontal_lost_ums 488162 vertical_given_ums 1447591 ratio_per_10000 3372 friction_per_10000 4000 still_sliding_ums 3511838
+oblique shipped 1/64 | IMPACT dt_ns 156250 steps 28 horizontal_lost_ums 478807 vertical_given_ums 1330746 ratio_per_10000 3598 friction_per_10000 4000 still_sliding_ums 3521193
+oblique implicit 1/1 | IMPACT dt_ns 10000000 steps 2 horizontal_lost_ums 553232 vertical_given_ums 1383014 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 3446768
+oblique implicit 1/2 | IMPACT dt_ns 5000000 steps 3 horizontal_lost_ums 546351 vertical_given_ums 1365805 ratio_per_10000 3999 friction_per_10000 4000 still_sliding_ums 3453649
+oblique implicit 1/4 | IMPACT dt_ns 2500000 steps 3 horizontal_lost_ums 534919 vertical_given_ums 1337236 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 3465081
+oblique implicit 1/8 | IMPACT dt_ns 1250000 steps 5 horizontal_lost_ums 620141 vertical_given_ums 1550335 ratio_per_10000 3999 friction_per_10000 4000 still_sliding_ums 3379859
+oblique implicit 1/16 | IMPACT dt_ns 625000 steps 9 horizontal_lost_ums 618574 vertical_given_ums 1546425 ratio_per_10000 3999 friction_per_10000 4000 still_sliding_ums 3381426
+oblique implicit 1/32 | IMPACT dt_ns 312500 steps 15 horizontal_lost_ums 579042 vertical_given_ums 1447591 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 3420958
+oblique implicit 1/64 | IMPACT dt_ns 156250 steps 28 horizontal_lost_ums 532309 vertical_given_ums 1330746 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 3467691
+oblique damped 1/1 (reported) | IMPACT dt_ns 10000000 steps 2 horizontal_lost_ums 304878 vertical_given_ums 1380525 ratio_per_10000 2207 friction_per_10000 4000 still_sliding_ums 3695122
+oblique damped 1/2 (reported) | IMPACT dt_ns 5000000 steps 3 horizontal_lost_ums 318812 vertical_given_ums 1348585 ratio_per_10000 2364 friction_per_10000 4000 still_sliding_ums 3681188
+oblique damped 1/4 (reported) | IMPACT dt_ns 2500000 steps 3 horizontal_lost_ums 253878 vertical_given_ums 1309634 ratio_per_10000 1937 friction_per_10000 4000 still_sliding_ums 3746122
+oblique damped 1/8 (reported) | IMPACT dt_ns 1250000 steps 5 horizontal_lost_ums 329267 vertical_given_ums 1387906 ratio_per_10000 2371 friction_per_10000 4000 still_sliding_ums 3670733
+oblique damped 1/16 (reported) | IMPACT dt_ns 625000 steps 8 horizontal_lost_ums 205333 vertical_given_ums 1300966 ratio_per_10000 1578 friction_per_10000 4000 still_sliding_ums 3794667
+oblique damped 1/32 (reported) | IMPACT dt_ns 312500 steps 14 horizontal_lost_ums 208227 vertical_given_ums 1333850 ratio_per_10000 1560 friction_per_10000 4000 still_sliding_ums 3791773
+oblique damped 1/64 (reported) | IMPACT dt_ns 156250 steps 25 horizontal_lost_ums 172101 vertical_given_ums 1284958 ratio_per_10000 1339 friction_per_10000 4000 still_sliding_ums 3827899
+oblique dampedimplicit 1/1 (reported) | IMPACT dt_ns 10000000 steps 3 horizontal_lost_ums 364460 vertical_given_ums 1507174 ratio_per_10000 2417 friction_per_10000 4000 still_sliding_ums 3635540
+oblique dampedimplicit 1/2 (reported) | IMPACT dt_ns 5000000 steps 4 horizontal_lost_ums 352940 vertical_given_ums 1437330 ratio_per_10000 2455 friction_per_10000 4000 still_sliding_ums 3647060
+oblique dampedimplicit 1/4 (reported) | IMPACT dt_ns 2500000 steps 4 horizontal_lost_ums 312155 vertical_given_ums 1393088 ratio_per_10000 2240 friction_per_10000 4000 still_sliding_ums 3687845
+oblique dampedimplicit 1/8 (reported) | IMPACT dt_ns 1250000 steps 5 horizontal_lost_ums 253559 vertical_given_ums 1341259 ratio_per_10000 1890 friction_per_10000 4000 still_sliding_ums 3746441
+oblique dampedimplicit 1/16 (reported) | IMPACT dt_ns 625000 steps 9 horizontal_lost_ums 238338 vertical_given_ums 1349674 ratio_per_10000 1765 friction_per_10000 4000 still_sliding_ums 3761662
+oblique dampedimplicit 1/32 (reported) | IMPACT dt_ns 312500 steps 14 horizontal_lost_ums 198175 vertical_given_ums 1310996 ratio_per_10000 1511 friction_per_10000 4000 still_sliding_ums 3801825
+oblique dampedimplicit 1/64 (reported) | IMPACT dt_ns 156250 steps 27 horizontal_lost_ums 186809 vertical_given_ums 1309420 ratio_per_10000 1426 friction_per_10000 4000 still_sliding_ums 3813191
+slide shipped 1/1 | CREEP dt_ns 10000000 steps 25 mean_speed_ums 3545184 friction_over_normal_per_10000 4000 friction_limit_per_10000 4000
+slide shipped 1/16 | CREEP dt_ns 625000 steps 400 mean_speed_ums 3530449 friction_over_normal_per_10000 4001 friction_limit_per_10000 4000
+creep shipped | CREEP dt_ns 10000000 steps 50 mean_speed_ums 3670 friction_over_normal_per_10000 2996 friction_limit_per_10000 5000
+creep cinf | CREEP dt_ns 10000000 steps 50 mean_speed_ums 3742 friction_over_normal_per_10000 2995 friction_limit_per_10000 5000
+creep implicit | CREEP dt_ns 10000000 steps 50 mean_speed_ums 3670 friction_over_normal_per_10000 2996 friction_limit_per_10000 5000
+creep expnormals | CREEP dt_ns 10000000 steps 50 mean_speed_ums 3670 friction_over_normal_per_10000 2996 friction_limit_per_10000 5000
+creep nofade | CREEP dt_ns 10000000 steps 50 mean_speed_ums 3670 friction_over_normal_per_10000 2996 friction_limit_per_10000 5000
+creep armijo | CREEP dt_ns 10000000 steps 50 mean_speed_ums 3670 friction_over_normal_per_10000 2996 friction_limit_per_10000 5000
+creep falloff001 | CREEP dt_ns 10000000 steps 50 mean_speed_ums 367 friction_over_normal_per_10000 2995 friction_limit_per_10000 5000
+creep viscous100 | CREEP dt_ns 10000000 steps 50 mean_speed_ums 1559 friction_over_normal_per_10000 2995 friction_limit_per_10000 5000
+chain freefall 1/1 against 1/2 | GAP base_ns 10000000 dt_ns 10000000 against dt_ns 5000000 instants 100 summed_height_difference_um 1237250 largest_um 24500 summed_speed_difference_mm_s 0
+chain freefall 1/2 against 1/4 | GAP base_ns 10000000 dt_ns 5000000 against dt_ns 2500000 instants 100 summed_height_difference_um 618600 largest_um 12250 summed_speed_difference_mm_s 0
+chain freefall 1/4 against 1/8 | GAP base_ns 10000000 dt_ns 2500000 against dt_ns 1250000 instants 100 summed_height_difference_um 309300 largest_um 6125 summed_speed_difference_mm_s 0
+chain freefall 1/8 against 1/16 | GAP base_ns 10000000 dt_ns 1250000 against dt_ns 625000 instants 100 summed_height_difference_um 154650 largest_um 3062 summed_speed_difference_mm_s 0
+chain freefall 1/16 against 1/32 | GAP base_ns 10000000 dt_ns 625000 against dt_ns 312500 instants 100 summed_height_difference_um 77321 largest_um 1531 summed_speed_difference_mm_s 0
+chain freefall 1/32 against 1/64 | GAP base_ns 10000000 dt_ns 312500 against dt_ns 156250 instants 100 summed_height_difference_um 38667 largest_um 766 summed_speed_difference_mm_s 0
+chain shipped 1/1 against 1/2 | GAP base_ns 10000000 dt_ns 10000000 against dt_ns 5000000 instants 100 summed_height_difference_um 21560 largest_um 2940 summed_speed_difference_mm_s 737
+chain shipped 1/2 against 1/4 | GAP base_ns 10000000 dt_ns 5000000 against dt_ns 2500000 instants 100 summed_height_difference_um 23587 largest_um 3278 summed_speed_difference_mm_s 568
+chain shipped 1/4 against 1/8 | GAP base_ns 10000000 dt_ns 2500000 against dt_ns 1250000 instants 100 summed_height_difference_um 76841 largest_um 10495 summed_speed_difference_mm_s 1375
+chain shipped 1/8 against 1/16 | GAP base_ns 10000000 dt_ns 1250000 against dt_ns 625000 instants 100 summed_height_difference_um 270334 largest_um 21983 summed_speed_difference_mm_s 3049
+chain shipped 1/16 against 1/32 | GAP base_ns 10000000 dt_ns 625000 against dt_ns 312500 instants 100 summed_height_difference_um 734510 largest_um 30284 summed_speed_difference_mm_s 4025
+chain shipped 1/32 against 1/64 | GAP base_ns 10000000 dt_ns 312500 against dt_ns 156250 instants 100 summed_height_difference_um 1279314 largest_um 39873 summed_speed_difference_mm_s 2759
+chain damped 1/1 against 1/2 | GAP base_ns 10000000 dt_ns 10000000 against dt_ns 5000000 instants 100 summed_height_difference_um 20144 largest_um 2940 summed_speed_difference_mm_s 3362
+chain damped 1/2 against 1/4 | GAP base_ns 10000000 dt_ns 5000000 against dt_ns 2500000 instants 100 summed_height_difference_um 10494 largest_um 1470 summed_speed_difference_mm_s 1015
+chain damped 1/4 against 1/8 | GAP base_ns 10000000 dt_ns 2500000 against dt_ns 1250000 instants 100 summed_height_difference_um 5832 largest_um 735 summed_speed_difference_mm_s 647
+chain damped 1/8 against 1/16 | GAP base_ns 10000000 dt_ns 1250000 against dt_ns 625000 instants 100 summed_height_difference_um 3425 largest_um 367 summed_speed_difference_mm_s 1469
+chain damped 1/16 against 1/32 | GAP base_ns 10000000 dt_ns 625000 against dt_ns 312500 instants 100 summed_height_difference_um 2199 largest_um 208 summed_speed_difference_mm_s 1376
+chain damped 1/32 against 1/64 | GAP base_ns 10000000 dt_ns 312500 against dt_ns 156250 instants 100 summed_height_difference_um 1359 largest_um 143 summed_speed_difference_mm_s 873
+K0a nothing touches the cube: each gap as parts in 10,000 of the one before 5000 5000 5000 5001 5002 ; all between 4500 and 5500: held 1
+K0b steady sliding, friction over normal force per 10,000 4000 4001 ; within 1 in 100 of 4000: held 1
+K1 rebound per 10,000 of the drop height, shipped, step 1 to 1/64: 0 8 353 1307 3080 5264 7148 ; third-order integrator at 1/64: 9996 ; the step sets the bounce (under 500 at the shipped step, more than 5000 higher at 1/64, the right answer 9900 or more by the third-order integrator): held 1
+K2 friction impulse over normal impulse per 10,000, shipped at the shipped step: 2203 ; with the implicit normal force, step 1 to 1/64: 4000 3999 4000 3999 3999 4000 4000 ; Coulomb 4000 ; still sliding 1 ; shipped is off by more than 1 in 100 and the switch restores it at every step: held 1
+K3 creep in um/s under each friction switch (Coulomb: 0): 3670 3742 3670 3670 3670 3670 367 1559 ; the laws predict 3675 and 3750 ; every switch creeps and the two laws are as predicted: held 1
+K4 the smallest scene's chain, shipped: 21560 23587 76841 270334 734510 1279314 ; damped: 20144 10494 5832 3425 2199 1359 ; shipped is not in order and damped is: held 1
+L1 half_cheetah with the ground, folds in order of 3: shipped 0 damped 3 ; reported, ant: shipped 0 damped 3 ; held 1
+CONTROLS 1 K1 1 K2 1 K3 1 K4 1 L1 1
+THESIS the cause is isolated in SuperDex's contact (the step sets the bounce, friction at impact is short of Coulomb's law, no switch gives a stick) and giving the contact a loss of its own puts half_cheetah's time-step chain in order: PASS

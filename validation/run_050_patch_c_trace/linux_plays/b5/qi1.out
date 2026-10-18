@@ -1,0 +1,361 @@
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (188246892.484135,940.327936) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (200966101.356999,1164.846771) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (2779316075.919496,1160.910245) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (2162289408.932298,1344.986742) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (236460431.699275,1162.453793) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (128807256.543399,1873.501007) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (1678244093.150753,1239.712776) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (640346285.731202,1665.291075) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (863609746.864292,1435.345938) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (15961074.391672,1271.633021) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (556099077.301681,1388.925270) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (92657502.968533,1113.818422) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (892830941.567385,628.020536) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (664368107.580670,1218.233722) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (48498394213.200401,1088.679914) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (64758053.149764,1508.720140) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (306149141.218984,946.982772) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (28431061525.054417,1584.629679) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (611934084.605703,843.581826) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (94962336885.340729,1717.801305) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (259889994.313146,1037.592288) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (19575912.696454,1354.211935) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (18673271.958506,1161.379292) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (1383013268.112522,1225.673091) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (757935942.623608,1905.715924) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (25831868.119729,1298.144698) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (83304890.958822,982.184124) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (488087525.761491,1346.343566) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (14787780.296309,1207.870718) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (145904389.279366,1549.319105) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (607194448.480639,1667.480661) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (15058973.066390,1291.900457) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (10512776.267766,1016.580770) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (653791775.278507,1428.371895) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (1476440252.315979,1363.421096) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (638748378.428014,1994.814490) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (3643624650.657387,2304.501464) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (43766767.892480,1249.731336) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (27825292.176714,1621.130470) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (70052918.863812,1387.870491) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (11491375457.297171,1157.964342) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (1983008038.012728,1000.093761) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (30828639194.401283,1518.396734) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (381280820.483066,952.637649) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (44271291.392878,2000.435672) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (26669263.709817,1692.069203) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (39589185.012392,1371.167955) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (145790158705.760803,1654.492532) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (139464668.287488,1873.750833) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (7675607203.976270,1539.990134) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (350897333.787426,1153.232407) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (8321494448.563278,804.138535) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (214979160911.705841,1320.958406) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (73338374175.637405,861.507762) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (30570347.210737,1878.530118) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (826737144245.492188,1178.739641) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (30287357191.360405,1426.310298) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (5656992074.921470,1472.282176) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (3453721972.662749,1232.661792) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (1270273463.680418,1206.301694) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (87395609.519566,963.946455) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (193257644.938150,963.317648) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (9738569329.919216,1279.550489) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (1360533864.198666,1184.785592) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (2467810936.936278,1962.291683) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (3001099571.693769,1403.929228) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (91449502.946943,926.683905) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (193541171.175355,1591.938238) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (19198864441.664448,794.263002) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (136380609.732972,1008.845766) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (23563242.207934,884.050038) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (25954087061.100780,1522.808631) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (89290923.761235,709.066250) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (28938407.395126,1317.722829) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (10597871456.620934,1480.260784) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (35042164.299830,766.560268) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (4130957082.557342,1938.741741) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (24455105849.936634,1700.508475) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (281968040.940997,1046.253409) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (37830286.679350,676.145910) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (462038349.603254,1488.113756) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (403696836.091768,1471.900021) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (89789995755.424240,1283.319903) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (1038371165.642719,1530.521086) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (124251375.102047,1542.384281) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (180375847467.672852,1695.729290) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (47367821.170043,766.377240) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (215813554.856315,1226.450451) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (422971789.412320,927.184246) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (25845855.839487,1478.980510) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (1117851116.530423,1071.629396) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (45857590.570914,1001.093033) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (229614757.315788,1288.218990) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (6392622853.148642,1413.673771) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (23290924.150328,1567.492540) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (40595526.668818,1846.279128) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (2772598546.761583,1146.372466) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (32685461.063395,1746.662584) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (18053478500.510708,1379.501834) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (3450639349.245960,1317.202495) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (1091277812.640564,1453.863628) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (62209300553.173622,1624.446463) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (14074502352.058922,1689.584385) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (467126378.788126,1367.163137) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (114060607744.402618,1324.613031) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (63593223.041421,1586.371357) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (275699152.568246,1442.038115) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (28230453.428655,1440.344116) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (15890328.744626,1428.857756) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (2171314422.998488,1596.735225) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (4792072591.111198,1180.295182) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (834837385.926911,1951.899944) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (1771500610.213040,1348.931058) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (68844805.087698,1516.319742) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (1883778327.260294,1110.147733) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (104491668.170785,1234.264452) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (70764769.242463,2117.777317) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (125429582.008483,1188.348101) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (232264883.609401,1017.614904) rel=10000.000000 abs=1000000000.000000.
+
+~/work/traceC/src/superdex_physics/libraries/mochi/mochi_core/src/solvers/newton_solver.cpp(860): [Mochi] [WARNING] 
+	Solution explosion detected (44317436.391882,1081.354634) rel=10000.000000 abs=1000000000.000000.
+
+STATS scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged 21447 stopped 33 diverged 120 unset 0 most_iterations 200 enc_min -1962 enc_max 1985 wall_s 23.6 real_bits 64 worst_residual 8.27e+11 extra ndamp=5 implicitn=1

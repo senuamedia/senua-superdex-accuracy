@@ -1,0 +1,20 @@
+== joint swing_be_64 (also the zero part's)
+lines differing: 4 of 19201, from line 5408; largest difference by column: c2 0 c3 1 c4 0 c5 0 c6 0
+Linux      | SWING dt_ns 156250 released_at_urad -1 turn_urad -3136742 swing_per_10000 9984 turn_urad -9657 swing_per_10000 9953 turn_urad -3127172 swing_per_10000 9923 turns 3
+registered | SWING dt_ns 156250 released_at_urad -1 turn_urad -3136742 swing_per_10000 9984 turn_urad -9657 swing_per_10000 9953 turn_urad -3127172 swing_per_10000 9923 turns 3
+== patch G chain swing_16
+lines differing: 4 of 3202, from line 2962; largest difference by column: c2 0 c3 0 c4 1 c5 1 c6 0 c7 0 c8 1 c9 0 c10 0 c11 0 c12 0 c13 0 c14 0 c15 1
+Linux      | CHAIN dt_ns 625000 gravity 1 steps 3200 kinetic_start_nj 0 kinetic_end_nj 5535098923 kinetic_most_nj 8761321779 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic -25173 energy_largest_drift_ppm 25173 energy_lost_ppm_of_most_kinetic 25173 momentum_start_u 0 momentum_end_u -888402491 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad -2497564 speed1_urads -3823388 angle2_urad 2254613 speed2_urads 16665498
+registered | CHAIN dt_ns 625000 gravity 1 steps 3200 kinetic_start_nj 0 kinetic_end_nj 5535098923 kinetic_most_nj 8761321779 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic -25173 energy_largest_drift_ppm 25173 energy_lost_ppm_of_most_kinetic 25173 momentum_start_u 0 momentum_end_u -888402491 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad -2497564 speed1_urads -3823388 angle2_urad 2254613 speed2_urads 16665498
+== patch G chain, tight tolerances, free_16
+lines differing: 1 of 3202, from line 3056; largest difference by column: c2 0 c3 0 c4 0 c5 1 c6 0 c7 0 c8 0 c9 0 c10 0 c11 0 c12 0 c13 0 c14 0 c15 0
+Linux      | CHAIN dt_ns 625000 gravity 0 steps 3200 kinetic_start_nj 1277211185 kinetic_end_nj 1277211814 kinetic_most_nj 1277216115 kinetic_end_per_million_of_start 1000000 energy_drift_ppm_of_most_kinetic 0 energy_largest_drift_ppm 3 energy_lost_ppm_of_most_kinetic 0 momentum_start_u 906687804 momentum_end_u 906688149 momentum_drift_ppm 0 momentum_largest_drift_ppm 1 angle1_urad 5256344 speed1_urads 1799515 angle2_urad -684380 speed2_urads 4051917
+registered | CHAIN dt_ns 625000 gravity 0 steps 3200 kinetic_start_nj 1277211185 kinetic_end_nj 1277211814 kinetic_most_nj 1277216115 kinetic_end_per_million_of_start 1000000 energy_drift_ppm_of_most_kinetic 0 energy_largest_drift_ppm 3 energy_lost_ppm_of_most_kinetic 0 momentum_start_u 906687804 momentum_end_u 906688149 momentum_drift_ppm 0 momentum_largest_drift_ppm 1 angle1_urad 5256344 speed1_urads 1799515 angle2_urad -684380 speed2_urads 4051917
+== patches A to G, joint swing_be_64
+lines differing: 2 of 19201, from line 10330; largest difference by column: c2 1 c3 1 c4 0 c5 0 c6 0
+Linux      | SWING dt_ns 156250 released_at_urad -1 turn_urad -3140958 swing_per_10000 9997 turn_urad -1269 swing_per_10000 9993 turn_urad -3139691 swing_per_10000 9989 turns 3
+registered | SWING dt_ns 156250 released_at_urad -1 turn_urad -3140958 swing_per_10000 9997 turn_urad -1269 swing_per_10000 9993 turn_urad -3139691 swing_per_10000 9989 turns 3
+== patches A to G, limit rel20_64
+lines differing: 1 of 3201, from line 3047; largest difference by column: c2 0 c3 1 c4 0 c5 0 c6 0
+Linux      | FINAL dt_ns 156250 angle_urad 374252 speed_urads 1422985
+registered | FINAL dt_ns 156250 angle_urad 374252 speed_urads 1422985

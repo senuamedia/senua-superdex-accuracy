@@ -1,0 +1,66 @@
+15,16c15,16
+< R="$(cd "$(dirname "$0")/../.." && pwd)"
+< O="$R/validation/run_032_open_items"; mkdir -p "$O/runs"
+---
+> R="~/code/senua-superdex-accuracy"
+> O="~/code/senua-superdex-accuracy/validation/run_034_replication/accurate14"; mkdir -p "$O/runs"
+81,82c81,82
+<   for cfg in final accurate; do
+<     integ=be; FT="$TOL"; [ $cfg = accurate ] && { integ=bdf2; FT=""; }
+---
+>   for cfg in accurate; do
+>     integ=be; FT="$TOL"; [ $cfg = accurate ] && { integ=bdf2; FT="$TOL"; }
+96c96
+<   for cfg in final accurate; do
+---
+>   for cfg in accurate; do
+98c98
+<     X="newtoneuler=1 $TOL"; ks="1 4 16 64"; [ $cfg = accurate ] && { X="newtoneuler=1 integ=bdf2"; ks="16"; }
+---
+>     X="newtoneuler=1 $TOL"; ks="1 4 16 64"; [ $cfg = accurate ] && { X="newtoneuler=1 integ=bdf2 $TOL"; ks="16"; }
+108,109c108,109
+<   { "$R/tools/sdx_chain64" "$W/chainfree_16.txt" dt="$(dt_of 16)" $ARMS gravity=0 angle2=-0.9 omega1=2.5 omega2=1.5 secs=2 newtoneuler=1 integ=bdf2 | sed "s/^STATS/STATS run chainfree_16/" >> "$W/stats.txt"
+<     "$R/tools/sdx_chain64" "$W/chainswing_16.txt" dt="$(dt_of 16)" $ARMS gravity=1 angle1=0.4 angle2=-0.7 secs=2 newtoneuler=1 integ=bdf2 | sed "s/^STATS/STATS run chainswing_16/" >> "$W/stats.txt"; }
+---
+>   { "$R/tools/sdx_chain64" "$W/chainfree_16.txt" dt="$(dt_of 16)" $ARMS gravity=0 angle2=-0.9 omega1=2.5 omega2=1.5 secs=2 newtoneuler=1 integ=bdf2 $TOL | sed "s/^STATS/STATS run chainfree_16/" >> "$W/stats.txt"
+>     "$R/tools/sdx_chain64" "$W/chainswing_16.txt" dt="$(dt_of 16)" $ARMS gravity=1 angle1=0.4 angle2=-0.7 secs=2 newtoneuler=1 integ=bdf2 $TOL | sed "s/^STATS/STATS run chainswing_16/" >> "$W/stats.txt"; }
+115c115
+<   for cfg in final accurate; do
+---
+>   for cfg in accurate; do
+117c117
+<     X="newtoneuler=1 $TOL"; [ $cfg = accurate ] && X="newtoneuler=1 integ=bdf2"
+---
+>     X="newtoneuler=1 $TOL"; [ $cfg = accurate ] && X="newtoneuler=1 integ=bdf2 $TOL"
+138c138
+<   for cfg in stock final accurate; do
+---
+>   for cfg in accurate; do
+141c141
+<     if [ $cfg = accurate ]; then X="$CON sdfdiv=32 smooth=0.001 integ=bdf2"; ks="16"; one=16; fi
+---
+>     if [ $cfg = accurate ]; then X="$CON $TOL sdfdiv=32 smooth=0.001 integ=bdf2"; ks="16"; one=16; fi
+158c158
+<   for cfg in stock final accurate; do
+---
+>   for cfg in accurate; do
+161c161
+<     [ $cfg = accurate ] && { X="ndamp=5 falloff=0.03 integ=bdf2"; dts="0.000625"; }
+---
+>     [ $cfg = accurate ] && { X="ndamp=5 falloff=0.03 integ=bdf2 $TOL"; dts="0.000625"; }
+187c187
+<   for cfg in stock final accurate; do
+---
+>   for cfg in accurate; do
+190c190
+<     [ $cfg = accurate ] && { X="ndamp=5 falloff=0.03 newtoneuler=1 integ=bdf2"; k=16; }
+---
+>     [ $cfg = accurate ] && { X="ndamp=5 falloff=0.03 newtoneuler=1 integ=bdf2 $TOL"; k=16; }
+205c205
+<     for cfg in stock final accurate; do
+---
+>     for cfg in accurate; do
+209c209
+<       [ $cfg = accurate ] && X="integ=bdf2 sub=16 ndamp=5 falloff=0.03 newtoneuler=1"
+---
+>       [ $cfg = accurate ] && X="integ=bdf2 sub=16 ndamp=5 falloff=0.03 newtoneuler=1 $TOL"

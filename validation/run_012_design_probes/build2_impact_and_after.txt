@@ -1,0 +1,9 @@
+# Coulomb over the impact alone and over the impact and the 0.1 s after it (build 2; the fourth registration's cube)
+friction impulse over normal impulse per 10,000 (Coulomb: 4000), step 1 to 1/64
+shipped                                      impact only:  2203  2336  2224  3032  3164  3372  3598  | impact + 0.1 s:  3821  3906  3987  4000  4000  4000  4000
+implicit                                     impact only:  4000  3999  4000  3999  3999  4000  4000  | impact + 0.1 s:  4001  4001  4000  4000  4000  4000  4000
+damped                                       impact only:  2207  2364  1937  2371  1578  1560  1339  | impact + 0.1 s:  4221  4900  5085  4935  4606  4323  4155
+damped, A                                    impact only:  2113  2064  2332  3130  3439  3729  3858  | impact + 0.1 s:  3818  3910  3955  3978  3989  3995  3997
+damped, A, B                                 impact only:  2113  2064  2332  3130  3439  3729  3858  | impact + 0.1 s:  3818  3910  3955  3978  3989  3995  3997
+damped, A, B, stick 300 um                   impact only:  2113  2064  2332  3130  3439  3729  3858  | impact + 0.1 s:  3817  3910  3955  3977  3989  3994  3997
+damped, implicit, A, B                       impact only:  4000  3999  4000  4000  3999  4000  3999  | impact + 0.1 s:  4001  4000  4000  4001  4001  4000  4000

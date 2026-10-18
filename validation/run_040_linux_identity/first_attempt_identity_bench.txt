@@ -1,0 +1,47 @@
+DIFFERS benchmark cart_pole sref
+DIFFERS benchmark cart_pole srefb
+DIFFERS benchmark cart_pole z
+DIFFERS benchmark cart_pole n9
+DIFFERS benchmark cart_pole n6
+DIFFERS benchmark cart_pole n3
+DIFFERS benchmark cart_pole n0
+DIFFERS benchmark cart_pole t2
+DIFFERS benchmark cart_pole t4
+DIFFERS benchmark cart_pole t8
+DIFFERS benchmark cart_pole t16
+DIFFERS benchmark cart_pole t32
+DIFFERS benchmark cart_pole t64
+DIFFERS benchmark cart_pole s1
+DIFFERS benchmark cart_pole s2
+DIFFERS benchmark cart_pole s4
+DIFFERS benchmark cart_pole s8
+DIFFERS benchmark cart_pole s16
+DIFFERS benchmark ant sref
+DIFFERS benchmark ant t2
+DIFFERS benchmark ant s4
+DIFFERS benchmark ant s16
+DIFFERS benchmark ant c10
+DIFFERS benchmark ant c2
+DIFFERS benchmark ant c1
+DIFFERS benchmark ant c06
+DIFFERS benchmark ant c03
+DIFFERS benchmark ant g1
+DIFFERS benchmark ant m1
+DIFFERS benchmark ant d1
+DIFFERS benchmark ant d2
+DIFFERS benchmark half_cheetah sref
+DIFFERS benchmark half_cheetah t2
+DIFFERS benchmark half_cheetah s1
+DIFFERS benchmark half_cheetah s16
+DIFFERS benchmark half_cheetah c03
+DIFFERS benchmark half_cheetah m1
+DIFFERS benchmark half_cheetah d1
+IDENTITY bench 0 of 38
+DIFFERS benchmark under its switches half_cheetah e1
+DIFFERS benchmark under its switches ant e1
+DIFFERS benchmark under its switches cart_pole e1
+DIFFERS benchmark under its switches half_cheetah y1
+DIFFERS benchmark under its switches half_cheetah y4
+DIFFERS benchmark under its switches ant y1
+DIFFERS benchmark under its switches ant y4
+IDENTITY benchrec 0 of 7

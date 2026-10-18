@@ -1,0 +1,5 @@
+stock with expn: steps 21600 converged 21588 stopped 12 at_the_limit 12 earlier 0 diverged 0 iterations_in_all 140676 most_iterations 200 largest_converged_residual_u 8680 stopped_residual_u 4745 to 568407
+stock with armijo: steps 21600 converged 21384 stopped 216 at_the_limit 216 earlier 0 diverged 0 iterations_in_all 193474 most_iterations 200 largest_converged_residual_u 8319 stopped_residual_u 3727 to 52987390
+stock with expn_armijo: steps 21600 converged 21588 stopped 12 at_the_limit 12 earlier 0 diverged 0 iterations_in_all 148845 most_iterations 200 largest_converged_residual_u 8522 stopped_residual_u 4745 to 568407
+stock with implicit: steps 21600 converged 21599 stopped 1 at_the_limit 1 earlier 0 diverged 0 iterations_in_all 160075 most_iterations 200 largest_converged_residual_u 6647 stopped_residual_u 8196 to 8196
+stock with nofade: steps 21600 converged 21371 stopped 229 at_the_limit 229 earlier 0 diverged 0 iterations_in_all 182487 most_iterations 200 largest_converged_residual_u 8816 stopped_residual_u 5420 to 3302714

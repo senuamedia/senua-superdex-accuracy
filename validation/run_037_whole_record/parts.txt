@@ -1,0 +1,11 @@
+PART s03 rc 0 seconds 5103
+PART s04 rc 0 seconds 2005
+PART s05 rc 0 seconds 2331
+PART s06 rc 0 seconds 10
+PART s07 rc 0 seconds 2752
+PART s08 rc 0 seconds 3548
+PART s09 rc 0 seconds 3391
+PART s10 rc 0 seconds 1302
+PART s11 rc 0 seconds 1744
+PART s12 rc 0 seconds 2574
+PART s13 rc 0 seconds 489

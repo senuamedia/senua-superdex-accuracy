@@ -1,0 +1,4 @@
+suite 1 32-bit stock against run 041: 39 of 39
+suite 1 32-bit final against run 041: 39 of 39
+suite 2 32-bit stock against run 041: 28 of 28
+suite 2 32-bit final against run 041: 28 of 28

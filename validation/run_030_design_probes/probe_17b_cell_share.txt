@@ -1,0 +1,5 @@
+# probe 17b: a throwaway pair (block 2.8 kg, half-size 0.24 m; cube 0.55 kg, 0.032 m; friction 0.5; push 24.6225 N) under the final configuration with absolute 1e-4 and relative 1e-8, library build 13; SuperDex's own grid (own) and each cube's cell at 1/32 of its side (div). This pair's cube passes the block's edge just before 0.9 s
+own 1/1 | block 7991 (law 7831) cube 4081 (law 4900) | stopped 0 diverged 0 
+own 1/16 | block 7969 (law 7831) cube 4195 (law 4900) | stopped 0 diverged 0 
+div 1/1 | block 7836 (law 7831) cube 4875 (law 4900) | stopped 0 diverged 0 
+div 1/16 | block 7829 (law 7831) cube 4906 (law 4900) | stopped 0 diverged 0 

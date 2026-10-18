@@ -1,0 +1,109 @@
+# build 2 of the patch (additions only; the shipped kernel untouched): the ten-test suite on the fourth registration's cube
+# columns: configuration, T01..T10 (1 = passed), tests passed, the solver's steps stopped and diverged over the configuration's 39 runs
+stock                      1110001011 | SUITE passed 6 of 10 | stopped 15 diverged 0
+patched_off                1110001011 | SUITE passed 6 of 10 | stopped 15 diverged 0
+implicit                   1110101011 | SUITE passed 7 of 10 | stopped 15 diverged 0
+damped                     1111001100 | SUITE passed 6 of 10 | stopped 41 diverged 0
+damped_a                   1111001101 | SUITE passed 7 of 10 | stopped 48 diverged 0
+damped_ab                  1111001101 | SUITE passed 7 of 10 | stopped 48 diverged 0
+stick                      1110011011 | SUITE passed 7 of 10 | stopped 136 diverged 0
+recommended                1111011101 | SUITE passed 8 of 10 | stopped 146 diverged 0
+stick_10um                 1110011011 | SUITE passed 7 of 10 | stopped 64 diverged 0
+recommended_implicit       1111111111 | SUITE passed 10 of 10 | stopped 224 diverged 0
+IDENTITY patched library, no switch, against stock: 39 byte-identical, 0 differ
+## stock
+T01 nothing touches the cube: each gap in parts of 10,000 of the one before (right answer 5,000): 5000 5000 5000 5001 5002 : PASS
+T02 steady sliding, friction over normal force per 10,000 (right answer 4000): 4000 4001 : PASS
+T03 at rest, the ground carries the weight: its mean force in mN (allowed 1 in 100; right answer 19600): 19593 19618 : PASS
+T04 the bounce does not depend on the step: rebound per 10,000 of the drop height, step 1 to 1/64: 0 8 353 1307 3080 5264 7148 ; spread 7148 (allowed 500) : FAIL
+T05 Coulomb at impact: friction impulse over normal impulse per 10,000, step 1 to 1/64 (right answer 4000): 2203 2336 2224 3032 3164 3372 3598 ; still sliding 1 : FAIL
+T06 held below the friction limit: mean speed in um/s (right answer 0, allowed 10): 3670 3670 : FAIL
+T07 pushed above the friction limit: mean speed in um/s over the second half (right answer 980000, allowed 3 in 100): 982200 983500 : PASS
+T08 the refinement chain falls at every step: 21560 23587 76841 270334 734510 1279314 : FAIL
+T09 the ground never pulls: lowest ground force in mN, lifted (two steps) and on a fast rebound (right answer 0 or more): 0 0 0 : PASS
+T10 friction over the impact and the 0.1 s after it, per 10,000 of the normal impulse, step 1 to 1/64 (right answer 4000; never more than 1 in 100 above it, and within 1 in 100 at the three finest steps): 3820 3905 3987 3999 4000 4000 3999 : PASS
+SUITE passed 6 of 10
+## implicit
+T01 nothing touches the cube: each gap in parts of 10,000 of the one before (right answer 5,000): 5000 5000 5000 5001 5002 : PASS
+T02 steady sliding, friction over normal force per 10,000 (right answer 4000): 4000 3999 : PASS
+T03 at rest, the ground carries the weight: its mean force in mN (allowed 1 in 100; right answer 19600): 19593 19618 : PASS
+T04 the bounce does not depend on the step: rebound per 10,000 of the drop height, step 1 to 1/64: 0 8 353 1307 3080 5264 7148 ; spread 7148 (allowed 500) : FAIL
+T05 Coulomb at impact: friction impulse over normal impulse per 10,000, step 1 to 1/64 (right answer 4000): 4000 3999 4000 3999 3999 4000 4000 ; still sliding 1 : PASS
+T06 held below the friction limit: mean speed in um/s (right answer 0, allowed 10): 3670 3670 : FAIL
+T07 pushed above the friction limit: mean speed in um/s over the second half (right answer 980000, allowed 3 in 100): 982100 983500 : PASS
+T08 the refinement chain falls at every step: 21560 23587 76841 270336 734509 1279311 : FAIL
+T09 the ground never pulls: lowest ground force in mN, lifted (two steps) and on a fast rebound (right answer 0 or more): 0 0 0 : PASS
+T10 friction over the impact and the 0.1 s after it, per 10,000 of the normal impulse, step 1 to 1/64 (right answer 4000; never more than 1 in 100 above it, and within 1 in 100 at the three finest steps): 4001 4000 4000 3999 4000 4000 3999 : PASS
+SUITE passed 7 of 10
+## damped
+T01 nothing touches the cube: each gap in parts of 10,000 of the one before (right answer 5,000): 5000 5000 5000 5001 5002 : PASS
+T02 steady sliding, friction over normal force per 10,000 (right answer 4000): 4000 4000 : PASS
+T03 at rest, the ground carries the weight: its mean force in mN (allowed 1 in 100; right answer 19600): 19608 19584 : PASS
+T04 the bounce does not depend on the step: rebound per 10,000 of the drop height, step 1 to 1/64: 0 0 0 0 14 40 57 ; spread 57 (allowed 500) : PASS
+T05 Coulomb at impact: friction impulse over normal impulse per 10,000, step 1 to 1/64 (right answer 4000): 2207 2364 1937 2371 1578 1560 1339 ; still sliding 1 : FAIL
+T06 held below the friction limit: mean speed in um/s (right answer 0, allowed 10): 3670 3670 : FAIL
+T07 pushed above the friction limit: mean speed in um/s over the second half (right answer 980000, allowed 3 in 100): 982100 984100 : PASS
+T08 the refinement chain falls at every step: 20144 10494 5832 3425 2199 1359 : PASS
+T09 the ground never pulls: lowest ground force in mN, lifted (two steps) and on a fast rebound (right answer 0 or more): -12886 -493 -335170 : FAIL
+T10 friction over the impact and the 0.1 s after it, per 10,000 of the normal impulse, step 1 to 1/64 (right answer 4000; never more than 1 in 100 above it, and within 1 in 100 at the three finest steps): 4221 4899 5084 4934 4605 4323 4154 : FAIL
+SUITE passed 6 of 10
+## damped_a
+T01 nothing touches the cube: each gap in parts of 10,000 of the one before (right answer 5,000): 5000 5000 5000 5001 5002 : PASS
+T02 steady sliding, friction over normal force per 10,000 (right answer 4000): 4000 4000 : PASS
+T03 at rest, the ground carries the weight: its mean force in mN (allowed 1 in 100; right answer 19600): 19608 19584 : PASS
+T04 the bounce does not depend on the step: rebound per 10,000 of the drop height, step 1 to 1/64: 0 0 0 0 14 40 57 ; spread 57 (allowed 500) : PASS
+T05 Coulomb at impact: friction impulse over normal impulse per 10,000, step 1 to 1/64 (right answer 4000): 2113 2064 2332 3130 3439 3729 3858 ; still sliding 1 : FAIL
+T06 held below the friction limit: mean speed in um/s (right answer 0, allowed 10): 3670 3670 : FAIL
+T07 pushed above the friction limit: mean speed in um/s over the second half (right answer 980000, allowed 3 in 100): 982100 984100 : PASS
+T08 the refinement chain falls at every step: 20144 10494 5832 3425 2199 1359 : PASS
+T09 the ground never pulls: lowest ground force in mN, lifted (two steps) and on a fast rebound (right answer 0 or more): -12886 -493 -335170 : FAIL
+T10 friction over the impact and the 0.1 s after it, per 10,000 of the normal impulse, step 1 to 1/64 (right answer 4000; never more than 1 in 100 above it, and within 1 in 100 at the three finest steps): 3818 3910 3954 3977 3989 3994 3997 : PASS
+SUITE passed 7 of 10
+## damped_ab
+T01 nothing touches the cube: each gap in parts of 10,000 of the one before (right answer 5,000): 5000 5000 5000 5001 5002 : PASS
+T02 steady sliding, friction over normal force per 10,000 (right answer 4000): 4000 4000 : PASS
+T03 at rest, the ground carries the weight: its mean force in mN (allowed 1 in 100; right answer 19600): 19608 19584 : PASS
+T04 the bounce does not depend on the step: rebound per 10,000 of the drop height, step 1 to 1/64: 0 0 0 0 14 40 57 ; spread 57 (allowed 500) : PASS
+T05 Coulomb at impact: friction impulse over normal impulse per 10,000, step 1 to 1/64 (right answer 4000): 2113 2064 2332 3130 3439 3729 3858 ; still sliding 1 : FAIL
+T06 held below the friction limit: mean speed in um/s (right answer 0, allowed 10): 3670 3670 : FAIL
+T07 pushed above the friction limit: mean speed in um/s over the second half (right answer 980000, allowed 3 in 100): 982100 984100 : PASS
+T08 the refinement chain falls at every step: 20144 10494 5832 3425 2199 1359 : PASS
+T09 the ground never pulls: lowest ground force in mN, lifted (two steps) and on a fast rebound (right answer 0 or more): -12886 -493 -181241 : FAIL
+T10 friction over the impact and the 0.1 s after it, per 10,000 of the normal impulse, step 1 to 1/64 (right answer 4000; never more than 1 in 100 above it, and within 1 in 100 at the three finest steps): 3818 3910 3954 3977 3989 3994 3997 : PASS
+SUITE passed 7 of 10
+## stick
+T01 nothing touches the cube: each gap in parts of 10,000 of the one before (right answer 5,000): 5000 5000 5000 5001 5002 : PASS
+T02 steady sliding, friction over normal force per 10,000 (right answer 4000): 4000 4001 : PASS
+T03 at rest, the ground carries the weight: its mean force in mN (allowed 1 in 100; right answer 19600): 19593 19618 : PASS
+T04 the bounce does not depend on the step: rebound per 10,000 of the drop height, step 1 to 1/64: 0 8 353 1307 3080 5264 7148 ; spread 7148 (allowed 500) : FAIL
+T05 Coulomb at impact: friction impulse over normal impulse per 10,000, step 1 to 1/64 (right answer 4000): 2203 2336 2224 3032 3164 3372 3597 ; still sliding 1 : FAIL
+T06 held below the friction limit: mean speed in um/s (right answer 0, allowed 10): 0 -2 : PASS
+T07 pushed above the friction limit: mean speed in um/s over the second half (right answer 980000, allowed 3 in 100): 992900 1005600 : PASS
+T08 the refinement chain falls at every step: 21560 23585 76839 270335 734515 1279322 : FAIL
+T09 the ground never pulls: lowest ground force in mN, lifted (two steps) and on a fast rebound (right answer 0 or more): 0 0 0 : PASS
+T10 friction over the impact and the 0.1 s after it, per 10,000 of the normal impulse, step 1 to 1/64 (right answer 4000; never more than 1 in 100 above it, and within 1 in 100 at the three finest steps): 3819 3905 3987 3999 4000 4000 3999 : PASS
+SUITE passed 7 of 10
+## recommended
+T01 nothing touches the cube: each gap in parts of 10,000 of the one before (right answer 5,000): 5000 5000 5000 5001 5002 : PASS
+T02 steady sliding, friction over normal force per 10,000 (right answer 4000): 4000 4000 : PASS
+T03 at rest, the ground carries the weight: its mean force in mN (allowed 1 in 100; right answer 19600): 19608 19584 : PASS
+T04 the bounce does not depend on the step: rebound per 10,000 of the drop height, step 1 to 1/64: 0 0 0 0 14 40 57 ; spread 57 (allowed 500) : PASS
+T05 Coulomb at impact: friction impulse over normal impulse per 10,000, step 1 to 1/64 (right answer 4000): 2113 2064 2332 3130 3439 3729 3858 ; still sliding 1 : FAIL
+T06 held below the friction limit: mean speed in um/s (right answer 0, allowed 10): 0 -2 : PASS
+T07 pushed above the friction limit: mean speed in um/s over the second half (right answer 980000, allowed 3 in 100): 992900 1006000 : PASS
+T08 the refinement chain falls at every step: 20144 10494 5832 3425 2199 1359 : PASS
+T09 the ground never pulls: lowest ground force in mN, lifted (two steps) and on a fast rebound (right answer 0 or more): -12886 -493 -181241 : FAIL
+T10 friction over the impact and the 0.1 s after it, per 10,000 of the normal impulse, step 1 to 1/64 (right answer 4000; never more than 1 in 100 above it, and within 1 in 100 at the three finest steps): 3817 3910 3954 3977 3988 3994 3997 : PASS
+SUITE passed 8 of 10
+## recommended_implicit
+T01 nothing touches the cube: each gap in parts of 10,000 of the one before (right answer 5,000): 5000 5000 5000 5001 5002 : PASS
+T02 steady sliding, friction over normal force per 10,000 (right answer 4000): 4000 4000 : PASS
+T03 at rest, the ground carries the weight: its mean force in mN (allowed 1 in 100; right answer 19600): 19615 19584 : PASS
+T04 the bounce does not depend on the step: rebound per 10,000 of the drop height, step 1 to 1/64: 0 0 0 25 54 67 73 ; spread 73 (allowed 500) : PASS
+T05 Coulomb at impact: friction impulse over normal impulse per 10,000, step 1 to 1/64 (right answer 4000): 3999 3999 4000 4000 3999 3999 3999 ; still sliding 1 : PASS
+T06 held below the friction limit: mean speed in um/s (right answer 0, allowed 10): 0 -2 : PASS
+T07 pushed above the friction limit: mean speed in um/s over the second half (right answer 980000, allowed 3 in 100): 992900 1006000 : PASS
+T08 the refinement chain falls at every step: 20312 10775 6174 3629 1951 1001 : PASS
+T09 the ground never pulls: lowest ground force in mN, lifted (two steps) and on a fast rebound (right answer 0 or more): 0 0 0 : PASS
+T10 friction over the impact and the 0.1 s after it, per 10,000 of the normal impulse, step 1 to 1/64 (right answer 4000; never more than 1 in 100 above it, and within 1 in 100 at the three finest steps): 4000 3999 4000 4000 4000 4000 3999 : PASS
+SUITE passed 10 of 10

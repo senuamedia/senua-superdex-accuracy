@@ -1,0 +1,22 @@
+# the benchmark time-step chain with everything and the implicit setting on (build 2), throwaway actions, 12 episodes
+PLAY half_cheetah q1 rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 9 solver_steps 2400 converged 2324 stopped 76 diverged 0 unset 0 most_iterations 200 enc_min -1096 enc_max 1507 wall_s 26.0 real_bits 64 worst_residual 1.3e+03 extra ndamp=5 impl
+PLAY half_cheetah q2 rc=0 integ be maxiter 200 sub 2 smooth -1 contact_actors_set 9 solver_steps 4800 converged 4771 stopped 29 diverged 0 unset 0 most_iterations 200 enc_min -1202 enc_max 1561 wall_s 18.7 real_bits 64 worst_residual 1.64e+03 extra ndamp=5 imp
+PLAY half_cheetah q4 rc=0 integ be maxiter 200 sub 4 smooth -1 contact_actors_set 9 solver_steps 9600 converged 9589 stopped 11 diverged 0 unset 0 most_iterations 200 enc_min -1262 enc_max 1585 wall_s 18.5 real_bits 64 worst_residual 1.74e+03 extra ndamp=5 imp
+PLAY half_cheetah q8 rc=0 integ be maxiter 200 sub 8 smooth -1 contact_actors_set 9 solver_steps 19200 converged 19199 stopped 1 diverged 0 unset 0 most_iterations 200 enc_min -1295 enc_max 1604 wall_s 23.3 real_bits 64 worst_residual 511 extra ndamp=5 implici
+PLAY half_cheetah q16 rc=0 integ be maxiter 200 sub 16 smooth -1 contact_actors_set 9 solver_steps 38400 converged 38400 stopped 0 diverged 0 unset 0 most_iterations 12 enc_min -1312 enc_max 1610 wall_s 36.6 real_bits 64 worst_residual 0.146 extra ndamp=5 impl
+PLAY ant q1 rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 10 solver_steps 2400 converged 2384 stopped 2 diverged 14 unset 0 most_iterations 200 enc_min -1841 enc_max 1955 wall_s 4.7 real_bits 64 worst_residual 1.71e+11 extra ndamp=5 implicitn=1
+PLAY ant q2 rc=0 integ be maxiter 200 sub 2 smooth -1 contact_actors_set 10 solver_steps 4800 converged 4798 stopped 2 diverged 0 unset 0 most_iterations 200 enc_min -1878 enc_max 2005 wall_s 4.9 real_bits 64 worst_residual 0.0135 extra ndamp=5 implicitn=1
+PLAY ant q4 rc=0 integ be maxiter 200 sub 4 smooth -1 contact_actors_set 10 solver_steps 9600 converged 9595 stopped 5 diverged 0 unset 0 most_iterations 200 enc_min -1896 enc_max 2030 wall_s 6.2 real_bits 64 worst_residual 0.252 extra ndamp=5 implicitn=1
+PLAY ant q8 rc=0 integ be maxiter 200 sub 8 smooth -1 contact_actors_set 10 solver_steps 19200 converged 19198 stopped 2 diverged 0 unset 0 most_iterations 200 enc_min -1907 enc_max 2042 wall_s 7.6 real_bits 64 worst_residual 0.0864 extra ndamp=5 implicitn=1
+PLAY ant q16 rc=0 integ be maxiter 200 sub 16 smooth -1 contact_actors_set 10 solver_steps 38400 converged 38398 stopped 2 diverged 0 unset 0 most_iterations 200 enc_min -1912 enc_max 2048 wall_s 11.2 real_bits 64 worst_residual 0.774 extra ndamp=5 implicitn=1
+part of the episode       0-5     5-10    10-20    20-40    40-80   80-120  120-160  160-200 | parting: never earliest median latest
+== half_cheetah: q1 q2 q4 q8 q16
+q1 - q2                 348      415     2051     5108    13307    13285    12812    16502 |     0        0      0     10
+q2 - q4                 191      222     1468     3744     7781     6711     7558     9790 |     0        0      1     10
+q4 - q8                 101      121      600     2047     4070     3683     4738     4716 |     0        0      2     10
+q8 - q16                 49       60      328     1156     2196     1888     2414     2248 |     0        2      6     14
+== ant: q1 q2 q4 q8 q16
+q1 - q2                 820     1527     2131    16114    86006   119752    63039    70965 |     0        0      0      1
+q2 - q4                 405      775     1113     3125     9253    13135    11824    16942 |     0        0      0      4
+q4 - q8                 203      391      559     1283     6515    11019     6097     7996 |     0        0      1      5
+q8 - q16                108      212      295      841     4260     5789     2849     3039 |     0        0      2      8

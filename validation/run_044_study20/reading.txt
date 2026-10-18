@@ -1,0 +1,399 @@
+first suite, s20_32_stock | CONFIG rig settings: none
+first suite, s20_32_stock | CONFIG SUPERDEX_STICK_DISTANCE=unset
+first suite, s20_32_stock | CONFIG SUPERDEX_FRICTION_FULL_NORMAL=unset
+first suite, s20_32_stock | CONFIG SUPERDEX_DAMPING_UNILATERAL=unset
+first suite, s20_32_stock | free 1/1 against 1/2 | GAP base_ns 10000000 dt_ns 10000000 against dt_ns 5000000 instants 100 summed_height_difference_um 1233711 largest_um 24192 summed_speed_difference_mm_s 0
+first suite, s20_32_stock | free 1/2 against 1/4 | GAP base_ns 10000000 dt_ns 5000000 against dt_ns 2500000 instants 100 summed_height_difference_um 1266622 largest_um 31376 summed_speed_difference_mm_s 98
+first suite, s20_32_stock | free 1/4 against 1/8 | GAP base_ns 10000000 dt_ns 2500000 against dt_ns 1250000 instants 100 summed_height_difference_um 308222 largest_um 6103 summed_speed_difference_mm_s 1
+first suite, s20_32_stock | free 1/8 against 1/16 | GAP base_ns 10000000 dt_ns 1250000 against dt_ns 625000 instants 100 summed_height_difference_um 154115 largest_um 3052 summed_speed_difference_mm_s 1
+first suite, s20_32_stock | free 1/16 against 1/32 | GAP base_ns 10000000 dt_ns 625000 against dt_ns 312500 instants 100 summed_height_difference_um 77058 largest_um 1526 summed_speed_difference_mm_s 0
+first suite, s20_32_stock | free 1/32 against 1/64 | GAP base_ns 10000000 dt_ns 312500 against dt_ns 156250 instants 100 summed_height_difference_um 165286971 largest_um 4884338 summed_speed_difference_mm_s 0
+first suite, s20_32_stock | slide 1/1 | CREEP dt_ns 10000000 steps 25 mean_speed_ums 2042456 friction_over_normal_per_10000 4000 friction_limit_per_10000 4000
+first suite, s20_32_stock | slide 1/16 | CREEP dt_ns 625000 steps 400 mean_speed_ums 2028505 friction_over_normal_per_10000 3999 friction_limit_per_10000 4000
+first suite, s20_32_stock | rest 1/1 | REST dt_ns 10000000 mean_ground_force_mN 10780 weight_mN 10780
+first suite, s20_32_stock | rest 1/16 | REST dt_ns 625000 mean_ground_force_mN 10771 weight_mN 10780
+first suite, s20_32_stock | drop 1/1 | BOUNCE dt_ns 10000000 speed_in_ums 1175997 steps_to_turn 2 rebound_nm -345425 drop_nm 80000000 rebound_per_10000 0
+first suite, s20_32_stock | drop 1/2 | BOUNCE dt_ns 5000000 speed_in_ums 1175990 steps_to_turn 3 rebound_nm 112354 drop_nm 80000000 rebound_per_10000 14
+first suite, s20_32_stock | drop 1/4 | BOUNCE dt_ns 2500000 speed_in_ums 1225024 steps_to_turn 3 rebound_nm 2400055 drop_nm 80000000 rebound_per_10000 300
+first suite, s20_32_stock | drop 1/8 | BOUNCE dt_ns 1250000 speed_in_ums 1237124 steps_to_turn 4 rebound_nm 9022347 drop_nm 80000000 rebound_per_10000 1127
+first suite, s20_32_stock | drop 1/16 | BOUNCE dt_ns 625000 speed_in_ums 1237726 steps_to_turn 8 rebound_nm 22126618 drop_nm 80000000 rebound_per_10000 2765
+first suite, s20_32_stock | drop 1/32 | BOUNCE dt_ns 312500 speed_in_ums 1242793 steps_to_turn 13 rebound_nm 39334050 drop_nm 80000000 rebound_per_10000 4916
+first suite, s20_32_stock | drop 1/64 | BOUNCE dt_ns 156250 speed_in_ums 1242065 steps_to_turn 26 rebound_nm 55058136 drop_nm 80000000 rebound_per_10000 6882
+first suite, s20_32_stock | oblique 1/1 | IMPACT dt_ns 10000000 steps 2 horizontal_lost_ums 316435 vertical_given_ums 1385376 ratio_per_10000 2283 friction_per_10000 4000 still_sliding_ums 1683566
+first suite, s20_32_stock | oblique 1/2 | IMPACT dt_ns 5000000 steps 3 horizontal_lost_ums 344700 vertical_given_ums 1378703 ratio_per_10000 2500 friction_per_10000 4000 still_sliding_ums 1655304
+first suite, s20_32_stock | oblique 1/4 | IMPACT dt_ns 2500000 steps 3 horizontal_lost_ums 340271 vertical_given_ums 1384779 ratio_per_10000 2456 friction_per_10000 4000 still_sliding_ums 1659739
+first suite, s20_32_stock | oblique 1/8 | IMPACT dt_ns 1250000 steps 4 horizontal_lost_ums 316787 vertical_given_ums 1319556 ratio_per_10000 2400 friction_per_10000 4000 still_sliding_ums 1683211
+first suite, s20_32_stock | oblique 1/16 | IMPACT dt_ns 625000 steps 8 horizontal_lost_ums 447941 vertical_given_ums 1478063 ratio_per_10000 3030 friction_per_10000 4000 still_sliding_ums 1552105
+first suite, s20_32_stock | oblique 1/32 | IMPACT dt_ns 312500 steps 13 horizontal_lost_ums 459385 vertical_given_ums 1398155 ratio_per_10000 3285 friction_per_10000 4000 still_sliding_ums 1540661
+first suite, s20_32_stock | oblique 1/64 | IMPACT dt_ns 156250 steps 26 horizontal_lost_ums 503350 vertical_given_ums 1402135 ratio_per_10000 3589 friction_per_10000 4000 still_sliding_ums 1496696
+first suite, s20_32_stock | settle 1/1 | SETTLE dt_ns 10000000 steps 10 horizontal_lost_ums 823703 vertical_given_ums 2156315 ratio_per_10000 3819 friction_per_10000 4000 still_sliding_ums 1176298
+first suite, s20_32_stock | settle 1/2 | SETTLE dt_ns 5000000 steps 20 horizontal_lost_ums 841993 vertical_given_ums 2155321 ratio_per_10000 3906 friction_per_10000 4000 still_sliding_ums 1158011
+first suite, s20_32_stock | settle 1/4 | SETTLE dt_ns 2500000 steps 40 horizontal_lost_ums 854051 vertical_given_ums 2162828 ratio_per_10000 3948 friction_per_10000 4000 still_sliding_ums 1145959
+first suite, s20_32_stock | settle 1/8 | SETTLE dt_ns 1250000 steps 80 horizontal_lost_ums 729775 vertical_given_ums 1924760 ratio_per_10000 3791 friction_per_10000 4000 still_sliding_ums 1270223
+first suite, s20_32_stock | settle 1/16 | SETTLE dt_ns 625000 steps 160 horizontal_lost_ums 795651 vertical_given_ums 1988045 ratio_per_10000 4002 friction_per_10000 4000 still_sliding_ums 1204395
+first suite, s20_32_stock | settle 1/32 | SETTLE dt_ns 312500 steps 320 horizontal_lost_ums 879288 vertical_given_ums 2199237 ratio_per_10000 3997 friction_per_10000 4000 still_sliding_ums 1120758
+first suite, s20_32_stock | settle 1/64 | SETTLE dt_ns 156250 steps 640 horizontal_lost_ums 942040 vertical_given_ums 2355484 ratio_per_10000 3999 friction_per_10000 4000 still_sliding_ums 1058006
+first suite, s20_32_stock | hold 1/1 | CREEP dt_ns 10000000 steps 100 mean_speed_ums 3648 friction_over_normal_per_10000 2982 friction_limit_per_10000 5000
+first suite, s20_32_stock | hold 1/16 | CREEP dt_ns 625000 steps 1600 mean_speed_ums 3606 friction_over_normal_per_10000 2955 friction_limit_per_10000 5000
+first suite, s20_32_stock | slip 1/1 | SLIP dt_ns 10000000 mean_speed_ums 981200 predicted_ums 980000 push_mN 6468 friction_limit_mN 5390
+first suite, s20_32_stock | slip 1/16 | SLIP dt_ns 625000 mean_speed_ums 923900 predicted_ums 980000 push_mN 6468 friction_limit_mN 5390
+first suite, s20_32_stock | chain 1/1 against 1/2 | GAP base_ns 10000000 dt_ns 10000000 against dt_ns 5000000 instants 100 summed_height_difference_um 21184 largest_um 2940 summed_speed_difference_mm_s 583
+first suite, s20_32_stock | chain 1/2 against 1/4 | GAP base_ns 10000000 dt_ns 5000000 against dt_ns 2500000 instants 100 summed_height_difference_um 20229 largest_um 2596 summed_speed_difference_mm_s 458
+first suite, s20_32_stock | chain 1/4 against 1/8 | GAP base_ns 10000000 dt_ns 2500000 against dt_ns 1250000 instants 100 summed_height_difference_um 61911 largest_um 9427 summed_speed_difference_mm_s 1086
+first suite, s20_32_stock | chain 1/8 against 1/16 | GAP base_ns 10000000 dt_ns 1250000 against dt_ns 625000 instants 100 summed_height_difference_um 222341 largest_um 19796 summed_speed_difference_mm_s 1986
+first suite, s20_32_stock | chain 1/16 against 1/32 | GAP base_ns 10000000 dt_ns 625000 against dt_ns 312500 instants 100 summed_height_difference_um 640237 largest_um 29477 summed_speed_difference_mm_s 2505
+first suite, s20_32_stock | chain 1/32 against 1/64 | GAP base_ns 10000000 dt_ns 312500 against dt_ns 156250 instants 100 summed_height_difference_um 1201621 largest_um 39967 summed_speed_difference_mm_s 1893
+first suite, s20_32_stock | lift 1/1 | PULL dt_ns 10000000 lowest_ground_force_mN 0 steps_pulling 0
+first suite, s20_32_stock | lift 1/16 | PULL dt_ns 625000 lowest_ground_force_mN 0 steps_pulling 0
+first suite, s20_32_stock | rebound 1/16 | PULL dt_ns 625000 lowest_ground_force_mN 0 steps_pulling 0
+first suite, s20_32_stock | T01 nothing touches the cube: each gap in parts of 10,000 of the one before (right answer 5,000): 10266 2433 5000 5000 21465840 : FAIL
+first suite, s20_32_stock | T02 steady sliding, friction over normal force per 10,000 (right answer 4000): 4000 3999 : PASS
+first suite, s20_32_stock | T03 at rest, the ground carries the weight: its mean force in mN (allowed 1 in 100; right answer 10780): 10780 10771 : PASS
+first suite, s20_32_stock | T04 the bounce does not depend on the step: rebound per 10,000 of the drop height, step 1 to 1/64: 0 14 300 1127 2765 4916 6882 ; spread 6882 (allowed 500) : FAIL
+first suite, s20_32_stock | T05 Coulomb at impact: friction impulse over normal impulse per 10,000, step 1 to 1/64 (right answer 4000): 2283 2500 2456 2400 3030 3285 3589 ; still sliding 1 : FAIL
+first suite, s20_32_stock | T06 held below the friction limit: mean speed in um/s (right answer 0, allowed 10): 3648 3606 : FAIL
+first suite, s20_32_stock | T07 pushed above the friction limit: mean speed in um/s over the second half (right answer 980000, allowed 3 in 100): 981200 923900 : FAIL
+first suite, s20_32_stock | T08 the refinement chain falls at every step: 21184 20229 61911 222341 640237 1201621 : FAIL
+first suite, s20_32_stock | T09 the ground never pulls: lowest ground force in mN, lifted (two steps) and on a fast rebound (right answer 0 or more): 0 0 0 : PASS
+first suite, s20_32_stock | T10 friction over the impact and the 0.1 s after it, per 10,000 of the normal impulse, step 1 to 1/64 (right answer 4000; never more than 1 in 100 above it, and within 1 in 100 at the three finest steps): 3819 3906 3948 3791 4002 3997 3999 : PASS
+first suite, s20_32_stock | SUITE passed 4 of 10
+first suite, s20_32_off | CONFIG rig settings: none
+first suite, s20_32_off | CONFIG SUPERDEX_STICK_DISTANCE=unset
+first suite, s20_32_off | CONFIG SUPERDEX_FRICTION_FULL_NORMAL=unset
+first suite, s20_32_off | CONFIG SUPERDEX_DAMPING_UNILATERAL=unset
+first suite, s20_32_off | free 1/1 against 1/2 | GAP base_ns 10000000 dt_ns 10000000 against dt_ns 5000000 instants 100 summed_height_difference_um 1233711 largest_um 24192 summed_speed_difference_mm_s 0
+first suite, s20_32_off | free 1/2 against 1/4 | GAP base_ns 10000000 dt_ns 5000000 against dt_ns 2500000 instants 100 summed_height_difference_um 1266622 largest_um 31376 summed_speed_difference_mm_s 98
+first suite, s20_32_off | free 1/4 against 1/8 | GAP base_ns 10000000 dt_ns 2500000 against dt_ns 1250000 instants 100 summed_height_difference_um 308222 largest_um 6103 summed_speed_difference_mm_s 1
+first suite, s20_32_off | free 1/8 against 1/16 | GAP base_ns 10000000 dt_ns 1250000 against dt_ns 625000 instants 100 summed_height_difference_um 154115 largest_um 3052 summed_speed_difference_mm_s 1
+first suite, s20_32_off | free 1/16 against 1/32 | GAP base_ns 10000000 dt_ns 625000 against dt_ns 312500 instants 100 summed_height_difference_um 77058 largest_um 1526 summed_speed_difference_mm_s 0
+first suite, s20_32_off | free 1/32 against 1/64 | GAP base_ns 10000000 dt_ns 312500 against dt_ns 156250 instants 100 summed_height_difference_um 165286971 largest_um 4884338 summed_speed_difference_mm_s 0
+first suite, s20_32_off | slide 1/1 | CREEP dt_ns 10000000 steps 25 mean_speed_ums 2042456 friction_over_normal_per_10000 4000 friction_limit_per_10000 4000
+first suite, s20_32_off | slide 1/16 | CREEP dt_ns 625000 steps 400 mean_speed_ums 2028505 friction_over_normal_per_10000 3999 friction_limit_per_10000 4000
+first suite, s20_32_off | rest 1/1 | REST dt_ns 10000000 mean_ground_force_mN 10780 weight_mN 10780
+first suite, s20_32_off | rest 1/16 | REST dt_ns 625000 mean_ground_force_mN 10771 weight_mN 10780
+first suite, s20_32_off | drop 1/1 | BOUNCE dt_ns 10000000 speed_in_ums 1175997 steps_to_turn 2 rebound_nm -345425 drop_nm 80000000 rebound_per_10000 0
+first suite, s20_32_off | drop 1/2 | BOUNCE dt_ns 5000000 speed_in_ums 1175990 steps_to_turn 3 rebound_nm 112354 drop_nm 80000000 rebound_per_10000 14
+first suite, s20_32_off | drop 1/4 | BOUNCE dt_ns 2500000 speed_in_ums 1225024 steps_to_turn 3 rebound_nm 2400055 drop_nm 80000000 rebound_per_10000 300
+first suite, s20_32_off | drop 1/8 | BOUNCE dt_ns 1250000 speed_in_ums 1237124 steps_to_turn 4 rebound_nm 9022347 drop_nm 80000000 rebound_per_10000 1127
+first suite, s20_32_off | drop 1/16 | BOUNCE dt_ns 625000 speed_in_ums 1237726 steps_to_turn 8 rebound_nm 22126618 drop_nm 80000000 rebound_per_10000 2765
+first suite, s20_32_off | drop 1/32 | BOUNCE dt_ns 312500 speed_in_ums 1242793 steps_to_turn 13 rebound_nm 39334050 drop_nm 80000000 rebound_per_10000 4916
+first suite, s20_32_off | drop 1/64 | BOUNCE dt_ns 156250 speed_in_ums 1242065 steps_to_turn 26 rebound_nm 55058136 drop_nm 80000000 rebound_per_10000 6882
+first suite, s20_32_off | oblique 1/1 | IMPACT dt_ns 10000000 steps 2 horizontal_lost_ums 316435 vertical_given_ums 1385376 ratio_per_10000 2283 friction_per_10000 4000 still_sliding_ums 1683566
+first suite, s20_32_off | oblique 1/2 | IMPACT dt_ns 5000000 steps 3 horizontal_lost_ums 344700 vertical_given_ums 1378703 ratio_per_10000 2500 friction_per_10000 4000 still_sliding_ums 1655304
+first suite, s20_32_off | oblique 1/4 | IMPACT dt_ns 2500000 steps 3 horizontal_lost_ums 340271 vertical_given_ums 1384779 ratio_per_10000 2456 friction_per_10000 4000 still_sliding_ums 1659739
+first suite, s20_32_off | oblique 1/8 | IMPACT dt_ns 1250000 steps 4 horizontal_lost_ums 316787 vertical_given_ums 1319556 ratio_per_10000 2400 friction_per_10000 4000 still_sliding_ums 1683211
+first suite, s20_32_off | oblique 1/16 | IMPACT dt_ns 625000 steps 8 horizontal_lost_ums 447941 vertical_given_ums 1478063 ratio_per_10000 3030 friction_per_10000 4000 still_sliding_ums 1552105
+first suite, s20_32_off | oblique 1/32 | IMPACT dt_ns 312500 steps 13 horizontal_lost_ums 459385 vertical_given_ums 1398155 ratio_per_10000 3285 friction_per_10000 4000 still_sliding_ums 1540661
+first suite, s20_32_off | oblique 1/64 | IMPACT dt_ns 156250 steps 26 horizontal_lost_ums 503350 vertical_given_ums 1402135 ratio_per_10000 3589 friction_per_10000 4000 still_sliding_ums 1496696
+first suite, s20_32_off | settle 1/1 | SETTLE dt_ns 10000000 steps 10 horizontal_lost_ums 823703 vertical_given_ums 2156315 ratio_per_10000 3819 friction_per_10000 4000 still_sliding_ums 1176298
+first suite, s20_32_off | settle 1/2 | SETTLE dt_ns 5000000 steps 20 horizontal_lost_ums 841993 vertical_given_ums 2155321 ratio_per_10000 3906 friction_per_10000 4000 still_sliding_ums 1158011
+first suite, s20_32_off | settle 1/4 | SETTLE dt_ns 2500000 steps 40 horizontal_lost_ums 854051 vertical_given_ums 2162828 ratio_per_10000 3948 friction_per_10000 4000 still_sliding_ums 1145959
+first suite, s20_32_off | settle 1/8 | SETTLE dt_ns 1250000 steps 80 horizontal_lost_ums 729775 vertical_given_ums 1924760 ratio_per_10000 3791 friction_per_10000 4000 still_sliding_ums 1270223
+first suite, s20_32_off | settle 1/16 | SETTLE dt_ns 625000 steps 160 horizontal_lost_ums 795651 vertical_given_ums 1988045 ratio_per_10000 4002 friction_per_10000 4000 still_sliding_ums 1204395
+first suite, s20_32_off | settle 1/32 | SETTLE dt_ns 312500 steps 320 horizontal_lost_ums 879288 vertical_given_ums 2199237 ratio_per_10000 3997 friction_per_10000 4000 still_sliding_ums 1120758
+first suite, s20_32_off | settle 1/64 | SETTLE dt_ns 156250 steps 640 horizontal_lost_ums 942040 vertical_given_ums 2355484 ratio_per_10000 3999 friction_per_10000 4000 still_sliding_ums 1058006
+first suite, s20_32_off | hold 1/1 | CREEP dt_ns 10000000 steps 100 mean_speed_ums 3648 friction_over_normal_per_10000 2982 friction_limit_per_10000 5000
+first suite, s20_32_off | hold 1/16 | CREEP dt_ns 625000 steps 1600 mean_speed_ums 3606 friction_over_normal_per_10000 2955 friction_limit_per_10000 5000
+first suite, s20_32_off | slip 1/1 | SLIP dt_ns 10000000 mean_speed_ums 981200 predicted_ums 980000 push_mN 6468 friction_limit_mN 5390
+first suite, s20_32_off | slip 1/16 | SLIP dt_ns 625000 mean_speed_ums 923900 predicted_ums 980000 push_mN 6468 friction_limit_mN 5390
+first suite, s20_32_off | chain 1/1 against 1/2 | GAP base_ns 10000000 dt_ns 10000000 against dt_ns 5000000 instants 100 summed_height_difference_um 21184 largest_um 2940 summed_speed_difference_mm_s 583
+first suite, s20_32_off | chain 1/2 against 1/4 | GAP base_ns 10000000 dt_ns 5000000 against dt_ns 2500000 instants 100 summed_height_difference_um 20229 largest_um 2596 summed_speed_difference_mm_s 458
+first suite, s20_32_off | chain 1/4 against 1/8 | GAP base_ns 10000000 dt_ns 2500000 against dt_ns 1250000 instants 100 summed_height_difference_um 61911 largest_um 9427 summed_speed_difference_mm_s 1086
+first suite, s20_32_off | chain 1/8 against 1/16 | GAP base_ns 10000000 dt_ns 1250000 against dt_ns 625000 instants 100 summed_height_difference_um 222341 largest_um 19796 summed_speed_difference_mm_s 1986
+first suite, s20_32_off | chain 1/16 against 1/32 | GAP base_ns 10000000 dt_ns 625000 against dt_ns 312500 instants 100 summed_height_difference_um 640237 largest_um 29477 summed_speed_difference_mm_s 2505
+first suite, s20_32_off | chain 1/32 against 1/64 | GAP base_ns 10000000 dt_ns 312500 against dt_ns 156250 instants 100 summed_height_difference_um 1201621 largest_um 39967 summed_speed_difference_mm_s 1893
+first suite, s20_32_off | lift 1/1 | PULL dt_ns 10000000 lowest_ground_force_mN 0 steps_pulling 0
+first suite, s20_32_off | lift 1/16 | PULL dt_ns 625000 lowest_ground_force_mN 0 steps_pulling 0
+first suite, s20_32_off | rebound 1/16 | PULL dt_ns 625000 lowest_ground_force_mN 0 steps_pulling 0
+first suite, s20_32_off | T01 nothing touches the cube: each gap in parts of 10,000 of the one before (right answer 5,000): 10266 2433 5000 5000 21465840 : FAIL
+first suite, s20_32_off | T02 steady sliding, friction over normal force per 10,000 (right answer 4000): 4000 3999 : PASS
+first suite, s20_32_off | T03 at rest, the ground carries the weight: its mean force in mN (allowed 1 in 100; right answer 10780): 10780 10771 : PASS
+first suite, s20_32_off | T04 the bounce does not depend on the step: rebound per 10,000 of the drop height, step 1 to 1/64: 0 14 300 1127 2765 4916 6882 ; spread 6882 (allowed 500) : FAIL
+first suite, s20_32_off | T05 Coulomb at impact: friction impulse over normal impulse per 10,000, step 1 to 1/64 (right answer 4000): 2283 2500 2456 2400 3030 3285 3589 ; still sliding 1 : FAIL
+first suite, s20_32_off | T06 held below the friction limit: mean speed in um/s (right answer 0, allowed 10): 3648 3606 : FAIL
+first suite, s20_32_off | T07 pushed above the friction limit: mean speed in um/s over the second half (right answer 980000, allowed 3 in 100): 981200 923900 : FAIL
+first suite, s20_32_off | T08 the refinement chain falls at every step: 21184 20229 61911 222341 640237 1201621 : FAIL
+first suite, s20_32_off | T09 the ground never pulls: lowest ground force in mN, lifted (two steps) and on a fast rebound (right answer 0 or more): 0 0 0 : PASS
+first suite, s20_32_off | T10 friction over the impact and the 0.1 s after it, per 10,000 of the normal impulse, step 1 to 1/64 (right answer 4000; never more than 1 in 100 above it, and within 1 in 100 at the three finest steps): 3819 3906 3948 3791 4002 3997 3999 : PASS
+first suite, s20_32_off | SUITE passed 4 of 10
+first suite, s20_32_final | CONFIG rig settings: ndamp=5 falloff=0.03 abstol=1e-4 reltol=1e-8
+first suite, s20_32_final | CONFIG SUPERDEX_STICK_DISTANCE=0.0003
+first suite, s20_32_final | CONFIG SUPERDEX_STICK_DAMPING=1
+first suite, s20_32_final | CONFIG SUPERDEX_FRICTION_FULL_NORMAL=1
+first suite, s20_32_final | CONFIG SUPERDEX_DAMPING_UNILATERAL=1
+first suite, s20_32_final | free 1/1 against 1/2 | GAP base_ns 10000000 dt_ns 10000000 against dt_ns 5000000 instants 100 summed_height_difference_um 1233711 largest_um 24192 summed_speed_difference_mm_s 6
+first suite, s20_32_final | free 1/2 against 1/4 | GAP base_ns 10000000 dt_ns 5000000 against dt_ns 2500000 instants 100 summed_height_difference_um 1266622 largest_um 31376 summed_speed_difference_mm_s 3
+first suite, s20_32_final | free 1/4 against 1/8 | GAP base_ns 10000000 dt_ns 2500000 against dt_ns 1250000 instants 100 summed_height_difference_um 308222 largest_um 6103 summed_speed_difference_mm_s 1
+first suite, s20_32_final | free 1/8 against 1/16 | GAP base_ns 10000000 dt_ns 1250000 against dt_ns 625000 instants 100 summed_height_difference_um 154115 largest_um 3052 summed_speed_difference_mm_s 1
+first suite, s20_32_final | free 1/16 against 1/32 | GAP base_ns 10000000 dt_ns 625000 against dt_ns 312500 instants 100 summed_height_difference_um 77058 largest_um 1526 summed_speed_difference_mm_s 0
+first suite, s20_32_final | free 1/32 against 1/64 | GAP base_ns 10000000 dt_ns 312500 against dt_ns 156250 instants 100 summed_height_difference_um 165286971 largest_um 4884338 summed_speed_difference_mm_s 0
+first suite, s20_32_final | slide 1/1 | CREEP dt_ns 10000000 steps 25 mean_speed_ums 2010356 friction_over_normal_per_10000 4000 friction_limit_per_10000 4000
+first suite, s20_32_final | slide 1/16 | CREEP dt_ns 625000 steps 400 mean_speed_ums 2018601 friction_over_normal_per_10000 4000 friction_limit_per_10000 4000
+first suite, s20_32_final | rest 1/1 | REST dt_ns 10000000 mean_ground_force_mN 10779 weight_mN 10780
+first suite, s20_32_final | rest 1/16 | REST dt_ns 625000 mean_ground_force_mN 10785 weight_mN 10780
+first suite, s20_32_final | drop 1/1 | BOUNCE dt_ns 10000000 speed_in_ums 1175997 steps_to_turn 2 rebound_nm -426960 drop_nm 80000000 rebound_per_10000 0
+first suite, s20_32_final | drop 1/2 | BOUNCE dt_ns 5000000 speed_in_ums 1175990 steps_to_turn 3 rebound_nm -350879 drop_nm 80000000 rebound_per_10000 0
+first suite, s20_32_final | drop 1/4 | BOUNCE dt_ns 2500000 speed_in_ums 1225024 steps_to_turn 3 rebound_nm -196089 drop_nm 80000000 rebound_per_10000 0
+first suite, s20_32_final | drop 1/8 | BOUNCE dt_ns 1250000 speed_in_ums 1237124 steps_to_turn 4 rebound_nm 33054 drop_nm 80000000 rebound_per_10000 4
+first suite, s20_32_final | drop 1/16 | BOUNCE dt_ns 625000 speed_in_ums 1237726 steps_to_turn 8 rebound_nm 291637 drop_nm 80000000 rebound_per_10000 36
+first suite, s20_32_final | drop 1/32 | BOUNCE dt_ns 312500 speed_in_ums 1242793 steps_to_turn 12 rebound_nm 513385 drop_nm 80000000 rebound_per_10000 64
+first suite, s20_32_final | drop 1/64 | BOUNCE dt_ns 156250 speed_in_ums 1242065 steps_to_turn 23 rebound_nm 666763 drop_nm 80000000 rebound_per_10000 83
+first suite, s20_32_final | oblique 1/1 | IMPACT dt_ns 10000000 steps 2 horizontal_lost_ums 553012 vertical_given_ums 1382500 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 1446989
+first suite, s20_32_final | oblique 1/2 | IMPACT dt_ns 5000000 steps 3 horizontal_lost_ums 542593 vertical_given_ums 1356364 ratio_per_10000 3999 friction_per_10000 4000 still_sliding_ums 1457411
+first suite, s20_32_final | oblique 1/4 | IMPACT dt_ns 2500000 steps 3 horizontal_lost_ums 533116 vertical_given_ums 1332663 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 1466882
+first suite, s20_32_final | oblique 1/8 | IMPACT dt_ns 1250000 steps 4 horizontal_lost_ums 521636 vertical_given_ums 1303859 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 1478362
+first suite, s20_32_final | oblique 1/16 | IMPACT dt_ns 625000 steps 8 horizontal_lost_ums 545931 vertical_given_ums 1364361 ratio_per_10000 4001 friction_per_10000 4000 still_sliding_ums 1454115
+first suite, s20_32_final | oblique 1/32 | IMPACT dt_ns 312500 steps 12 horizontal_lost_ums 522232 vertical_given_ums 1304565 ratio_per_10000 4003 friction_per_10000 4000 still_sliding_ums 1477814
+first suite, s20_32_final | oblique 1/64 | IMPACT dt_ns 156250 steps 23 horizontal_lost_ums 513268 vertical_given_ums 1283458 ratio_per_10000 3998 friction_per_10000 4000 still_sliding_ums 1486778
+first suite, s20_32_final | settle 1/1 | SETTLE dt_ns 10000000 steps 10 horizontal_lost_ums 862497 vertical_given_ums 2156182 ratio_per_10000 3999 friction_per_10000 4000 still_sliding_ums 1137504
+first suite, s20_32_final | settle 1/2 | SETTLE dt_ns 5000000 steps 20 horizontal_lost_ums 862312 vertical_given_ums 2155649 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 1137692
+first suite, s20_32_final | settle 1/4 | SETTLE dt_ns 2500000 steps 40 horizontal_lost_ums 882482 vertical_given_ums 2206024 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 1117516
+first suite, s20_32_final | settle 1/8 | SETTLE dt_ns 1250000 steps 80 horizontal_lost_ums 888109 vertical_given_ums 2219934 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 1111889
+first suite, s20_32_final | settle 1/16 | SETTLE dt_ns 625000 steps 160 horizontal_lost_ums 889921 vertical_given_ums 2223472 ratio_per_10000 4002 friction_per_10000 4000 still_sliding_ums 1110125
+first suite, s20_32_final | settle 1/32 | SETTLE dt_ns 312500 steps 320 horizontal_lost_ums 893116 vertical_given_ums 2232783 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 1106930
+first suite, s20_32_final | settle 1/64 | SETTLE dt_ns 156250 steps 640 horizontal_lost_ums 889397 vertical_given_ums 2237991 ratio_per_10000 3973 friction_per_10000 4000 still_sliding_ums 1110649
+first suite, s20_32_final | hold 1/1 | CREEP dt_ns 10000000 steps 100 mean_speed_ums 0 friction_over_normal_per_10000 3000 friction_limit_per_10000 5000
+first suite, s20_32_final | hold 1/16 | CREEP dt_ns 625000 steps 1600 mean_speed_ums 0 friction_over_normal_per_10000 2998 friction_limit_per_10000 5000
+first suite, s20_32_final | slip 1/1 | SLIP dt_ns 10000000 mean_speed_ums 985600 predicted_ums 980000 push_mN 6468 friction_limit_mN 5390
+first suite, s20_32_final | slip 1/16 | SLIP dt_ns 625000 mean_speed_ums 981300 predicted_ums 980000 push_mN 6468 friction_limit_mN 5390
+first suite, s20_32_final | chain 1/1 against 1/2 | GAP base_ns 10000000 dt_ns 10000000 against dt_ns 5000000 instants 100 summed_height_difference_um 20001 largest_um 2940 summed_speed_difference_mm_s 83
+first suite, s20_32_final | chain 1/2 against 1/4 | GAP base_ns 10000000 dt_ns 5000000 against dt_ns 2500000 instants 100 summed_height_difference_um 10437 largest_um 1468 summed_speed_difference_mm_s 60
+first suite, s20_32_final | chain 1/4 against 1/8 | GAP base_ns 10000000 dt_ns 2500000 against dt_ns 1250000 instants 100 summed_height_difference_um 5821 largest_um 744 summed_speed_difference_mm_s 82
+first suite, s20_32_final | chain 1/8 against 1/16 | GAP base_ns 10000000 dt_ns 1250000 against dt_ns 625000 instants 100 summed_height_difference_um 3231 largest_um 333 summed_speed_difference_mm_s 71
+first suite, s20_32_final | chain 1/16 against 1/32 | GAP base_ns 10000000 dt_ns 625000 against dt_ns 312500 instants 100 summed_height_difference_um 3628 largest_um 456 summed_speed_difference_mm_s 104
+first suite, s20_32_final | chain 1/32 against 1/64 | GAP base_ns 10000000 dt_ns 312500 against dt_ns 156250 instants 100 summed_height_difference_um 1666 largest_um 170 summed_speed_difference_mm_s 37
+first suite, s20_32_final | lift 1/1 | PULL dt_ns 10000000 lowest_ground_force_mN 0 steps_pulling 0
+first suite, s20_32_final | lift 1/16 | PULL dt_ns 625000 lowest_ground_force_mN 0 steps_pulling 0
+first suite, s20_32_final | rebound 1/16 | PULL dt_ns 625000 lowest_ground_force_mN 0 steps_pulling 0
+first suite, s20_32_final | T01 nothing touches the cube: each gap in parts of 10,000 of the one before (right answer 5,000): 10266 2433 5000 5000 21465840 : FAIL
+first suite, s20_32_final | T02 steady sliding, friction over normal force per 10,000 (right answer 4000): 4000 4000 : PASS
+first suite, s20_32_final | T03 at rest, the ground carries the weight: its mean force in mN (allowed 1 in 100; right answer 10780): 10779 10785 : PASS
+first suite, s20_32_final | T04 the bounce does not depend on the step: rebound per 10,000 of the drop height, step 1 to 1/64: 0 0 0 4 36 64 83 ; spread 83 (allowed 500) : PASS
+first suite, s20_32_final | T05 Coulomb at impact: friction impulse over normal impulse per 10,000, step 1 to 1/64 (right answer 4000): 4000 3999 4000 4000 4001 4003 3998 ; still sliding 1 : PASS
+first suite, s20_32_final | T06 held below the friction limit: mean speed in um/s (right answer 0, allowed 10): 0 0 : PASS
+first suite, s20_32_final | T07 pushed above the friction limit: mean speed in um/s over the second half (right answer 980000, allowed 3 in 100): 985600 981300 : PASS
+first suite, s20_32_final | T08 the refinement chain falls at every step: 20001 10437 5821 3231 3628 1666 : FAIL
+first suite, s20_32_final | T09 the ground never pulls: lowest ground force in mN, lifted (two steps) and on a fast rebound (right answer 0 or more): 0 0 0 : PASS
+first suite, s20_32_final | T10 friction over the impact and the 0.1 s after it, per 10,000 of the normal impulse, step 1 to 1/64 (right answer 4000; never more than 1 in 100 above it, and within 1 in 100 at the three finest steps): 3999 4000 4000 4000 4002 4000 3973 : PASS
+first suite, s20_32_final | SUITE passed 8 of 10
+first suite, s20_64_stock | CONFIG rig settings: none
+first suite, s20_64_stock | CONFIG SUPERDEX_STICK_DISTANCE=unset
+first suite, s20_64_stock | CONFIG SUPERDEX_FRICTION_FULL_NORMAL=unset
+first suite, s20_64_stock | CONFIG SUPERDEX_DAMPING_UNILATERAL=unset
+first suite, s20_64_stock | free 1/1 against 1/2 | GAP base_ns 10000000 dt_ns 10000000 against dt_ns 5000000 instants 100 summed_height_difference_um 1237250 largest_um 24500 summed_speed_difference_mm_s 0
+first suite, s20_64_stock | free 1/2 against 1/4 | GAP base_ns 10000000 dt_ns 5000000 against dt_ns 2500000 instants 100 summed_height_difference_um 618600 largest_um 12250 summed_speed_difference_mm_s 0
+first suite, s20_64_stock | free 1/4 against 1/8 | GAP base_ns 10000000 dt_ns 2500000 against dt_ns 1250000 instants 100 summed_height_difference_um 309300 largest_um 6125 summed_speed_difference_mm_s 0
+first suite, s20_64_stock | free 1/8 against 1/16 | GAP base_ns 10000000 dt_ns 1250000 against dt_ns 625000 instants 100 summed_height_difference_um 154650 largest_um 3062 summed_speed_difference_mm_s 0
+first suite, s20_64_stock | free 1/16 against 1/32 | GAP base_ns 10000000 dt_ns 625000 against dt_ns 312500 instants 100 summed_height_difference_um 77321 largest_um 1531 summed_speed_difference_mm_s 0
+first suite, s20_64_stock | free 1/32 against 1/64 | GAP base_ns 10000000 dt_ns 312500 against dt_ns 156250 instants 100 summed_height_difference_um 38667 largest_um 766 summed_speed_difference_mm_s 0
+first suite, s20_64_stock | slide 1/1 | CREEP dt_ns 10000000 steps 25 mean_speed_ums 2042486 friction_over_normal_per_10000 4000 friction_limit_per_10000 4000
+first suite, s20_64_stock | slide 1/16 | CREEP dt_ns 625000 steps 400 mean_speed_ums 2030213 friction_over_normal_per_10000 3998 friction_limit_per_10000 4000
+first suite, s20_64_stock | rest 1/1 | REST dt_ns 10000000 mean_ground_force_mN 10777 weight_mN 10780
+first suite, s20_64_stock | rest 1/16 | REST dt_ns 625000 mean_ground_force_mN 10790 weight_mN 10780
+first suite, s20_64_stock | drop 1/1 | BOUNCE dt_ns 10000000 speed_in_ums 1176000 steps_to_turn 2 rebound_nm -345426 drop_nm 80000000 rebound_per_10000 0
+first suite, s20_64_stock | drop 1/2 | BOUNCE dt_ns 5000000 speed_in_ums 1176000 steps_to_turn 3 rebound_nm 112288 drop_nm 80000000 rebound_per_10000 14
+first suite, s20_64_stock | drop 1/4 | BOUNCE dt_ns 2500000 speed_in_ums 1225000 steps_to_turn 3 rebound_nm 2399950 drop_nm 80000000 rebound_per_10000 299
+first suite, s20_64_stock | drop 1/8 | BOUNCE dt_ns 1250000 speed_in_ums 1237250 steps_to_turn 4 rebound_nm 9021656 drop_nm 80000000 rebound_per_10000 1127
+first suite, s20_64_stock | drop 1/16 | BOUNCE dt_ns 625000 speed_in_ums 1237250 steps_to_turn 8 rebound_nm 22128473 drop_nm 80000000 rebound_per_10000 2766
+first suite, s20_64_stock | drop 1/32 | BOUNCE dt_ns 312500 speed_in_ums 1243375 steps_to_turn 13 rebound_nm 39362698 drop_nm 80000000 rebound_per_10000 4920
+first suite, s20_64_stock | drop 1/64 | BOUNCE dt_ns 156250 speed_in_ums 1244906 steps_to_turn 25 rebound_nm 55051426 drop_nm 80000000 rebound_per_10000 6881
+first suite, s20_64_stock | oblique 1/1 | IMPACT dt_ns 10000000 steps 2 horizontal_lost_ums 316447 vertical_given_ums 1385382 ratio_per_10000 2283 friction_per_10000 4000 still_sliding_ums 1683553
+first suite, s20_64_stock | oblique 1/2 | IMPACT dt_ns 5000000 steps 3 horizontal_lost_ums 344756 vertical_given_ums 1378752 ratio_per_10000 2500 friction_per_10000 4000 still_sliding_ums 1655244
+first suite, s20_64_stock | oblique 1/4 | IMPACT dt_ns 2500000 steps 3 horizontal_lost_ums 340097 vertical_given_ums 1384610 ratio_per_10000 2455 friction_per_10000 4000 still_sliding_ums 1659903
+first suite, s20_64_stock | oblique 1/8 | IMPACT dt_ns 1250000 steps 4 horizontal_lost_ums 318060 vertical_given_ums 1321793 ratio_per_10000 2405 friction_per_10000 4000 still_sliding_ums 1681940
+first suite, s20_64_stock | oblique 1/16 | IMPACT dt_ns 625000 steps 8 horizontal_lost_ums 441209 vertical_given_ums 1465483 ratio_per_10000 3010 friction_per_10000 4000 still_sliding_ums 1558791
+first suite, s20_64_stock | oblique 1/32 | IMPACT dt_ns 312500 steps 13 horizontal_lost_ums 428944 vertical_given_ums 1328506 ratio_per_10000 3228 friction_per_10000 4000 still_sliding_ums 1571056
+first suite, s20_64_stock | oblique 1/64 | IMPACT dt_ns 156250 steps 25 horizontal_lost_ums 471182 vertical_given_ums 1325931 ratio_per_10000 3553 friction_per_10000 4000 still_sliding_ums 1528818
+first suite, s20_64_stock | settle 1/1 | SETTLE dt_ns 10000000 steps 10 horizontal_lost_ums 823709 vertical_given_ums 2156318 ratio_per_10000 3819 friction_per_10000 4000 still_sliding_ums 1176291
+first suite, s20_64_stock | settle 1/2 | SETTLE dt_ns 5000000 steps 20 horizontal_lost_ums 841990 vertical_given_ums 2155331 ratio_per_10000 3906 friction_per_10000 4000 still_sliding_ums 1158010
+first suite, s20_64_stock | settle 1/4 | SETTLE dt_ns 2500000 steps 40 horizontal_lost_ums 853978 vertical_given_ums 2162799 ratio_per_10000 3948 friction_per_10000 4000 still_sliding_ums 1146022
+first suite, s20_64_stock | settle 1/8 | SETTLE dt_ns 1250000 steps 80 horizontal_lost_ums 730022 vertical_given_ums 1926008 ratio_per_10000 3790 friction_per_10000 4000 still_sliding_ums 1269978
+first suite, s20_64_stock | settle 1/16 | SETTLE dt_ns 625000 steps 160 horizontal_lost_ums 795249 vertical_given_ums 1988070 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 1204751
+first suite, s20_64_stock | settle 1/32 | SETTLE dt_ns 312500 steps 320 horizontal_lost_ums 879850 vertical_given_ums 2199596 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 1120150
+first suite, s20_64_stock | settle 1/64 | SETTLE dt_ns 156250 steps 640 horizontal_lost_ums 942487 vertical_given_ums 2356188 ratio_per_10000 3999 friction_per_10000 4000 still_sliding_ums 1057513
+first suite, s20_64_stock | hold 1/1 | CREEP dt_ns 10000000 steps 100 mean_speed_ums 3670 friction_over_normal_per_10000 2996 friction_limit_per_10000 5000
+first suite, s20_64_stock | hold 1/16 | CREEP dt_ns 625000 steps 1600 mean_speed_ums 3670 friction_over_normal_per_10000 2996 friction_limit_per_10000 5000
+first suite, s20_64_stock | slip 1/1 | SLIP dt_ns 10000000 mean_speed_ums 982200 predicted_ums 980000 push_mN 6468 friction_limit_mN 5390
+first suite, s20_64_stock | slip 1/16 | SLIP dt_ns 625000 mean_speed_ums 983900 predicted_ums 980000 push_mN 6468 friction_limit_mN 5390
+first suite, s20_64_stock | chain 1/1 against 1/2 | GAP base_ns 10000000 dt_ns 10000000 against dt_ns 5000000 instants 100 summed_height_difference_um 21184 largest_um 2940 summed_speed_difference_mm_s 582
+first suite, s20_64_stock | chain 1/2 against 1/4 | GAP base_ns 10000000 dt_ns 5000000 against dt_ns 2500000 instants 100 summed_height_difference_um 20242 largest_um 2596 summed_speed_difference_mm_s 455
+first suite, s20_64_stock | chain 1/4 against 1/8 | GAP base_ns 10000000 dt_ns 2500000 against dt_ns 1250000 instants 100 summed_height_difference_um 61866 largest_um 9425 summed_speed_difference_mm_s 1082
+first suite, s20_64_stock | chain 1/8 against 1/16 | GAP base_ns 10000000 dt_ns 1250000 against dt_ns 625000 instants 100 summed_height_difference_um 222573 largest_um 19810 summed_speed_difference_mm_s 1978
+first suite, s20_64_stock | chain 1/16 against 1/32 | GAP base_ns 10000000 dt_ns 625000 against dt_ns 312500 instants 100 summed_height_difference_um 639639 largest_um 29286 summed_speed_difference_mm_s 2474
+first suite, s20_64_stock | chain 1/32 against 1/64 | GAP base_ns 10000000 dt_ns 312500 against dt_ns 156250 instants 100 summed_height_difference_um 1197880 largest_um 39774 summed_speed_difference_mm_s 1913
+first suite, s20_64_stock | lift 1/1 | PULL dt_ns 10000000 lowest_ground_force_mN 0 steps_pulling 0
+first suite, s20_64_stock | lift 1/16 | PULL dt_ns 625000 lowest_ground_force_mN 0 steps_pulling 0
+first suite, s20_64_stock | rebound 1/16 | PULL dt_ns 625000 lowest_ground_force_mN 0 steps_pulling 0
+first suite, s20_64_stock | T01 nothing touches the cube: each gap in parts of 10,000 of the one before (right answer 5,000): 5000 5000 5000 5001 5002 : PASS
+first suite, s20_64_stock | T02 steady sliding, friction over normal force per 10,000 (right answer 4000): 4000 3998 : PASS
+first suite, s20_64_stock | T03 at rest, the ground carries the weight: its mean force in mN (allowed 1 in 100; right answer 10780): 10777 10790 : PASS
+first suite, s20_64_stock | T04 the bounce does not depend on the step: rebound per 10,000 of the drop height, step 1 to 1/64: 0 14 299 1127 2766 4920 6881 ; spread 6881 (allowed 500) : FAIL
+first suite, s20_64_stock | T05 Coulomb at impact: friction impulse over normal impulse per 10,000, step 1 to 1/64 (right answer 4000): 2283 2500 2455 2405 3010 3228 3553 ; still sliding 1 : FAIL
+first suite, s20_64_stock | T06 held below the friction limit: mean speed in um/s (right answer 0, allowed 10): 3670 3670 : FAIL
+first suite, s20_64_stock | T07 pushed above the friction limit: mean speed in um/s over the second half (right answer 980000, allowed 3 in 100): 982200 983900 : PASS
+first suite, s20_64_stock | T08 the refinement chain falls at every step: 21184 20242 61866 222573 639639 1197880 : FAIL
+first suite, s20_64_stock | T09 the ground never pulls: lowest ground force in mN, lifted (two steps) and on a fast rebound (right answer 0 or more): 0 0 0 : PASS
+first suite, s20_64_stock | T10 friction over the impact and the 0.1 s after it, per 10,000 of the normal impulse, step 1 to 1/64 (right answer 4000; never more than 1 in 100 above it, and within 1 in 100 at the three finest steps): 3819 3906 3948 3790 4000 4000 3999 : PASS
+first suite, s20_64_stock | SUITE passed 6 of 10
+first suite, s20_64_final | CONFIG rig settings: ndamp=5 falloff=0.03 abstol=1e-4 reltol=1e-8
+first suite, s20_64_final | CONFIG SUPERDEX_STICK_DISTANCE=0.0003
+first suite, s20_64_final | CONFIG SUPERDEX_STICK_DAMPING=1
+first suite, s20_64_final | CONFIG SUPERDEX_FRICTION_FULL_NORMAL=1
+first suite, s20_64_final | CONFIG SUPERDEX_DAMPING_UNILATERAL=1
+first suite, s20_64_final | free 1/1 against 1/2 | GAP base_ns 10000000 dt_ns 10000000 against dt_ns 5000000 instants 100 summed_height_difference_um 1237250 largest_um 24500 summed_speed_difference_mm_s 0
+first suite, s20_64_final | free 1/2 against 1/4 | GAP base_ns 10000000 dt_ns 5000000 against dt_ns 2500000 instants 100 summed_height_difference_um 618600 largest_um 12250 summed_speed_difference_mm_s 0
+first suite, s20_64_final | free 1/4 against 1/8 | GAP base_ns 10000000 dt_ns 2500000 against dt_ns 1250000 instants 100 summed_height_difference_um 309300 largest_um 6125 summed_speed_difference_mm_s 0
+first suite, s20_64_final | free 1/8 against 1/16 | GAP base_ns 10000000 dt_ns 1250000 against dt_ns 625000 instants 100 summed_height_difference_um 154650 largest_um 3062 summed_speed_difference_mm_s 0
+first suite, s20_64_final | free 1/16 against 1/32 | GAP base_ns 10000000 dt_ns 625000 against dt_ns 312500 instants 100 summed_height_difference_um 77321 largest_um 1531 summed_speed_difference_mm_s 0
+first suite, s20_64_final | free 1/32 against 1/64 | GAP base_ns 10000000 dt_ns 312500 against dt_ns 156250 instants 100 summed_height_difference_um 38667 largest_um 766 summed_speed_difference_mm_s 0
+first suite, s20_64_final | slide 1/1 | CREEP dt_ns 10000000 steps 25 mean_speed_ums 2010372 friction_over_normal_per_10000 4000 friction_limit_per_10000 4000
+first suite, s20_64_final | slide 1/16 | CREEP dt_ns 625000 steps 400 mean_speed_ums 2028663 friction_over_normal_per_10000 3999 friction_limit_per_10000 4000
+first suite, s20_64_final | rest 1/1 | REST dt_ns 10000000 mean_ground_force_mN 10779 weight_mN 10780
+first suite, s20_64_final | rest 1/16 | REST dt_ns 625000 mean_ground_force_mN 10779 weight_mN 10780
+first suite, s20_64_final | drop 1/1 | BOUNCE dt_ns 10000000 speed_in_ums 1176000 steps_to_turn 2 rebound_nm -426959 drop_nm 80000000 rebound_per_10000 0
+first suite, s20_64_final | drop 1/2 | BOUNCE dt_ns 5000000 speed_in_ums 1176000 steps_to_turn 3 rebound_nm -350877 drop_nm 80000000 rebound_per_10000 0
+first suite, s20_64_final | drop 1/4 | BOUNCE dt_ns 2500000 speed_in_ums 1225000 steps_to_turn 3 rebound_nm -196080 drop_nm 80000000 rebound_per_10000 0
+first suite, s20_64_final | drop 1/8 | BOUNCE dt_ns 1250000 speed_in_ums 1237250 steps_to_turn 4 rebound_nm 33075 drop_nm 80000000 rebound_per_10000 4
+first suite, s20_64_final | drop 1/16 | BOUNCE dt_ns 625000 speed_in_ums 1237250 steps_to_turn 8 rebound_nm 291680 drop_nm 80000000 rebound_per_10000 36
+first suite, s20_64_final | drop 1/32 | BOUNCE dt_ns 312500 speed_in_ums 1243375 steps_to_turn 12 rebound_nm 513871 drop_nm 80000000 rebound_per_10000 64
+first suite, s20_64_final | drop 1/64 | BOUNCE dt_ns 156250 speed_in_ums 1244906 steps_to_turn 23 rebound_nm 666716 drop_nm 80000000 rebound_per_10000 83
+first suite, s20_64_final | oblique 1/1 | IMPACT dt_ns 10000000 steps 2 horizontal_lost_ums 553008 vertical_given_ums 1382505 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 1446992
+first suite, s20_64_final | oblique 1/2 | IMPACT dt_ns 5000000 steps 3 horizontal_lost_ums 542560 vertical_given_ums 1356394 ratio_per_10000 3999 friction_per_10000 4000 still_sliding_ums 1457440
+first suite, s20_64_final | oblique 1/4 | IMPACT dt_ns 2500000 steps 3 horizontal_lost_ums 533033 vertical_given_ums 1332576 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 1466967
+first suite, s20_64_final | oblique 1/8 | IMPACT dt_ns 1250000 steps 4 horizontal_lost_ums 521943 vertical_given_ums 1304853 ratio_per_10000 3999 friction_per_10000 4000 still_sliding_ums 1478057
+first suite, s20_64_final | oblique 1/16 | IMPACT dt_ns 625000 steps 8 horizontal_lost_ums 544453 vertical_given_ums 1361130 ratio_per_10000 3999 friction_per_10000 4000 still_sliding_ums 1455547
+first suite, s20_64_final | oblique 1/32 | IMPACT dt_ns 312500 steps 12 horizontal_lost_ums 513479 vertical_given_ums 1283696 ratio_per_10000 3999 friction_per_10000 4000 still_sliding_ums 1486521
+first suite, s20_64_final | oblique 1/64 | IMPACT dt_ns 156250 steps 23 horizontal_lost_ums 521850 vertical_given_ums 1304622 ratio_per_10000 3999 friction_per_10000 4000 still_sliding_ums 1478150
+first suite, s20_64_final | settle 1/1 | SETTLE dt_ns 10000000 steps 10 horizontal_lost_ums 862501 vertical_given_ums 2156185 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 1137499
+first suite, s20_64_final | settle 1/2 | SETTLE dt_ns 5000000 steps 20 horizontal_lost_ums 862276 vertical_given_ums 2155659 ratio_per_10000 3999 friction_per_10000 4000 still_sliding_ums 1137724
+first suite, s20_64_final | settle 1/4 | SETTLE dt_ns 2500000 steps 40 horizontal_lost_ums 882413 vertical_given_ums 2205999 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 1117587
+first suite, s20_64_final | settle 1/8 | SETTLE dt_ns 1250000 steps 80 horizontal_lost_ums 888029 vertical_given_ums 2220057 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 1111971
+first suite, s20_64_final | settle 1/16 | SETTLE dt_ns 625000 steps 160 horizontal_lost_ums 889231 vertical_given_ums 2223046 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 1110769
+first suite, s20_64_final | settle 1/32 | SETTLE dt_ns 312500 steps 320 horizontal_lost_ums 893452 vertical_given_ums 2233597 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 1106548
+first suite, s20_64_final | settle 1/64 | SETTLE dt_ns 156250 steps 640 horizontal_lost_ums 896232 vertical_given_ums 2240562 ratio_per_10000 4000 friction_per_10000 4000 still_sliding_ums 1103768
+first suite, s20_64_final | hold 1/1 | CREEP dt_ns 10000000 steps 100 mean_speed_ums 0 friction_over_normal_per_10000 3000 friction_limit_per_10000 5000
+first suite, s20_64_final | hold 1/16 | CREEP dt_ns 625000 steps 1600 mean_speed_ums 0 friction_over_normal_per_10000 3000 friction_limit_per_10000 5000
+first suite, s20_64_final | slip 1/1 | SLIP dt_ns 10000000 mean_speed_ums 986700 predicted_ums 980000 push_mN 6468 friction_limit_mN 5390
+first suite, s20_64_final | slip 1/16 | SLIP dt_ns 625000 mean_speed_ums 990400 predicted_ums 980000 push_mN 6468 friction_limit_mN 5390
+first suite, s20_64_final | chain 1/1 against 1/2 | GAP base_ns 10000000 dt_ns 10000000 against dt_ns 5000000 instants 100 summed_height_difference_um 20002 largest_um 2940 summed_speed_difference_mm_s 83
+first suite, s20_64_final | chain 1/2 against 1/4 | GAP base_ns 10000000 dt_ns 5000000 against dt_ns 2500000 instants 100 summed_height_difference_um 10446 largest_um 1470 summed_speed_difference_mm_s 55
+first suite, s20_64_final | chain 1/4 against 1/8 | GAP base_ns 10000000 dt_ns 2500000 against dt_ns 1250000 instants 100 summed_height_difference_um 5782 largest_um 735 summed_speed_difference_mm_s 73
+first suite, s20_64_final | chain 1/8 against 1/16 | GAP base_ns 10000000 dt_ns 1250000 against dt_ns 625000 instants 100 summed_height_difference_um 3378 largest_um 367 summed_speed_difference_mm_s 59
+first suite, s20_64_final | chain 1/16 against 1/32 | GAP base_ns 10000000 dt_ns 625000 against dt_ns 312500 instants 100 summed_height_difference_um 2283 largest_um 236 summed_speed_difference_mm_s 51
+first suite, s20_64_final | chain 1/32 against 1/64 | GAP base_ns 10000000 dt_ns 312500 against dt_ns 156250 instants 100 summed_height_difference_um 1452 largest_um 170 summed_speed_difference_mm_s 37
+first suite, s20_64_final | lift 1/1 | PULL dt_ns 10000000 lowest_ground_force_mN 0 steps_pulling 0
+first suite, s20_64_final | lift 1/16 | PULL dt_ns 625000 lowest_ground_force_mN 0 steps_pulling 0
+first suite, s20_64_final | rebound 1/16 | PULL dt_ns 625000 lowest_ground_force_mN 0 steps_pulling 0
+first suite, s20_64_final | T01 nothing touches the cube: each gap in parts of 10,000 of the one before (right answer 5,000): 5000 5000 5000 5001 5002 : PASS
+first suite, s20_64_final | T02 steady sliding, friction over normal force per 10,000 (right answer 4000): 4000 3999 : PASS
+first suite, s20_64_final | T03 at rest, the ground carries the weight: its mean force in mN (allowed 1 in 100; right answer 10780): 10779 10779 : PASS
+first suite, s20_64_final | T04 the bounce does not depend on the step: rebound per 10,000 of the drop height, step 1 to 1/64: 0 0 0 4 36 64 83 ; spread 83 (allowed 500) : PASS
+first suite, s20_64_final | T05 Coulomb at impact: friction impulse over normal impulse per 10,000, step 1 to 1/64 (right answer 4000): 4000 3999 4000 3999 3999 3999 3999 ; still sliding 1 : PASS
+first suite, s20_64_final | T06 held below the friction limit: mean speed in um/s (right answer 0, allowed 10): 0 0 : PASS
+first suite, s20_64_final | T07 pushed above the friction limit: mean speed in um/s over the second half (right answer 980000, allowed 3 in 100): 986700 990400 : PASS
+first suite, s20_64_final | T08 the refinement chain falls at every step: 20002 10446 5782 3378 2283 1452 : PASS
+first suite, s20_64_final | T09 the ground never pulls: lowest ground force in mN, lifted (two steps) and on a fast rebound (right answer 0 or more): 0 0 0 : PASS
+first suite, s20_64_final | T10 friction over the impact and the 0.1 s after it, per 10,000 of the normal impulse, step 1 to 1/64 (right answer 4000; never more than 1 in 100 above it, and within 1 in 100 at the three finest steps): 4000 3999 4000 4000 4000 4000 4000 : PASS
+first suite, s20_64_final | SUITE passed 10 of 10
+s20_32_stock stop 1/1 | STOP dt_ns 10000000 first_stopped_at_step 30 largest_speed_last_third_ums 0 slid_um 131081 came_back_um 0
+s20_32_stock stop 1/4 | STOP dt_ns 2500000 first_stopped_at_step 109 largest_speed_last_third_ums 0 slid_um 128526 came_back_um 0
+s20_32_stock stop 1/16 | STOP dt_ns 625000 first_stopped_at_step -1 largest_speed_last_third_ums 24 slid_um 127731 came_back_um 0
+s20_32_stock stop 1/64 | STOP dt_ns 156250 first_stopped_at_step -1 largest_speed_last_third_ums 191 slid_um 127467 came_back_um 0
+s20_32_stock land 1/1 | STOP dt_ns 10000000 first_stopped_at_step 30 largest_speed_last_third_ums 0 slid_um 156758 came_back_um 0
+s20_32_stock land 1/4 | STOP dt_ns 2500000 first_stopped_at_step 109 largest_speed_last_third_ums 0 slid_um 152962 came_back_um 0
+s20_32_stock land 1/16 | STOP dt_ns 625000 first_stopped_at_step 395 largest_speed_last_third_ums 0 slid_um 152232 came_back_um 0
+s20_32_stock land 1/64 | STOP dt_ns 156250 first_stopped_at_step 1967 largest_speed_last_third_ums 0 slid_um 146986 came_back_um 0
+s20_32_stock rest 1/1 | PAIR dt_ns 10000000 momentum_at_release 0 largest_change 0 per_million -1 final_speed_a_ums 0 final_speed_b_ums 0 relative_mean_ums 0 force_up_a_mN 34299 force_up_b_mN 6865
+s20_32_stock carry 1/1 | PAIR dt_ns 10000000 momentum_at_release 0 largest_change 108050880 per_million -1 final_speed_a_ums 2573121 final_speed_b_ums 2570248 relative_mean_ums -2903 force_up_a_mN 34297 force_up_b_mN 6860
+s20_32_stock slip A 1/1 | ACCEL dt_ns 10000000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 5485 final_speed_ums 2194411
+s20_32_stock slip B 1/1 | ACCEL dt_ns 10000000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 3444 final_speed_ums 1375958
+s20_32_stock side 1/1 | PAIR dt_ns 10000000 momentum_at_release 7000000 largest_change 350 per_million 50 final_speed_a_ums 178230 final_speed_b_ums 108847 relative_mean_ums -69383 force_up_a_mN 0 force_up_b_mN 0
+s20_32_stock top 1/1 | PAIR dt_ns 10000000 momentum_at_release 6300000 largest_change 350 per_million 55 final_speed_a_ums 150001 final_speed_b_ums 150001 relative_mean_ums 0 force_up_a_mN 34297 force_up_b_mN 6861
+s20_32_stock rest 1/16 | PAIR dt_ns 625000 momentum_at_release 0 largest_change 0 per_million -1 final_speed_a_ums 0 final_speed_b_ums 0 relative_mean_ums 0 force_up_a_mN 34354 force_up_b_mN 6914
+s20_32_stock carry 1/16 | PAIR dt_ns 625000 momentum_at_release 0 largest_change 109382770 per_million -1 final_speed_a_ums 2604866 final_speed_b_ums 2601814 relative_mean_ums -2985 force_up_a_mN 34167 force_up_b_mN 6809
+s20_32_stock slip A 1/16 | ACCEL dt_ns 625000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 5492 final_speed_ums 2195120
+s20_32_stock slip B 1/16 | ACCEL dt_ns 625000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 3409 final_speed_ums 1374865
+s20_32_stock side 1/16 | PAIR dt_ns 625000 momentum_at_release 7000000 largest_change 350 per_million 50 final_speed_a_ums 260592 final_speed_b_ums -302935 relative_mean_ums -563527 force_up_a_mN 0 force_up_b_mN 0
+s20_32_stock top 1/16 | PAIR dt_ns 625000 momentum_at_release 6300000 largest_change 490 per_million 77 final_speed_a_ums 150013 final_speed_b_ums 150013 relative_mean_ums 0 force_up_a_mN 34340 force_up_b_mN 6914
+second suite, s20_32_stock | SUITE2 T11 0 T12 1 T13 1 T14 0 T15 1 T16 1 T17 1 code 110111
+s20_32_final stop 1/1 | STOP dt_ns 10000000 first_stopped_at_step 25 largest_speed_last_third_ums 0 slid_um 122760 came_back_um 297
+s20_32_final stop 1/4 | STOP dt_ns 2500000 first_stopped_at_step 101 largest_speed_last_third_ums 0 slid_um 126452 came_back_um 299
+s20_32_final stop 1/16 | STOP dt_ns 625000 first_stopped_at_step 407 largest_speed_last_third_ums 0 slid_um 127349 came_back_um 299
+s20_32_final stop 1/64 | STOP dt_ns 156250 first_stopped_at_step 1609 largest_speed_last_third_ums 0 slid_um 127092 came_back_um 305
+s20_32_final land 1/1 | STOP dt_ns 10000000 first_stopped_at_step 25 largest_speed_last_third_ums 0 slid_um 146765 came_back_um 297
+s20_32_final land 1/4 | STOP dt_ns 2500000 first_stopped_at_step 101 largest_speed_last_third_ums 0 slid_um 150437 came_back_um 299
+s20_32_final land 1/16 | STOP dt_ns 625000 first_stopped_at_step 407 largest_speed_last_third_ums 0 slid_um 151208 came_back_um 299
+s20_32_final land 1/64 | STOP dt_ns 156250 first_stopped_at_step 1629 largest_speed_last_third_ums 0 slid_um 151606 came_back_um 305
+s20_32_final rest 1/1 | PAIR dt_ns 10000000 momentum_at_release 0 largest_change 0 per_million -1 final_speed_a_ums 0 final_speed_b_ums 0 relative_mean_ums 0 force_up_a_mN 34303 force_up_b_mN 6862
+s20_32_final carry 1/1 | PAIR dt_ns 10000000 momentum_at_release 0 largest_change 108050880 per_million -1 final_speed_a_ums 2572644 final_speed_b_ums 2572644 relative_mean_ums 0 force_up_a_mN 34297 force_up_b_mN 6860
+s20_32_final slip A 1/1 | ACCEL dt_ns 10000000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 5489 final_speed_ums 2195305
+s20_32_final slip B 1/1 | ACCEL dt_ns 10000000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 3423 final_speed_ums 1371485
+s20_32_final side 1/1 | PAIR dt_ns 10000000 momentum_at_release 7000000 largest_change 280 per_million 40 final_speed_a_ums 174117 final_speed_b_ums 129411 relative_mean_ums -44706 force_up_a_mN 0 force_up_b_mN 0
+s20_32_final top 1/1 | PAIR dt_ns 10000000 momentum_at_release 6300000 largest_change 350 per_million 55 final_speed_a_ums 150000 final_speed_b_ums 150001 relative_mean_ums 0 force_up_a_mN 34297 force_up_b_mN 6860
+s20_32_final rest 1/16 | PAIR dt_ns 625000 momentum_at_release 0 largest_change 0 per_million -1 final_speed_a_ums 0 final_speed_b_ums 0 relative_mean_ums 0 force_up_a_mN 34424 force_up_b_mN 6907
+s20_32_final carry 1/16 | PAIR dt_ns 625000 momentum_at_release 0 largest_change 109276020 per_million -1 final_speed_a_ums 2601814 final_speed_b_ums 2601814 relative_mean_ums 0 force_up_a_mN 34424 force_up_b_mN 6906
+s20_32_final slip A 1/16 | ACCEL dt_ns 625000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 5491 final_speed_ums 2195168
+s20_32_final slip B 1/16 | ACCEL dt_ns 625000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 3444 final_speed_ums 1376915
+s20_32_final side 1/16 | PAIR dt_ns 625000 momentum_at_release 7000000 largest_change 630 per_million 90 final_speed_a_ums 193071 final_speed_b_ums 34666 relative_mean_ums -158405 force_up_a_mN 0 force_up_b_mN 0
+s20_32_final top 1/16 | PAIR dt_ns 625000 momentum_at_release 6300000 largest_change 2310 per_million 366 final_speed_a_ums 150037 final_speed_b_ums 150013 relative_mean_ums 2 force_up_a_mN 34424 force_up_b_mN 6899
+second suite, s20_32_final | SUITE2 T11 1 T12 1 T13 1 T14 1 T15 1 T16 1 T17 1 code 1111111
+s20_64_stock stop 1/1 | STOP dt_ns 10000000 first_stopped_at_step 30 largest_speed_last_third_ums 0 slid_um 131083 came_back_um 0
+s20_64_stock stop 1/4 | STOP dt_ns 2500000 first_stopped_at_step 109 largest_speed_last_third_ums 0 slid_um 128532 came_back_um 0
+s20_64_stock stop 1/16 | STOP dt_ns 625000 first_stopped_at_step 430 largest_speed_last_third_ums 0 slid_um 127903 came_back_um 0
+s20_64_stock stop 1/64 | STOP dt_ns 156250 first_stopped_at_step 1720 largest_speed_last_third_ums 0 slid_um 127447 came_back_um 0
+s20_64_stock land 1/1 | STOP dt_ns 10000000 first_stopped_at_step 30 largest_speed_last_third_ums 0 slid_um 156760 came_back_um 0
+s20_64_stock land 1/4 | STOP dt_ns 2500000 first_stopped_at_step 111 largest_speed_last_third_ums 0 slid_um 152988 came_back_um 0
+s20_64_stock land 1/16 | STOP dt_ns 625000 first_stopped_at_step 398 largest_speed_last_third_ums 0 slid_um 152394 came_back_um 0
+s20_64_stock land 1/64 | STOP dt_ns 156250 first_stopped_at_step 1963 largest_speed_last_third_ums 0 slid_um 147102 came_back_um 0
+s20_64_stock rest 1/1 | PAIR dt_ns 10000000 momentum_at_release 0 largest_change 0 per_million -1 final_speed_a_ums 0 final_speed_b_ums 0 relative_mean_ums 0 force_up_a_mN 34297 force_up_b_mN 6866
+s20_64_stock carry 1/1 | PAIR dt_ns 10000000 momentum_at_release 0 largest_change 108044720 per_million -1 final_speed_a_ums 2572987 final_speed_b_ums 2570067 relative_mean_ums -2920 force_up_a_mN 34300 force_up_b_mN 6860
+s20_64_stock slip A 1/1 | ACCEL dt_ns 10000000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 5485 final_speed_ums 2194542
+s20_64_stock slip B 1/1 | ACCEL dt_ns 10000000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 3442 final_speed_ums 1375289
+s20_64_stock side 1/1 | PAIR dt_ns 10000000 momentum_at_release 7000000 largest_change 280 per_million 40 final_speed_a_ums 178230 final_speed_b_ums 108849 relative_mean_ums -69381 force_up_a_mN 0 force_up_b_mN 0
+s20_64_stock top 1/1 | PAIR dt_ns 10000000 momentum_at_release 6300000 largest_change 350 per_million 55 final_speed_a_ums 150000 final_speed_b_ums 150000 relative_mean_ums 0 force_up_a_mN 34300 force_up_b_mN 6860
+s20_64_stock rest 1/16 | PAIR dt_ns 625000 momentum_at_release 0 largest_change 0 per_million -1 final_speed_a_ums 0 final_speed_b_ums 0 relative_mean_ums 0 force_up_a_mN 34303 force_up_b_mN 6864
+s20_64_stock carry 1/16 | PAIR dt_ns 625000 momentum_at_release 0 largest_change 108044720 per_million -1 final_speed_a_ums 2572988 final_speed_b_ums 2570061 relative_mean_ums -2927 force_up_a_mN 34300 force_up_b_mN 6860
+s20_64_stock slip A 1/16 | ACCEL dt_ns 625000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 5488 final_speed_ums 2195654
+s20_64_stock slip B 1/16 | ACCEL dt_ns 625000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 3428 final_speed_ums 1369731
+s20_64_stock side 1/16 | PAIR dt_ns 625000 momentum_at_release 7000000 largest_change 280 per_million 40 final_speed_a_ums 260579 final_speed_b_ums -302893 relative_mean_ums -563472 force_up_a_mN 0 force_up_b_mN 0
+s20_64_stock top 1/16 | PAIR dt_ns 625000 momentum_at_release 6300000 largest_change 350 per_million 55 final_speed_a_ums 150000 final_speed_b_ums 150000 relative_mean_ums 0 force_up_a_mN 34299 force_up_b_mN 6859
+second suite, s20_64_stock | SUITE2 T11 1 T12 1 T13 1 T14 0 T15 1 T16 1 T17 1 code 1110111
+s20_64_final stop 1/1 | STOP dt_ns 10000000 first_stopped_at_step 25 largest_speed_last_third_ums 0 slid_um 122764 came_back_um 298
+s20_64_final stop 1/4 | STOP dt_ns 2500000 first_stopped_at_step 102 largest_speed_last_third_ums 0 slid_um 126465 came_back_um 299
+s20_64_final stop 1/16 | STOP dt_ns 625000 first_stopped_at_step 408 largest_speed_last_third_ums 0 slid_um 127407 came_back_um 299
+s20_64_final stop 1/64 | STOP dt_ns 156250 first_stopped_at_step 1632 largest_speed_last_third_ums 0 slid_um 127429 came_back_um 298
+s20_64_final land 1/1 | STOP dt_ns 10000000 first_stopped_at_step 25 largest_speed_last_third_ums 0 slid_um 146774 came_back_um 298
+s20_64_final land 1/4 | STOP dt_ns 2500000 first_stopped_at_step 102 largest_speed_last_third_ums 0 slid_um 150477 came_back_um 299
+s20_64_final land 1/16 | STOP dt_ns 625000 first_stopped_at_step 408 largest_speed_last_third_ums 0 slid_um 151411 came_back_um 299
+s20_64_final land 1/64 | STOP dt_ns 156250 first_stopped_at_step 1635 largest_speed_last_third_ums 0 slid_um 151391 came_back_um 298
+s20_64_final rest 1/1 | PAIR dt_ns 10000000 momentum_at_release 0 largest_change 0 per_million -1 final_speed_a_ums 0 final_speed_b_ums 0 relative_mean_ums 0 force_up_a_mN 34300 force_up_b_mN 6860
+s20_64_final carry 1/1 | PAIR dt_ns 10000000 momentum_at_release 0 largest_change 108045000 per_million -1 final_speed_a_ums 2572500 final_speed_b_ums 2572500 relative_mean_ums 0 force_up_a_mN 34300 force_up_b_mN 6860
+s20_64_final slip A 1/1 | ACCEL dt_ns 10000000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 5489 final_speed_ums 2195482
+s20_64_final slip B 1/1 | ACCEL dt_ns 10000000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 3422 final_speed_ums 1370592
+s20_64_final side 1/1 | PAIR dt_ns 10000000 momentum_at_release 7000000 largest_change 280 per_million 40 final_speed_a_ums 174118 final_speed_b_ums 129412 relative_mean_ums -44706 force_up_a_mN 0 force_up_b_mN 0
+s20_64_final top 1/1 | PAIR dt_ns 10000000 momentum_at_release 6300000 largest_change 350 per_million 55 final_speed_a_ums 150000 final_speed_b_ums 150000 relative_mean_ums 0 force_up_a_mN 34300 force_up_b_mN 6860
+s20_64_final rest 1/16 | PAIR dt_ns 625000 momentum_at_release 0 largest_change 0 per_million -1 final_speed_a_ums 0 final_speed_b_ums 0 relative_mean_ums 0 force_up_a_mN 34299 force_up_b_mN 6859
+s20_64_final carry 1/16 | PAIR dt_ns 625000 momentum_at_release 0 largest_change 108045000 per_million -1 final_speed_a_ums 2572500 final_speed_b_ums 2572500 relative_mean_ums 0 force_up_a_mN 34300 force_up_b_mN 6860
+s20_64_final slip A 1/16 | ACCEL dt_ns 625000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 5489 final_speed_ums 2196627
+s20_64_final slip B 1/16 | ACCEL dt_ns 625000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 3424 final_speed_ums 1364865
+s20_64_final side 1/16 | PAIR dt_ns 625000 momentum_at_release 7000000 largest_change 350 per_million 50 final_speed_a_ums 193067 final_speed_b_ums 34667 relative_mean_ums -158400 force_up_a_mN 0 force_up_b_mN 0
+s20_64_final top 1/16 | PAIR dt_ns 625000 momentum_at_release 6300000 largest_change 350 per_million 55 final_speed_a_ums 150000 final_speed_b_ums 150000 relative_mean_ums 0 force_up_a_mN 34300 force_up_b_mN 6860
+second suite, s20_64_final | SUITE2 T11 1 T12 1 T13 1 T14 1 T15 1 T16 1 T17 1 code 1111111
+codes | first suite T01..T10: 32 stock 0110000011, 32 off 0110000011, 32 final 0111111011, 64 stock 1110001011, 64 final 1111111111; second suite T11..T17: 32 stock 110111, 32 final 1111111, 64 stock 1110111, 64 final 1111111
+identity | suite 1 32-bit stock against run 041: 39 of 39
+identity | suite 1 32-bit final against run 041: 39 of 39
+identity | suite 2 32-bit stock against run 041: 28 of 28
+identity | suite 2 32-bit final against run 041: 28 of 28
+S0 | RULE S0 eq 134 134 : HELD
+Z0 | RULE Z0_suite1 eq 39 39 : HELD
+Z0 | RULE Z0_suite2 eq 28 28 : HELD
+Z1 | RULE Z1 all_eq 1 0 1 1 1 1 1 1 0 1 1 : FAILED
+Z2 | RULE Z2 all_eq 1 1 1 1 1 1 1 1 1 : HELD
+Z3 | RULE Z3_gap1 eq 10266 10266 : HELD
+Z3 | RULE Z3_gap2 eq 2433 2433 : HELD
+Z3 | RULE Z3_gap3 eq 5000 5000 : HELD
+Z3 | RULE Z3_gap4 eq 5000 5000 : HELD
+Z3 | RULE Z3_gap5 eq 21465840 21465840 : HELD
+Z4 | RULE Z4 eq 1111111 1111111 : HELD
+Z5 | RULE Z5_first all_eq 1 1 1 1 1 1 1 1 1 1 1 : HELD
+Z5 | RULE Z5_second eq 1111111 1111111 : HELD

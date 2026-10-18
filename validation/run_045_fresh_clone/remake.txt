@@ -1,0 +1,27 @@
+SAME validation/run_007_counts/counts.txt
+SAME validation/run_011_counts/counts.txt
+SAME validation/run_010_contact/reading.txt
+SAME patches/validation/ledger.txt
+SAME validation/run_013_counts/counts.txt
+SAME validation/run_015_joints/reading.txt
+SAME validation/run_017_counts/reading.txt
+SAME validation/run_017_counts/counts.txt
+SAME validation/run_019_limits/reading.txt
+SAME validation/run_019_limits/counts.txt
+SAME validation/run_021_rotation/reading.txt
+SAME validation/run_021_rotation/counts.txt
+SAME validation/run_026_ant_stops/reading.txt
+SAME validation/run_027_friction/reading.txt
+SAME validation/run_027_friction/counts.txt
+SAME validation/run_028_joint_motion/reading.txt
+SAME validation/run_028_joint_motion/counts.txt
+SAME validation/run_029_end_to_end/reading.txt
+SAME validation/run_032_open_items/reading.txt
+SAME validation/run_034_replication/reading.txt
+SAME validation/run_036_registration16/reading.txt
+SAME validation/run_043_study19/reading.txt
+SAME validation/run_044_study20/reading.txt
+SAME validation/run_002_instrument/reading.txt
+SAME validation/run_005_instrument/reading.txt
+SAME validation/run_008_instrument/reading.txt
+readings re-made byte for byte: 26 of 26

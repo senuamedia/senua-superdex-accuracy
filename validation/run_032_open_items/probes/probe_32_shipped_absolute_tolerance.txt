@@ -1,0 +1,16 @@
+# probe 32: BDF2 with patch G at SuperDex's shipped absolute tolerance and a relative tolerance of 1e-8 (t38): probe 30's arm for 20 s, probe 29's chain for 2 s, probe 31's cloud and soft body at rest. The arm still gains: at fine steps the absolute tolerance is the cause. Library build 14
+arm bdf2 t38 1/4 | turns 28 least_per_10000 9999 most_per_10000 10009 last_per_10000 10009 | stopped 0 diverged 0 
+arm bdf2 t38 1/16 | turns 28 least_per_10000 10000 most_per_10000 10038 last_per_10000 10038 | stopped 0 diverged 0 
+arm bdf2 t38 1/64 | turns 28 least_per_10000 10001 most_per_10000 10110 last_per_10000 10110 | stopped 0 diverged 0 
+arm be t38 1/64 | turns 28 least_per_10000 9883 most_per_10000 9997 last_per_10000 9883 | stopped 0 diverged 0 
+chain bdf2 t38 1/16 | energy_drift_ppm_of_most_kinetic 1122 energy_largest_drift_ppm 1195 | stopped 0 diverged 0 
+chain bdf2 t38 1/64 | energy_drift_ppm_of_most_kinetic 2014 energy_largest_drift_ppm 2014 | stopped 0 diverged 0 
+cloud t38 oblique | stopped 0 diverged 0 
+cloud t38 slide | stopped 0 diverged 0 
+cloud t38 rest | stopped 0 diverged 0 
+cloud t38 hold | stopped 0 diverged 0 
+cloud t38 slip | stopped 0 diverged 0 
+cloud t38 lift | stopped 0 diverged 0 
+cloud t38 impact | IMPACT dt_ns 625000 steps 4 horizontal_lost_ums 529265 vertical_given_ums 1190543 ratio_per_10000 4445 friction_per_10000 4400 still_sliding_ums 2470735
+cloud t38 slip | SLIP dt_ns 625000 mean_speed_ums 851600 predicted_ums 863000 push_mN 5951 friction_limit_mN 4958
+deform t38 soft rest | stopped 0 diverged 0 

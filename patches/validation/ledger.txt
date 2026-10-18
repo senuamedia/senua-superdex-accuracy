@@ -1,0 +1,19 @@
+IDENTITY-RECORD IDENTITY suite 39 of 39
+IDENTITY-RECORD IDENTITY benchmark 38 of 38
+SUITE-RESULT stock 1110001011 SUITE passed 6 of 10
+SUITE-RESULT implicit 1110101011 SUITE passed 7 of 10
+SUITE-RESULT damped 1111001100 SUITE passed 6 of 10
+SUITE-RESULT damped_a 1111001101 SUITE passed 7 of 10
+SUITE-RESULT damped_ab 1111001111 SUITE passed 8 of 10
+SUITE-RESULT stick 1110011011 SUITE passed 7 of 10
+SUITE-RESULT recommended 1111011111 SUITE passed 9 of 10
+SUITE-RESULT recommended_implicit 1111111111 SUITE passed 10 of 10
+RESULTS (T01 .. T10, 1 = passed): stock 1110001011 ; implicit 1110101011 ; damped 1111001100 ; damped+A 1111001101 ; damped+A+B 1111001111 ; patch C 1110011011 ; recommended 1111011111
+S0 safe when off: suite runs byte-identical 39 of 39 ; benchmark streams byte-identical 38 of 38 ; held 1
+S1 required: stock fails T04, T05, T06, T08: 1 ; damping on stock code fails T09 and T10: 1 ; held 1
+S2 correct: implicit passes T05 1 ; damping passes T04 and T08 1 ; patch A passes T10 under damping 1 ; patches A and B pass T09 and T10 1 ; patch C passes T06 1 ; recommended passes every test but T05 1 ; held 1
+S3 nothing else gets worse: every configuration passes T01, T02, T03, T07: 1 ; T09 passes wherever there is no damping or patch B is on: 1 ; T10 passes wherever there is no damping or patch A is on: 1 ; held 1
+B1 the benchmark, half_cheetah folds in order of 3: shipped 0 ; recommended 3 ; held 1
+B2 the solver with the recommended configuration: steps diverged 0 ; at the shipped step, steps stopped without converging, half_cheetah stock 2 recommended 0 of 21600 ; ant stock 206 recommended 2 of 21600 ; none diverged and no more stopped than stock plus 1 in 1,000: held 1
+LEDGER S0 1 S1 1 S2 1 S3 1 B1 1 B2 1
+THESIS one setting and three patches are required, correct and safe, and the recommended configuration keeps the benchmark in order with the solver converging: PASS

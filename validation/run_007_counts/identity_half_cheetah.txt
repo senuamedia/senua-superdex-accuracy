@@ -1,0 +1,2 @@
+IDENTITY half_cheetah sref srefb encoder_identical 1 state_identical 1
+IDENTITY half_cheetah sref z encoder_identical 1 state_identical 1

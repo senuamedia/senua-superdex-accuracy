@@ -1,0 +1,7 @@
+SAME    (a) build-15 rig, every switch, vs registered deform_fc/shell_hold_0.01
+SAME    (a) build-15 rig, every switch, vs registered grip_fc/built_8
+SAME    (b) stock rig with every switch vs (c) stock rig, no switch: deform
+SAME    (b) stock rig with every switch vs (c) stock rig, no switch: grip
+DIFFERS (b) stock rig with every switch vs (a) build-15 with every switch: deform
+DIFFERS (b) stock rig with every switch vs (a) build-15 with every switch: grip
+DIFFERS (c) vs registered deform_stock/shell_hold_0.01 (different settings: ndamp, falloff)

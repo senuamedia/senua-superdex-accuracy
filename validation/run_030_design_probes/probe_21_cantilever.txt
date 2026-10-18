@@ -1,0 +1,12 @@
+# probe 21: a throwaway cantilever (0.1 kg/m, EA 200 N, EI 2 N m2, 0.5 m), stock, 0.01 s; the tip's drop in nanometres; clampmid 0 = the first two nodes held from x = 0 (the thirteenth registration's clamp), 1 = the held element across the clamp
+textbook: 3828125.000000000 nm
+clampmid 0 n 16 | tip drop 3367631 nm | stopped 0 diverged 0 
+clampmid 0 n 32 | tip drop 3596491 nm | stopped 0 diverged 0 
+clampmid 0 n 64 | tip drop 3713421 nm | stopped 0 diverged 0 
+clampmid 0 n 128 | tip drop 3768073 nm | stopped 0 diverged 0 
+clampmid 0 n 256 | tip drop 3797818 nm | stopped 0 diverged 0 
+clampmid 1 n 16 | tip drop 3819689 nm | stopped 0 diverged 0 
+clampmid 1 n 32 | tip drop 3825737 nm | stopped 0 diverged 0 
+clampmid 1 n 64 | tip drop 3827200 nm | stopped 0 diverged 0 
+clampmid 1 n 128 | tip drop 3827561 nm | stopped 0 diverged 0 
+clampmid 1 n 256 | tip drop 3827651 nm | stopped 0 diverged 0 

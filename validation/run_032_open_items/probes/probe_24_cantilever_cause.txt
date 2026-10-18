@@ -1,0 +1,7 @@
+# probe 24: why the cantilever held across the clamp read 0.1% over w L^4 / (8 EI): one setting at a time, 128 elements, clampmid 1, stock settings and stock solver tolerances, 0.01 s; drop = the tip's drop in nm (sx_contact deform), ratio = drop per million of the textbook
+reg13 lin 0.12 ea 150 len 0.6 ei 3 secs 4 | drop 6358029 textbook 6350400 | ratio per million 1001201
+reg13_long lin 0.12 ea 150 len 0.6 ei 3 secs 8 | drop 6358029 textbook 6350400 | ratio per million 1001201
+ea1e4 lin 0.12 ea 10000 len 0.6 ei 3 secs 4 | drop 6357574 textbook 6350400 | ratio per million 1001129
+ea1e6 lin 0.12 ea 1000000 len 0.6 ei 3 secs 4 | drop 6346618 textbook 6350400 | ratio per million 999404
+probe030 lin 0.1 ea 200 len 0.5 ei 2 secs 4 | drop 3827561 textbook 3828125 | ratio per million 999852
+probe030_ea1e6 lin 0.1 ea 1000000 len 0.5 ei 2 secs 4 | drop 3826076 textbook 3828125 | ratio per million 999464

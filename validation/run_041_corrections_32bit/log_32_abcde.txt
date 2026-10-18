@@ -1,0 +1,2 @@
+played 39 runs under: ndamp=5 falloff=0.03
+played 28 files under: ndamp=5 falloff=0.03

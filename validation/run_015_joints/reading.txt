@@ -1,0 +1,40 @@
+spin backward Euler 1/1 | FINAL dt_ns 10000000 angle_urad 2876236 speed_urads 2762598
+torque backward Euler 1/1 | FINAL dt_ns 10000000 angle_urad 2303013 speed_urads 4425099
+swing backward Euler 1/1 | SWING dt_ns 10000000 released_at_urad -1 turn_urad -2853623 swing_per_10000 9083 turn_urad -480038 swing_per_10000 7555 turn_urad -2519854 swing_per_10000 6492 turn_urad -732867 swing_per_10000 5687 turns 4
+spin backward Euler 1/4 | FINAL dt_ns 2500000 angle_urad 2967014 speed_urads 2934772
+torque backward Euler 1/4 | FINAL dt_ns 2500000 angle_urad 2321669 speed_urads 4594911
+swing backward Euler 1/4 | SWING dt_ns 2500000 released_at_urad 0 turn_urad -3056284 swing_per_10000 9728 turn_urad -160198 swing_per_10000 9218 turn_urad -2914783 swing_per_10000 8767 turn_urad -286699 swing_per_10000 8365 turns 4
+spin backward Euler 1/16 | FINAL dt_ns 625000 angle_urad 2991611 speed_urads 2983271
+torque backward Euler 1/16 | FINAL dt_ns 625000 angle_urad 2326721 speed_urads 4641035
+swing backward Euler 1/16 | SWING dt_ns 625000 released_at_urad -1 turn_urad -3119293 swing_per_10000 9928 turn_urad -43825 swing_per_10000 9789 turn_urad -3076970 swing_per_10000 9654 turn_urad -84736 swing_per_10000 9524 turns 4
+spin backward Euler 1/64 | FINAL dt_ns 156250 angle_urad 2999642 speed_urads 2999283
+torque backward Euler 1/64 | FINAL dt_ns 156250 angle_urad 2328458 speed_urads 4655787
+swing backward Euler 1/64 | SWING dt_ns 156250 released_at_urad -1 turn_urad -3136742 swing_per_10000 9984 turn_urad -9657 swing_per_10000 9953 turn_urad -3127172 swing_per_10000 9923 turns 3
+spin bdf2 1/1 (reported) | FINAL dt_ns 10000000 angle_urad 2954317 speed_urads 2911472
+torque bdf2 1/1 (reported) | FINAL dt_ns 10000000 angle_urad 2310659 speed_urads 4568281
+swing bdf2 1/1 (reported) | SWING dt_ns 10000000 released_at_urad -1 turn_urad -3062786 swing_per_10000 9748 turn_urad -144090 swing_per_10000 9290 turn_urad -2939522 swing_per_10000 8898 turn_urad -252536 swing_per_10000 8552 turns 4
+spin dirk33 1/1 (reported) | FINAL dt_ns 10000000 angle_urad 2970801 speed_urads 2942226
+torque dirk33 1/1 (reported) | FINAL dt_ns 10000000 angle_urad 2317301 speed_urads 4601632
+swing dirk33 1/1 (reported) | SWING dt_ns 10000000 released_at_urad 1216 turn_urad -3090000 swing_per_10000 9839 turn_urad -97506 swing_per_10000 9525 turn_urad -3001688 swing_per_10000 9244 turn_urad -177552 swing_per_10000 8989 turns 4
+spin released at 1 rad/s, shipped step (reported) | FINAL dt_ns 10000000 angle_urad 995066 speed_urads 990195
+spin released at 2 rad/s, shipped step (reported) | FINAL dt_ns 10000000 angle_urad 1961637 speed_urads 1924830
+spin released at 4 rad/s, shipped step (reported) | FINAL dt_ns 10000000 angle_urad 3723318 speed_urads 3483052
+spin released at 8 rad/s, shipped step (reported) | FINAL dt_ns 10000000 angle_urad 6377908 speed_urads 5304122
+hold shipped falloff 1/1 | CREEP dt_ns 10000000 steps 100 mean_speed_ums -411 friction_over_normal_per_10000 -1 friction_limit_per_10000 0
+hold shipped falloff 1/16 | CREEP dt_ns 625000 steps 1600 mean_speed_ums -411 friction_over_normal_per_10000 -1 friction_limit_per_10000 0
+hold falloff 1e-6 1/1 | CREEP dt_ns 10000000 steps 100 mean_speed_ums 0 friction_over_normal_per_10000 -1 friction_limit_per_10000 0
+hold falloff 1e-6 1/16 | CREEP dt_ns 625000 steps 1600 mean_speed_ums 0 friction_over_normal_per_10000 -1 friction_limit_per_10000 0
+slip shipped falloff 1/1 | FINAL dt_ns 10000000 angle_urad 1552960 speed_urads 3032560
+slip shipped falloff 1/16 | FINAL dt_ns 625000 angle_urad 1552417 speed_urads 3100074
+slip falloff 1e-6 1/1 | FINAL dt_ns 10000000 angle_urad 1552961 speed_urads 3032561
+slip falloff 1e-6 1/16 | FINAL dt_ns 625000 angle_urad 1552407 speed_urads 3100041
+JT1 spin, speed left after 1 s per 10,000: shipped step 9208 ; 1/64 of it 9997 (right answer 10,000; passes at 9,900)
+JT2 torque, speed after 1 s in urad/s: shipped step 4425099 ; 1/64 of it 4655787 (right answer 4656457; passes within 1 in 100)
+JT3 swing, first swing per 10,000 of half a turn: shipped step 9083 ; 1/64 of it 9984 (right answer 10,000; passes at 9,900)
+Q1 as shipped all three fail: 1 ; at 1/64 of the step all three pass: 1 ; held 1
+JT4 hold, creep in urad/s (right answer 0; passes within 10): shipped falloff 411 411 (the friction law gives 411) ; falloff 1e-6 0 0 ; solver steps stopped with it 0
+Q2 as shipped it creeps as its law says: 1 ; with the falloff at 1e-6 it holds: 1 ; and the solver converges: 1 ; held 1
+JT5 slip, speed after 1 s in urad/s, shipped falloff at two steps then 1e-6 at two steps: 3032560 3100074 3032561 3100041 (right answer 3104308; passes within 3 in 100)
+Q3 the setting changes nothing else: held 1
+JOINTS Q1 1 Q2 1 Q3 1
+THESIS the shipped integrator owns the loss of a free, a driven and a swinging arm, and joint friction holds with its falloff at 1e-6: PASS

@@ -1,0 +1,40 @@
+# probe 29: the fourteenth registration's item-5 chain (1 kg and 0.8 kg, half-size 0.04 m, centres 0.3 m and 0.25 m, joints 0.55 m apart, swinging from 0.5 and -0.6 rad), patches A to G switched on, Newton-Euler, BDF2; with patch G (g) and without it (nog); SuperDex's shipped tolerances (ship: 1e-3 absolute, 1e-6 relative), tight (1e-9, 1e-12), the final configuration's (t48: 1e-4, 1e-8) and t68 (1e-6, 1e-8); 2 s and 20 s; energy drift in parts per million of the most kinetic energy (sx_contact chain; positive = gained); stopped = solver steps stopped. Library build 14. A swinging double pendulum is chaotic over 20 s, so the 20 s lines compare tolerances only roughly
+chain g ship secs 2 1/16 | energy_drift_ppm_of_most_kinetic 1743 energy_largest_drift_ppm 1820 | stopped 0 
+chain g ship secs 2 1/64 | energy_drift_ppm_of_most_kinetic 5815 energy_largest_drift_ppm 5815 | stopped 0 
+chain g ship secs 20 1/16 | energy_drift_ppm_of_most_kinetic 7632 energy_largest_drift_ppm 7642 | stopped 0 
+chain g ship secs 20 1/64 | energy_drift_ppm_of_most_kinetic 76593 energy_largest_drift_ppm 76593 | stopped 0 
+chain g tight secs 2 1/16 | energy_drift_ppm_of_most_kinetic -146 energy_largest_drift_ppm 1613 | stopped 0 
+chain g tight secs 2 1/64 | energy_drift_ppm_of_most_kinetic -3 energy_largest_drift_ppm 105 | stopped 28 
+chain g tight secs 20 1/16 | energy_drift_ppm_of_most_kinetic -3187 energy_largest_drift_ppm 5263 | stopped 0 
+chain g tight secs 20 1/64 | energy_drift_ppm_of_most_kinetic -64 energy_largest_drift_ppm 268 | stopped 57737 
+chain nog ship secs 2 1/16 | energy_drift_ppm_of_most_kinetic -63777 energy_largest_drift_ppm 63777 | stopped 0 
+chain nog ship secs 2 1/64 | energy_drift_ppm_of_most_kinetic -17898 energy_largest_drift_ppm 17899 | stopped 0 
+chain nog ship secs 20 1/16 | energy_drift_ppm_of_most_kinetic -588987 energy_largest_drift_ppm 588987 | stopped 0 
+chain nog ship secs 20 1/64 | energy_drift_ppm_of_most_kinetic -229130 energy_largest_drift_ppm 229130 | stopped 0 
+chain nog tight secs 2 1/16 | energy_drift_ppm_of_most_kinetic -63789 energy_largest_drift_ppm 63789 | stopped 0 
+chain nog tight secs 2 1/64 | energy_drift_ppm_of_most_kinetic -17906 energy_largest_drift_ppm 17906 | stopped 7 
+chain nog tight secs 20 1/16 | energy_drift_ppm_of_most_kinetic -469792 energy_largest_drift_ppm 469792 | stopped 0 
+chain nog tight secs 20 1/64 | energy_drift_ppm_of_most_kinetic -238542 energy_largest_drift_ppm 238542 | stopped 24151 
+chain g t48 secs 2 1/1 | energy_drift_ppm_of_most_kinetic -158373 energy_largest_drift_ppm 247851 | stopped 0 
+chain g t48 secs 2 1/4 | energy_drift_ppm_of_most_kinetic -7377 energy_largest_drift_ppm 22191 | stopped 0 
+chain g t48 secs 2 1/16 | energy_drift_ppm_of_most_kinetic -109 energy_largest_drift_ppm 1598 | stopped 0 
+chain g t48 secs 2 1/64 | energy_drift_ppm_of_most_kinetic 49 energy_largest_drift_ppm 57 | stopped 0 
+chain g t48 secs 20 1/1 | energy_drift_ppm_of_most_kinetic -897350 energy_largest_drift_ppm 908528 | stopped 0 
+chain g t48 secs 20 1/4 | energy_drift_ppm_of_most_kinetic -94482 energy_largest_drift_ppm 110519 | stopped 0 
+chain g t48 secs 20 1/16 | energy_drift_ppm_of_most_kinetic -1519 energy_largest_drift_ppm 3858 | stopped 0 
+chain g t48 secs 20 1/64 | energy_drift_ppm_of_most_kinetic 329 energy_largest_drift_ppm 336 | stopped 0 
+chain g t68 secs 2 1/1 | energy_drift_ppm_of_most_kinetic -158419 energy_largest_drift_ppm 247898 | stopped 0 
+chain g t68 secs 2 1/4 | energy_drift_ppm_of_most_kinetic -7387 energy_largest_drift_ppm 22198 | stopped 0 
+chain g t68 secs 2 1/16 | energy_drift_ppm_of_most_kinetic -146 energy_largest_drift_ppm 1614 | stopped 0 
+chain g t68 secs 2 1/64 | energy_drift_ppm_of_most_kinetic 9 energy_largest_drift_ppm 94 | stopped 0 
+chain g t68 secs 20 1/1 | energy_drift_ppm_of_most_kinetic -909323 energy_largest_drift_ppm 918855 | stopped 0 
+chain g t68 secs 20 1/4 | energy_drift_ppm_of_most_kinetic -89818 energy_largest_drift_ppm 110293 | stopped 0 
+chain g t68 secs 20 1/16 | energy_drift_ppm_of_most_kinetic -3914 energy_largest_drift_ppm 6507 | stopped 0 
+chain g t68 secs 20 1/64 | energy_drift_ppm_of_most_kinetic -27 energy_largest_drift_ppm 235 | stopped 0 
+# backward Euler with patch G, the same chain, 20 s
+be chain g ship secs 20 1/16 | energy_drift_ppm_of_most_kinetic -200268 energy_largest_drift_ppm 200268 | stopped 0 
+be chain g ship secs 20 1/64 | energy_drift_ppm_of_most_kinetic -16172 energy_largest_drift_ppm 16527 | stopped 0 
+be chain g t48 secs 20 1/16 | energy_drift_ppm_of_most_kinetic -213452 energy_largest_drift_ppm 213452 | stopped 0 
+be chain g t48 secs 20 1/64 | energy_drift_ppm_of_most_kinetic -56831 energy_largest_drift_ppm 56838 | stopped 0 
+be chain g t68 secs 20 1/16 | energy_drift_ppm_of_most_kinetic -253958 energy_largest_drift_ppm 253959 | stopped 0 
+be chain g t68 secs 20 1/64 | energy_drift_ppm_of_most_kinetic -49046 energy_largest_drift_ppm 49046 | stopped 0 

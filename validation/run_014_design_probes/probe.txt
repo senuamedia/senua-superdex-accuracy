@@ -1,0 +1,65 @@
+# design probes on the smallest jointed scene, STOCK SuperDex: one arm (1 kg, half-size 0.05 m, 0.5 m from the joint) on one revolute joint, nothing touching it
+# (in J4 and J5 the joint limit was set on the wrong component and acted at angle 0; those two blocks show a limit spring ringing, not the intended swing into a limit)
+== J1 a constant torque of 1 N m, no gravity, no friction, 1 s. Right answer: speed 3,973,510 urad/s (torque x time / inertia), angle 1,986,755 urad
+  step 1/1: angle and speed at 1 s: 1976074 3826480   [stopped 0, most iterations 2]
+  step 1/4: angle and speed at 1 s: 1984026 3935065   [stopped 0, most iterations 2]
+  step 1/16: angle and speed at 1 s: 1986240 3964057   [stopped 0, most iterations 2]
+  step 1/64: angle and speed at 1 s: 1986982 3973093   [stopped 0, most iterations 1]
+== J2 joint friction 2 N m, a torque of 2.4 N m (1.2 of it), no gravity, 1 s. Right answer: speed (2.4 - 2) / 0.2516667 = 1,589,404 urad/s
+  step 1/1: 800752 1579658
+  step 1/16: 795171 1589266
+== J3 joint friction 2 N m, a torque of 1.2 N m (0.6 of it), no gravity, 1 s. Right answer: it does not move. The C1 law predicts 0.3675 of the falloff speed: 368 urad/s
+  shipped falloff 0.001 step 1/1: creep 368 urad/s   [stopped 0, most iterations 3]
+  shipped falloff 0.001 step 1/16: creep 368 urad/s   [stopped 0, most iterations 3]
+  falloff=0.0001 step 1/1: creep 37 urad/s   [stopped 0, most iterations 3]
+  falloff=0.0001 step 1/16: creep 37 urad/s   [stopped 0, most iterations 3]
+  falloff=0.00001 step 1/1: creep 4 urad/s   [stopped 0, most iterations 3]
+  falloff=0.00001 step 1/16: creep 4 urad/s   [stopped 0, most iterations 3]
+  falloff=0.000001 step 1/1: creep 0 urad/s   [stopped 0, most iterations 3]
+  falloff=0.000001 step 1/16: creep 0 urad/s   [stopped 0, most iterations 3]
+== J4 the arm released level swings down into a joint limit at straight down (-1.5708 rad), limit stiffness as shipped (100), no limit damping, no friction. The limit is a spring: the arm should come back level. Each swing as parts in 10,000 of half a turn would be 5,000 for a quarter turn and back
+  be step 1/1: SWING dt_ns 10000000 released_at_urad -1 turn_urad -84818 swing_per_10000 269 turn_urad -22610 swing_per_10000 197 turn_urad -68247 swing_per_10000 145 turn_urad -34778 swing_per_10000 106 turns 12
+  be step 1/4: SWING dt_ns 2500000 released_at_urad 0 turn_urad -94169 swing_per_10000 299 turn_urad -7084 swing_per_10000 276 turn_urad -87626 swing_per_10000 256 turn_urad -13143 swing_per_10000 236 turns 12
+  be step 1/16: SWING dt_ns 625000 released_at_urad -1 turn_urad -96898 swing_per_10000 308 turn_urad -1877 swing_per_10000 302 turn_urad -95060 swing_per_10000 296 turn_urad -3682 swing_per_10000 290 turns 12
+  be step 1/64: SWING dt_ns 156250 released_at_urad 0 turn_urad -97605 swing_per_10000 310 turn_urad -476 swing_per_10000 309 turn_urad -97132 swing_per_10000 307 turn_urad -948 swing_per_10000 305 turns 12
+  dirk33 step 1/1: SWING dt_ns 10000000 released_at_urad 962 turn_urad -97299 swing_per_10000 312 turn_urad -246 swing_per_10000 308 turn_urad -97765 swing_per_10000 310 turn_urad -944 swing_per_10000 308 turns 12
+  dirk33 step 1/4: SWING dt_ns 2500000 released_at_urad 60 turn_urad -97792 swing_per_10000 311 turn_urad -43 swing_per_10000 310 turn_urad -97809 swing_per_10000 310 turn_urad -25 swing_per_10000 310 turns 12
+  dirk33 step 1/16: SWING dt_ns 625000 released_at_urad 3 turn_urad -97842 swing_per_10000 311 turn_urad 1 swing_per_10000 311 turn_urad -97846 swing_per_10000 311 turn_urad 5 swing_per_10000 311 turns 12
+  dirk33 step 1/64: SWING dt_ns 156250 released_at_urad 0 turn_urad -97844 swing_per_10000 311 turn_urad 0 swing_per_10000 311 turn_urad -97845 swing_per_10000 311 turn_urad 1 swing_per_10000 311 turns 12
+== J5 the same with a stiff limit (limitk=10000)
+  be step 1/1: SWING dt_ns 10000000 released_at_urad 0 turn_urad -549 swing_per_10000 1 turn_urad -484 swing_per_10000 0 turn_urad -491 swing_per_10000 0 turn_urad -490 swing_per_10000 0 turns 4  [stopped 0, most iterations 2]
+  be step 1/4: SWING dt_ns 2500000 released_at_urad 0 turn_urad -725 swing_per_10000 2 turn_urad -378 swing_per_10000 0 turn_urad -542 swing_per_10000 0 turn_urad -466 swing_per_10000 0 turns 10  [stopped 0, most iterations 2]
+  be step 1/16: SWING dt_ns 625000 released_at_urad 0 turn_urad -894 swing_per_10000 2 turn_urad -158 swing_per_10000 2 turn_urad -763 swing_per_10000 1 turn_urad -265 swing_per_10000 1 turns 36  [stopped 0, most iterations 2]
+  be step 1/64: SWING dt_ns 156250 released_at_urad 0 turn_urad -957 swing_per_10000 2 turn_urad -46 swing_per_10000 2 turn_urad -913 swing_per_10000 2 turn_urad -87 swing_per_10000 2 turns 126  [stopped 0, most iterations 1]
+
+== SPIN: no gravity, no friction, released spinning at 4 rad/s, 1 s. Right answer: still 4,000,000 urad/s
+  be        3483052   3849166   3960602   3998301   (step 1, 1/4, 1/16, 1/64)
+  bdf2      3797037   3947085   3986627   4002905   (step 1, 1/4, 1/16, 1/64)
+  dirk33    3866010   3965320   4008730   4001635   (step 1, 1/4, 1/16, 1/64)
+== SPIN at 1, 2, 4, 8 rad/s, backward Euler, shipped step: speed after 1 s as parts in 10,000 of the speed at release
+  1 rad/s: 9901
+  2 rad/s: 9624
+  4 rad/s: 8707
+  8 rad/s: 6630
+== TORQUE: 1 N m, no gravity, no friction, 1 s. Right answer: 3,973,510 urad/s
+  be        3826480   3935065   3964057   3973093
+  bdf2      3918278   3960309   3972289   3974220
+  dirk33    3939294   3965071   3975186   3973910
+== HOLD with joint friction 9.8 N m against gravity's 4.9 on a level arm, falloff 1e-6: creep urad/s and the solver
+  step 1/1: creep 0   [stopped 0, most iterations 3]
+  step 1/16: creep 0   [stopped 0, most iterations 3]
+== SWING with joint friction 1 N m (falloff 1e-6 against shipped): does the tight falloff change a moving arm? first three swings per 10,000
+  coulomb=1 step 1/1:   7735  3905   [stopped 0, most iterations 4]
+  coulomb=1 step 1/16:   8195  4926  2126   [stopped 0, most iterations 3]
+  coulomb=1 falloff=0.000001 step 1/1:   7735  3905   989   [stopped 0, most iterations 4]
+  coulomb=1 falloff=0.000001 step 1/16:   8195  4925  2126   [stopped 0, most iterations 4]
+
+== HOLD: the arm held level by joint friction of 9.8 N m against gravity's 4.9 N m, 2 s. Right answer: it does not move. The C1 law predicts 0.2929 of the falloff speed
+  shipped falloff 0.001 step 1/1: creep -293 urad/s   [stopped 0, most iterations 3]
+  shipped falloff 0.001 step 1/16: creep -293 urad/s   [stopped 0, most iterations 3]
+  falloff=0.0001 step 1/1: creep -29 urad/s   [stopped 0, most iterations 3]
+  falloff=0.0001 step 1/16: creep -29 urad/s   [stopped 0, most iterations 3]
+  falloff=0.00001 step 1/1: creep -3 urad/s   [stopped 0, most iterations 3]
+  falloff=0.00001 step 1/16: creep -3 urad/s   [stopped 0, most iterations 3]
+  falloff=0.000001 step 1/1: creep 0 urad/s   [stopped 0, most iterations 3]
+  falloff=0.000001 step 1/16: creep 0 urad/s   [stopped 0, most iterations 3]

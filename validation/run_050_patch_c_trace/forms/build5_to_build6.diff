@@ -1,0 +1,35 @@
+diff -ruN b5tree/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.cpp r9/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.cpp
+--- b5tree/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.cpp	2026-10-15 19:05:39
++++ r9/superdex_physics/libraries/mochi/mochi_physics/src/mochi_contact.cpp	2026-10-15 18:03:47
+@@ -1022,6 +1022,15 @@
+   // A sample whose stage-start position jumped further than this since it was last seen has
+   // re-entered contact: it starts a fresh stick.
+   real const kReentryJump = 0.005_r;
++  // With the damped stick on (SUPERDEX_STICK_DAMPING): a contact that carries no normal force at the
++  // stage start holds no stick, so its anchor starts afresh. This is the return mapping onto a
++  // friction limit of zero; without it a body that leaves the surface and lands again is pulled
++  // towards where it stuck before. The stage-start distance is estimated as the kernel estimates it.
++  bool const freshWhenOpen = FrictionStickDamped() &&
++                             result.sdfInfo.val.size() == result.sampleIndices.size() &&
++                             result.posColliding.size() == result.sampleIndices.size();
++  real const openDistance =
++      freshWhenOpen ? reg.get<CContactParams const>(collider).GetPenaltyThresholdDist(true) : 0_r;
+   result.frictionAnchor.resize_noinit(result.sampleIndices.size());
+   std::lock_guard<std::mutex> lock(gFrictionAnchorMutex);
+   for (int i = 0; i < isize(result.sampleIndices); ++i) {
+@@ -1033,7 +1042,14 @@
+         static_cast<uint32_t>(entt::to_integral(collider)),
+         result.sampleIndices[i]);
+     auto it = gFrictionAnchors.find(key);
+-    if (it != gFrictionAnchors.end() && Norm(p0 - it->second.lastStageStart) < kReentryJump) {
++    bool isOpen = false;
++    if (freshWhenOpen) {
++      real const dStageStart =
++          result.sdfInfo.val[i] - Dot(result.sdfInfo.grad[i], result.posColliding[i] - p0);
++      isOpen = dStageStart >= openDistance;
++    }
++    if (!isOpen && it != gFrictionAnchors.end() &&
++        Norm(p0 - it->second.lastStageStart) < kReentryJump) {
+       Real3 n = result.sdfInfo.grad[i];
+       real const nNorm = Norm(n);
+       n = nNorm > 0_r ? n / nNorm : n;

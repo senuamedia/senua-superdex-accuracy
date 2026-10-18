@@ -1,0 +1,3 @@
+STATS source half_cheetah_accurate scene half_cheetah integ bdf2 maxiter 200 sub 16 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_ste
+STATS source ant_accurate scene ant integ bdf2 maxiter 200 sub 16 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 345600 conver
+STATS source cart_pole_accurate scene cart_pole integ bdf2 maxiter 200 sub 16 smooth -1 contact_actors_set 2 episodes 108 readings 21600 dofs 2 solver_steps 345

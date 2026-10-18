@@ -1,0 +1,288 @@
+configuration | played with patch F: yes ; with patch G and Newton-Euler inertia: yes ; the eleventh registration's decision: yes ; the twelfth's: yes
+identity | rotvec 1 of 1
+identity | flight 8 of 8
+identity | suites_off 67 of 67
+identity | suites_abcd 67 of 67
+identity | suites_e 67 of 67
+identity | suites_abcde 67 of 67
+identity | joints 40 of 40
+identity | bench 38 of 38
+identity | benchrec 7 of 7
+first suite | CONFIG rig settings: ndamp=5 falloff=0.03
+first suite | CONFIG SUPERDEX_STICK_DISTANCE=0.0003
+first suite | CONFIG SUPERDEX_STICK_DAMPING=1
+first suite | CONFIG SUPERDEX_FRICTION_FULL_NORMAL=1
+first suite | CONFIG SUPERDEX_DAMPING_UNILATERAL=1
+first suite | free 1/1 against 1/2 | GAP base_ns 10000000 dt_ns 10000000 against dt_ns 5000000 instants 100 summed_height_difference_um 1237250 largest_um 24500 summed_speed_difference_mm_s 0
+first suite | free 1/2 against 1/4 | GAP base_ns 10000000 dt_ns 5000000 against dt_ns 2500000 instants 100 summed_height_difference_um 618600 largest_um 12250 summed_speed_difference_mm_s 0
+first suite | free 1/4 against 1/8 | GAP base_ns 10000000 dt_ns 2500000 against dt_ns 1250000 instants 100 summed_height_difference_um 309300 largest_um 6125 summed_speed_difference_mm_s 0
+first suite | free 1/8 against 1/16 | GAP base_ns 10000000 dt_ns 1250000 against dt_ns 625000 instants 100 summed_height_difference_um 154650 largest_um 3062 summed_speed_difference_mm_s 0
+first suite | free 1/16 against 1/32 | GAP base_ns 10000000 dt_ns 625000 against dt_ns 312500 instants 100 summed_height_difference_um 77321 largest_um 1531 summed_speed_difference_mm_s 0
+first suite | free 1/32 against 1/64 | GAP base_ns 10000000 dt_ns 312500 against dt_ns 156250 instants 100 summed_height_difference_um 38667 largest_um 766 summed_speed_difference_mm_s 0
+first suite | slide 1/1 | CREEP dt_ns 10000000 steps 25 mean_speed_ums 1695393 friction_over_normal_per_10000 3500 friction_limit_per_10000 3500
+first suite | slide 1/16 | CREEP dt_ns 625000 steps 400 mean_speed_ums 1712581 friction_over_normal_per_10000 3499 friction_limit_per_10000 3500
+first suite | rest 1/1 | REST dt_ns 10000000 mean_ground_force_mN 7848 weight_mN 7840
+first suite | rest 1/16 | REST dt_ns 625000 mean_ground_force_mN 7833 weight_mN 7840
+first suite | drop 1/1 | BOUNCE dt_ns 10000000 speed_in_ums 1274000 steps_to_turn 3 rebound_nm -405805 drop_nm 100000000 rebound_per_10000 0
+first suite | drop 1/2 | BOUNCE dt_ns 5000000 speed_in_ums 1323000 steps_to_turn 3 rebound_nm -338367 drop_nm 100000000 rebound_per_10000 0
+first suite | drop 1/4 | BOUNCE dt_ns 2500000 speed_in_ums 1372000 steps_to_turn 3 rebound_nm -180945 drop_nm 100000000 rebound_per_10000 0
+first suite | drop 1/8 | BOUNCE dt_ns 1250000 speed_in_ums 1384250 steps_to_turn 4 rebound_nm 46331 drop_nm 100000000 rebound_per_10000 4
+first suite | drop 1/16 | BOUNCE dt_ns 625000 speed_in_ums 1390375 steps_to_turn 7 rebound_nm 307296 drop_nm 100000000 rebound_per_10000 30
+first suite | drop 1/32 | BOUNCE dt_ns 312500 speed_in_ums 1390375 steps_to_turn 12 rebound_nm 532357 drop_nm 100000000 rebound_per_10000 53
+first suite | drop 1/64 | BOUNCE dt_ns 156250 speed_in_ums 1393438 steps_to_turn 21 rebound_nm 687827 drop_nm 100000000 rebound_per_10000 68
+first suite | oblique 1/1 | IMPACT dt_ns 10000000 steps 3 horizontal_lost_ums 563706 vertical_given_ums 1610406 ratio_per_10000 3500 friction_per_10000 3500 still_sliding_ums 1936294
+first suite | oblique 1/2 | IMPACT dt_ns 5000000 steps 3 horizontal_lost_ums 527029 vertical_given_ums 1505688 ratio_per_10000 3500 friction_per_10000 3500 still_sliding_ums 1972971
+first suite | oblique 1/4 | IMPACT dt_ns 2500000 steps 3 horizontal_lost_ums 520297 vertical_given_ums 1486515 ratio_per_10000 3499 friction_per_10000 3500 still_sliding_ums 1979703
+first suite | oblique 1/8 | IMPACT dt_ns 1250000 steps 4 horizontal_lost_ums 513576 vertical_given_ums 1467316 ratio_per_10000 3499 friction_per_10000 3500 still_sliding_ums 1986424
+first suite | oblique 1/16 | IMPACT dt_ns 625000 steps 7 horizontal_lost_ums 534029 vertical_given_ums 1525786 ratio_per_10000 3500 friction_per_10000 3500 still_sliding_ums 1965971
+first suite | oblique 1/32 | IMPACT dt_ns 312500 steps 12 horizontal_lost_ums 511275 vertical_given_ums 1460773 ratio_per_10000 3499 friction_per_10000 3500 still_sliding_ums 1988725
+first suite | oblique 1/64 | IMPACT dt_ns 156250 steps 21 horizontal_lost_ums 505062 vertical_given_ums 1443014 ratio_per_10000 3499 friction_per_10000 3500 still_sliding_ums 1994938
+first suite | settle 1/1 | SETTLE dt_ns 10000000 steps 10 horizontal_lost_ums 789303 vertical_given_ums 2254117 ratio_per_10000 3501 friction_per_10000 3500 still_sliding_ums 1710697
+first suite | settle 1/2 | SETTLE dt_ns 5000000 steps 20 horizontal_lost_ums 806031 vertical_given_ums 2302660 ratio_per_10000 3500 friction_per_10000 3500 still_sliding_ums 1693969
+first suite | settle 1/4 | SETTLE dt_ns 2500000 steps 40 horizontal_lost_ums 823754 vertical_given_ums 2352996 ratio_per_10000 3500 friction_per_10000 3500 still_sliding_ums 1676246
+first suite | settle 1/8 | SETTLE dt_ns 1250000 steps 80 horizontal_lost_ums 828577 vertical_given_ums 2367011 ratio_per_10000 3500 friction_per_10000 3500 still_sliding_ums 1671423
+first suite | settle 1/16 | SETTLE dt_ns 625000 steps 160 horizontal_lost_ums 831340 vertical_given_ums 2375027 ratio_per_10000 3500 friction_per_10000 3500 still_sliding_ums 1668660
+first suite | settle 1/32 | SETTLE dt_ns 312500 steps 320 horizontal_lost_ums 833181 vertical_given_ums 2380395 ratio_per_10000 3499 friction_per_10000 3500 still_sliding_ums 1666819
+first suite | settle 1/64 | SETTLE dt_ns 156250 steps 640 horizontal_lost_ums 836043 vertical_given_ums 2388513 ratio_per_10000 3500 friction_per_10000 3500 still_sliding_ums 1663957
+first suite | hold 1/1 | CREEP dt_ns 10000000 steps 100 mean_speed_ums 0 friction_over_normal_per_10000 2705 friction_limit_per_10000 4500
+first suite | hold 1/16 | CREEP dt_ns 625000 steps 1600 mean_speed_ums 0 friction_over_normal_per_10000 2696 friction_limit_per_10000 4500
+first suite | slip 1/1 | SLIP dt_ns 10000000 mean_speed_ums 886800 predicted_ums 882000 push_mN 4234 friction_limit_mN 3528
+first suite | slip 1/16 | SLIP dt_ns 625000 mean_speed_ums 890600 predicted_ums 882000 push_mN 4234 friction_limit_mN 3528
+first suite | chain 1/1 against 1/2 | GAP base_ns 10000000 dt_ns 10000000 against dt_ns 5000000 instants 100 summed_height_difference_um 24218 largest_um 3185 summed_speed_difference_mm_s 144
+first suite | chain 1/2 against 1/4 | GAP base_ns 10000000 dt_ns 5000000 against dt_ns 2500000 instants 100 summed_height_difference_um 13525 largest_um 1715 summed_speed_difference_mm_s 54
+first suite | chain 1/4 against 1/8 | GAP base_ns 10000000 dt_ns 2500000 against dt_ns 1250000 instants 100 summed_height_difference_um 7246 largest_um 857 summed_speed_difference_mm_s 47
+first suite | chain 1/8 against 1/16 | GAP base_ns 10000000 dt_ns 1250000 against dt_ns 625000 instants 100 summed_height_difference_um 4331 largest_um 429 summed_speed_difference_mm_s 35
+first suite | chain 1/16 against 1/32 | GAP base_ns 10000000 dt_ns 625000 against dt_ns 312500 instants 100 summed_height_difference_um 2677 largest_um 231 summed_speed_difference_mm_s 40
+first suite | chain 1/32 against 1/64 | GAP base_ns 10000000 dt_ns 312500 against dt_ns 156250 instants 100 summed_height_difference_um 1638 largest_um 185 summed_speed_difference_mm_s 31
+first suite | lift 1/1 | PULL dt_ns 10000000 lowest_ground_force_mN 0 steps_pulling 0
+first suite | lift 1/16 | PULL dt_ns 625000 lowest_ground_force_mN 0 steps_pulling 0
+first suite | rebound 1/16 | PULL dt_ns 625000 lowest_ground_force_mN 0 steps_pulling 0
+first suite | T01 nothing touches the cube: each gap in parts of 10,000 of the one before (right answer 5,000): 5000 5000 5000 5001 5002 : PASS
+first suite | T02 steady sliding, friction over normal force per 10,000 (right answer 3500): 3500 3499 : PASS
+first suite | T03 at rest, the ground carries the weight: its mean force in mN (allowed 1 in 100; right answer 7840): 7848 7833 : PASS
+first suite | T04 the bounce does not depend on the step: rebound per 10,000 of the drop height, step 1 to 1/64: 0 0 0 4 30 53 68 ; spread 68 (allowed 500) : PASS
+first suite | T05 Coulomb at impact: friction impulse over normal impulse per 10,000, step 1 to 1/64 (right answer 3500): 3500 3500 3499 3499 3500 3499 3499 ; still sliding 1 : PASS
+first suite | T06 held below the friction limit: mean speed in um/s (right answer 0, allowed 10): 0 0 : PASS
+first suite | T07 pushed above the friction limit: mean speed in um/s over the second half (right answer 882000, allowed 3 in 100): 886800 890600 : PASS
+first suite | T08 the refinement chain falls at every step: 24218 13525 7246 4331 2677 1638 : PASS
+first suite | T09 the ground never pulls: lowest ground force in mN, lifted (two steps) and on a fast rebound (right answer 0 or more): 0 0 0 : PASS
+first suite | T10 friction over the impact and the 0.1 s after it, per 10,000 of the normal impulse, step 1 to 1/64 (right answer 3500; never more than 1 in 100 above it, and within 1 in 100 at the three finest steps): 3501 3500 3500 3500 3500 3499 3500 : PASS
+first suite | SUITE passed 10 of 10
+second suite stop 1/1 | STOP dt_ns 10000000 first_stopped_at_step 26 largest_speed_last_third_ums 0 slid_um 113663 came_back_um 297
+second suite stop 1/4 | STOP dt_ns 2500000 first_stopped_at_step 104 largest_speed_last_third_ums 0 slid_um 117077 came_back_um 300
+second suite stop 1/16 | STOP dt_ns 625000 first_stopped_at_step 419 largest_speed_last_third_ums 0 slid_um 117897 came_back_um 299
+second suite stop 1/64 | STOP dt_ns 156250 first_stopped_at_step 1679 largest_speed_last_third_ums 0 slid_um 117945 came_back_um 298
+second suite land 1/1 | STOP dt_ns 10000000 first_stopped_at_step 26 largest_speed_last_third_ums 0 slid_um 138234 came_back_um 297
+second suite land 1/4 | STOP dt_ns 2500000 first_stopped_at_step 104 largest_speed_last_third_ums 0 slid_um 141582 came_back_um 299
+second suite land 1/16 | STOP dt_ns 625000 first_stopped_at_step 419 largest_speed_last_third_ums 0 slid_um 142424 came_back_um 299
+second suite land 1/64 | STOP dt_ns 156250 first_stopped_at_step 1682 largest_speed_last_third_ums 0 slid_um 142403 came_back_um 298
+second suite rest 1/1 | PAIR dt_ns 10000000 momentum_at_release 0 largest_change 0 per_million -1 final_speed_a_ums 0 final_speed_b_ums 0 relative_mean_ums 0 force_up_a_mN 39201 force_up_b_mN 5883
+second suite carry 1/1 | PAIR dt_ns 10000000 momentum_at_release 0 largest_change 135240000 per_million -1 final_speed_a_ums 2940000 final_speed_b_ums 2940000 relative_mean_ums 0 force_up_a_mN 39200 force_up_b_mN 5880
+second suite slip A 1/1 | ACCEL dt_ns 10000000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 6174 final_speed_ums 2469660
+second suite slip B 1/1 | ACCEL dt_ns 10000000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 3915 final_speed_ums 1567603
+second suite side 1/1 | PAIR dt_ns 10000000 momentum_at_release 7200000 largest_change 320 per_million 44 final_speed_a_ums 162475 final_speed_b_ums 116837 relative_mean_ums -45638 force_up_a_mN 0 force_up_b_mN 0
+second suite top 1/1 | PAIR dt_ns 10000000 momentum_at_release 4800000 largest_change 420 per_million 87 final_speed_a_ums 104348 final_speed_b_ums 104348 relative_mean_ums 0 force_up_a_mN 39200 force_up_b_mN 5880
+second suite rest 1/16 | PAIR dt_ns 625000 momentum_at_release 0 largest_change 0 per_million -1 final_speed_a_ums 0 final_speed_b_ums 0 relative_mean_ums 0 force_up_a_mN 39196 force_up_b_mN 5876
+second suite carry 1/16 | PAIR dt_ns 625000 momentum_at_release 0 largest_change 135240000 per_million -1 final_speed_a_ums 2940000 final_speed_b_ums 2940000 relative_mean_ums 0 force_up_a_mN 39200 force_up_b_mN 5880
+second suite slip A 1/16 | ACCEL dt_ns 625000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 6174 final_speed_ums 2470530
+second suite slip B 1/16 | ACCEL dt_ns 625000 from_ms 700 to_ms 900 mean_acceleration_mm_s2 3917 final_speed_ums 1561803
+second suite side 1/16 | PAIR dt_ns 625000 momentum_at_release 7200000 largest_change 400 per_million 55 final_speed_a_ums 177703 final_speed_b_ums 15316 relative_mean_ums -162387 force_up_a_mN 0 force_up_b_mN 0
+second suite top 1/16 | PAIR dt_ns 625000 momentum_at_release 4800000 largest_change 420 per_million 87 final_speed_a_ums 104348 final_speed_b_ums 104348 relative_mean_ums 0 force_up_a_mN 39200 force_up_b_mN 5880
+second suite | SUITE2 T11 1 T12 1 T13 1 T14 1 T15 1 T16 1 T17 1 code 1111111
+arm, free spin 1/1 | FINAL dt_ns 10000000 angle_urad 3000440 speed_urads 2999980
+arm, driven 1/1 | FINAL dt_ns 10000000 angle_urad 2351812 speed_urads 4656274
+arm, pendulum 1/1 (reported) | SWING dt_ns 10000000 released_at_urad -1 turn_urad -3024741 swing_per_10000 9627 turn_urad -224818 swing_per_10000 8912 turn_urad -2816868 swing_per_10000 8250 turn_urad -417065 swing_per_10000 7638 turns 4
+arm, hold 1/1 | CREEP dt_ns 10000000 steps 100 mean_speed_ums -411 friction_over_normal_per_10000 -1 friction_limit_per_10000 0
+arm, hold, stock 1/1 | CREEP dt_ns 10000000 steps 100 mean_speed_ums -411 friction_over_normal_per_10000 -1 friction_limit_per_10000 0
+arm, slip 1/1 | FINAL dt_ns 10000000 angle_urad 1567642 speed_urads 3104079
+arm, slip 1/16 | FINAL dt_ns 625000 angle_urad 1552967 speed_urads 3103526
+limit, rest 1/1 | FINAL dt_ns 10000000 angle_urad -303744 speed_urads 0
+limit, rest 1/16 | FINAL dt_ns 625000 angle_urad -303741 speed_urads 0
+limit, lift 1/1 | FINAL dt_ns 10000000 angle_urad -164916 speed_urads 2510744
+limit, lift 1/16 | FINAL dt_ns 625000 angle_urad -175432 speed_urads 2527687
+limit, release, damping 20, 1/64 | LEAVE dt_ns 156250 largest_speed_urads 1423020 speed_at_leaving_urads 1423020 final_speed_urads 1422985 final_angle_urad 374252 steps_inside 167 largest_fall_inside_urads 0
+limit, release, damping 20, 1/1 | LEAVE dt_ns 10000000 largest_speed_urads 971376 speed_at_leaving_urads 971355 final_speed_urads 970653 final_angle_urad 154115 steps_inside 3 largest_fall_inside_urads 8
+limit, release, damping 20, 1/16 | LEAVE dt_ns 625000 largest_speed_urads 1390649 speed_at_leaving_urads 1390648 final_speed_urads 1390516 final_angle_urad 358554 steps_inside 42 largest_fall_inside_urads 1
+limit, release, damping 150, 1/64 | LEAVE dt_ns 156250 largest_speed_urads 367995 speed_at_leaving_urads 367995 final_speed_urads 367995 final_angle_urad -146641 steps_inside 532 largest_fall_inside_urads 0
+limit, release, damping 150, 1/1 | LEAVE dt_ns 10000000 largest_speed_urads 314637 speed_at_leaving_urads 314634 final_speed_urads 314613 final_angle_urad -172866 steps_inside 9 largest_fall_inside_urads 3
+limit, release, damping 150, 1/16 | LEAVE dt_ns 625000 largest_speed_urads 364068 speed_at_leaving_urads 364068 final_speed_urads 364066 final_angle_urad -148573 steps_inside 134 largest_fall_inside_urads 0
+rotations | ROTVEC case 0 axis_ppm 0 -1000000 0 angle_thousandths 8000 e -4 read_back_ppm_of_angle 0 -1000000 0 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 1 axis_ppm 0 -1000000 0 angle_thousandths 3000 e -7 read_back_ppm_of_angle 0 -1000000 0 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 2 axis_ppm 0 -1000000 0 angle_thousandths 6000 e -9 read_back_ppm_of_angle 0 -1000000 0 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 3 axis_ppm 0 -1000000 0 angle_thousandths 2200 e -9 read_back_ppm_of_angle 0 -1000000 0 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 4 axis_ppm 0 -1000000 0 angle_thousandths 1800 e -9 read_back_ppm_of_angle 0 -1000000 0 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 5 axis_ppm 0 -1000000 0 angle_thousandths 4000 e -10 read_back_ppm_of_angle 0 -1000000 0 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 6 axis_ppm 0 -1000000 0 angle_thousandths 5000 e -12 read_back_ppm_of_angle 0 -1000000 0 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 7 axis_ppm 0 -1000000 0 angle_thousandths 2000 e -14 read_back_ppm_of_angle 0 -1000000 0 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 8 axis_ppm 0 600000 -800000 angle_thousandths 8000 e -4 read_back_ppm_of_angle 0 600000 -800000 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 9 axis_ppm 0 600000 -800000 angle_thousandths 3000 e -7 read_back_ppm_of_angle 0 600000 -800000 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 10 axis_ppm 0 600000 -800000 angle_thousandths 6000 e -9 read_back_ppm_of_angle 0 600000 -800000 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 11 axis_ppm 0 600000 -800000 angle_thousandths 2200 e -9 read_back_ppm_of_angle 0 600000 -800000 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 12 axis_ppm 0 600000 -800000 angle_thousandths 1800 e -9 read_back_ppm_of_angle 0 600000 -800000 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 13 axis_ppm 0 600000 -800000 angle_thousandths 4000 e -10 read_back_ppm_of_angle 0 600000 -800000 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 14 axis_ppm 0 600000 -800000 angle_thousandths 5000 e -12 read_back_ppm_of_angle 0 600000 -800000 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 15 axis_ppm 0 600000 -800000 angle_thousandths 2000 e -14 read_back_ppm_of_angle 0 600000 -800000 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 16 axis_ppm 360000 480000 800000 angle_thousandths 8000 e -4 read_back_ppm_of_angle 360000 480000 800000 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 17 axis_ppm 360000 480000 800000 angle_thousandths 3000 e -7 read_back_ppm_of_angle 360000 480000 800000 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 18 axis_ppm 360000 480000 800000 angle_thousandths 6000 e -9 read_back_ppm_of_angle 360000 480000 800000 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 19 axis_ppm 360000 480000 800000 angle_thousandths 2200 e -9 read_back_ppm_of_angle 360000 480000 800000 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 20 axis_ppm 360000 480000 800000 angle_thousandths 1800 e -9 read_back_ppm_of_angle 360000 480000 800000 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 21 axis_ppm 360000 480000 800000 angle_thousandths 4000 e -10 read_back_ppm_of_angle 360000 480000 800000 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 22 axis_ppm 360000 480000 800000 angle_thousandths 5000 e -12 read_back_ppm_of_angle 360000 480000 800000 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 23 axis_ppm 360000 480000 800000 angle_thousandths 2000 e -14 read_back_ppm_of_angle 360000 480000 800000 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 24 axis_ppm -333333 666667 666667 angle_thousandths 8000 e -4 read_back_ppm_of_angle -333333 666667 666667 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 25 axis_ppm -333333 666667 666667 angle_thousandths 3000 e -7 read_back_ppm_of_angle -333333 666667 666667 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 26 axis_ppm -333333 666667 666667 angle_thousandths 6000 e -9 read_back_ppm_of_angle -333333 666667 666667 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 27 axis_ppm -333333 666667 666667 angle_thousandths 2200 e -9 read_back_ppm_of_angle -333333 666667 666667 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 28 axis_ppm -333333 666667 666667 angle_thousandths 1800 e -9 read_back_ppm_of_angle -333333 666667 666667 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 29 axis_ppm -333333 666667 666667 angle_thousandths 4000 e -10 read_back_ppm_of_angle -333333 666667 666667 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 30 axis_ppm -333333 666667 666667 angle_thousandths 5000 e -12 read_back_ppm_of_angle -333333 666667 666667 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 31 axis_ppm -333333 666667 666667 angle_thousandths 2000 e -14 read_back_ppm_of_angle -333333 666667 666667 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 32 axis_ppm 1000000 0 0 angle_thousandths 8000 e -4 read_back_ppm_of_angle 1000000 0 0 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 33 axis_ppm 1000000 0 0 angle_thousandths 3000 e -7 read_back_ppm_of_angle 1000000 0 0 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 34 axis_ppm 1000000 0 0 angle_thousandths 6000 e -9 read_back_ppm_of_angle 1000000 0 0 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 35 axis_ppm 1000000 0 0 angle_thousandths 2200 e -9 read_back_ppm_of_angle 1000000 0 0 distance_ppm_of_angle 0 small 0 pass 1
+rotations | ROTVEC case 36 axis_ppm 1000000 0 0 angle_thousandths 1800 e -9 read_back_ppm_of_angle 1000000 0 0 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 37 axis_ppm 1000000 0 0 angle_thousandths 4000 e -10 read_back_ppm_of_angle 1000000 0 0 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 38 axis_ppm 1000000 0 0 angle_thousandths 5000 e -12 read_back_ppm_of_angle 1000000 0 0 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC case 39 axis_ppm 1000000 0 0 angle_thousandths 2000 e -14 read_back_ppm_of_angle 1000000 0 0 distance_ppm_of_angle 0 small 1 pass 1
+rotations | ROTVEC cases 40 real_bits 64 bound_ppm 1 ; at_or_under_2e-9_rad 20 passed 20 ; larger 20 passed 20 ; largest_distance_ppm 0 ; smallest_failed_distance_ppm -1
+cloud stock, oblique impact 1/1 | IMPACT dt_ns 10000000 steps 3 horizontal_lost_ums 1894042 vertical_given_ums 1432139 ratio_per_10000 13225 friction_per_10000 3500 still_sliding_ums 1605958
+cloud stock, oblique impact 1/4 | IMPACT dt_ns 2500000 steps 3 horizontal_lost_ums 466070 vertical_given_ums 1301083 ratio_per_10000 3581 friction_per_10000 3500 still_sliding_ums 3033930
+cloud stock, the 0.1 s after the impact 1/1 (reported) | SETTLE dt_ns 10000000 steps 10 horizontal_lost_ums 2566075 vertical_given_ums 2058242 ratio_per_10000 12467 friction_per_10000 3500 still_sliding_ums 933925
+cloud stock, slide 1/1 | CREEP dt_ns 10000000 steps 25 mean_speed_ums 99202 friction_over_normal_per_10000 1824 friction_limit_per_10000 3500
+cloud stock, rest 1/1 | REST dt_ns 10000000 mean_ground_force_mN 15664 weight_mN 15680
+cloud stock, hold 1/1 | CREEP dt_ns 10000000 steps 100 mean_speed_ums 3598 friction_over_normal_per_10000 2697 friction_limit_per_10000 4500
+cloud stock, slip 1/1 | SLIP dt_ns 10000000 mean_speed_ums 428700 predicted_ums 881000 push_mN 8467 friction_limit_mN 7056
+cloud stock, lift 1/1 | PULL dt_ns 10000000 lowest_ground_force_mN 0 steps_pulling 0
+cloud fc, oblique impact 1/1 | IMPACT dt_ns 10000000 steps 3 horizontal_lost_ums 519105 vertical_given_ums 1417435 ratio_per_10000 3662 friction_per_10000 3500 still_sliding_ums 2980895
+cloud fc, oblique impact 1/4 | IMPACT dt_ns 2500000 steps 3 horizontal_lost_ums 451768 vertical_given_ums 1243575 ratio_per_10000 3632 friction_per_10000 3500 still_sliding_ums 3048232
+cloud fc, the 0.1 s after the impact 1/1 (reported) | SETTLE dt_ns 10000000 steps 10 horizontal_lost_ums 752024 vertical_given_ums 2057864 ratio_per_10000 3654 friction_per_10000 3500 still_sliding_ums 2747976
+cloud fc, slide 1/1 | CREEP dt_ns 10000000 steps 25 mean_speed_ums 2645005 friction_over_normal_per_10000 3623 friction_limit_per_10000 3500
+cloud fc, rest 1/1 | REST dt_ns 10000000 mean_ground_force_mN 15683 weight_mN 15680
+cloud fc, hold 1/1 | CREEP dt_ns 10000000 steps 100 mean_speed_ums 0 friction_over_normal_per_10000 2705 friction_limit_per_10000 4500
+cloud fc, slip 1/1 | SLIP dt_ns 10000000 mean_speed_ums 754600 predicted_ums 881000 push_mN 8467 friction_limit_mN 7056
+cloud fc, lift 1/1 | PULL dt_ns 10000000 lowest_ground_force_mN 0 steps_pulling 0
+deform, rod fall, 0.01 s | DEFORM case 1 dt_ns 10000000 steps 50 settle_steps 0 end_com_x_nm 0 end_com_y_nm -1249500000 end_vx_ums 0 end_vy_ums -4900000 moved_x_nm 0 moved_y_nm -1249500000 tip_drop_nm 1153460000 tip_swing_nm 190120000 tip_lowest_drop_nm 1249500000 tip_along_x_nm 0 centre_drop_nm 1153460000 rest_centre_y_nm -1153460000 rest_tip_y_nm -1153460000 tail_largest_vx_ums 0 tail_largest_vy_ums 4900000 crossings 0 period_ns 0 fall_worst_nm 0 shape_worst_nm 0 slow_step -1
+deform, shell fall, 0.01 s | DEFORM case 4 dt_ns 10000000 steps 50 settle_steps 0 end_com_x_nm 1 end_com_y_nm -1249500108 end_vx_ums 0 end_vy_ums -4900000 moved_x_nm 1 moved_y_nm -1249500108 tip_drop_nm 1153460273 tip_swing_nm 190120020 tip_lowest_drop_nm 1249500278 tip_along_x_nm 1 centre_drop_nm 1153460100 rest_centre_y_nm -1153460100 rest_tip_y_nm -1153460273 tail_largest_vx_ums 0 tail_largest_vy_ums 4900000 crossings 0 period_ns 0 fall_worst_nm 108 shape_worst_nm 2735 slow_step -1
+deform, soft fall, 0.01 s | DEFORM case 9 dt_ns 10000000 steps 50 settle_steps 0 end_com_x_nm -1 end_com_y_nm -1199499752 end_vx_ums 0 end_vy_ums -4899999 moved_x_nm -1 moved_y_nm -1249499752 tip_drop_nm 1153459779 tip_swing_nm 190119946 tip_lowest_drop_nm 1249499752 tip_along_x_nm -1 centre_drop_nm 1153459779 rest_centre_y_nm -1103459779 rest_tip_y_nm -1153459779 tail_largest_vx_ums 0 tail_largest_vy_ums 4899999 crossings 0 period_ns 0 fall_worst_nm 248 shape_worst_nm 1 slow_step -1
+deform, rod hang, 0.01 s | DEFORM case 2 dt_ns 10000000 steps 200 settle_steps 0 end_com_x_nm 0 end_com_y_nm -300935696 end_vx_ums 0 end_vy_ums 0 moved_x_nm 0 moved_y_nm -935696 tip_drop_nm 1404708 tip_swing_nm 0 tip_lowest_drop_nm 1817150 tip_along_x_nm 0 centre_drop_nm 935696 rest_centre_y_nm -300935696 rest_tip_y_nm -601404708 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 3 period_ns 83160000 fall_worst_nm 0 shape_worst_nm 1817150 slow_step -1
+deform, shell hang, 0.01 s | DEFORM case 5 dt_ns 10000000 steps 200 settle_steps 0 end_com_x_nm -5681 end_com_y_nm -200623544 end_vx_ums 0 end_vy_ums 0 moved_x_nm -5681 moved_y_nm -623544 tip_drop_nm 935362 tip_swing_nm 0 tip_lowest_drop_nm 1165217 tip_along_x_nm -19575 centre_drop_nm 623544 rest_centre_y_nm -200623544 rest_tip_y_nm -400935362 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 2 period_ns 71210000 fall_worst_nm 0 shape_worst_nm 1171774 slow_step -1
+deform, soft hang, 0.01 s | DEFORM case 10 dt_ns 10000000 steps 200 settle_steps 0 end_com_x_nm 0 end_com_y_nm -200287425 end_vx_ums 0 end_vy_ums 0 moved_x_nm 0 moved_y_nm -287425 tip_drop_nm 431234 tip_swing_nm 0 tip_lowest_drop_nm 490805 tip_along_x_nm -24 centre_drop_nm 287425 rest_centre_y_nm -200287425 rest_tip_y_nm -400431234 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 2 period_ns 52980000 fall_worst_nm 0 shape_worst_nm 491079 slow_step -1
+deform stock, shell slide, 0.01 s | DEFORM case 7 dt_ns 10000000 steps 150 settle_steps 50 end_com_x_nm 77602465 end_com_y_nm 489406 end_vx_ums 0 end_vy_ums 0 moved_x_nm 77602465 moved_y_nm 95 tip_drop_nm 510594 tip_swing_nm 0 tip_lowest_drop_nm 543833 tip_along_x_nm 77602474 centre_drop_nm 510594 rest_centre_y_nm 489406 rest_tip_y_nm 489406 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 2 period_ns 475770000 fall_worst_nm 0 shape_worst_nm 175 slow_step 70
+deform stock, shell hold, 0.01 s | DEFORM case 8 dt_ns 10000000 steps 150 settle_steps 50 end_com_x_nm 3968656 end_com_y_nm 492661 end_vx_ums 3978 end_vy_ums 0 moved_x_nm 3968656 moved_y_nm 3350 tip_drop_nm 507339 tip_swing_nm 0 tip_lowest_drop_nm 543833 tip_along_x_nm 3968657 centre_drop_nm 507339 rest_centre_y_nm 492661 rest_tip_y_nm 492661 tail_largest_vx_ums 3978 tail_largest_vy_ums 0 crossings 2 period_ns 49470000 fall_worst_nm 0 shape_worst_nm 175 slow_step -1
+deform stock, shell rest, 0.01 s | DEFORM case 6 dt_ns 10000000 steps 100 settle_steps 0 end_com_x_nm 0 end_com_y_nm 489435 end_vx_ums 0 end_vy_ums 0 moved_x_nm 0 moved_y_nm -9510565 tip_drop_nm 9510567 tip_swing_nm 0 tip_lowest_drop_nm 9687844 tip_along_x_nm 0 centre_drop_nm 9510565 rest_centre_y_nm 489435 rest_tip_y_nm 489433 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 2 period_ns 52150000 fall_worst_nm 0 shape_worst_nm 162 slow_step -1
+deform stock, soft slide, 0.01 s | DEFORM case 12 dt_ns 10000000 steps 150 settle_steps 50 end_com_x_nm 77238710 end_com_y_nm 49659670 end_vx_ums 0 end_vy_ums 0 moved_x_nm 77238710 moved_y_nm -196 tip_drop_nm 1307435 tip_swing_nm 0 tip_lowest_drop_nm 1425718 tip_along_x_nm 77238519 centre_drop_nm 1340330 rest_centre_y_nm 49659670 rest_tip_y_nm -307435 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 5 period_ns 228050000 fall_worst_nm 0 shape_worst_nm 763630 slow_step 70
+deform stock, soft hold, 0.01 s | DEFORM case 13 dt_ns 10000000 steps 150 settle_steps 50 end_com_x_nm 4232383 end_com_y_nm 49691565 end_vx_ums 3984 end_vy_ums 0 moved_x_nm 4232383 moved_y_nm 31699 tip_drop_nm 1054512 tip_swing_nm 0 tip_lowest_drop_nm 1425718 tip_along_x_nm 3988597 centre_drop_nm 1308435 rest_centre_y_nm 49691565 rest_tip_y_nm -54512 tail_largest_vx_ums 3984 tail_largest_vy_ums 0 crossings 6 period_ns 100700000 fall_worst_nm 0 shape_worst_nm 466092 slow_step -1
+deform stock, soft rest, 0.01 s | DEFORM case 11 dt_ns 10000000 steps 100 settle_steps 0 end_com_x_nm 0 end_com_y_nm 49659674 end_vx_ums 0 end_vy_ums 0 moved_x_nm 0 moved_y_nm -10340326 tip_drop_nm 10307222 tip_swing_nm 0 tip_lowest_drop_nm 10724474 tip_along_x_nm -421 centre_drop_nm 10340326 rest_centre_y_nm 49659674 rest_tip_y_nm -307222 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 2 period_ns 59010000 fall_worst_nm 0 shape_worst_nm 125085 slow_step -1
+deform fc, shell slide, 0.01 s | DEFORM case 7 dt_ns 10000000 steps 150 settle_steps 50 end_com_x_nm 77291898 end_com_y_nm 489406 end_vx_ums 0 end_vy_ums 0 moved_x_nm 77291898 moved_y_nm 45 tip_drop_nm 510594 tip_swing_nm 0 tip_lowest_drop_nm 541978 tip_along_x_nm 77291882 centre_drop_nm 510594 rest_centre_y_nm 489406 rest_tip_y_nm 489406 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 2 period_ns 476100000 fall_worst_nm 0 shape_worst_nm 161 slow_step 72
+deform fc, shell hold, 0.01 s | DEFORM case 8 dt_ns 10000000 steps 150 settle_steps 50 end_com_x_nm 119975 end_com_y_nm 492661 end_vx_ums 0 end_vy_ums 0 moved_x_nm 119975 moved_y_nm 3300 tip_drop_nm 507339 tip_swing_nm 0 tip_lowest_drop_nm 541978 tip_along_x_nm 119975 centre_drop_nm 507339 rest_centre_y_nm 492661 rest_tip_y_nm 492661 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 2 period_ns 53070000 fall_worst_nm 0 shape_worst_nm 161 slow_step -1
+deform fc, shell rest, 0.01 s | DEFORM case 6 dt_ns 10000000 steps 100 settle_steps 0 end_com_x_nm 0 end_com_y_nm 489397 end_vx_ums 0 end_vy_ums 0 moved_x_nm 0 moved_y_nm -9510603 tip_drop_nm 9510603 tip_swing_nm 0 tip_lowest_drop_nm 9686196 tip_along_x_nm 0 centre_drop_nm 9510603 rest_centre_y_nm 489397 rest_tip_y_nm 489397 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 2 period_ns 50350000 fall_worst_nm 0 shape_worst_nm 122 slow_step -1
+deform fc, soft slide, 0.01 s | DEFORM case 12 dt_ns 10000000 steps 150 settle_steps 50 end_com_x_nm 76924011 end_com_y_nm 49659677 end_vx_ums 0 end_vy_ums 0 moved_x_nm 76924011 moved_y_nm -74 tip_drop_nm 1308630 tip_swing_nm 0 tip_lowest_drop_nm 1424639 tip_along_x_nm 76926379 centre_drop_nm 1340323 rest_centre_y_nm 49659677 rest_tip_y_nm -308630 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 3 period_ns 417150000 fall_worst_nm 0 shape_worst_nm 713872 slow_step 74
+deform fc, soft hold, 0.01 s | DEFORM case 13 dt_ns 10000000 steps 150 settle_steps 50 end_com_x_nm 371923 end_com_y_nm 49691685 end_vx_ums 0 end_vy_ums 0 moved_x_nm 371923 moved_y_nm 31934 tip_drop_nm 1053708 tip_swing_nm 0 tip_lowest_drop_nm 1419140 tip_along_x_nm 127180 centre_drop_nm 1308315 rest_centre_y_nm 49691685 rest_tip_y_nm -53708 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 3 period_ns 120940000 fall_worst_nm 0 shape_worst_nm 476166 slow_step -1
+deform fc, soft rest, 0.01 s | DEFORM case 11 dt_ns 10000000 steps 100 settle_steps 0 end_com_x_nm 0 end_com_y_nm 49659938 end_vx_ums 0 end_vy_ums 0 moved_x_nm 0 moved_y_nm -10340062 tip_drop_nm 10307021 tip_swing_nm 0 tip_lowest_drop_nm 10722206 tip_along_x_nm -380 centre_drop_nm 10340062 rest_centre_y_nm 49659938 rest_tip_y_nm -307021 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 2 period_ns 72060000 fall_worst_nm 0 shape_worst_nm 124789 slow_step -1
+deform, rod fall, 0.001 s | DEFORM case 1 dt_ns 1000000 steps 500 settle_steps 0 end_com_x_nm 0 end_com_y_nm -1227450000 end_vx_ums 0 end_vy_ums -4900000 moved_x_nm 0 moved_y_nm -1227450000 tip_drop_nm 1111241600 tip_swing_nm 228575200 tip_lowest_drop_nm 1227450000 tip_along_x_nm 0 centre_drop_nm 1111241600 rest_centre_y_nm -1111241600 rest_tip_y_nm -1111241600 tail_largest_vx_ums 0 tail_largest_vy_ums 4900000 crossings 0 period_ns 0 fall_worst_nm 0 shape_worst_nm 0 slow_step -1
+deform, shell fall, 0.001 s | DEFORM case 4 dt_ns 1000000 steps 500 settle_steps 0 end_com_x_nm 0 end_com_y_nm -1227450035 end_vx_ums 0 end_vy_ums -4900000 moved_x_nm 0 moved_y_nm -1227450035 tip_drop_nm 1111233400 tip_swing_nm 228573745 tip_lowest_drop_nm 1227441231 tip_along_x_nm -3 centre_drop_nm 1111241642 rest_centre_y_nm -1111241642 rest_tip_y_nm -1111233400 tail_largest_vx_ums 0 tail_largest_vy_ums 4900000 crossings 0 period_ns 0 fall_worst_nm 54 shape_worst_nm 37907 slow_step -1
+deform, soft fall, 0.001 s | DEFORM case 9 dt_ns 1000000 steps 500 settle_steps 0 end_com_x_nm 0 end_com_y_nm -1177446933 end_vx_ums 0 end_vy_ums -4899992 moved_x_nm 0 moved_y_nm -1227446933 tip_drop_nm 1111238744 tip_swing_nm 228574819 tip_lowest_drop_nm 1227446953 tip_along_x_nm 20 centre_drop_nm 1111238726 rest_centre_y_nm -1061238726 rest_tip_y_nm -1111238744 tail_largest_vx_ums 0 tail_largest_vy_ums 4899992 crossings 0 period_ns 0 fall_worst_nm 3067 shape_worst_nm 28 slow_step -1
+deform, rod hang, 0.001 s | DEFORM case 2 dt_ns 1000000 steps 2000 settle_steps 0 end_com_x_nm 0 end_com_y_nm -300936604 end_vx_ums 0 end_vy_ums 0 moved_x_nm 0 moved_y_nm -936604 tip_drop_nm 1406137 tip_swing_nm 0 tip_lowest_drop_nm 2641722 tip_along_x_nm 0 centre_drop_nm 936604 rest_centre_y_nm -300936604 rest_tip_y_nm -601406137 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 9 period_ns 67733000 fall_worst_nm 0 shape_worst_nm 2641722 slow_step -1
+deform, shell hang, 0.001 s | DEFORM case 5 dt_ns 1000000 steps 2000 settle_steps 0 end_com_x_nm -1189 end_com_y_nm -200623389 end_vx_ums 0 end_vy_ums 0 moved_x_nm -1189 moved_y_nm -623389 tip_drop_nm 935496 tip_swing_nm 0 tip_lowest_drop_nm 1736145 tip_along_x_nm -8351 centre_drop_nm 623389 rest_centre_y_nm -200623389 rest_tip_y_nm -400935496 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 9 period_ns 55342000 fall_worst_nm 0 shape_worst_nm 1745039 slow_step -1
+deform, soft hang, 0.001 s | DEFORM case 10 dt_ns 1000000 steps 2000 settle_steps 0 end_com_x_nm 0 end_com_y_nm -200286982 end_vx_ums 0 end_vy_ums 0 moved_x_nm 0 moved_y_nm -286982 tip_drop_nm 430539 tip_swing_nm 0 tip_lowest_drop_nm 772479 tip_along_x_nm -23 centre_drop_nm 286982 rest_centre_y_nm -200286982 rest_tip_y_nm -400430539 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 9 period_ns 37934000 fall_worst_nm 0 shape_worst_nm 772937 slow_step -1
+deform stock, shell slide, 0.001 s | DEFORM case 7 dt_ns 1000000 steps 1500 settle_steps 500 end_com_x_nm 81232866 end_com_y_nm 489406 end_vx_ums 0 end_vy_ums 0 moved_x_nm 81232866 moved_y_nm 89 tip_drop_nm 510594 tip_swing_nm 0 tip_lowest_drop_nm 664768 tip_along_x_nm 81232866 centre_drop_nm 510594 rest_centre_y_nm 489406 rest_tip_y_nm 489406 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 9 period_ns 60859000 fall_worst_nm 0 shape_worst_nm 1389 slow_step 702
+deform stock, shell hold, 0.001 s | DEFORM case 8 dt_ns 1000000 steps 1500 settle_steps 500 end_com_x_nm 3969165 end_com_y_nm 492661 end_vx_ums 3977 end_vy_ums 0 moved_x_nm 3969165 moved_y_nm 3344 tip_drop_nm 507339 tip_swing_nm 0 tip_lowest_drop_nm 664768 tip_along_x_nm 3969165 centre_drop_nm 507339 rest_centre_y_nm 492661 rest_tip_y_nm 492661 tail_largest_vx_ums 3977 tail_largest_vy_ums 0 crossings 9 period_ns 71505000 fall_worst_nm 0 shape_worst_nm 1389 slow_step -1
+deform stock, shell rest, 0.001 s | DEFORM case 6 dt_ns 1000000 steps 1000 settle_steps 0 end_com_x_nm 0 end_com_y_nm 489483 end_vx_ums 0 end_vy_ums 0 moved_x_nm 0 moved_y_nm -9510517 tip_drop_nm 9510517 tip_swing_nm 0 tip_lowest_drop_nm 9949492 tip_along_x_nm 0 centre_drop_nm 9510517 rest_centre_y_nm 489483 rest_tip_y_nm 489483 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 9 period_ns 23462000 fall_worst_nm 0 shape_worst_nm 9742 slow_step -1
+deform stock, soft slide, 0.001 s | DEFORM case 12 dt_ns 1000000 steps 1500 settle_steps 500 end_com_x_nm 80596432 end_com_y_nm 49659677 end_vx_ums 379 end_vy_ums 5 moved_x_nm 80596432 moved_y_nm -132 tip_drop_nm 1307368 tip_swing_nm 21587 tip_lowest_drop_nm 1733428 tip_along_x_nm 80592297 centre_drop_nm 1340315 rest_centre_y_nm 49659685 rest_tip_y_nm -307368 tail_largest_vx_ums 947 tail_largest_vy_ums 23 crossings 9 period_ns 36182000 fall_worst_nm 0 shape_worst_nm 1214651 slow_step 702
+deform stock, soft hold, 0.001 s | DEFORM case 13 dt_ns 1000000 steps 1500 settle_steps 500 end_com_x_nm 4268938 end_com_y_nm 49691654 end_vx_ums 3977 end_vy_ums -3 moved_x_nm 4268938 moved_y_nm 31845 tip_drop_nm 1054575 tip_swing_nm 1920 tip_lowest_drop_nm 1733428 tip_along_x_nm 4024773 centre_drop_nm 1308445 rest_centre_y_nm 49691555 rest_tip_y_nm -54575 tail_largest_vx_ums 4047 tail_largest_vy_ums 14 crossings 9 period_ns 126005000 fall_worst_nm 0 shape_worst_nm 635373 slow_step -1
+deform stock, soft rest, 0.001 s | DEFORM case 11 dt_ns 1000000 steps 1000 settle_steps 0 end_com_x_nm 0 end_com_y_nm 49659422 end_vx_ums 0 end_vy_ums 0 moved_x_nm 0 moved_y_nm -10340578 tip_drop_nm 10307445 tip_swing_nm 0 tip_lowest_drop_nm 11191119 tip_along_x_nm -421 centre_drop_nm 10340578 rest_centre_y_nm 49659422 rest_tip_y_nm -307445 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 9 period_ns 41759000 fall_worst_nm 0 shape_worst_nm 426293 slow_step -1
+deform fc, shell slide, 0.001 s | DEFORM case 7 dt_ns 1000000 steps 1500 settle_steps 500 end_com_x_nm 80852690 end_com_y_nm 489406 end_vx_ums 0 end_vy_ums 0 moved_x_nm 80852690 moved_y_nm 100 tip_drop_nm 510594 tip_swing_nm 0 tip_lowest_drop_nm 647519 tip_along_x_nm 80852691 centre_drop_nm 510594 rest_centre_y_nm 489406 rest_tip_y_nm 489406 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 9 period_ns 68595000 fall_worst_nm 0 shape_worst_nm 1369 slow_step 701
+deform fc, shell hold, 0.001 s | DEFORM case 8 dt_ns 1000000 steps 1500 settle_steps 500 end_com_x_nm 119523 end_com_y_nm 492661 end_vx_ums 0 end_vy_ums 0 moved_x_nm 119523 moved_y_nm 3355 tip_drop_nm 507339 tip_swing_nm 0 tip_lowest_drop_nm 647519 tip_along_x_nm 119524 centre_drop_nm 507339 rest_centre_y_nm 492661 rest_tip_y_nm 492661 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 8 period_ns 81948000 fall_worst_nm 0 shape_worst_nm 1369 slow_step -1
+deform fc, shell rest, 0.001 s | DEFORM case 6 dt_ns 1000000 steps 1000 settle_steps 0 end_com_x_nm 0 end_com_y_nm 489344 end_vx_ums 0 end_vy_ums 0 moved_x_nm 0 moved_y_nm -9510656 tip_drop_nm 9510655 tip_swing_nm 0 tip_lowest_drop_nm 9915896 tip_along_x_nm 0 centre_drop_nm 9510656 rest_centre_y_nm 489344 rest_tip_y_nm 489345 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 6 period_ns 22185000 fall_worst_nm 0 shape_worst_nm 9742 slow_step -1
+deform fc, soft slide, 0.001 s | DEFORM case 12 dt_ns 1000000 steps 1500 settle_steps 500 end_com_x_nm 80450398 end_com_y_nm 49659677 end_vx_ums 0 end_vy_ums 0 moved_x_nm 80450398 moved_y_nm 274 tip_drop_nm 1307946 tip_swing_nm 2678 tip_lowest_drop_nm 1663690 tip_along_x_nm 80451540 centre_drop_nm 1340324 rest_centre_y_nm 49659676 rest_tip_y_nm -307946 tail_largest_vx_ums 150 tail_largest_vy_ums 0 crossings 9 period_ns 113946000 fall_worst_nm 0 shape_worst_nm 1089814 slow_step 702
+deform fc, soft hold, 0.001 s | DEFORM case 13 dt_ns 1000000 steps 1500 settle_steps 500 end_com_x_nm 370787 end_com_y_nm 49691468 end_vx_ums 0 end_vy_ums 0 moved_x_nm 370787 moved_y_nm 32065 tip_drop_nm 1054836 tip_swing_nm 0 tip_lowest_drop_nm 1663690 tip_along_x_nm 127014 centre_drop_nm 1308532 rest_centre_y_nm 49691468 rest_tip_y_nm -54836 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 9 period_ns 142246000 fall_worst_nm 0 shape_worst_nm 624817 slow_step -1
+deform fc, soft rest, 0.001 s | DEFORM case 11 dt_ns 1000000 steps 1000 settle_steps 0 end_com_x_nm 0 end_com_y_nm 49659461 end_vx_ums 0 end_vy_ums 0 moved_x_nm 0 moved_y_nm -10340539 tip_drop_nm 10307439 tip_swing_nm 0 tip_lowest_drop_nm 11084468 tip_along_x_nm -381 centre_drop_nm 10340539 rest_centre_y_nm 49659461 rest_tip_y_nm -307439 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 7 period_ns 37453000 fall_worst_nm 0 shape_worst_nm 405113 slow_step -1
+deform, cantilever, 32 elements | DEFORM case 3 dt_ns 10000000 steps 400 settle_steps 0 end_com_x_nm 299985906 end_com_y_nm -2347906 end_vx_ums 0 end_vy_ums 0 moved_x_nm -14094 moved_y_nm -2347906 tip_drop_nm 5964978 tip_swing_nm 0 tip_lowest_drop_nm 8846080 tip_along_x_nm -33642 centre_drop_nm 2347906 rest_centre_y_nm -2347906 rest_tip_y_nm -5964978 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 4 period_ns 132360000 fall_worst_nm 0 shape_worst_nm 8846434 slow_step -1
+deform, cantilever, 64 elements | DEFORM case 3 dt_ns 10000000 steps 400 settle_steps 0 end_com_x_nm 299984602 end_com_y_nm -2444365 end_vx_ums 0 end_vy_ums 0 moved_x_nm -15398 moved_y_nm -2444365 tip_drop_nm 6159581 tip_swing_nm 0 tip_lowest_drop_nm 9147656 tip_along_x_nm -36006 centre_drop_nm 2444365 rest_centre_y_nm -2444365 rest_tip_y_nm -6159581 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 4 period_ns 135350000 fall_worst_nm 0 shape_worst_nm 9148044 slow_step -1
+deform, cantilever, 128 elements | DEFORM case 3 dt_ns 10000000 steps 400 settle_steps 0 end_com_x_nm 299983899 end_com_y_nm -2493881 end_vx_ums 0 end_vy_ums 0 moved_x_nm -16101 moved_y_nm -2493881 tip_drop_nm 6259351 tip_swing_nm 0 tip_lowest_drop_nm 9298279 tip_along_x_nm -37262 centre_drop_nm 2493881 rest_centre_y_nm -2493881 rest_tip_y_nm -6259351 tail_largest_vx_ums 0 tail_largest_vy_ums 0 crossings 4 period_ns 134740000 fall_worst_nm 0 shape_worst_nm 9298685 slow_step -1
+grip stock, built, 8 N | GRIP dt_ns 10000000 steps 200 release_step 50 mass_mg 150000 mu_ppm 450000 grip_uN 8000000 gap_nm 26000000 maxgap_nm 80000000 press_a_before_uN 7999960 press_b_before_uN 7999960 press_a_uN 8000000 press_b_uN 8000000 lift_a_uN 734872 lift_b_uN 734872 lift_all_uN 1469744 slipped_nm -1693232 slip_a_nm -1693232 slip_b_nm -1693232 creep_nms -1112616 end_speed_ums -1103 window_steps 3 accel_ums2 -36500 most_along_nm 0 most_across_nm 9145 most_roll_urad 24064 most_pitch_urad 0 most_yaw_urad 0
+grip stock, built, 0.9 N (reported) | GRIP dt_ns 10000000 steps 200 release_step 50 mass_mg 150000 mu_ppm 450000 grip_uN 900000 gap_nm 26000000 maxgap_nm 80000000 press_a_before_uN 899997 press_b_before_uN 899997 press_a_uN 0 press_b_uN 0 lift_a_uN 0 lift_b_uN 0 lift_all_uN 0 slipped_nm -10246616518 slip_a_nm -10246616518 slip_b_nm -10246616518 creep_nms -10537311633 end_speed_ums -14114312 window_steps 10 accel_ums2 -3942600 most_along_nm 1154823 most_across_nm 22626158 most_roll_urad 663458 most_pitch_urad 1384618 most_yaw_urad 1449925
+grip stock, fr3, 8 N | the grip file is missing or not whole
+grip stock, fr3, 0.9 N (reported) | the grip file is missing or not whole
+grip fc, built, 8 N | GRIP dt_ns 10000000 steps 200 release_step 50 mass_mg 150000 mu_ppm 450000 grip_uN 8000000 gap_nm 26000000 maxgap_nm 80000000 press_a_before_uN 7999924 press_b_before_uN 7999924 press_a_uN 7999995 press_b_uN 7999995 lift_a_uN 734614 lift_b_uN 734614 lift_all_uN 1469228 slipped_nm -35674 slip_a_nm -35674 slip_b_nm -35674 creep_nms 0 end_speed_ums 0 window_steps 3 accel_ums2 -15100 most_along_nm 0 most_across_nm 13505 most_roll_urad 1457 most_pitch_urad 0 most_yaw_urad 0
+grip fc, built, 0.9 N (reported) | GRIP dt_ns 10000000 steps 200 release_step 50 mass_mg 150000 mu_ppm 450000 grip_uN 900000 gap_nm 26000000 maxgap_nm 80000000 press_a_before_uN 900033 press_b_before_uN 900033 press_a_uN 0 press_b_uN 0 lift_a_uN 0 lift_b_uN 0 lift_all_uN 0 slipped_nm -10670167459 slip_a_nm -10670167459 slip_b_nm -10670167459 creep_nms -10833550004 end_speed_ums -14410550 window_steps 10 accel_ums2 -6905500 most_along_nm 3022515 most_across_nm 7178122 most_roll_urad 1778253 most_pitch_urad 70744 most_yaw_urad 225363
+grip fc, fr3, 8 N | the grip file is missing or not whole
+grip fc, fr3, 0.9 N (reported) | the grip file is missing or not whole
+benchmark | half_cheetah stock steps 21600 stopped 3 diverged 0 most_iterations 200
+benchmark | half_cheetah fc steps 21600 stopped 2 diverged 0 most_iterations 200
+benchmark | ant stock steps 21600 stopped 231 diverged 0 most_iterations 200
+benchmark | ant fc steps 21600 stopped 0 diverged 0 most_iterations 153
+benchmark | cart_pole stock steps 21600 stopped 0 diverged 0 most_iterations 7
+benchmark | cart_pole fc steps 21600 stopped 0 diverged 0 most_iterations 7
+rules | every rule below is judged by sx_contact rule from the numbers above and the registered bounds
+RULE C0_played_as_the_decisions_say eq 11 11 : HELD
+RULE E0_every_part_identical_in_full eq 0 0 : HELD
+RULE E0_parts_played eq 9 9 : HELD
+RULE K1_first_suite_all_ten eq 1111111111 1111111111 : HELD
+RULE K2_second_suite_all_seven eq 1111111 1111111 : HELD
+RULE K3_no_suite_step_stops eq 0 0 : HELD
+RULE K3_no_suite_step_diverges eq 0 0 : HELD
+RULE J1_a_free_arm_keeps_its_speed ge 2999980 2970000 : HELD
+RULE J2_a_driven_arm within 4656274 4656457 100 : HELD
+RULE J3_joint_friction_holds_as_stock near -411 -411 10 : HELD
+RULE J4_slip_as_stock_shipped_step within 3104079 3032560 100 : FAILED
+RULE J4_slip_as_stock_sixteenth_step within 3103526 3100074 100 : HELD
+RULE J5_no_arm_step_stops_or_diverges all_eq 0 0 0 : HELD
+RULE L1_the_limit_at_rest_band all_in -303778 -303704 -303744 -303741 : HELD
+RULE L2_release_speed_damping_20 within 1423020 1434131 50 : HELD
+RULE L2_release_speed_damping_150 within 367995 369401 50 : HELD
+RULE L2_released_at_the_coarser_steps all_ge -299000 154115 358554 -172866 -148573 : HELD
+RULE L2_moving_at_the_end_damping_20 all_ge 143414 970653 1390516 : HELD
+RULE L2_moving_at_the_end_damping_150 all_ge 36941 314613 364066 : HELD
+RULE L3_lifted_off_the_limit all_ge -189208 -164916 -175432 : HELD
+RULE L4_no_limit_step_stops_or_diverges all_eq 0 0 0 : HELD
+RULE R1_every_rotation_vector_right all_eq 20 20 20 : HELD
+RULE P1_stock_friction_at_the_impact_over_the_law ge 13225 4200 : HELD
+RULE P1_stock_slip_short_of_the_law share 428700 881000 8 10 : HELD
+RULE P2_rest_carries_the_weight within 15683 15680 100 : HELD
+RULE P2_lift_never_pulls eq 0 0 : HELD
+RULE P2_hold_does_not_creep in 0 -10 10 : HELD
+RULE P2_slide_friction_within_a_tenth within 3623 3500 10 : HELD
+RULE P2_slip_reaches_8_tenths share 881000 754600 10 8 : HELD
+RULE P2_friction_at_the_impact_within_a_tenth all_within 3500 10 3662 3632 : HELD
+RULE P2_no_step_stops_or_diverges all_eq 0 0 0 : HELD
+RULE D1_falls_rod_and_shell all_le 1000 0 0 108 54 : HELD
+RULE D1_falls_soft all_le 50000 248 3067 : HELD
+RULE D2_rod_hangs all_within 1404624 200 1404708 1406137 : HELD
+RULE D2_strip_hangs all_within 936416 200 935362 935496 : HELD
+RULE D2_bar_hangs all_within 431200 200 431234 430539 : HELD
+RULE D3_cantilever_rises_with_the_mesh falls -5964978 -6159581 -6259351 : HELD
+RULE D3_cantilever_below_the_textbook all_le 6350400 5964978 6159581 6259351 : HELD
+RULE D3_cantilever_at_128_within_3_in_100 within 6259351 6350400 33 : HELD
+RULE D4_slides_stock_shipped_step all_within 77632653 100 77602465 77238710 : HELD
+RULE D4_slides_stock_tenth_step all_within 81232653 100 81232866 80596432 : HELD
+RULE D7_rests_stock all_in -10 10 0 0 0 0 0 0 0 0 : HELD
+RULE D4_slides_fc_shipped_step all_within 77632653 100 77291898 76924011 : HELD
+RULE D4_slides_fc_tenth_step all_within 81232653 100 80852690 80450398 : HELD
+RULE D7_rests_fc all_in -10 10 0 0 0 0 0 0 0 0 : HELD
+RULE D5_stock_creeps_as_its_law_says all_within 3986 10 3978 3977 3984 3977 : HELD
+RULE D6_corrected_holds all_in -10 10 0 0 0 0 : HELD
+RULE D6_corrected_within_the_stick_distance all_in -300000 300000 119975 119523 371923 370787 : FAILED
+RULE D8_no_step_stops_or_diverges all_eq 0 0 0 : HELD
+RULE G1_grip_force_stock_built all_within 8000000 100 8000000 8000000 : HELD
+RULE G2_each_finger_carries_half_stock_built all_within 735000 100 734872 734872 : HELD
+RULE G1_grip_force_stock_fr3 all_within 8000000 100 999999999 999999999 : FAILED
+RULE G2_each_finger_carries_half_stock_fr3 all_within 735000 100 999999999 999999999 : FAILED
+RULE G1_grip_force_fc_built all_within 8000000 100 7999995 7999995 : HELD
+RULE G2_each_finger_carries_half_fc_built all_within 735000 100 734614 734614 : HELD
+RULE G1_grip_force_fc_fr3 all_within 8000000 100 999999999 999999999 : FAILED
+RULE G2_each_finger_carries_half_fc_fr3 all_within 735000 100 999999999 999999999 : FAILED
+RULE G3_stock_lets_it_creep_built le -1112616 -10000 : HELD
+RULE G3_stock_lets_it_creep_fr3 le 999999999 -10000 : FAILED
+RULE G4_corrected_holds all_in -1000 1000 0 999999999 : FAILED
+RULE G4_corrected_slips_under_a_tenth_of_a_millimetre all_in -100000 100000 -35674 999999999 : FAILED
+RULE G5_no_grip_step_stops_or_diverges all_eq 0 0 0 : HELD
+RULE B1_half_cheetah_no_step_diverges eq 0 0 : HELD
+RULE B2_half_cheetah_stops_no_more_than_1_in_1000 share 2 21600 1 1000 : HELD
+RULE B1_ant_no_step_diverges eq 0 0 : HELD
+RULE B2_ant_stops_no_more_than_1_in_1000 share 0 21600 1 1000 : HELD
+RULE B1_cart_pole_no_step_diverges eq 0 0 : HELD
+RULE B2_cart_pole_stops_no_more_than_1_in_1000 share 0 21600 1 1000 : HELD
+STUDY13 rules held 59 failed 9 ; values missing 12 ; measuring complete 0

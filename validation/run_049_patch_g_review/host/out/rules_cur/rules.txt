@@ -1,0 +1,30 @@
+RULE G1 stock arm at 1.8 rad/s, shipped step: 1744622, the law 1744369, within 1 in 100: HELD
+RULE G2 arm at 1.8 rad/s, 1/1: 1799998, between 1798200 and 1801800: HELD
+RULE G2 arm at 1.8 rad/s, 1/4: 1800000, between 1798200 and 1801800: HELD
+RULE G2 arm at 1.8 rad/s, 1/16: 1800000, between 1798200 and 1801800: HELD
+RULE G1 stock arm at 3.9 rad/s, shipped step: 3416486, the law 3415014, within 1 in 100: HELD
+RULE G2 arm at 3.9 rad/s, 1/1: 3899925, between 3896100 and 3903900: HELD
+RULE G2 arm at 3.9 rad/s, 1/4: 3899999, between 3896100 and 3903900: HELD
+RULE G2 arm at 3.9 rad/s, 1/16: 3900000, between 3896100 and 3903900: HELD
+RULE G1 stock arm at 5.5 rad/s, shipped step: 4343877, the law 4341354, within 1 in 100: HELD
+RULE G2 arm at 5.5 rad/s, 1/1: 5499999, between 5494500 and 5505500: HELD
+RULE G2 arm at 5.5 rad/s, 1/4: 5499993, between 5494500 and 5505500: HELD
+RULE G2 arm at 5.5 rad/s, 1/16: 5500000, between 5494500 and 5505500: HELD
+RULE G3 stock free chain, shipped step: kinetic energy kept 675215 per million (at most 900000: HELD), momentum -93669 ppm (at most -30000: HELD)
+RULE G4 1/1 tight: momentum 0 ppm (within 100: HELD), largest energy drift 2156 ppm (at most 5000: HELD)
+RULE G5 1/1 recommended tolerances: kinetic energy 1000143 per million (HELD), momentum 13 ppm (HELD)
+RULE G6 1/1 swing: lost 349586 with the configuration, 843976 with no switch (at most 6 tenths: HELD)
+RULE G4 1/4 tight: momentum 0 ppm (within 100: HELD), largest energy drift 133 ppm (at most 1000: HELD)
+RULE G5 1/4 recommended tolerances: kinetic energy 1000009 per million (HELD), momentum 1 ppm (HELD)
+RULE G6 1/4 swing: lost 105730 with the configuration, 553224 with no switch (at most 6 tenths: HELD)
+RULE G4 1/16 tight: momentum 1 ppm (within 100: HELD), largest energy drift 8 ppm (at most 500: HELD)
+RULE G5 1/16 recommended tolerances: kinetic energy 1000006 per million (HELD), momentum 1 ppm (HELD)
+RULE G6 1/16 swing: lost 25573 with the configuration, 310808 with no switch (at most 6 tenths: HELD)
+RULE G6 falls with the step: 349586 105730 25573: HELD
+RULE G7 arm and chain plays at the configuration's tolerances: stopped and diverged 0 0: HELD
+RULE G8 JT1 free arm at 2.7 rad/s, shipped step: 2699988 (stock 2523064); at least 99 in 100: HELD (stock fails it: FAILED)
+RULE G8 JT2 driven arm, 2 N m: 5585557 against 5585604: within 1 in 100: HELD
+RULE G8 JT4 hold, 13 N m against gravity's 9.43: creep -476 (stock -476) within 10: HELD
+RULE G8 JT5 slip 1/1: 4189174 against the right answer 4189203: within 1 in 100: HELD (1 in 1,000: HELD); against stock's 4018104 as registered: FAILED
+RULE G8 JT5 slip 1/16: 4189181 against the right answer 4189203: within 1 in 100: HELD (1 in 1,000: HELD); against stock's 4178084 as registered: HELD
+rules held 29 lines; FAILED anywhere: 2

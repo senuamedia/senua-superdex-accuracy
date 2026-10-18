@@ -1,0 +1,1 @@
+STATS pair dt 0.01 layout stack massa 3 ra 0.25 massb 0.5 rb 0.03 mu 0.45 mug 0 steps 90 converged 90 stopped 0 diverged 0 most_iterations 17 real_bits 64 extra pusha=23.1525 pushat=0.5 ndamp=5 falloff=0.03 explicitn=1

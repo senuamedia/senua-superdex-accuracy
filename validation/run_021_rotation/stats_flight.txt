@@ -1,0 +1,12 @@
+STATS run flight_stock_1 pair dt 0.01 layout side massa 5 ra 0.2 massb 0.8 rb 0.05 mu 0 mug 0 steps 50 converged 50 stopped 0 diverged 0 most_iterations 38 real_bits 64 extra none
+STATS run flight_stock_4 pair dt 0.0025 layout side massa 5 ra 0.2 massb 0.8 rb 0.05 mu 0 mug 0 steps 200 converged 200 stopped 0 diverged 0 most_iterations 40 real_bits 64 extra none
+STATS run flight_stock_16 pair dt 0.000625 layout side massa 5 ra 0.2 massb 0.8 rb 0.05 mu 0 mug 0 steps 800 converged 800 stopped 0 diverged 0 most_iterations 49 real_bits 64 extra none
+STATS run flight_stock_64 pair dt 0.00015625 layout side massa 5 ra 0.2 massb 0.8 rb 0.05 mu 0 mug 0 steps 3200 converged 2270 stopped 930 diverged 0 most_iterations 200 real_bits 64 extra none
+STATS run flight_off_1 pair dt 0.01 layout side massa 5 ra 0.2 massb 0.8 rb 0.05 mu 0 mug 0 steps 50 converged 50 stopped 0 diverged 0 most_iterations 38 real_bits 64 extra none
+STATS run flight_off_4 pair dt 0.0025 layout side massa 5 ra 0.2 massb 0.8 rb 0.05 mu 0 mug 0 steps 200 converged 200 stopped 0 diverged 0 most_iterations 40 real_bits 64 extra none
+STATS run flight_off_16 pair dt 0.000625 layout side massa 5 ra 0.2 massb 0.8 rb 0.05 mu 0 mug 0 steps 800 converged 800 stopped 0 diverged 0 most_iterations 49 real_bits 64 extra none
+STATS run flight_off_64 pair dt 0.00015625 layout side massa 5 ra 0.2 massb 0.8 rb 0.05 mu 0 mug 0 steps 3200 converged 2270 stopped 930 diverged 0 most_iterations 200 real_bits 64 extra none
+STATS run flight_patched_1 pair dt 0.01 layout side massa 5 ra 0.2 massb 0.8 rb 0.05 mu 0 mug 0 steps 50 converged 50 stopped 0 diverged 0 most_iterations 7 real_bits 64 extra none
+STATS run flight_patched_4 pair dt 0.0025 layout side massa 5 ra 0.2 massb 0.8 rb 0.05 mu 0 mug 0 steps 200 converged 200 stopped 0 diverged 0 most_iterations 5 real_bits 64 extra none
+STATS run flight_patched_16 pair dt 0.000625 layout side massa 5 ra 0.2 massb 0.8 rb 0.05 mu 0 mug 0 steps 800 converged 800 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra none
+STATS run flight_patched_64 pair dt 0.00015625 layout side massa 5 ra 0.2 massb 0.8 rb 0.05 mu 0 mug 0 steps 3200 converged 3200 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra none

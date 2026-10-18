@@ -1,0 +1,59 @@
+G G0 parts 9 differing_files 0 HELD
+G G1 stock_at_1.5 1467500 law 1467348 HELD
+G G1 stock_at_3.5 3137971 law 3136775 HELD
+G G1 stock_at_6 4578686 law 4574957 HELD
+G G2 neg_1.5_1/1 1499999 band 1498500 1501500 HELD
+G G2 neg_1.5_1/4 1498596 band 1498500 1501500 HELD
+G G2 neg_1.5_1/16 1499649 band 1498500 1501500 HELD
+G G2 neg_3.5_1/1 3499956 band 3496500 3503500 HELD
+G G2 neg_3.5_1/4 3499999 band 3496500 3503500 HELD
+G G2 neg_3.5_1/16 3495542 band 3496500 3503500 FAILED
+G G2 neg_6_1/1 5999352 band 5994000 6006000 HELD
+G G2 neg_6_1/4 5999990 band 5994000 6006000 HELD
+G G2 neg_6_1/16 6000000 band 5994000 6006000 HELD
+CHAIN off free 1/1 kinetic_end_per_million 700138 energy_drift_ppm -299862 momentum_drift_ppm -115772 energy_lost_ppm 299862 energy_largest_drift_ppm 299862
+CHAIN off free 1/4 kinetic_end_per_million 886489 energy_drift_ppm -113511 momentum_drift_ppm -35366 energy_lost_ppm 113511 energy_largest_drift_ppm 113511
+CHAIN off free 1/16 kinetic_end_per_million 966960 energy_drift_ppm -33040 momentum_drift_ppm -9468 energy_lost_ppm 33040 energy_largest_drift_ppm 33040
+CHAIN off swing 1/1 kinetic_end_per_million 999999999 energy_drift_ppm -949321 momentum_drift_ppm 999999999 energy_lost_ppm 949321 energy_largest_drift_ppm 949321
+CHAIN off swing 1/4 kinetic_end_per_million 999999999 energy_drift_ppm -588361 momentum_drift_ppm 999999999 energy_lost_ppm 588361 energy_largest_drift_ppm 588361
+CHAIN off swing 1/16 kinetic_end_per_million 999999999 energy_drift_ppm -240633 momentum_drift_ppm 999999999 energy_lost_ppm 240633 energy_largest_drift_ppm 240633
+CHAIN ne free 1/1 kinetic_end_per_million 702416 energy_drift_ppm -297584 momentum_drift_ppm -114777 energy_lost_ppm 297584 energy_largest_drift_ppm 297584
+CHAIN ne free 1/4 kinetic_end_per_million 888076 energy_drift_ppm -111924 momentum_drift_ppm -34913 energy_lost_ppm 111924 energy_largest_drift_ppm 111924
+CHAIN ne free 1/16 kinetic_end_per_million 967526 energy_drift_ppm -32474 momentum_drift_ppm -9329 energy_lost_ppm 32474 energy_largest_drift_ppm 32474
+CHAIN ne swing 1/1 kinetic_end_per_million 999999999 energy_drift_ppm -945274 momentum_drift_ppm 999999999 energy_lost_ppm 945274 energy_largest_drift_ppm 945274
+CHAIN ne swing 1/4 kinetic_end_per_million 999999999 energy_drift_ppm -575507 momentum_drift_ppm 999999999 energy_lost_ppm 575507 energy_largest_drift_ppm 575507
+CHAIN ne swing 1/16 kinetic_end_per_million 999999999 energy_drift_ppm -235066 momentum_drift_ppm 999999999 energy_lost_ppm 235066 energy_largest_drift_ppm 235066
+CHAIN g free 1/1 kinetic_end_per_million 990172 energy_drift_ppm -9827 momentum_drift_ppm -2327 energy_lost_ppm 9827 energy_largest_drift_ppm 9827
+CHAIN g free 1/4 kinetic_end_per_million 997553 energy_drift_ppm -2447 momentum_drift_ppm -569 energy_lost_ppm 2447 energy_largest_drift_ppm 2447
+CHAIN g free 1/16 kinetic_end_per_million 1002976 energy_drift_ppm 2967 momentum_drift_ppm 1280 energy_lost_ppm -2967 energy_largest_drift_ppm 2983
+CHAIN g swing 1/1 kinetic_end_per_million 999999999 energy_drift_ppm -389376 momentum_drift_ppm 999999999 energy_lost_ppm 389376 energy_largest_drift_ppm 396990
+CHAIN g swing 1/4 kinetic_end_per_million 999999999 energy_drift_ppm -129913 momentum_drift_ppm 999999999 energy_lost_ppm 129913 energy_largest_drift_ppm 129913
+CHAIN g swing 1/16 kinetic_end_per_million 999999999 energy_drift_ppm -30515 momentum_drift_ppm 999999999 energy_lost_ppm 30515 energy_largest_drift_ppm 30515
+CHAIN neg free 1/1 kinetic_end_per_million 1000209 energy_drift_ppm 208 momentum_drift_ppm -7 energy_lost_ppm -208 energy_largest_drift_ppm 827
+CHAIN neg free 1/4 kinetic_end_per_million 1000136 energy_drift_ppm 136 momentum_drift_ppm 24 energy_lost_ppm -136 energy_largest_drift_ppm 159
+CHAIN neg free 1/16 kinetic_end_per_million 1003631 energy_drift_ppm 3617 momentum_drift_ppm 1430 energy_lost_ppm -3617 energy_largest_drift_ppm 3618
+CHAIN neg swing 1/1 kinetic_end_per_million 999999999 energy_drift_ppm -360747 momentum_drift_ppm 999999999 energy_lost_ppm 360747 energy_largest_drift_ppm 360747
+CHAIN neg swing 1/4 kinetic_end_per_million 999999999 energy_drift_ppm -106121 momentum_drift_ppm 999999999 energy_lost_ppm 106121 energy_largest_drift_ppm 106121
+CHAIN neg swing 1/16 kinetic_end_per_million 999999999 energy_drift_ppm -25173 momentum_drift_ppm 999999999 energy_lost_ppm 25173 energy_largest_drift_ppm 25173
+CHAIN neg_tight free 1/1 kinetic_end_per_million 1000177 energy_drift_ppm 177 momentum_drift_ppm 0 energy_lost_ppm -177 energy_largest_drift_ppm 902
+CHAIN neg_tight free 1/4 kinetic_end_per_million 1000012 energy_drift_ppm 12 momentum_drift_ppm -0 energy_lost_ppm -12 energy_largest_drift_ppm 56
+CHAIN neg_tight free 1/16 kinetic_end_per_million 1000001 energy_drift_ppm 1 momentum_drift_ppm 0 energy_lost_ppm -1 energy_largest_drift_ppm 4
+G G3 energy_kept 700138 HELD momentum_drift -115772 HELD
+G G4 1/1 momentum 0 HELD energy_largest_drift 902 bound 5000 HELD
+G G4 1/4 momentum -0 HELD energy_largest_drift 56 bound 1000 HELD
+G G4 1/16 momentum 0 HELD energy_largest_drift 4 bound 500 HELD
+G G5 1/1 energy 1000209 HELD momentum -7 HELD
+G G5 1/4 energy 1000136 HELD momentum 24 HELD
+G G5 1/16 energy 1003631 HELD momentum 1430 HELD
+G G6 1/1 lost_both 360747 lost_off 949321 HELD
+G G6 1/4 lost_both 106121 lost_off 588361 HELD
+G G6 1/16 lost_both 25173 lost_off 240633 HELD
+G G6 falls 360747 106121 25173 HELD
+G G7 plays 15 stopped 0 diverged 0 HELD
+G G8 JT1 2999980 HELD JT2 4656274 answer 4656457 HELD
+G G8 hold -411 stock -411 HELD
+G G8 slip_1/1 3104079 stock 3032560 FAILED ; against the right answer 3104305: HELD (1 in 10000: HELD)
+G G8 slip_1/16 3103526 stock 3100074 HELD ; against the right answer 3104305: HELD
+G G9 half_cheetah stopped_with 2 without 5 diverged 0 HELD
+G G9 ant stopped_with 2 without 0 diverged 0 HELD
+G G9 cart_pole stopped_with 0 without 0 diverged 0 HELD

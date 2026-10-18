@@ -1,0 +1,9 @@
+STATS contact dt 0.01 h0 0.05 vx0 0 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 100 converged 100 stopped 0 diverged 0 most_iterations 5 real_bits 64 extra floor=soft
+STATS contact dt 0.01 h0 0 vx0 1 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 150 converged 148 stopped 2 diverged 0 most_iterations 200 real_bits 64 extra floor=soft
+STATS contact dt 0.01 h0 0 vx0 0 mu 0.45 lock 1 mass 0.8 radius 0.035 steps 100 converged 100 stopped 0 diverged 0 most_iterations 9 real_bits 64 extra push=2.117 floor=soft
+STATS contact dt 0.0025 h0 0.05 vx0 0 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 400 converged 379 stopped 21 diverged 0 most_iterations 9 real_bits 64 extra floor=soft
+STATS contact dt 0.0025 h0 0 vx0 1 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 600 converged 600 stopped 0 diverged 0 most_iterations 8 real_bits 64 extra floor=soft
+STATS contact dt 0.0025 h0 0 vx0 0 mu 0.45 lock 1 mass 0.8 radius 0.035 steps 400 converged 400 stopped 0 diverged 0 most_iterations 11 real_bits 64 extra push=2.117 floor=soft
+STATS contact dt 0.000625 h0 0.05 vx0 0 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 1600 converged 1313 stopped 287 diverged 0 most_iterations 9 real_bits 64 extra floor=soft
+STATS contact dt 0.000625 h0 0 vx0 1 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 2400 converged 2400 stopped 0 diverged 0 most_iterations 5 real_bits 64 extra floor=soft
+STATS contact dt 0.000625 h0 0 vx0 0 mu 0.45 lock 1 mass 0.8 radius 0.035 steps 1600 converged 1600 stopped 0 diverged 0 most_iterations 8 real_bits 64 extra push=2.117 floor=soft

@@ -1,0 +1,1 @@
+STATS scene ant integ be maxiter 4 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged 4550 stopped 17050 diverged 0 unset 0 most_iterations 4 enc_min -1920 enc_max 1929 wall_s 11.3 real_bits 64 worst_residual 570 extra none

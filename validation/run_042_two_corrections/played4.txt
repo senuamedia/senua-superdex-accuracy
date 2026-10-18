@@ -1,0 +1,9 @@
+PLAYED identity4 abcde rc 0
+PLAYED identity4 stock rc 0
+PLAYED identity4 off rc 0
+PLAYED identity4 abcd rc 0
+PLAYED softbottom b14_abcd rc 0
+PLAYED softbottom b14_c rc 0
+PLAYED softbottom stock rc 0
+PLAYED softbottom b15_abcd rc 0
+PLAYED softbottom b15_c rc 0

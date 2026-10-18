@@ -1,0 +1,17 @@
+NOLIMIT identical 30 of 30
+OFF identical 30 of 30
+played 30 limit runs
+IDENTITY benchmark 38 of 38
+STATS source u1 scene half_cheetah integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 9 solver_steps 21600 converged 21598 stopped
+STATS source u1 scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged 21355 stopped 245 div
+STATS source u1 scene cart_pole integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 2 solver_steps 21600 converged 21600 stopped 0 
+STATS source z1 scene half_cheetah integ be maxiter 200 sub 1 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 21600 converged 21594 stopped
+STATS source z2 scene half_cheetah integ be maxiter 200 sub 2 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 43200 converged 43194 stopped
+STATS source z4 scene half_cheetah integ be maxiter 200 sub 4 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 86400 converged 86396 stopped
+STATS source z8 scene half_cheetah integ be maxiter 200 sub 8 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 172800 converged 172798 stopp
+STATS source z16 scene half_cheetah integ be maxiter 200 sub 16 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 345600 converged 345600 sto
+STATS source z1 scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged 21593 stopped 7 dive
+STATS source z2 scene ant integ be maxiter 200 sub 2 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 43200 converged 43193 stopped 7 dive
+STATS source z4 scene ant integ be maxiter 200 sub 4 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 86400 converged 86395 stopped 5 dive
+STATS source z8 scene ant integ be maxiter 200 sub 8 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 172800 converged 172794 stopped 6 di
+STATS source z16 scene ant integ be maxiter 200 sub 16 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 345600 converged 345595 stopped 5 

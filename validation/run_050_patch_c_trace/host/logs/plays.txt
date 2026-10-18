@@ -1,0 +1,13 @@
+b4 qi1 calling init: ~/work/traceC/lib/b4/libmochi_physics_double.so enc c37ccefa401e8cde state 70fb0d003777f35d converged 21446 stopped 33 diverged 121
+b4 q1 calling init: ~/work/traceC/lib/b4/libmochi_physics_double.so enc cbe65ed0299f833e state fbb647fdb86285d9 converged 21598 stopped 2 diverged 0
+b5 qi1 calling init: ~/work/traceC/lib/b5/libmochi_physics_double.so enc ef5b8d6f81ac29d2 state ce19dee81319c631 converged 21447 stopped 33 diverged 120
+b5 q1 calling init: ~/work/traceC/lib/b5/libmochi_physics_double.so enc cbe65ed0299f833e state 1587954f149cc866 converged 21598 stopped 2 diverged 0
+v_noEigT qi1 calling init: ~/work/traceC/lib/v_noEigT/libmochi_physics_double.so enc c37ccefa401e8cde state 70fb0d003777f35d converged 21446 stopped 33 diverged 121
+v_noEigT q1 calling init: ~/work/traceC/lib/v_noEigT/libmochi_physics_double.so enc cbe65ed0299f833e state fbb647fdb86285d9 converged 21598 stopped 2 diverged 0
+v_onlyEigT qi1 calling init: ~/work/traceC/lib/v_onlyEigT/libmochi_physics_double.so enc ef5b8d6f81ac29d2 state ce19dee81319c631 converged 21447 stopped 33 diverged 120
+v_onlyEigT q1 calling init: ~/work/traceC/lib/v_onlyEigT/libmochi_physics_double.so enc cbe65ed0299f833e state 1587954f149cc866 converged 21598 stopped 2 diverged 0
+v_visc qi1 calling init: ~/work/traceC/lib/v_visc/libmochi_physics_double.so enc c37ccefa401e8cde state 70fb0d003777f35d converged 21446 stopped 33 diverged 121
+v_visc q1 calling init: ~/work/traceC/lib/v_visc/libmochi_physics_double.so enc cbe65ed0299f833e state fbb647fdb86285d9 converged 21598 stopped 2 diverged 0
+v_fold qi1 calling init: ~/work/traceC/lib/v_fold/libmochi_physics_double.so enc c37ccefa401e8cde state 70fb0d003777f35d converged 21446 stopped 33 diverged 121
+v_fold q1 calling init: ~/work/traceC/lib/v_fold/libmochi_physics_double.so enc cbe65ed0299f833e state fbb647fdb86285d9 converged 21598 stopped 2 diverged 0
+b4_again qi1 calling init: ~/work/traceC/lib/b4_again/libmochi_physics_double.so enc c37ccefa401e8cde state 70fb0d003777f35d converged 21446 stopped 33 diverged 121

@@ -1,0 +1,484 @@
+// measure/instrument/sx_settings2.sx -- preregistrations/PREREGISTRATION_02.md: the validated gap
+// instrument (unchanged) on SuperDex's accuracy settings, second registration.
+// What differs from sx_settings.sx (the first registration, kept as it ran):
+//   1. NOISE. Every noisy run is drawn in sequence from ONE state of the engine's seeded generator, so no two runs
+//      share a draw and no two are related by a seed difference (runs seeded 401, 402, 403 in every cell had given
+//      every cell the same calibration reading). Each fold of each cell draws its own runs A, B, C.
+//   2. CALIBRATION is decided on the independent readings pooled (G0), and each cell's share is printed.
+//   3. A REFERENCE IS USED ONLY WHERE ONE EXISTS. Solver convergence has one (the iteration limit saturates) and it
+//      is checked: a refined reference (R+) is read against it like any rung (R0). Time step and contact smoothing
+//      have none (successive refinements keep differing), so they are read as CHAINS: each setting against the
+//      next finer one, with no source called a reference.
+//   4. The episode geometry is an argument (episodes, readings an episode; three equal blocks).
+// Sources of a scene (<dir>/<scene>/<source>_enc.pcm, written by the public rig sdx_player; 64-bit unless said):
+//   S solver convergence, ladder   rungs s1 s2 s4 s8 s16   reference sref (limit 200)   refined sref2 (limit 1000)
+//   T time step, chain             sref t2 t4 t8 t16 (backward Euler at 1, 1/2, 1/4, 1/8, 1/16 of the shipped step)
+//   C contact smoothing, chain     c10 sref c2 c1 c06 c03 (10, 5, 2.5, 1.25, 0.625, 0.3125 mm)
+//   N no causal tie                nref (exact derivatives) against sref: must not be detected
+//   reported, not deciding         P ship32 (the 32-bit build, limit 4) against s4; Q tight (tolerances a thousand
+//                                  times smaller) against sref; H b16 (BDF2 at 1/16) against t16; B b16 against b32
+//                                  (BDF2 at 1/32); X ship32 and sref against t16
+// usage: sx_settings2 null <episodes> <readings> <n> <chunk>    stage 0: n calibration readings on noise alone
+//        sx_settings2 bar <episodes> <readings> <levels file>    stage 0: the summary and the detection bar
+//        sx_settings2 count <streams dir> <episodes> <readings>  stage 1: structure, no instrument
+//        sx_settings2 run <streams dir> <episodes> <readings> <bar> <scene> <part>  stage 2, one part of one scene
+//        sx_settings2 verdict <held level windows> x 12           stage 2: the pooled calibration and the verdict
+//        sx_settings2 pair <a.pcm> <b.pcm> <episodes> <readings>  design aid: two streams compared, no instrument
+// exit 42 = ran
+extern fn malloc(size: i64) -> i64;
+extern fn free(ptr: i64);
+extern fn print_char(c: i64);
+extern fn print_int(x: i64);
+extern fn dvec_to_cstr(d: i64) -> i64;
+extern fn load_i64(base: i64, slot: i64) -> i64;
+extern fn store_i64(base: i64, slot: i64, val: i64);
+extern fn load_byte(buf: i64, off: i64) -> i64;
+extern fn store_byte(buf: i64, off: i64, val: i64);
+// use "senua_engine.sx"   // Senua AI engine: the gap instrument, the sensor noise, the seeded generator (not distributed)
+
+fn sq_nop() -> i64 { 0 }
+// the geometry and the one noise state: g [0] episodes [1] readings an episode [2] episodes a block [3] rng buffer
+// [4] pooled calibration: level-flagged windows [5] pooled calibration: windows
+fn sq_eps(g: i64) -> i64 { load_i64(g, 0) }
+fn sq_steps(g: i64) -> i64 { load_i64(g, 1) }
+fn sq_block(g: i64) -> i64 { load_i64(g, 2) }
+fn sq_n(g: i64) -> i64 { load_i64(g, 0) * load_i64(g, 1) }
+fn sq_new(eps: i64, steps: i64, seed: i64) -> i64 {
+    let g: i64 = malloc(64); let rp: i64 = malloc(16); store_i64(rp, 0, seed);
+    store_i64(g, 0, eps); store_i64(g, 1, steps); store_i64(g, 2, intdiv(eps, 3)); store_i64(g, 3, rp); store_i64(g, 4, 0); store_i64(g, 5, 0); store_i64(g, 6, 0);
+    g
+}
+fn sq_puts(c: i64) { let mut i: i64 = 0; while load_byte(c, i) != 0 { print_char(load_byte(c, i)); i = i + 1; } }
+fn sq_lbl(s: i64) { let c: i64 = dvec_to_cstr(s); sq_puts(c); free(c); }
+fn sq_num(s: i64, v: i64) { sq_lbl(s); print_int(v); }
+fn sq_both(a: i64, b: i64) -> i64 { if a != 0 { if b != 0 { 1 } else { 0 } } else { 0 } }
+fn sq_is(a: i64, lit_dv: i64) -> i64 { let b: i64 = dvec_to_cstr(lit_dv); let mut i: i64 = 0; let mut r: i64 = 2; while r == 2 { let x: i64 = load_byte(a, i); if x != load_byte(b, i) { r = 0; } else { if x == 0 { r = 1; } else { i = i + 1; } } } free(b); r }
+fn sq_int(s: i64) -> i64 { let mut v: i64 = 0; let mut i: i64 = 0; while load_byte(s, i) != 0 { v = v * 10 + (load_byte(s, i) - 48); i = i + 1; } v }
+// 1 normal, 2 test (0 unused): by block
+fn sq_role(g: i64, ep: i64, f: i64) -> i64 { (intdiv(ep, sq_block(g)) % 3 + 3 - f) % 3 }
+fn sq_put(dst: i64, o: i64, s: i64) -> i64 { let mut k: i64 = 0; while load_byte(s, k) != 0 { store_byte(dst, o + k, load_byte(s, k)); k = k + 1; } o + k }
+// a stream file as readings vals[episode * readings + step]; 0 when absent or the wrong size
+fn sq_load_path(g: i64, p: i64) -> i64 {
+    let meta: i64 = malloc(16); let b: i64 = os_file_read_all(p, meta); let nb: i64 = load_i64(meta, 0);
+    if b == 0 { free(meta); return 0; } else { let _: i64 = 0; }
+    let vals: i64 = ns_vec_pcm_to_vals(b, nb, 1, meta); let nf: i64 = load_i64(meta, 0); free(b); free(meta);
+    if nf != sq_n(g) { free(vals); return 0; } else { let _: i64 = 0; }
+    vals
+}
+// "<dir>/<scene>/<source>_enc.pcm" as readings vals[episode * readings + step]; 0 when absent or the wrong size
+fn sq_load(g: i64, dir: i64, scene: i64, src: i64) -> i64 {
+    let tail: i64 = dvec_to_cstr("_enc.pcm");
+    let p: i64 = malloc(cstr_len(dir) + cstr_len(scene) + cstr_len(src) + cstr_len(tail) + 8);
+    let mut o: i64 = sq_put(p, 0, dir); store_byte(p, o, 47); o = o + 1; o = sq_put(p, o, scene); store_byte(p, o, 47); o = o + 1; o = sq_put(p, o, src); o = sq_put(p, o, tail); store_byte(p, o, 0);
+    free(tail);
+    let vals: i64 = sq_load_path(g, p); free(p);
+    vals
+}
+// one run of a source under the world's sensor model, drawn from the one noise state (a fresh array)
+fn sq_noisy(g: i64, vals: i64) -> i64 {
+    let n: i64 = sq_n(g); let v: i64 = malloc(n * 8 + 64); let rp: i64 = load_i64(g, 3); let mut t: i64 = 0;
+    while t < n { store_i64(v, t, gw_clip16(load_i64(vals, t) + gw_noise(rp, 1))); t = t + 1; }
+    v
+}
+fn sq_zero(g: i64) -> i64 { let n: i64 = sq_n(g); let v: i64 = malloc(n * 8 + 64); let mut t: i64 = 0; while t < n { store_i64(v, t, 0); t = t + 1; } v }
+fn sq_abs(x: i64) -> i64 { if x < 0 { 0 - x } else { x } }
+// two noiseless streams compared: out [0] readings that differ [1] readings more than 1 count apart [2] the largest
+// difference [3] episodes with a reading more than 1 count apart [4] the earliest step of an episode at which two
+// readings are more than 1 count apart (-1 none)
+fn sq_diff_ep(g: i64, x: i64, y: i64, ep: i64, out: i64) {
+    let st: i64 = sq_steps(g); let mut t: i64 = 0; let mut hit: i64 = 0;
+    while t < st {
+        let d: i64 = sq_abs(load_i64(x, ep * st + t) - load_i64(y, ep * st + t));
+        if d != 0 { store_i64(out, 0, load_i64(out, 0) + 1); } else { let _: i64 = 0; }
+        if d > load_i64(out, 2) { store_i64(out, 2, d); } else { let _: i64 = 0; }
+        if d > 1 {
+            store_i64(out, 1, load_i64(out, 1) + 1);
+            if hit == 0 { hit = 1; if load_i64(out, 4) < 0 { store_i64(out, 4, t); } else { if t < load_i64(out, 4) { store_i64(out, 4, t); } else { let _: i64 = 0; } } } else { let _: i64 = 0; }
+        } else { let _: i64 = 0; }
+        t = t + 1;
+    }
+    if hit == 1 { store_i64(out, 3, load_i64(out, 3) + 1); } else { let _: i64 = 0; }
+}
+fn sq_diff(g: i64, x: i64, y: i64, out: i64) {
+    store_i64(out, 0, 0); store_i64(out, 1, 0); store_i64(out, 2, 0); store_i64(out, 3, 0); store_i64(out, 4, 0 - 1);
+    let mut ep: i64 = 0; while ep < sq_eps(g) { sq_diff_ep(g, x, y, ep, out); ep = ep + 1; }
+}
+// fold f's declared normal: runs A and B of the reference over the normal block's episodes, in order
+fn sq_normal(g: i64, a: i64, b: i64, f: i64) -> i64 {
+    let n0: i64 = sq_n(g); let st: i64 = sq_steps(g); let xa: i64 = malloc(n0 * 8 + 64); let xb: i64 = malloc(n0 * 8 + 64); let mut n: i64 = 0; let mut ep: i64 = 0;
+    while ep < sq_eps(g) {
+        if sq_role(g, ep, f) == 1 { let mut t: i64 = 0; while t < st { store_i64(xa, n, load_i64(a, ep * st + t)); store_i64(xb, n, load_i64(b, ep * st + t)); n = n + 1; t = t + 1; } } else { let _: i64 = 0; }
+        ep = ep + 1;
+    }
+    let h: i64 = rxg_declare(xa, xb, n); free(xa); free(xb); h
+}
+// one source's test episodes of fold f against run A of the reference: res = the module's six slots
+fn sq_test(g: i64, h: i64, src: i64, a: i64, f: i64, res: i64) {
+    let st: i64 = sq_steps(g); let r: i64 = malloc(st * 8 + 64); let mut z: i64 = 0; let mut ep: i64 = 0;
+    while z < 6 { store_i64(res, z, 0); z = z + 1; }
+    while ep < sq_eps(g) {
+        if sq_role(g, ep, f) == 2 {
+            rxg_residual(ptr_add(src, ep * st * 8), ptr_add(a, ep * st * 8), st, r);
+            rxg_read(h, r, st, res, 0);
+        } else { let _: i64 = 0; }
+        ep = ep + 1;
+    }
+    free(r);
+}
+fn sq_line(name: i64, res: i64) {
+    sq_lbl("  "); sq_puts(name); sq_num(" level ", rxg_level(res)); sq_num(" of ", rxg_windows(res)); sq_num(" change ", rxg_change(res)); sq_num(" magnitude ", rxg_magnitude(res)); print_char(10);
+}
+// 1 when a reading is DETECTED: more level-flagged windows than the bar of stage 0 (g[6]): the count that 1 in 100
+// calibration readings on noise alone exceed, at this geometry. No reading is compared with a hand-set share.
+fn sq_det(g: i64, res: i64) -> i64 { if rxg_level(res) > load_i64(g, 6) { 1 } else { 0 } }
+// the range of a noiseless stream: out [0] min [1] max [2] readings at the s16 ceiling
+fn sq_range(g: i64, v: i64, out: i64) {
+    let n: i64 = sq_n(g); let mut lo: i64 = 32767; let mut hi: i64 = 0 - 32767; let mut sat: i64 = 0; let mut t: i64 = 0;
+    while t < n { let x: i64 = load_i64(v, t); if x < lo { lo = x; } else { let _: i64 = 0; } if x > hi { hi = x; } else { let _: i64 = 0; } if x >= 32767 { sat = sat + 1; } else { if x <= 0 - 32767 { sat = sat + 1; } else { let _: i64 = 0; } } t = t + 1; }
+    store_i64(out, 0, lo); store_i64(out, 1, hi); store_i64(out, 2, sat);
+}
+fn sq_rung(names: i64, i: i64) -> i64 { load_i64(names, i) }
+// stage 1, one source against its reference: range and how far apart the two noiseless streams are
+fn sq_count_line(g: i64, label_dv: i64, name: i64, v: i64, ref0: i64) {
+    let rg: i64 = malloc(32); let df: i64 = malloc(48); sq_range(g, v, rg); sq_diff(g, v, ref0, df);
+    sq_lbl(label_dv); sq_puts(name); sq_num(" min ", load_i64(rg, 0)); sq_num(" max ", load_i64(rg, 1)); sq_num(" at_ceiling ", load_i64(rg, 2));
+    sq_num(" identical_to_reference ", if load_i64(df, 0) == 0 { 1 } else { 0 }); sq_num(" readings_differing ", load_i64(df, 0)); sq_num(" more_than_1_count ", load_i64(df, 1)); sq_num(" largest ", load_i64(df, 2)); sq_num(" episodes_parting ", load_i64(df, 3)); sq_num(" earliest_step ", load_i64(df, 4)); print_char(10);
+    free(rg); free(df);
+}
+// A ladder of one scene, as a slab ld: [0] scene [1] ladder name [2] names (C strings, coarse to fine) [3] rungs
+// [4] the shipped rung's position (-1 none) [5] kind [6] refined reference name (0 none) [7] reference name
+// [8] the reference's readings [9] the rungs' readings [10] rung identical to the reference [11] the refined
+// reference's readings [12] refined identical to the reference.
+// kind 0 a ladder whose reference check decides (G1, A1, R0); 3 a ladder whose reference check is reported (G1, A1);
+// 1 the control with no causal tie (N0); 2 reported only.
+// Returns 1 every fold held, 0 one fired, -1 an input is missing.
+fn sq_missing(scene: i64, name: i64) { sq_lbl("MISSING "); sq_puts(scene); print_char(47); sq_puts(name); print_char(10); }
+fn sq_ladder(g: i64, dir: i64, scene: i64, lname: i64, ref: i64, names: i64, nr: i64, ship: i64, kind: i64, rplus: i64, count: i64) -> i64 {
+    let ref0: i64 = sq_load(g, dir, scene, ref);
+    if ref0 == 0 { sq_missing(scene, ref); return 0 - 1; } else { let _: i64 = 0; }
+    let raw: i64 = malloc(nr * 8 + 64); let same: i64 = malloc(nr * 8 + 64); let mut miss: i64 = 0; let mut i: i64 = 0;
+    while i < nr { let v: i64 = sq_load(g, dir, scene, sq_rung(names, i)); store_i64(raw, i, v); if v == 0 { miss = 1; sq_missing(scene, sq_rung(names, i)); store_i64(same, i, 0); } else { store_i64(same, i, sq_same(g, v, ref0)); } i = i + 1; }
+    let mut rp0: i64 = 0; let mut rpsame: i64 = 0;
+    if rplus != 0 { rp0 = sq_load(g, dir, scene, rplus); if rp0 == 0 { miss = 1; sq_missing(scene, rplus); } else { rpsame = sq_same(g, rp0, ref0); } } else { let _: i64 = 0; }
+    if miss == 1 { return 0 - 1; } else { let _: i64 = 0; }
+    let ld: i64 = malloc(128);
+    store_i64(ld, 0, scene); store_i64(ld, 1, lname); store_i64(ld, 2, names); store_i64(ld, 3, nr); store_i64(ld, 4, ship); store_i64(ld, 5, kind); store_i64(ld, 6, rplus);
+    store_i64(ld, 7, ref); store_i64(ld, 8, ref0); store_i64(ld, 9, raw); store_i64(ld, 10, same); store_i64(ld, 11, rp0); store_i64(ld, 12, rpsame);
+    if count != 0 { return sq_count(g, ld); } else { let _: i64 = 0; }
+    let mut ok: i64 = 1; let mut f: i64 = 0;
+    while f < 3 { if sq_fold(g, ld, f) == 0 { ok = 0; } else { let _: i64 = 0; } f = f + 1; }
+    ok
+}
+// 1 when two noiseless streams are the same reading for reading
+fn sq_same(g: i64, x: i64, y: i64) -> i64 { let n: i64 = sq_n(g); let mut same: i64 = 1; let mut t: i64 = 0; while t < n { if load_i64(x, t) != load_i64(y, t) { same = 0; } else { let _: i64 = 0; } t = t + 1; } same }
+// stage 1 for one ladder
+fn sq_count(g: i64, ld: i64) -> i64 {
+    let scene: i64 = load_i64(ld, 0); let names: i64 = load_i64(ld, 2); let nr: i64 = load_i64(ld, 3); let rplus: i64 = load_i64(ld, 6); let ref0: i64 = load_i64(ld, 8); let raw: i64 = load_i64(ld, 9);
+    let rg: i64 = malloc(32); sq_range(g, ref0, rg);
+    sq_lbl("COUNT "); sq_puts(scene); print_char(32); sq_puts(load_i64(ld, 1)); sq_lbl(" reference "); sq_puts(load_i64(ld, 7)); sq_num(" readings ", sq_n(g)); sq_num(" min ", load_i64(rg, 0)); sq_num(" max ", load_i64(rg, 1)); sq_num(" at_ceiling ", load_i64(rg, 2)); print_char(10);
+    let mut i: i64 = 0;
+    while i < nr { sq_count_line(g, "  rung ", sq_rung(names, i), load_i64(raw, i), ref0); i = i + 1; }
+    if rplus != 0 { sq_count_line(g, "  refined ", rplus, load_i64(ld, 11), ref0); } else { let _: i64 = 0; }
+    free(rg); 1
+}
+// the rungs of one fold, coarse to fine: every line; v [0] first non-identical rung (-1 none) [1] G1 [2] A1
+// [3] any rung detected [4] finest detected rung (-1 none) [5] rungs identical to the reference
+fn sq_rungs(g: i64, ld: i64, h: i64, a: i64, f: i64, rc: i64, rr: i64, v: i64) {
+    let names: i64 = load_i64(ld, 2); let nr: i64 = load_i64(ld, 3); let raw: i64 = load_i64(ld, 9); let same: i64 = load_i64(ld, 10);
+    let mut i: i64 = 0; let mut first: i64 = 0 - 1; let mut anydet: i64 = 0; let mut undet_seen: i64 = 0; let mut prev: i64 = 0 - 1; let mut a1: i64 = 1; let mut finest: i64 = 0 - 1; let mut g1: i64 = 0; let mut nsame: i64 = 0;
+    while i < nr {
+        let res: i64 = ptr_add(rr, i * 64);
+        if load_i64(same, i) == 1 { nsame = nsame + 1; sq_lbl("  "); sq_puts(sq_rung(names, i)); sq_lbl(" IS the reference (identical stream)\n"); } else {
+            let nz: i64 = sq_noisy(g, load_i64(raw, i));
+            sq_test(g, h, nz, a, f, res); sq_line(sq_rung(names, i), res); free(nz);
+            let det: i64 = sq_det(g, res);
+            if first < 0 { first = i; g1 = det; } else { let _: i64 = 0; }
+            if det == 1 {
+                anydet = 1; finest = i;
+                if undet_seen == 1 { a1 = 0; } else { let _: i64 = 0; }
+                if prev >= 0 { if rxg_magnitude(res) >= prev { a1 = 0; } else { let _: i64 = 0; } } else { let _: i64 = 0; }
+                prev = rxg_magnitude(res);
+            } else { undet_seen = 1; }
+        }
+        i = i + 1;
+    }
+    store_i64(v, 0, first); store_i64(v, 1, g1); store_i64(v, 2, a1); store_i64(v, 3, anydet); store_i64(v, 4, finest); store_i64(v, 5, nsame);
+}
+// the refined reference of one fold, read like a rung: returns R0, 1 when it is not detected (or is the reference)
+fn sq_refined(g: i64, ld: i64, h: i64, a: i64, f: i64, rc: i64) -> i64 {
+    let rplus: i64 = load_i64(ld, 6);
+    if rplus == 0 { return 1; } else { let _: i64 = 0; }
+    if load_i64(ld, 12) == 1 { sq_lbl("  refined "); sq_puts(rplus); sq_lbl(" IS the reference (identical stream)\n"); return 1; } else { let _: i64 = 0; }
+    let rq: i64 = malloc(64); let nq: i64 = sq_noisy(g, load_i64(ld, 11)); sq_test(g, h, nq, a, f, rq); free(nq);
+    sq_lbl("  refined"); sq_line(rplus, rq);
+    let r0: i64 = if sq_det(g, rq) == 1 { 0 } else { 1 };
+    free(rq); r0
+}
+// one fold of one ladder: its own noisy runs, every line and the verdicts; returns 1 when the cell held
+fn sq_fold(g: i64, ld: i64, f: i64) -> i64 {
+    let nr: i64 = load_i64(ld, 3); let ship: i64 = load_i64(ld, 4); let kind: i64 = load_i64(ld, 5); let ref0: i64 = load_i64(ld, 8);
+    let a: i64 = sq_noisy(g, ref0); let b: i64 = sq_noisy(g, ref0); let c: i64 = sq_noisy(g, ref0);
+    let h: i64 = sq_normal(g, a, b, f);
+    sq_lbl("CELL "); sq_puts(load_i64(ld, 0)); print_char(32); sq_puts(load_i64(ld, 1)); sq_num(" fold ", f); sq_num(" normal usable ", rxg_ok(h)); print_char(10);
+    if rxg_ok(h) == 0 { free(a); free(b); free(c); rxg_free(h); return 0; } else { let _: i64 = 0; }
+    let rc: i64 = malloc(64); let rr: i64 = malloc(nr * 64 + 64); let v: i64 = malloc(64);
+    sq_test(g, h, c, a, f, rc);
+    let refname: i64 = dvec_to_cstr("reference_C"); sq_line(refname, rc); free(refname);
+    if kind != 2 { store_i64(g, 4, load_i64(g, 4) + rxg_level(rc)); store_i64(g, 5, load_i64(g, 5) + rxg_windows(rc)); } else { let _: i64 = 0; }
+    sq_rungs(g, ld, h, a, f, rc, rr, v);
+    let r0: i64 = sq_refined(g, ld, h, a, f, rc);
+    let first: i64 = load_i64(v, 0); let g1: i64 = load_i64(v, 1); let a1: i64 = load_i64(v, 2);
+    let ladder_held: i64 = if first < 0 { 1 } else { sq_both(g1, a1) };
+    let n0: i64 = if load_i64(v, 3) == 0 { 1 } else { 0 };
+    let held: i64 = if kind == 0 { sq_both(ladder_held, r0) } else { if kind == 3 { ladder_held } else { if kind == 1 { n0 } else { 1 } } };
+    sq_num("  calibration_in_10000 ", intdiv(rxg_level(rc) * 10000, rxg_windows(rc)));
+    if kind == 0 { if first < 0 { sq_lbl(" ladder empty (every rung is the reference)"); } else { sq_num(" G1 ", g1); sq_num(" A1 ", a1); } sq_num(" R0 ", r0); } else { let _: i64 = 0; }
+    if kind == 3 { if first < 0 { sq_lbl(" ladder empty (every rung is the reference)"); } else { sq_num(" G1 ", g1); sq_num(" A1 ", a1); } sq_num(" R0_reported ", r0); } else { let _: i64 = 0; }
+    if kind == 1 { sq_num(" N0 ", n0); if load_i64(v, 5) == nr { sq_lbl(" control empty (identical stream)"); } else { let _: i64 = 0; } } else { let _: i64 = 0; }
+    sq_num(" ; finest detected rung ", load_i64(v, 4));
+    if ship >= 0 { if load_i64(load_i64(ld, 10), ship) == 0 { sq_num(" ; shipped rung magnitude ", rxg_magnitude(ptr_add(rr, ship * 64))); } else { sq_lbl(" ; shipped rung is the reference"); } } else { let _: i64 = 0; }
+    sq_num(" ; held ", held);
+    print_char(10);
+    free(a); free(b); free(c); free(rc); free(rr); free(v); rxg_free(h);
+    held
+}
+// A CHAIN of one scene, as a slab cs: [0] scene [1] chain name [2] names (C strings, coarse to fine) [3] sources
+// [4] the sources' readings. Gap i is source i read against source i + 1 (the next finer setting): no source is
+// called a reference. Each gap of each fold draws its own noisy runs of the finer source (A, B, C).
+// one gap of one fold: prints its line; returns 1 detected, 0 not detected, 2 the two streams are identical,
+// 3 the declared normal was not usable. out [0] = the gated magnitude.
+fn sq_gap(g: i64, cs: i64, i: i64, f: i64, out: i64) -> i64 {
+    let names: i64 = load_i64(cs, 2); let raws: i64 = load_i64(cs, 4); let coarse: i64 = load_i64(raws, i); let fine: i64 = load_i64(raws, i + 1);
+    store_i64(out, 0, 0);
+    sq_lbl("  gap "); sq_puts(sq_rung(names, i)); sq_lbl(" against "); sq_puts(sq_rung(names, i + 1));
+    if sq_same(g, coarse, fine) == 1 { sq_lbl(" IDENTICAL streams\n"); return 2; } else { let _: i64 = 0; }
+    let a: i64 = sq_noisy(g, fine); let b: i64 = sq_noisy(g, fine); let c: i64 = sq_noisy(g, fine);
+    let h: i64 = sq_normal(g, a, b, f);
+    if rxg_ok(h) == 0 { sq_lbl(" normal not usable\n"); free(a); free(b); free(c); rxg_free(h); return 3; } else { let _: i64 = 0; }
+    let rc: i64 = malloc(64); let res: i64 = malloc(64);
+    sq_test(g, h, c, a, f, rc);
+    store_i64(g, 4, load_i64(g, 4) + rxg_level(rc)); store_i64(g, 5, load_i64(g, 5) + rxg_windows(rc));
+    let nz: i64 = sq_noisy(g, coarse); sq_test(g, h, nz, a, f, res); free(nz);
+    let det: i64 = sq_det(g, res);
+    sq_num(" level ", rxg_level(res)); sq_num(" of ", rxg_windows(res)); sq_num(" change ", rxg_change(res)); sq_num(" magnitude ", rxg_magnitude(res)); sq_num(" ; calibration level ", rxg_level(rc)); sq_num(" detected ", det); print_char(10);
+    store_i64(out, 0, rxg_magnitude(res));
+    free(a); free(b); free(c); free(rc); free(res); rxg_free(h);
+    det
+}
+// one fold of a chain: every gap, then the verdicts. G1 the coarsest gap that is not identical is detected; A1
+// among the detected gaps the magnitude falls at every step toward the fine end, and no gap that is not detected
+// lies coarser than one that is. Returns 1 when the cell held.
+fn sq_chain_fold(g: i64, cs: i64, f: i64) -> i64 {
+    let n: i64 = load_i64(cs, 3); let out: i64 = malloc(16);
+    sq_lbl("CELL "); sq_puts(load_i64(cs, 0)); print_char(32); sq_puts(load_i64(cs, 1)); sq_num(" fold ", f); print_char(10);
+    let mut i: i64 = 0; let mut first: i64 = 0 - 1; let mut g1: i64 = 0; let mut a1: i64 = 1; let mut undet_seen: i64 = 0; let mut prev: i64 = 0 - 1; let mut finest: i64 = 0 - 1; let mut bad: i64 = 0;
+    while i < n - 1 {
+        let d: i64 = sq_gap(g, cs, i, f, out);
+        if d == 3 { bad = 1; } else { let _: i64 = 0; }
+        if d == 1 {
+            if first < 0 { first = i; g1 = 1; } else { let _: i64 = 0; }
+            finest = i;
+            if undet_seen == 1 { a1 = 0; } else { let _: i64 = 0; }
+            if prev >= 0 { if load_i64(out, 0) >= prev { a1 = 0; } else { let _: i64 = 0; } } else { let _: i64 = 0; }
+            prev = load_i64(out, 0);
+        } else { let _: i64 = 0; }
+        if d == 0 { if first < 0 { first = i; g1 = 0; } else { let _: i64 = 0; } undet_seen = 1; } else { let _: i64 = 0; }
+        i = i + 1;
+    }
+    free(out);
+    let held: i64 = if bad == 1 { 0 } else { if first < 0 { 1 } else { sq_both(g1, a1) } };
+    if first < 0 { sq_lbl("  chain empty (every gap is identical)"); } else { sq_num("  G1 ", g1); sq_num(" A1 ", a1); }
+    sq_num(" ; finest detected gap ", finest); sq_num(" ; held ", held); print_char(10);
+    held
+}
+// stage 1 for a chain: each gap's two noiseless streams compared
+fn sq_chain_count(g: i64, cs: i64) -> i64 {
+    let names: i64 = load_i64(cs, 2); let n: i64 = load_i64(cs, 3); let raws: i64 = load_i64(cs, 4); let rg: i64 = malloc(32); let df: i64 = malloc(48);
+    sq_lbl("COUNT "); sq_puts(load_i64(cs, 0)); print_char(32); sq_puts(load_i64(cs, 1)); sq_num(" readings ", sq_n(g)); print_char(10);
+    let mut i: i64 = 0;
+    while i < n { sq_range(g, load_i64(raws, i), rg); sq_lbl("  source "); sq_puts(sq_rung(names, i)); sq_num(" min ", load_i64(rg, 0)); sq_num(" max ", load_i64(rg, 1)); sq_num(" at_ceiling ", load_i64(rg, 2)); print_char(10); i = i + 1; }
+    i = 0;
+    while i < n - 1 {
+        sq_diff(g, load_i64(raws, i), load_i64(raws, i + 1), df);
+        sq_lbl("  gap "); sq_puts(sq_rung(names, i)); sq_lbl(" against "); sq_puts(sq_rung(names, i + 1)); sq_num(" identical ", if load_i64(df, 0) == 0 { 1 } else { 0 }); sq_num(" readings_differing ", load_i64(df, 0)); sq_num(" more_than_1_count ", load_i64(df, 1)); sq_num(" largest ", load_i64(df, 2)); sq_num(" episodes_parting ", load_i64(df, 3)); sq_num(" earliest_step ", load_i64(df, 4)); print_char(10);
+        i = i + 1;
+    }
+    free(rg); free(df); 1
+}
+// Returns 1 every fold held, 0 one fired, -1 an input is missing.
+fn sq_chain(g: i64, dir: i64, scene: i64, lname: i64, names: i64, n: i64, count: i64) -> i64 {
+    let raws: i64 = malloc(n * 8 + 64); let mut miss: i64 = 0; let mut i: i64 = 0;
+    while i < n { let v: i64 = sq_load(g, dir, scene, sq_rung(names, i)); store_i64(raws, i, v); if v == 0 { miss = 1; sq_missing(scene, sq_rung(names, i)); } else { let _: i64 = 0; } i = i + 1; }
+    if miss == 1 { return 0 - 1; } else { let _: i64 = 0; }
+    let cs: i64 = malloc(64); store_i64(cs, 0, scene); store_i64(cs, 1, lname); store_i64(cs, 2, names); store_i64(cs, 3, n); store_i64(cs, 4, raws);
+    if count != 0 { return sq_chain_count(g, cs); } else { let _: i64 = 0; }
+    let mut ok: i64 = 1; let mut f: i64 = 0;
+    while f < 3 { if sq_chain_fold(g, cs, f) == 0 { ok = 0; } else { let _: i64 = 0; } f = f + 1; }
+    ok
+}
+fn sq_names6(n0: i64, n1: i64, n2: i64, n3: i64, n4: i64, n5: i64) -> i64 {
+    let p: i64 = malloc(64); store_i64(p, 0, dvec_to_cstr(n0)); store_i64(p, 1, dvec_to_cstr(n1)); store_i64(p, 2, dvec_to_cstr(n2)); store_i64(p, 3, dvec_to_cstr(n3)); store_i64(p, 4, dvec_to_cstr(n4)); store_i64(p, 5, dvec_to_cstr(n5)); p
+}
+fn sq_names(n0: i64, n1: i64, n2: i64, n3: i64, n4: i64) -> i64 {
+    let p: i64 = malloc(64); store_i64(p, 0, dvec_to_cstr(n0)); store_i64(p, 1, dvec_to_cstr(n1)); store_i64(p, 2, dvec_to_cstr(n2)); store_i64(p, 3, dvec_to_cstr(n3)); store_i64(p, 4, dvec_to_cstr(n4)); p
+}
+// NOISE SLOTS. The work is split over processes. Each process takes its noise from its own slot of the ONE sequence
+// (seed 4201): slot k
+// starts 12,000,000 draws after slot k - 1, and no process draws that many (the largest draws under 9,000,000).
+// Slots 0 .. 11 = stage 2 (scene * 4 + part); slots 12 .. 17 = stage 0 chunks.
+fn sq_skip_slot(rp: i64) { let mut s: i64 = load_i64(rp, 0); let mut i: i64 = 0; while i < 12000000 { s = ef_rng_next(s); i = i + 1; } store_i64(rp, 0, s); }
+fn sq_skip(g: i64, slots: i64) { let rp: i64 = load_i64(g, 3); let mut k: i64 = 0; while k < slots { sq_skip_slot(rp); k = k + 1; } }
+// one part of one scene: 0 the ladder S, 1 the chain T, 2 the chain C, 3 the control N and the reported sources.
+// part < 0 = every part (stage 1). Returns 1 held, 0 fired, -1 an input is missing.
+fn sq_part(g: i64, dir: i64, scene: i64, part: i64, count: i64) -> i64 {
+    let sref: i64 = dvec_to_cstr("sref"); let mut r: i64 = 1;
+    if sq_both(if part < 0 { 1 } else { if part == 0 { 1 } else { 0 } }, 1) == 1 {
+        let ls: i64 = dvec_to_cstr("S_solver_convergence"); let sref2: i64 = dvec_to_cstr("sref2");
+        let s: i64 = sq_ladder(g, dir, scene, ls, sref, sq_names("s1", "s2", "s4", "s8", "s16"), 5, 2, 0, sref2, count);
+        if s < 0 { r = 0 - 1; } else { if r > 0 { r = s; } else { let _: i64 = 0; } }
+    } else { let _: i64 = 0; }
+    if sq_both(if part < 0 { 1 } else { if part == 1 { 1 } else { 0 } }, if r < 0 { 0 } else { 1 }) == 1 {
+        let lt: i64 = dvec_to_cstr("T_time_step_chain");
+        let t: i64 = sq_chain(g, dir, scene, lt, sq_names6("sref", "t2", "t4", "t8", "t16", "t16"), 5, count);
+        if t < 0 { r = 0 - 1; } else { if r > 0 { r = t; } else { let _: i64 = 0; } }
+    } else { let _: i64 = 0; }
+    if sq_both(if part < 0 { 1 } else { if part == 2 { 1 } else { 0 } }, if r < 0 { 0 } else { 1 }) == 1 {
+        let lc: i64 = dvec_to_cstr("C_contact_smoothing_chain");
+        let c: i64 = sq_chain(g, dir, scene, lc, sq_names6("c10", "sref", "c2", "c1", "c06", "c03"), 6, count);
+        if c < 0 { r = 0 - 1; } else { if r > 0 { r = c; } else { let _: i64 = 0; } }
+    } else { let _: i64 = 0; }
+    if sq_both(if part < 0 { 1 } else { if part == 3 { 1 } else { 0 } }, if r < 0 { 0 } else { 1 }) == 1 {
+        r = sq_part_n(g, dir, scene, sref, count, r);
+    } else { let _: i64 = 0; }
+    r
+}
+// the control N (deciding) and the reported sources P, Q, H, B, X (their verdicts decide nothing)
+fn sq_part_n(g: i64, dir: i64, scene: i64, sref: i64, count: i64, r0: i64) -> i64 {
+    let ln: i64 = dvec_to_cstr("N_no_causal_tie"); let lp: i64 = dvec_to_cstr("P_precision_reported"); let lq: i64 = dvec_to_cstr("Q_solver_tolerance_reported");
+    let lh: i64 = dvec_to_cstr("H_second_order_at_fine_step_reported"); let lb: i64 = dvec_to_cstr("B_second_order_refined_reported"); let lx: i64 = dvec_to_cstr("X_default_against_finest_step_reported");
+    let s4: i64 = dvec_to_cstr("s4"); let t16: i64 = dvec_to_cstr("t16"); let b32: i64 = dvec_to_cstr("b32");
+    let n: i64 = sq_ladder(g, dir, scene, ln, sref, sq_names("nref", "nref", "nref", "nref", "nref"), 1, 0 - 1, 1, 0, count);
+    let p: i64 = sq_ladder(g, dir, scene, lp, s4, sq_names("ship32", "ship32", "ship32", "ship32", "ship32"), 1, 0 - 1, 2, 0, count);
+    let q: i64 = sq_ladder(g, dir, scene, lq, sref, sq_names("tight", "tight", "tight", "tight", "tight"), 1, 0 - 1, 2, 0, count);
+    let hh: i64 = sq_ladder(g, dir, scene, lh, t16, sq_names("b16", "b16", "b16", "b16", "b16"), 1, 0 - 1, 2, 0, count);
+    let bb: i64 = sq_ladder(g, dir, scene, lb, b32, sq_names("b16", "b16", "b16", "b16", "b16"), 1, 0 - 1, 2, 0, count);
+    let x: i64 = sq_ladder(g, dir, scene, lx, t16, sq_names("ship32", "sref", "sref", "sref", "sref"), 2, 0 - 1, 2, 0, count);
+    if n < 0 { return 0 - 1; } else { let _: i64 = 0; }
+    if p < 0 { return 0 - 1; } else { let _: i64 = 0; }
+    if q < 0 { return 0 - 1; } else { let _: i64 = 0; }
+    if hh < 0 { return 0 - 1; } else { let _: i64 = 0; }
+    if bb < 0 { return 0 - 1; } else { let _: i64 = 0; }
+    if x < 0 { return 0 - 1; } else { let _: i64 = 0; }
+    if r0 > 0 { n } else { r0 }
+}
+// stage 0: one calibration reading on noise alone (the reference cancels in run C minus run A, so a stream of zeros
+// stands for any reference). Returns the level-flagged windows; out [0] = the windows read.
+fn sq_null_one(g: i64, z: i64, i: i64, out: i64) -> i64 {
+    let a: i64 = sq_noisy(g, z); let b: i64 = sq_noisy(g, z); let c: i64 = sq_noisy(g, z);
+    let f: i64 = i % 3; let h: i64 = sq_normal(g, a, b, f); let res: i64 = malloc(64); let mut lev: i64 = 0 - 1;
+    if rxg_ok(h) == 1 { sq_test(g, h, c, a, f, res); lev = rxg_level(res); store_i64(out, 0, rxg_windows(res)); } else { let _: i64 = 0; }
+    free(a); free(b); free(c); free(res); rxg_free(h);
+    lev
+}
+// stage 0, one chunk: n readings, one line each
+fn sq_null(g: i64, n: i64, chunk: i64) -> i64 {
+    let z: i64 = sq_zero(g); let out: i64 = malloc(16); let mut i: i64 = 0; let mut bad: i64 = 0;
+    while i < n {
+        let lev: i64 = sq_null_one(g, z, i, out);
+        if lev < 0 { bad = 1; } else { sq_num("NULL chunk ", chunk); sq_num(" reading ", i); sq_num(" level ", lev); sq_num(" of ", load_i64(out, 0)); print_char(10); }
+        i = i + 1;
+    }
+    if bad == 1 { sq_lbl("a declared normal was not usable\n"); return 1; } else { let _: i64 = 0; }
+    42
+}
+// ascending insertion sort of v[0, n)
+fn sq_sort_in(v: i64, i: i64) { let x: i64 = load_i64(v, i); let mut j: i64 = i - 1; let mut go: i64 = 1; while go == 1 { if j < 0 { go = 0; } else { if load_i64(v, j) > x { store_i64(v, j + 1, load_i64(v, j)); j = j - 1; } else { go = 0; } } } store_i64(v, j + 1, x); }
+fn sq_sort(v: i64, n: i64) { let mut i: i64 = 1; while i < n { sq_sort_in(v, i); i = i + 1; } }
+// the whole numbers of a text file, in order; out [0] = how many
+fn sq_ints(path: i64, out: i64) -> i64 {
+    let meta: i64 = malloc(16); let b: i64 = os_file_read_all(path, meta); let nb: i64 = load_i64(meta, 0); free(meta);
+    if b == 0 { store_i64(out, 0, 0); return 0; } else { let _: i64 = 0; }
+    let v: i64 = malloc(nb * 8 + 64); let mut n: i64 = 0; let mut i: i64 = 0; let mut cur: i64 = 0; let mut inn: i64 = 0;
+    while i < nb {
+        let ch: i64 = load_byte(b, i);
+        if ch >= 48 { if ch <= 57 { cur = cur * 10 + (ch - 48); inn = 1; } else { if inn == 1 { store_i64(v, n, cur); n = n + 1; cur = 0; inn = 0; } else { let _: i64 = 0; } } } else { if inn == 1 { store_i64(v, n, cur); n = n + 1; cur = 0; inn = 0; } else { let _: i64 = 0; } }
+        i = i + 1;
+    }
+    if inn == 1 { store_i64(v, n, cur); n = n + 1; } else { let _: i64 = 0; }
+    free(b); store_i64(out, 0, n); v
+}
+// stage 0, the summary of every chunk's readings (a file of their levels, one a line): the pooled share, how often
+// one reading exceeds 2 in 100, and the detection BAR: the level that at most 1 in 100 readings exceed.
+fn sq_bar(g: i64, path: i64) -> i64 {
+    let out: i64 = malloc(16); let v: i64 = sq_ints(path, out); let n: i64 = load_i64(out, 0);
+    if n < 100 { sq_lbl("BAR needs at least 100 readings\n"); return 1; } else { let _: i64 = 0; }
+    let w: i64 = (sq_steps(g) - csc_lib_window() + 1) * sq_block(g);
+    let mut i: i64 = 0; let mut tl: i64 = 0; let mut over: i64 = 0;
+    while i < n { let lev: i64 = load_i64(v, i); tl = tl + lev; if lev * 100 > 2 * w { over = over + 1; } else { let _: i64 = 0; } i = i + 1; }
+    sq_sort(v, n);
+    let above: i64 = intdiv(n * csc_lib_pfa_num(), csc_lib_pfa_den()); let k: i64 = n - 1 - above;
+    sq_num("STAGE0 readings ", n); sq_num(" windows_a_reading ", w); sq_num(" pooled_level ", tl); sq_num(" pooled_in_10000 ", intdiv(intdiv(tl * 100, n) * 100, w)); sq_num(" readings_over_2_in_100 ", over); print_char(10);
+    sq_num("STAGE0 smallest ", load_i64(v, 0)); sq_num(" median ", load_i64(v, intdiv(n, 2))); sq_num(" nine_in_ten_stay_under ", load_i64(v, intdiv(n * 9, 10))); sq_num(" largest ", load_i64(v, n - 1)); print_char(10);
+    sq_num("STAGE0 BAR ", load_i64(v, k)); sq_num(" readings_above_the_bar ", above); sq_num(" of ", n); print_char(10);
+    42
+}
+// design aid, no instrument: two stream files compared reading for reading
+fn sq_pair(g: i64, pa: i64, pb: i64) -> i64 {
+    let x: i64 = sq_load_path(g, pa); let y: i64 = sq_load_path(g, pb);
+    if x == 0 { sq_lbl("PAIR a stream is missing or the wrong size\n"); return 1; } else { let _: i64 = 0; }
+    if y == 0 { sq_lbl("PAIR a stream is missing or the wrong size\n"); return 1; } else { let _: i64 = 0; }
+    let df: i64 = malloc(48); sq_diff(g, x, y, df);
+    sq_num("PAIR readings ", sq_n(g)); sq_num(" differing ", load_i64(df, 0)); sq_num(" more_than_1_count ", load_i64(df, 1)); sq_num(" largest ", load_i64(df, 2)); sq_num(" episodes_parting ", load_i64(df, 3)); sq_num(" of ", sq_eps(g)); sq_num(" earliest_step ", load_i64(df, 4)); print_char(10);
+    free(df); 42
+}
+// the verdict over the twelve parts: argv[2 ..] = held, calibration level, calibration windows for each part
+fn sq_verdict(argc: i64, argv: i64) -> i64 {
+    let mut i: i64 = 2; let mut all: i64 = 1; let mut pl: i64 = 0; let mut pw: i64 = 0; let mut parts: i64 = 0;
+    while i + 2 < argc {
+        if sq_int(load_i64(argv, i)) != 1 { all = 0; } else { let _: i64 = 0; }
+        pl = pl + sq_int(load_i64(argv, i + 1)); pw = pw + sq_int(load_i64(argv, i + 2)); parts = parts + 1; i = i + 3;
+    }
+    if parts != 12 { sq_num("VERDICT needs twelve parts, got ", parts); print_char(10); return 1; } else { let _: i64 = 0; }
+    let g0v: i64 = if pl * 100 <= 2 * pw { 1 } else { 0 };
+    sq_num("G0 pooled calibration level ", pl); sq_num(" of ", pw); sq_num(" in_10000 ", intdiv(intdiv(pl * 100, 9) * 100, intdiv(pw, 9))); sq_num(" held ", g0v); print_char(10);
+    sq_num("PARTS held ", all); print_char(10);
+    sq_lbl("THESIS every cell (G1, A1 and R0 on the ladder S; G1 and A1 on the chains T and C; N0 on the control) and the pooled G0: "); sq_lbl(if sq_both(g0v, all) == 1 { "PASS" } else { "FAIL" }); print_char(10);
+    42
+}
+fn sq_usage() -> i64 { sq_lbl("usage: sx_settings2 null <episodes> <readings> <n> <chunk> | bar <episodes> <readings> <levels file> | count <streams dir> <episodes> <readings> | run <streams dir> <episodes> <readings> <bar> <scene 0-2> <part 0-3> | verdict <held level windows> x 12 | pair <a.pcm> <b.pcm> <episodes> <readings>\n"); 1 }
+fn sq_header(g: i64) { sq_num("LIBRARY window ", csc_lib_window()); sq_num(" pfa ", csc_lib_pfa_num()); sq_num(" / ", csc_lib_pfa_den()); sq_num(" declared normal needs ", rxg_need()); sq_num(" episodes ", sq_eps(g)); sq_num(" readings each ", sq_steps(g)); sq_num(" a block ", sq_block(g) * sq_steps(g)); }
+fn sq_scene_name(k: i64) -> i64 { if k == 0 { dvec_to_cstr("cart_pole") } else { if k == 1 { dvec_to_cstr("half_cheetah") } else { dvec_to_cstr("ant") } } }
+fn main(argc: i64, argv: i64) -> i64 {
+    let _a: i64 = sq_nop(); let _b: i64 = csc_nop(); let _c: i64 = vor_nop(); let _d: i64 = ns_marker(); let _e: i64 = gw_nop(); let _f: i64 = rxg_nop();
+    if argc < 5 { return sq_usage(); } else { let _: i64 = 0; }
+    let mode: i64 = load_i64(argv, 1);
+    if sq_is(mode, "verdict") == 1 { return sq_verdict(argc, argv); } else { let _: i64 = 0; }
+    if sq_is(mode, "pair") == 1 { if argc < 6 { return sq_usage(); } else { let _: i64 = 0; } let gp: i64 = sq_new(sq_int(load_i64(argv, 4)), sq_int(load_i64(argv, 5)), 1); return sq_pair(gp, load_i64(argv, 2), load_i64(argv, 3)); } else { let _: i64 = 0; }
+    if sq_is(mode, "bar") == 1 { let gb: i64 = sq_new(sq_int(load_i64(argv, 2)), sq_int(load_i64(argv, 3)), 1); return sq_bar(gb, load_i64(argv, 4)); } else { let _: i64 = 0; }
+    if sq_is(mode, "null") == 1 {
+        if argc < 6 { return sq_usage(); } else { let _: i64 = 0; }
+        let g0: i64 = sq_new(sq_int(load_i64(argv, 2)), sq_int(load_i64(argv, 3)), 4201); let chunk: i64 = sq_int(load_i64(argv, 5));
+        sq_skip(g0, 12 + chunk);
+        sq_header(g0); sq_num(" noise slot ", 12 + chunk); print_char(10);
+        return sq_null(g0, sq_int(load_i64(argv, 4)), chunk);
+    } else { let _: i64 = 0; }
+    let count: i64 = sq_is(mode, "count"); let run: i64 = sq_is(mode, "run");
+    if count + run == 0 { return sq_usage(); } else { let _: i64 = 0; }
+    let dir: i64 = load_i64(argv, 2); let g: i64 = sq_new(sq_int(load_i64(argv, 3)), sq_int(load_i64(argv, 4)), 4201);
+    if count == 1 {
+        sq_header(g); print_char(10);
+        let mut k: i64 = 0; let mut miss: i64 = 0;
+        while k < 3 { if sq_part(g, dir, sq_scene_name(k), 0 - 1, 1) < 0 { miss = 1; } else { let _: i64 = 0; } k = k + 1; }
+        if miss == 1 { sq_lbl("an input is missing\n"); return 1; } else { let _: i64 = 0; }
+        sq_lbl("STAGE 1 counted; the instrument has read nothing\n"); return 42;
+    } else { let _: i64 = 0; }
+    if argc < 8 { return sq_usage(); } else { let _: i64 = 0; }
+    let sc: i64 = sq_int(load_i64(argv, 6)); let part: i64 = sq_int(load_i64(argv, 7));
+    store_i64(g, 6, sq_int(load_i64(argv, 5)));
+    sq_skip(g, sc * 4 + part);
+    sq_header(g); sq_num(" detection bar ", load_i64(g, 6)); sq_num(" noise slot ", sc * 4 + part); print_char(10);
+    let held: i64 = sq_part(g, dir, sq_scene_name(sc), part, 0);
+    if held < 0 { sq_lbl("an input is missing\n"); return 1; } else { let _: i64 = 0; }
+    sq_lbl("PART "); sq_puts(sq_scene_name(sc)); sq_num(" part ", part); sq_num(" held ", held); sq_num(" calibration_level ", load_i64(g, 4)); sq_num(" calibration_windows ", load_i64(g, 5)); print_char(10);
+    42
+}

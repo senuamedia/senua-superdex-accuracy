@@ -1,0 +1,450 @@
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 a block 7200 detection bar 219 noise slot 0
+CELL cart_pole S_solver_convergence fold 0 normal usable 1
+  reference_C level 31 of 6084 change 0 magnitude 472
+  s1 level 5131 of 6084 change 5788 magnitude 4466174
+  s2 level 2664 of 6084 change 3741 magnitude 317932
+  s4 level 431 of 6084 change 741 magnitude 27395
+  s8 IS the reference (identical stream)
+  s16 IS the reference (identical stream)
+  refined sref2 IS the reference (identical stream)
+  calibration_in_10000 50 G1 1 A1 1 R0 1 ; finest detected rung 2 ; shipped rung magnitude 27395 ; held 1
+CELL cart_pole S_solver_convergence fold 1 normal usable 1
+  reference_C level 115 of 6084 change 0 magnitude 1741
+  s1 level 5241 of 6084 change 5797 magnitude 34320006
+  s2 level 2420 of 6084 change 3126 magnitude 388517
+  s4 level 113 of 6084 change 410 magnitude 1758
+  s8 IS the reference (identical stream)
+  s16 IS the reference (identical stream)
+  refined sref2 IS the reference (identical stream)
+  calibration_in_10000 189 G1 1 A1 1 R0 1 ; finest detected rung 1 ; shipped rung magnitude 1758 ; held 1
+CELL cart_pole S_solver_convergence fold 2 normal usable 1
+  reference_C level 85 of 6084 change 0 magnitude 1218
+  s1 level 5173 of 6084 change 5787 magnitude 3462590
+  s2 level 2415 of 6084 change 2846 magnitude 319260
+  s4 level 202 of 6084 change 462 magnitude 18318
+  s8 IS the reference (identical stream)
+  s16 IS the reference (identical stream)
+  refined sref2 IS the reference (identical stream)
+  calibration_in_10000 139 G1 1 A1 1 R0 1 ; finest detected rung 1 ; shipped rung magnitude 18318 ; held 1
+PART cart_pole part 0 held 1 calibration_level 231 calibration_windows 18252
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 a block 7200 detection bar 219 noise slot 1
+CELL cart_pole T_time_step_chain fold 0
+  gap sref against t2 level 1144 of 6084 change 2802 magnitude 2156695 ; calibration level 294 detected 1
+  gap t2 against t4 level 981 of 6084 change 1799 magnitude 1105915 ; calibration level 107 detected 1
+  gap t4 against t8 level 940 of 6084 change 1693 magnitude 573767 ; calibration level 127 detected 1
+  gap t8 against t16 level 772 of 6084 change 1387 magnitude 285640 ; calibration level 58 detected 1
+  G1 1 A1 1 ; finest detected gap 3 ; held 1
+CELL cart_pole T_time_step_chain fold 1
+  gap sref against t2 level 1088 of 6084 change 2922 magnitude 3064478 ; calibration level 33 detected 1
+  gap t2 against t4 level 1183 of 6084 change 2271 magnitude 1843834 ; calibration level 182 detected 1
+  gap t4 against t8 level 1113 of 6084 change 1744 magnitude 1068345 ; calibration level 72 detected 1
+  gap t8 against t16 level 1055 of 6084 change 1708 magnitude 933001 ; calibration level 39 detected 1
+  G1 1 A1 1 ; finest detected gap 3 ; held 1
+CELL cart_pole T_time_step_chain fold 2
+  gap sref against t2 level 898 of 6084 change 2388 magnitude 1578083 ; calibration level 74 detected 1
+  gap t2 against t4 level 933 of 6084 change 2021 magnitude 784717 ; calibration level 89 detected 1
+  gap t4 against t8 level 794 of 6084 change 1745 magnitude 380980 ; calibration level 90 detected 1
+  gap t8 against t16 level 804 of 6084 change 1451 magnitude 205337 ; calibration level 50 detected 1
+  G1 1 A1 1 ; finest detected gap 3 ; held 1
+PART cart_pole part 1 held 1 calibration_level 1215 calibration_windows 73008
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 a block 7200 detection bar 219 noise slot 2
+CELL cart_pole C_contact_smoothing_chain fold 0
+  gap c10 against sref IDENTICAL streams
+  gap sref against c2 IDENTICAL streams
+  gap c2 against c1 IDENTICAL streams
+  gap c1 against c06 IDENTICAL streams
+  gap c06 against c03 IDENTICAL streams
+  chain empty (every gap is identical) ; finest detected gap -1 ; held 1
+CELL cart_pole C_contact_smoothing_chain fold 1
+  gap c10 against sref IDENTICAL streams
+  gap sref against c2 IDENTICAL streams
+  gap c2 against c1 IDENTICAL streams
+  gap c1 against c06 IDENTICAL streams
+  gap c06 against c03 IDENTICAL streams
+  chain empty (every gap is identical) ; finest detected gap -1 ; held 1
+CELL cart_pole C_contact_smoothing_chain fold 2
+  gap c10 against sref IDENTICAL streams
+  gap sref against c2 IDENTICAL streams
+  gap c2 against c1 IDENTICAL streams
+  gap c1 against c06 IDENTICAL streams
+  gap c06 against c03 IDENTICAL streams
+  chain empty (every gap is identical) ; finest detected gap -1 ; held 1
+PART cart_pole part 2 held 1 calibration_level 0 calibration_windows 0
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 a block 7200 detection bar 219 noise slot 3
+CELL cart_pole N_no_causal_tie fold 0 normal usable 1
+  reference_C level 47 of 6084 change 0 magnitude 841
+  nref IS the reference (identical stream)
+  calibration_in_10000 77 N0 1 control empty (identical stream) ; finest detected rung -1 ; held 1
+CELL cart_pole N_no_causal_tie fold 1 normal usable 1
+  reference_C level 75 of 6084 change 0 magnitude 1115
+  nref IS the reference (identical stream)
+  calibration_in_10000 123 N0 1 control empty (identical stream) ; finest detected rung -1 ; held 1
+CELL cart_pole N_no_causal_tie fold 2 normal usable 1
+  reference_C level 30 of 6084 change 0 magnitude 495
+  nref IS the reference (identical stream)
+  calibration_in_10000 49 N0 1 control empty (identical stream) ; finest detected rung -1 ; held 1
+CELL cart_pole P_precision_reported fold 0 normal usable 1
+  reference_C level 67 of 6084 change 0 magnitude 1110
+  ship32 level 83 of 6084 change 97 magnitude 1450
+  calibration_in_10000 110 ; finest detected rung -1 ; held 1
+CELL cart_pole P_precision_reported fold 1 normal usable 1
+  reference_C level 68 of 6084 change 0 magnitude 1153
+  ship32 level 80 of 6084 change 64 magnitude 1120
+  calibration_in_10000 111 ; finest detected rung -1 ; held 1
+CELL cart_pole P_precision_reported fold 2 normal usable 1
+  reference_C level 189 of 6084 change 0 magnitude 2624
+  ship32 level 163 of 6084 change 32 magnitude 2467
+  calibration_in_10000 310 ; finest detected rung -1 ; held 1
+CELL cart_pole Q_solver_tolerance_reported fold 0 normal usable 1
+  reference_C level 77 of 6084 change 0 magnitude 1329
+  tight level 396 of 6084 change 1096 magnitude 43418
+  calibration_in_10000 126 ; finest detected rung 0 ; held 1
+CELL cart_pole Q_solver_tolerance_reported fold 1 normal usable 1
+  reference_C level 62 of 6084 change 0 magnitude 949
+  tight level 501 of 6084 change 1196 magnitude 47414
+  calibration_in_10000 101 ; finest detected rung 0 ; held 1
+CELL cart_pole Q_solver_tolerance_reported fold 2 normal usable 1
+  reference_C level 15 of 6084 change 0 magnitude 257
+  tight level 239 of 6084 change 1186 magnitude 10483
+  calibration_in_10000 24 ; finest detected rung 0 ; held 1
+CELL cart_pole H_second_order_at_fine_step_reported fold 0 normal usable 1
+  reference_C level 139 of 6084 change 0 magnitude 2174
+  b16 level 5962 of 6084 change 6084 magnitude 1557012
+  calibration_in_10000 228 ; finest detected rung 0 ; held 1
+CELL cart_pole H_second_order_at_fine_step_reported fold 1 normal usable 1
+  reference_C level 112 of 6084 change 0 magnitude 1711
+  b16 level 5988 of 6084 change 6084 magnitude 2739698
+  calibration_in_10000 184 ; finest detected rung 0 ; held 1
+CELL cart_pole H_second_order_at_fine_step_reported fold 2 normal usable 1
+  reference_C level 0 of 6084 change 0 magnitude 0
+  b16 level 5892 of 6084 change 6084 magnitude 1442270
+  calibration_in_10000 0 ; finest detected rung 0 ; held 1
+CELL cart_pole B_second_order_refined_reported fold 0 normal usable 1
+  reference_C level 131 of 6084 change 0 magnitude 2024
+  b16 level 4294 of 6084 change 5730 magnitude 807086
+  calibration_in_10000 215 ; finest detected rung 0 ; held 1
+CELL cart_pole B_second_order_refined_reported fold 1 normal usable 1
+  reference_C level 85 of 6084 change 0 magnitude 1298
+  b16 level 4896 of 6084 change 5731 magnitude 1224313
+  calibration_in_10000 139 ; finest detected rung 0 ; held 1
+CELL cart_pole B_second_order_refined_reported fold 2 normal usable 1
+  reference_C level 92 of 6084 change 0 magnitude 1438
+  b16 level 4256 of 6084 change 5692 magnitude 692636
+  calibration_in_10000 151 ; finest detected rung 0 ; held 1
+CELL cart_pole X_default_against_finest_step_reported fold 0 normal usable 1
+  reference_C level 61 of 6084 change 0 magnitude 960
+  ship32 level 1481 of 6084 change 3622 magnitude 4336082
+  sref level 1201 of 6084 change 3396 magnitude 4289284
+  calibration_in_10000 100 ; finest detected rung 1 ; held 1
+CELL cart_pole X_default_against_finest_step_reported fold 1 normal usable 1
+  reference_C level 29 of 6084 change 0 magnitude 523
+  ship32 level 1451 of 6084 change 3913 magnitude 7064292
+  sref level 1281 of 6084 change 3643 magnitude 7003189
+  calibration_in_10000 47 ; finest detected rung 1 ; held 1
+CELL cart_pole X_default_against_finest_step_reported fold 2 normal usable 1
+  reference_C level 17 of 6084 change 0 magnitude 283
+  ship32 level 1159 of 6084 change 3188 magnitude 3063338
+  sref level 970 of 6084 change 3021 magnitude 2985474
+  calibration_in_10000 27 ; finest detected rung 1 ; held 1
+PART cart_pole part 3 held 1 calibration_level 152 calibration_windows 18252
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 a block 7200 detection bar 219 noise slot 4
+CELL half_cheetah S_solver_convergence fold 0 normal usable 1
+  reference_C level 145 of 6084 change 0 magnitude 2046
+  s1 level 6040 of 6084 change 6084 magnitude 34132768
+  s2 level 6035 of 6084 change 6084 magnitude 29153857
+  s4 level 5988 of 6084 change 6084 magnitude 18842715
+  s8 level 5087 of 6084 change 6049 magnitude 2807643
+  s16 level 1932 of 6084 change 4618 magnitude 255288
+  refined sref2 IS the reference (identical stream)
+  calibration_in_10000 238 G1 1 A1 1 R0 1 ; finest detected rung 4 ; shipped rung magnitude 18842715 ; held 1
+CELL half_cheetah S_solver_convergence fold 1 normal usable 1
+  reference_C level 47 of 6084 change 0 magnitude 785
+  s1 level 6015 of 6084 change 6084 magnitude 34966079
+  s2 level 6012 of 6084 change 6084 magnitude 30899744
+  s4 level 5984 of 6084 change 6084 magnitude 18067265
+  s8 level 5013 of 6084 change 6080 magnitude 2222421
+  s16 level 1615 of 6084 change 4752 magnitude 210859
+  refined sref2 IS the reference (identical stream)
+  calibration_in_10000 77 G1 1 A1 1 R0 1 ; finest detected rung 4 ; shipped rung magnitude 18067265 ; held 1
+CELL half_cheetah S_solver_convergence fold 2 normal usable 1
+  reference_C level 69 of 6084 change 0 magnitude 1117
+  s1 level 6034 of 6084 change 6084 magnitude 33734963
+  s2 level 5978 of 6084 change 6084 magnitude 32585733
+  s4 level 5940 of 6084 change 6082 magnitude 20549042
+  s8 level 5349 of 6084 change 6079 magnitude 2351198
+  s16 level 1855 of 6084 change 4446 magnitude 259985
+  refined sref2 IS the reference (identical stream)
+  calibration_in_10000 113 G1 1 A1 1 R0 1 ; finest detected rung 4 ; shipped rung magnitude 20549042 ; held 1
+PART half_cheetah part 0 held 1 calibration_level 261 calibration_windows 18252
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 a block 7200 detection bar 219 noise slot 5
+CELL half_cheetah T_time_step_chain fold 0
+  gap sref against t2 level 5926 of 6084 change 6084 magnitude 4390727 ; calibration level 126 detected 1
+  gap t2 against t4 level 6025 of 6084 change 6084 magnitude 3590152 ; calibration level 33 detected 1
+  gap t4 against t8 level 5987 of 6084 change 6084 magnitude 4855786 ; calibration level 238 detected 1
+  gap t8 against t16 level 5975 of 6084 change 6084 magnitude 7158702 ; calibration level 78 detected 1
+  G1 1 A1 0 ; finest detected gap 3 ; held 0
+CELL half_cheetah T_time_step_chain fold 1
+  gap sref against t2 level 6079 of 6084 change 6084 magnitude 4176365 ; calibration level 65 detected 1
+  gap t2 against t4 level 5987 of 6084 change 6084 magnitude 3100107 ; calibration level 87 detected 1
+  gap t4 against t8 level 5808 of 6084 change 6084 magnitude 3684353 ; calibration level 65 detected 1
+  gap t8 against t16 level 5932 of 6084 change 6084 magnitude 6127898 ; calibration level 116 detected 1
+  G1 1 A1 0 ; finest detected gap 3 ; held 0
+CELL half_cheetah T_time_step_chain fold 2
+  gap sref against t2 level 6080 of 6084 change 6084 magnitude 4027335 ; calibration level 46 detected 1
+  gap t2 against t4 level 5784 of 6084 change 6084 magnitude 3382431 ; calibration level 52 detected 1
+  gap t4 against t8 level 5912 of 6084 change 6084 magnitude 4589958 ; calibration level 102 detected 1
+  gap t8 against t16 level 5966 of 6084 change 6084 magnitude 6835210 ; calibration level 104 detected 1
+  G1 1 A1 0 ; finest detected gap 3 ; held 0
+PART half_cheetah part 1 held 0 calibration_level 1112 calibration_windows 73008
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 a block 7200 detection bar 219 noise slot 6
+CELL half_cheetah C_contact_smoothing_chain fold 0
+  gap c10 against sref level 4478 of 6084 change 6075 magnitude 770013 ; calibration level 57 detected 1
+  gap sref against c2 level 4056 of 6084 change 6047 magnitude 483295 ; calibration level 169 detected 1
+  gap c2 against c1 level 3255 of 6084 change 6008 magnitude 277291 ; calibration level 94 detected 1
+  gap c1 against c06 level 2493 of 6084 change 5338 magnitude 157462 ; calibration level 99 detected 1
+  gap c06 against c03 level 2553 of 6084 change 5304 magnitude 172908 ; calibration level 81 detected 1
+  G1 1 A1 0 ; finest detected gap 4 ; held 0
+CELL half_cheetah C_contact_smoothing_chain fold 1
+  gap c10 against sref level 4332 of 6084 change 6070 magnitude 712746 ; calibration level 96 detected 1
+  gap sref against c2 level 3895 of 6084 change 6045 magnitude 459111 ; calibration level 83 detected 1
+  gap c2 against c1 level 3509 of 6084 change 5960 magnitude 288896 ; calibration level 151 detected 1
+  gap c1 against c06 level 1681 of 6084 change 5330 magnitude 107058 ; calibration level 45 detected 1
+  gap c06 against c03 level 1830 of 6084 change 5188 magnitude 146094 ; calibration level 7 detected 1
+  G1 1 A1 0 ; finest detected gap 4 ; held 0
+CELL half_cheetah C_contact_smoothing_chain fold 2
+  gap c10 against sref level 4270 of 6084 change 6084 magnitude 831125 ; calibration level 55 detected 1
+  gap sref against c2 level 3675 of 6084 change 6082 magnitude 458014 ; calibration level 31 detected 1
+  gap c2 against c1 level 3115 of 6084 change 5908 magnitude 251858 ; calibration level 46 detected 1
+  gap c1 against c06 level 2291 of 6084 change 5459 magnitude 150876 ; calibration level 38 detected 1
+  gap c06 against c03 level 2354 of 6084 change 5494 magnitude 162281 ; calibration level 41 detected 1
+  G1 1 A1 0 ; finest detected gap 4 ; held 0
+PART half_cheetah part 2 held 0 calibration_level 1093 calibration_windows 91260
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 a block 7200 detection bar 219 noise slot 7
+CELL half_cheetah N_no_causal_tie fold 0 normal usable 1
+  reference_C level 123 of 6084 change 0 magnitude 2079
+  nref level 129 of 6084 change 743 magnitude 2272
+  calibration_in_10000 202 N0 1 ; finest detected rung -1 ; held 1
+CELL half_cheetah N_no_causal_tie fold 1 normal usable 1
+  reference_C level 81 of 6084 change 0 magnitude 1293
+  nref level 237 of 6084 change 694 magnitude 8924
+  calibration_in_10000 133 N0 0 ; finest detected rung 0 ; held 0
+CELL half_cheetah N_no_causal_tie fold 2 normal usable 1
+  reference_C level 37 of 6084 change 0 magnitude 659
+  nref level 76 of 6084 change 883 magnitude 1311
+  calibration_in_10000 60 N0 1 ; finest detected rung -1 ; held 1
+CELL half_cheetah P_precision_reported fold 0 normal usable 1
+  reference_C level 92 of 6084 change 0 magnitude 1438
+  ship32 level 308 of 6084 change 1095 magnitude 22565
+  calibration_in_10000 151 ; finest detected rung 0 ; held 1
+CELL half_cheetah P_precision_reported fold 1 normal usable 1
+  reference_C level 68 of 6084 change 0 magnitude 1080
+  ship32 level 357 of 6084 change 1445 magnitude 121129
+  calibration_in_10000 111 ; finest detected rung 0 ; held 1
+CELL half_cheetah P_precision_reported fold 2 normal usable 1
+  reference_C level 40 of 6084 change 0 magnitude 631
+  ship32 level 97 of 6084 change 916 magnitude 5300
+  calibration_in_10000 65 ; finest detected rung -1 ; held 1
+CELL half_cheetah Q_solver_tolerance_reported fold 0 normal usable 1
+  reference_C level 112 of 6084 change 0 magnitude 1613
+  tight level 316 of 6084 change 874 magnitude 4737
+  calibration_in_10000 184 ; finest detected rung 0 ; held 1
+CELL half_cheetah Q_solver_tolerance_reported fold 1 normal usable 1
+  reference_C level 27 of 6084 change 0 magnitude 500
+  tight level 74 of 6084 change 1016 magnitude 1296
+  calibration_in_10000 44 ; finest detected rung -1 ; held 1
+CELL half_cheetah Q_solver_tolerance_reported fold 2 normal usable 1
+  reference_C level 44 of 6084 change 0 magnitude 638
+  tight level 147 of 6084 change 1026 magnitude 2489
+  calibration_in_10000 72 ; finest detected rung -1 ; held 1
+CELL half_cheetah H_second_order_at_fine_step_reported fold 0 normal usable 1
+  reference_C level 18 of 6084 change 0 magnitude 297
+  b16 level 5946 of 6084 change 6084 magnitude 13232948
+  calibration_in_10000 29 ; finest detected rung 0 ; held 1
+CELL half_cheetah H_second_order_at_fine_step_reported fold 1 normal usable 1
+  reference_C level 158 of 6084 change 0 magnitude 2281
+  b16 level 6063 of 6084 change 6084 magnitude 14932787
+  calibration_in_10000 259 ; finest detected rung 0 ; held 1
+CELL half_cheetah H_second_order_at_fine_step_reported fold 2 normal usable 1
+  reference_C level 32 of 6084 change 0 magnitude 509
+  b16 level 5988 of 6084 change 6084 magnitude 14867353
+  calibration_in_10000 52 ; finest detected rung 0 ; held 1
+CELL half_cheetah B_second_order_refined_reported fold 0 normal usable 1
+  reference_C level 148 of 6084 change 0 magnitude 2212
+  b16 level 5497 of 6084 change 6074 magnitude 6847112
+  calibration_in_10000 243 ; finest detected rung 0 ; held 1
+CELL half_cheetah B_second_order_refined_reported fold 1 normal usable 1
+  reference_C level 104 of 6084 change 0 magnitude 1790
+  b16 level 5402 of 6084 change 6082 magnitude 7773891
+  calibration_in_10000 170 ; finest detected rung 0 ; held 1
+CELL half_cheetah B_second_order_refined_reported fold 2 normal usable 1
+  reference_C level 78 of 6084 change 0 magnitude 1271
+  b16 level 5124 of 6084 change 6072 magnitude 5855192
+  calibration_in_10000 128 ; finest detected rung 0 ; held 1
+CELL half_cheetah X_default_against_finest_step_reported fold 0 normal usable 1
+  reference_C level 36 of 6084 change 0 magnitude 687
+  ship32 level 6082 of 6084 change 6084 magnitude 20085475
+  sref level 6084 of 6084 change 6084 magnitude 12798457
+  calibration_in_10000 59 ; finest detected rung 1 ; held 1
+CELL half_cheetah X_default_against_finest_step_reported fold 1 normal usable 1
+  reference_C level 27 of 6084 change 0 magnitude 434
+  ship32 level 6064 of 6084 change 6084 magnitude 19693441
+  sref level 6050 of 6084 change 6084 magnitude 12568524
+  calibration_in_10000 44 ; finest detected rung 1 ; held 1
+CELL half_cheetah X_default_against_finest_step_reported fold 2 normal usable 1
+  reference_C level 56 of 6084 change 0 magnitude 824
+  ship32 level 6084 of 6084 change 6084 magnitude 21911142
+  sref level 6080 of 6084 change 6084 magnitude 13415564
+  calibration_in_10000 92 ; finest detected rung 1 ; held 1
+PART half_cheetah part 3 held 0 calibration_level 241 calibration_windows 18252
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 a block 7200 detection bar 219 noise slot 8
+CELL ant S_solver_convergence fold 0 normal usable 1
+  reference_C level 113 of 6084 change 0 magnitude 2015
+  s1 level 6084 of 6084 change 6084 magnitude 109013096
+  s2 level 5896 of 6084 change 6084 magnitude 45427716
+  s4 level 4032 of 6084 change 6050 magnitude 3849648
+  s8 level 1525 of 6084 change 3951 magnitude 1055367
+  s16 level 1029 of 6084 change 2501 magnitude 574942
+  refined  sref2 level 85 of 6084 change 385 magnitude 1364
+  calibration_in_10000 185 G1 1 A1 1 R0 1 ; finest detected rung 4 ; shipped rung magnitude 3849648 ; held 1
+CELL ant S_solver_convergence fold 1 normal usable 1
+  reference_C level 40 of 6084 change 0 magnitude 647
+  s1 level 6063 of 6084 change 6084 magnitude 102946151
+  s2 level 5663 of 6084 change 6084 magnitude 36525940
+  s4 level 3253 of 6084 change 6015 magnitude 3240617
+  s8 level 1204 of 6084 change 3779 magnitude 242122
+  s16 level 540 of 6084 change 2463 magnitude 591273
+  refined  sref2 level 71 of 6084 change 386 magnitude 1158
+  calibration_in_10000 65 G1 1 A1 0 R0 1 ; finest detected rung 4 ; shipped rung magnitude 3240617 ; held 0
+CELL ant S_solver_convergence fold 2 normal usable 1
+  reference_C level 15 of 6084 change 0 magnitude 227
+  s1 level 6036 of 6084 change 6084 magnitude 117220442
+  s2 level 5764 of 6084 change 6080 magnitude 37190909
+  s4 level 3196 of 6084 change 6005 magnitude 2051176
+  s8 level 972 of 6084 change 3960 magnitude 389059
+  s16 level 665 of 6084 change 2309 magnitude 310582
+  refined  sref2 level 87 of 6084 change 216 magnitude 1702
+  calibration_in_10000 24 G1 1 A1 1 R0 1 ; finest detected rung 4 ; shipped rung magnitude 2051176 ; held 1
+PART ant part 0 held 0 calibration_level 168 calibration_windows 18252
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 a block 7200 detection bar 219 noise slot 9
+CELL ant T_time_step_chain fold 0
+  gap sref against t2 level 5859 of 6084 change 6084 magnitude 8486621 ; calibration level 96 detected 1
+  gap t2 against t4 level 5528 of 6084 change 6084 magnitude 5460423 ; calibration level 132 detected 1
+  gap t4 against t8 level 4396 of 6084 change 6084 magnitude 3046269 ; calibration level 35 detected 1
+  gap t8 against t16 level 3803 of 6084 change 6084 magnitude 2059950 ; calibration level 40 detected 1
+  G1 1 A1 1 ; finest detected gap 3 ; held 1
+CELL ant T_time_step_chain fold 1
+  gap sref against t2 level 5783 of 6084 change 6084 magnitude 7822012 ; calibration level 66 detected 1
+  gap t2 against t4 level 5326 of 6084 change 6084 magnitude 4535679 ; calibration level 109 detected 1
+  gap t4 against t8 level 4270 of 6084 change 6084 magnitude 2115206 ; calibration level 43 detected 1
+  gap t8 against t16 level 3635 of 6084 change 6073 magnitude 2027309 ; calibration level 45 detected 1
+  G1 1 A1 1 ; finest detected gap 3 ; held 1
+CELL ant T_time_step_chain fold 2
+  gap sref against t2 level 5594 of 6084 change 6084 magnitude 8623363 ; calibration level 31 detected 1
+  gap t2 against t4 level 5125 of 6084 change 6084 magnitude 3608781 ; calibration level 106 detected 1
+  gap t4 against t8 level 4267 of 6084 change 6084 magnitude 2202004 ; calibration level 36 detected 1
+  gap t8 against t16 level 4338 of 6084 change 6075 magnitude 1720902 ; calibration level 160 detected 1
+  G1 1 A1 1 ; finest detected gap 3 ; held 1
+PART ant part 1 held 1 calibration_level 899 calibration_windows 73008
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 a block 7200 detection bar 219 noise slot 10
+CELL ant C_contact_smoothing_chain fold 0
+  gap c10 against sref level 2554 of 6084 change 5682 magnitude 3559275 ; calibration level 8 detected 1
+  gap sref against c2 level 1982 of 6084 change 5066 magnitude 1271331 ; calibration level 114 detected 1
+  gap c2 against c1 level 1440 of 6084 change 4511 magnitude 275842 ; calibration level 28 detected 1
+  gap c1 against c06 level 1521 of 6084 change 4762 magnitude 266678 ; calibration level 36 detected 1
+  gap c06 against c03 level 1553 of 6084 change 4587 magnitude 300222 ; calibration level 35 detected 1
+  G1 1 A1 0 ; finest detected gap 4 ; held 0
+CELL ant C_contact_smoothing_chain fold 1
+  gap c10 against sref level 2603 of 6084 change 5561 magnitude 2530187 ; calibration level 64 detected 1
+  gap sref against c2 level 2099 of 6084 change 5351 magnitude 1186741 ; calibration level 26 detected 1
+  gap c2 against c1 level 1350 of 6084 change 5012 magnitude 371795 ; calibration level 17 detected 1
+  gap c1 against c06 level 1439 of 6084 change 4620 magnitude 755118 ; calibration level 63 detected 1
+  gap c06 against c03 level 1119 of 6084 change 4388 magnitude 122804 ; calibration level 60 detected 1
+  G1 1 A1 0 ; finest detected gap 4 ; held 0
+CELL ant C_contact_smoothing_chain fold 2
+  gap c10 against sref level 2765 of 6084 change 5796 magnitude 3420855 ; calibration level 62 detected 1
+  gap sref against c2 level 1495 of 6084 change 5157 magnitude 651961 ; calibration level 38 detected 1
+  gap c2 against c1 level 1273 of 6084 change 4733 magnitude 232641 ; calibration level 39 detected 1
+  gap c1 against c06 level 1462 of 6084 change 4749 magnitude 388436 ; calibration level 72 detected 1
+  gap c06 against c03 level 1467 of 6084 change 4639 magnitude 170111 ; calibration level 111 detected 1
+  G1 1 A1 0 ; finest detected gap 4 ; held 0
+PART ant part 2 held 0 calibration_level 773 calibration_windows 91260
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 a block 7200 detection bar 219 noise slot 11
+CELL ant N_no_causal_tie fold 0 normal usable 1
+  reference_C level 21 of 6084 change 0 magnitude 345
+  nref level 155 of 6084 change 665 magnitude 13068
+  calibration_in_10000 34 N0 1 ; finest detected rung -1 ; held 1
+CELL ant N_no_causal_tie fold 1 normal usable 1
+  reference_C level 101 of 6084 change 0 magnitude 1689
+  nref level 77 of 6084 change 475 magnitude 1284
+  calibration_in_10000 166 N0 1 ; finest detected rung -1 ; held 1
+CELL ant N_no_causal_tie fold 2 normal usable 1
+  reference_C level 41 of 6084 change 0 magnitude 662
+  nref level 73 of 6084 change 191 magnitude 1335
+  calibration_in_10000 67 N0 1 ; finest detected rung -1 ; held 1
+CELL ant P_precision_reported fold 0 normal usable 1
+  reference_C level 78 of 6084 change 0 magnitude 1310
+  ship32 level 3229 of 6084 change 5570 magnitude 3682537
+  calibration_in_10000 128 ; finest detected rung 0 ; held 1
+CELL ant P_precision_reported fold 1 normal usable 1
+  reference_C level 6 of 6084 change 0 magnitude 102
+  ship32 level 2297 of 6084 change 5234 magnitude 2754079
+  calibration_in_10000 9 ; finest detected rung 0 ; held 1
+CELL ant P_precision_reported fold 2 normal usable 1
+  reference_C level 34 of 6084 change 0 magnitude 593
+  ship32 level 2266 of 6084 change 5459 magnitude 1576326
+  calibration_in_10000 55 ; finest detected rung 0 ; held 1
+CELL ant Q_solver_tolerance_reported fold 0 normal usable 1
+  reference_C level 58 of 6084 change 0 magnitude 985
+  tight level 59 of 6084 change 289 magnitude 1419
+  calibration_in_10000 95 ; finest detected rung -1 ; held 1
+CELL ant Q_solver_tolerance_reported fold 1 normal usable 1
+  reference_C level 93 of 6084 change 0 magnitude 1349
+  tight level 132 of 6084 change 292 magnitude 2034
+  calibration_in_10000 152 ; finest detected rung -1 ; held 1
+CELL ant Q_solver_tolerance_reported fold 2 normal usable 1
+  reference_C level 108 of 6084 change 0 magnitude 1831
+  tight level 74 of 6084 change 293 magnitude 1196
+  calibration_in_10000 177 ; finest detected rung -1 ; held 1
+CELL ant H_second_order_at_fine_step_reported fold 0 normal usable 1
+  reference_C level 83 of 6084 change 0 magnitude 1236
+  b16 level 4540 of 6084 change 6084 magnitude 3100054
+  calibration_in_10000 136 ; finest detected rung 0 ; held 1
+CELL ant H_second_order_at_fine_step_reported fold 1 normal usable 1
+  reference_C level 36 of 6084 change 0 magnitude 560
+  b16 level 4615 of 6084 change 6084 magnitude 2540363
+  calibration_in_10000 59 ; finest detected rung 0 ; held 1
+CELL ant H_second_order_at_fine_step_reported fold 2 normal usable 1
+  reference_C level 70 of 6084 change 0 magnitude 1159
+  b16 level 4084 of 6084 change 6084 magnitude 2986083
+  calibration_in_10000 115 ; finest detected rung 0 ; held 1
+CELL ant B_second_order_refined_reported fold 0 normal usable 1
+  reference_C level 25 of 6084 change 0 magnitude 447
+  b16 level 4229 of 6084 change 6084 magnitude 2841592
+  calibration_in_10000 41 ; finest detected rung 0 ; held 1
+CELL ant B_second_order_refined_reported fold 1 normal usable 1
+  reference_C level 53 of 6084 change 0 magnitude 1033
+  b16 level 4099 of 6084 change 6084 magnitude 2165173
+  calibration_in_10000 87 ; finest detected rung 0 ; held 1
+CELL ant B_second_order_refined_reported fold 2 normal usable 1
+  reference_C level 136 of 6084 change 0 magnitude 2224
+  b16 level 4001 of 6084 change 6066 magnitude 2189692
+  calibration_in_10000 223 ; finest detected rung 0 ; held 1
+CELL ant X_default_against_finest_step_reported fold 0 normal usable 1
+  reference_C level 44 of 6084 change 0 magnitude 545
+  ship32 level 5981 of 6084 change 6084 magnitude 11797480
+  sref level 6000 of 6084 change 6084 magnitude 10457691
+  calibration_in_10000 72 ; finest detected rung 1 ; held 1
+CELL ant X_default_against_finest_step_reported fold 1 normal usable 1
+  reference_C level 134 of 6084 change 0 magnitude 2063
+  ship32 level 6069 of 6084 change 6084 magnitude 10041142
+  sref level 6050 of 6084 change 6084 magnitude 9428617
+  calibration_in_10000 220 ; finest detected rung 1 ; held 1
+CELL ant X_default_against_finest_step_reported fold 2 normal usable 1
+  reference_C level 128 of 6084 change 0 magnitude 2000
+  ship32 level 5966 of 6084 change 6084 magnitude 10663743
+  sref level 5990 of 6084 change 6084 magnitude 10710804
+  calibration_in_10000 210 ; finest detected rung 1 ; held 1
+PART ant part 3 held 1 calibration_level 163 calibration_windows 18252
+G0 pooled calibration level 6308 of 511056 in_10000 123 held 1
+PARTS held 0
+THESIS every cell (G1, A1 and R0 on the ladder S; G1 and A1 on the chains T and C; N0 on the control) and the pooled G0: FAIL

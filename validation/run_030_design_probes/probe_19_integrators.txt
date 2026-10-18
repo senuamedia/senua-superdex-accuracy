@@ -1,0 +1,54 @@
+# probe 19: the sixth registration's arm, final configuration, every SuperDex integrator; swings per 10,000 of level, and the free spin at 3 rad/s after 1 s
+## library build 12 (patch G as registered)
+be 1/1 | swings per 10000: 9627 8912 8250 7638 | spin 2999980 of 3000000 | swing solver: stopped 0 diverged 0 
+be 1/4 | swings per 10000: 9904 9715 9529 9348 | spin 3000000 of 3000000 | swing solver: stopped 0 diverged 0 
+bdf2 1/1 | swings per 10000: 9751 9298 8909 8566 | spin 2914395 of 3000000 | swing solver: stopped 0 diverged 0 
+bdf2 1/4 | swings per 10000: 9936 9813 9694 9580 | spin 2977896 of 3000000 | swing solver: stopped 0 diverged 0 
+bdf3 1/1 | swings per 10000: 9798 9425 9100 8806 | spin 2929755 of 3000000 | swing solver: stopped 0 diverged 0 
+bdf3 1/4 | swings per 10000: 9948 9846 9748 9653 | spin 2981899 of 3000000 | swing solver: stopped 0 diverged 0 
+dirk22 1/1 | swings per 10000: 10050 10140 10238 | spin 3015824 of 3000000 | swing solver: stopped 0 diverged 0 
+dirk22 1/4 | swings per 10000: 10012 10037 10063 | spin 3002077 of 3000000 | swing solver: stopped 0 diverged 0 
+dirk23 1/1 | swings per 10000: 10004 10001 10002 | spin 2999529 of 3000000 | swing solver: stopped 0 diverged 0 
+dirk23 1/4 | swings per 10000: 10000 10000 10000 | spin 2999966 of 3000000 | swing solver: stopped 0 diverged 0 
+dirk33 1/1 | swings per 10000: 10257 10813 11494 | spin 3085270 of 3000000 | swing solver: stopped 0 diverged 0 
+dirk33 1/4 | swings per 10000: 10061 10187 10318 | spin 3020861 of 3000000 | swing solver: stopped 0 diverged 0 
+sdirk12 1/1 | swings per 10000: 10207 10642 11154 | spin 3002190 of 3000000 | swing solver: stopped 0 diverged 0 
+sdirk12 1/4 | swings per 10000: 10049 10150 10255 | spin 3000260 of 3000000 | swing solver: stopped 0 diverged 0 
+sdirk22 1/1 | swings per 10000: 10002 9994 9986 | spin 2949513 of 3000000 | swing solver: stopped 0 diverged 0 
+sdirk22 1/4 | swings per 10000: 10000 10001 10003 | spin 2986114 of 3000000 | swing solver: stopped 0 diverged 0 
+## build 12, without patch G: no switch (off), Newton-Euler alone (ne), A to F with Newton-Euler (af_ne)
+off be 1/1 | swings: 9083 7555 6492 5687 | spin 2762598 of 3000000
+off bdf2 1/1 | swings: 9748 9290 8898 8552 | spin 2911472 of 3000000
+off dirk23 1/1 | swings: 9721 9197 8756 8377 | spin 2898005 of 3000000
+off dirk33 1/1 | swings: 9839 9525 9244 8989 | spin 2942226 of 3000000
+off sdirk12 1/1 | swings: 9817 9463 9152 8872 | spin 2867157 of 3000000
+off sdirk22 1/1 | swings: 9905 9717 9547 9380 | spin 2933203 of 3000000
+ne be 1/1 | swings: 9086 7562 6500 5696 | spin 2763983 of 3000000
+ne bdf2 1/1 | swings: 9751 9298 8909 8566 | spin 2912553 of 3000000
+ne dirk23 1/1 | swings: 9724 9206 8768 8393 | spin 2899267 of 3000000
+ne dirk33 1/1 | swings: 9841 9530 9256 9004 | spin 2942956 of 3000000
+ne sdirk12 1/1 | swings: 9819 9470 9162 8884 | spin 2868014 of 3000000
+ne sdirk22 1/1 | swings: 9907 9721 9552 9391 | spin 2933645 of 3000000
+af_ne be 1/1 | swings: 9086 7562 6500 5696 | spin 2763983 of 3000000
+af_ne bdf2 1/1 | swings: 9751 9298 8909 8566 | spin 2912553 of 3000000
+af_ne dirk23 1/1 | swings: 9724 9206 8768 8393 | spin 2899267 of 3000000
+af_ne dirk33 1/1 | swings: 9841 9530 9256 9004 | spin 2942956 of 3000000
+af_ne sdirk12 1/1 | swings: 9819 9470 9162 8884 | spin 2868014 of 3000000
+af_ne sdirk22 1/1 | swings: 9907 9721 9552 9391 | spin 2933645 of 3000000
+## library build 13 (patch G with each integrator's share: 1 backward Euler, 1/3 BDF2, 0 the rest)
+be 1/1 | swings per 10000: 9627 8912 8250 7638 | spin 2999980 of 3000000 | swing solver: stopped 0 diverged 0 
+be 1/4 | swings per 10000: 9904 9715 9529 9348 | spin 3000000 of 3000000 | swing solver: stopped 0 diverged 0 
+bdf2 1/1 | swings per 10000: 9989 9974 9965 | spin 2998962 of 3000000 | swing solver: stopped 0 diverged 0 
+bdf2 1/4 | swings per 10000: 9999 9999 10000 | spin 2999938 of 3000000 | swing solver: stopped 0 diverged 0 
+bdf3 1/1 | swings per 10000: 9798 9425 9100 8806 | spin 2931285 of 3000000 | swing solver: stopped 0 diverged 0 
+bdf3 1/4 | swings per 10000: 9948 9846 9748 9653 | spin 2982000 of 3000000 | swing solver: stopped 0 diverged 0 
+dirk22 1/1 | swings per 10000: 9891 9676 9483 9297 | spin 2961213 of 3000000 | swing solver: stopped 0 diverged 0 
+dirk22 1/4 | swings per 10000: 9972 9917 9864 9811 | spin 2990579 of 3000000 | swing solver: stopped 0 diverged 0 
+dirk23 1/1 | swings per 10000: 9724 9206 8768 8393 | spin 2899267 of 3000000 | swing solver: stopped 0 diverged 0 
+dirk23 1/4 | swings per 10000: 9925 9780 9641 9509 | spin 2973887 of 3000000 | swing solver: stopped 0 diverged 0 
+dirk33 1/1 | swings per 10000: 9841 9530 9256 9004 | spin 2942956 of 3000000 | swing solver: stopped 0 diverged 0 
+dirk33 1/4 | swings per 10000: 9958 9877 9798 9720 | spin 2985478 of 3000000 | swing solver: stopped 0 diverged 0 
+sdirk12 1/1 | swings per 10000: 9819 9470 9162 8884 | spin 2868014 of 3000000 | swing solver: stopped 0 diverged 0 
+sdirk12 1/4 | swings per 10000: 9952 9859 9769 9681 | spin 2966732 of 3000000 | swing solver: stopped 0 diverged 0 
+sdirk22 1/1 | swings per 10000: 9907 9721 9552 9391 | spin 2933645 of 3000000 | swing solver: stopped 0 diverged 0 
+sdirk22 1/4 | swings per 10000: 9976 9929 9883 9838 | spin 2983343 of 3000000 | swing solver: stopped 0 diverged 0 

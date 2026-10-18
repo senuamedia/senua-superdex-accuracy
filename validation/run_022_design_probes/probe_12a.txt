@@ -1,0 +1,10 @@
+throwaway arm (1.5 kg, half-size 0.06 m), 10 ms step, no gravity: spin left after 1 s, per 10,000 of the release speed
+release 2 rad/s, arm 0.3 m, newton-euler inertia 0: speed after 1 s 1924838 micro-radians a second, 9624 per 10,000
+release 2 rad/s, arm 0.3 m, newton-euler inertia 1: speed after 1 s 1926675 micro-radians a second, 9633 per 10,000
+release 2 rad/s, arm 0 m, newton-euler inertia 0: speed after 1 s 1925207 micro-radians a second, 9626 per 10,000
+release 2 rad/s, arm 0 m, newton-euler inertia 1: speed after 1 s 1986797 micro-radians a second, 9933 per 10,000
+release 5 rad/s, arm 0.3 m, newton-euler inertia 0: speed after 1 s 4084534 micro-radians a second, 8169 per 10,000
+release 5 rad/s, arm 0.3 m, newton-euler inertia 1: speed after 1 s 4102206 micro-radians a second, 8204 per 10,000
+release 5 rad/s, arm 0 m, newton-euler inertia 0: speed after 1 s 4088959 micro-radians a second, 8177 per 10,000
+release 5 rad/s, arm 0 m, newton-euler inertia 1: speed after 1 s 4999740 micro-radians a second, 9999 per 10,000
+the law of a loss of (w dt)^2 a step predicts 9,622 per 10,000 at 2 rad/s and 8,164 at 5 rad/s

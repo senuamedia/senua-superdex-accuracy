@@ -1,0 +1,93 @@
+identity | rotvec 1 of 1
+identity | flight 8 of 8
+identity | suites_off 67 of 67
+identity | suites_abcd 67 of 67
+identity | suites_e 67 of 67
+identity | suites_abcde 67 of 67
+identity | joints 40 of 40
+identity | bench 38 of 38
+identity | benchrec 7 of 7
+set 0 stock | TRACE from_step 0 limit 200 steps 21600 converged 21394 stopped 206 at_the_limit 206 earlier 0 diverged 0 iterations_in_all 178877 most_iterations 200 largest_converged_residual_u 7931 stopped_residual_u 4187 to 3745941
+set 0 expn | TRACE from_step 0 limit 200 steps 21600 converged 21595 stopped 5 at_the_limit 5 earlier 0 diverged 0 iterations_in_all 139551 most_iterations 200 largest_converged_residual_u 8911 stopped_residual_u 6447 to 225610
+set 0 implicit | TRACE from_step 0 limit 200 steps 21600 converged 21600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 159852 most_iterations 165 largest_converged_residual_u 8043 stopped_residual_u -1 to 0
+set 0 armijo | TRACE from_step 0 limit 200 steps 21600 converged 21363 stopped 237 at_the_limit 237 earlier 0 diverged 0 iterations_in_all 197925 most_iterations 200 largest_converged_residual_u 8005 stopped_residual_u 4187 to 37020271
+set 0 nudge | TRACE from_step 0 limit 200 steps 21600 converged 21393 stopped 207 at_the_limit 207 earlier 0 diverged 0 iterations_in_all 179493 most_iterations 200 largest_converged_residual_u 7853 stopped_residual_u 4848 to 4066766
+set 0 d | TRACE from_step 0 limit 200 steps 21600 converged 21342 stopped 258 at_the_limit 258 earlier 0 diverged 0 iterations_in_all 184355 most_iterations 200 largest_converged_residual_u 8810 stopped_residual_u 4187 to 4189086
+set 0 d_expn | TRACE from_step 0 limit 200 steps 21600 converged 21595 stopped 5 at_the_limit 5 earlier 0 diverged 0 iterations_in_all 134739 most_iterations 200 largest_converged_residual_u 9440 stopped_residual_u 6447 to 225610
+set 0 ng_stock | TRACE from_step 0 limit 200 steps 21600 converged 21600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 49742 most_iterations 3 largest_converged_residual_u 8735 stopped_residual_u -1 to 0
+set 0 ng_d | TRACE from_step 0 limit 200 steps 21600 converged 21600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 54666 most_iterations 3 largest_converged_residual_u 9562 stopped_residual_u -1 to 0
+set 0 rec | TRACE from_step 0 limit 200 steps 21600 converged 21591 stopped 9 at_the_limit 9 earlier 0 diverged 0 iterations_in_all 126396 most_iterations 200 largest_converged_residual_u 9431 stopped_residual_u 4527 to 146003116
+set 0 rec_f | TRACE from_step 0 limit 200 steps 21600 converged 21600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 151757 most_iterations 102 largest_converged_residual_u 11175 stopped_residual_u -1 to 0
+set 1 stock | TRACE from_step 0 limit 200 steps 21600 converged 21387 stopped 213 at_the_limit 213 earlier 0 diverged 0 iterations_in_all 179148 most_iterations 200 largest_converged_residual_u 9178 stopped_residual_u 5186 to 6525164
+set 1 expn | TRACE from_step 0 limit 200 steps 21600 converged 21590 stopped 10 at_the_limit 10 earlier 0 diverged 0 iterations_in_all 138892 most_iterations 200 largest_converged_residual_u 8648 stopped_residual_u 3948 to 398409
+set 1 implicit | TRACE from_step 0 limit 200 steps 21600 converged 21600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 156792 most_iterations 92 largest_converged_residual_u 8010 stopped_residual_u -1 to 0
+set 1 armijo | TRACE from_step 0 limit 200 steps 21600 converged 21380 stopped 220 at_the_limit 220 earlier 0 diverged 0 iterations_in_all 193508 most_iterations 200 largest_converged_residual_u 9166 stopped_residual_u 4433 to 25801648
+set 1 nudge | TRACE from_step 0 limit 200 steps 21600 converged 21371 stopped 229 at_the_limit 229 earlier 0 diverged 0 iterations_in_all 182781 most_iterations 200 largest_converged_residual_u 9205 stopped_residual_u 4621 to 5800958
+set 1 d | TRACE from_step 0 limit 200 steps 21600 converged 21361 stopped 239 at_the_limit 239 earlier 0 diverged 0 iterations_in_all 180184 most_iterations 200 largest_converged_residual_u 10770 stopped_residual_u 5283 to 2622563
+set 1 d_expn | TRACE from_step 0 limit 200 steps 21600 converged 21590 stopped 10 at_the_limit 10 earlier 0 diverged 0 iterations_in_all 135006 most_iterations 200 largest_converged_residual_u 8707 stopped_residual_u 3948 to 398409
+set 1 ng_stock | TRACE from_step 0 limit 200 steps 21600 converged 21600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 49605 most_iterations 3 largest_converged_residual_u 9675 stopped_residual_u -1 to 0
+set 1 ng_d | TRACE from_step 0 limit 200 steps 21600 converged 21600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 54675 most_iterations 3 largest_converged_residual_u 9026 stopped_residual_u -1 to 0
+set 1 rec | TRACE from_step 0 limit 200 steps 21600 converged 21594 stopped 6 at_the_limit 6 earlier 0 diverged 0 iterations_in_all 125890 most_iterations 200 largest_converged_residual_u 8644 stopped_residual_u 8755 to 427075559
+set 1 rec_f | TRACE from_step 0 limit 200 steps 21600 converged 21600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 149621 most_iterations 116 largest_converged_residual_u 11148 stopped_residual_u -1 to 0
+set 2 stock | TRACE from_step 0 limit 200 steps 21600 converged 21396 stopped 204 at_the_limit 204 earlier 0 diverged 0 iterations_in_all 177523 most_iterations 200 largest_converged_residual_u 9702 stopped_residual_u 4367 to 4376860
+set 2 expn | TRACE from_step 0 limit 200 steps 21600 converged 21591 stopped 9 at_the_limit 9 earlier 0 diverged 0 iterations_in_all 140622 most_iterations 200 largest_converged_residual_u 11113 stopped_residual_u 5429 to 131045
+set 2 implicit | TRACE from_step 0 limit 200 steps 21600 converged 21600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 160111 most_iterations 158 largest_converged_residual_u 10853 stopped_residual_u -1 to 0
+set 2 armijo | TRACE from_step 0 limit 200 steps 21600 converged 21388 stopped 212 at_the_limit 212 earlier 0 diverged 0 iterations_in_all 192062 most_iterations 200 largest_converged_residual_u 11075 stopped_residual_u 4367 to 16342456
+set 2 nudge | TRACE from_step 0 limit 200 steps 21600 converged 21384 stopped 216 at_the_limit 216 earlier 0 diverged 0 iterations_in_all 180013 most_iterations 200 largest_converged_residual_u 9245 stopped_residual_u 4403 to 4386421
+set 2 d | TRACE from_step 0 limit 200 steps 21600 converged 21344 stopped 256 at_the_limit 256 earlier 0 diverged 0 iterations_in_all 183288 most_iterations 200 largest_converged_residual_u 8304 stopped_residual_u 4367 to 5195186
+set 2 d_expn | TRACE from_step 0 limit 200 steps 21600 converged 21592 stopped 8 at_the_limit 8 earlier 0 diverged 0 iterations_in_all 135593 most_iterations 200 largest_converged_residual_u 8400 stopped_residual_u 5521 to 131045
+set 2 ng_stock | TRACE from_step 0 limit 200 steps 21600 converged 21600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 49799 most_iterations 3 largest_converged_residual_u 8654 stopped_residual_u -1 to 0
+set 2 ng_d | TRACE from_step 0 limit 200 steps 21600 converged 21600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 54896 most_iterations 3 largest_converged_residual_u 8714 stopped_residual_u -1 to 0
+set 2 rec | TRACE from_step 0 limit 200 steps 21600 converged 21594 stopped 6 at_the_limit 6 earlier 0 diverged 0 iterations_in_all 127725 most_iterations 200 largest_converged_residual_u 9007 stopped_residual_u 4663 to 22001320
+set 2 rec_f | TRACE from_step 0 limit 200 steps 21600 converged 21600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 152818 most_iterations 98 largest_converged_residual_u 8039 stopped_residual_u -1 to 0
+set 3 stock | TRACE from_step 0 limit 200 steps 21600 converged 21409 stopped 191 at_the_limit 191 earlier 0 diverged 0 iterations_in_all 176229 most_iterations 200 largest_converged_residual_u 7827 stopped_residual_u 4127 to 10850538
+set 3 expn | TRACE from_step 0 limit 200 steps 21600 converged 21591 stopped 9 at_the_limit 9 earlier 0 diverged 0 iterations_in_all 140473 most_iterations 200 largest_converged_residual_u 9419 stopped_residual_u 3726 to 485957
+set 3 implicit | TRACE from_step 0 limit 200 steps 21600 converged 21599 stopped 1 at_the_limit 1 earlier 0 diverged 0 iterations_in_all 158634 most_iterations 200 largest_converged_residual_u 9600 stopped_residual_u 4593 to 4593
+set 3 armijo | TRACE from_step 0 limit 200 steps 21600 converged 21407 stopped 193 at_the_limit 193 earlier 0 diverged 0 iterations_in_all 189572 most_iterations 200 largest_converged_residual_u 7827 stopped_residual_u 4595 to 19632312
+set 3 nudge | TRACE from_step 0 limit 200 steps 21600 converged 21426 stopped 174 at_the_limit 174 earlier 0 diverged 0 iterations_in_all 173345 most_iterations 200 largest_converged_residual_u 9036 stopped_residual_u 3640 to 5014377
+set 3 d | TRACE from_step 0 limit 200 steps 21600 converged 21383 stopped 217 at_the_limit 217 earlier 0 diverged 0 iterations_in_all 177091 most_iterations 200 largest_converged_residual_u 10958 stopped_residual_u 4127 to 2367582
+set 3 d_expn | TRACE from_step 0 limit 200 steps 21600 converged 21591 stopped 9 at_the_limit 9 earlier 0 diverged 0 iterations_in_all 135739 most_iterations 200 largest_converged_residual_u 10222 stopped_residual_u 3726 to 485957
+set 3 ng_stock | TRACE from_step 0 limit 200 steps 21600 converged 21600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 49527 most_iterations 3 largest_converged_residual_u 8304 stopped_residual_u -1 to 0
+set 3 ng_d | TRACE from_step 0 limit 200 steps 21600 converged 21600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 54714 most_iterations 3 largest_converged_residual_u 9148 stopped_residual_u -1 to 0
+set 3 rec | TRACE from_step 0 limit 200 steps 21600 converged 21590 stopped 10 at_the_limit 10 earlier 0 diverged 0 iterations_in_all 127219 most_iterations 200 largest_converged_residual_u 10669 stopped_residual_u 4437 to 180424236
+set 3 rec_f | TRACE from_step 0 limit 200 steps 21600 converged 21600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 151929 most_iterations 141 largest_converged_residual_u 8167 stopped_residual_u -1 to 0
+rules | every rule below is judged by sx_contact rule from the numbers above and the registered bounds
+RULE S0_every_part_identical_in_full eq 0 0 : HELD
+RULE S0_parts_played eq 9 9 : HELD
+RULE S1_stock_stops_at_least_100_set0 ge 206 100 : HELD
+RULE S2_every_stop_at_the_limit_set0 eq 206 206 : HELD
+RULE S2_no_stop_near_the_tolerance_set0 ge 4187 2000 : HELD
+RULE S3_explicit_normals_leave_a_fifth_set0 share 5 206 1 5 : HELD
+RULE S4_implicit_normal_force_leaves_a_tenth_set0 share 0 206 1 10 : HELD
+RULE S5_armijo_alone_leaves_half_set0 share 206 237 2 1 : HELD
+RULE S6_no_ground_no_stop_set0 all_eq 0 0 0 : HELD
+RULE S7_joint_limit_patch_with_explicit_normals_a_fifth_set0 share 5 258 1 5 : HELD
+RULE S8_its_extra_stops_go_with_explicit_normals_set0 le_plus 5 5 21 : HELD
+RULE S1_stock_stops_at_least_100_set1 ge 213 100 : HELD
+RULE S2_every_stop_at_the_limit_set1 eq 213 213 : HELD
+RULE S2_no_stop_near_the_tolerance_set1 ge 5186 2000 : HELD
+RULE S3_explicit_normals_leave_a_fifth_set1 share 10 213 1 5 : HELD
+RULE S4_implicit_normal_force_leaves_a_tenth_set1 share 0 213 1 10 : HELD
+RULE S5_armijo_alone_leaves_half_set1 share 213 220 2 1 : HELD
+RULE S6_no_ground_no_stop_set1 all_eq 0 0 0 : HELD
+RULE S7_joint_limit_patch_with_explicit_normals_a_fifth_set1 share 10 239 1 5 : HELD
+RULE S8_its_extra_stops_go_with_explicit_normals_set1 le_plus 10 10 21 : HELD
+RULE S1_stock_stops_at_least_100_set2 ge 204 100 : HELD
+RULE S2_every_stop_at_the_limit_set2 eq 204 204 : HELD
+RULE S2_no_stop_near_the_tolerance_set2 ge 4367 2000 : HELD
+RULE S3_explicit_normals_leave_a_fifth_set2 share 9 204 1 5 : HELD
+RULE S4_implicit_normal_force_leaves_a_tenth_set2 share 0 204 1 10 : HELD
+RULE S5_armijo_alone_leaves_half_set2 share 204 212 2 1 : HELD
+RULE S6_no_ground_no_stop_set2 all_eq 0 0 0 : HELD
+RULE S7_joint_limit_patch_with_explicit_normals_a_fifth_set2 share 8 256 1 5 : HELD
+RULE S8_its_extra_stops_go_with_explicit_normals_set2 le_plus 8 9 21 : HELD
+RULE S1_stock_stops_at_least_100_set3 ge 191 100 : HELD
+RULE S2_every_stop_at_the_limit_set3 eq 191 191 : HELD
+RULE S2_no_stop_near_the_tolerance_set3 ge 4127 2000 : HELD
+RULE S3_explicit_normals_leave_a_fifth_set3 share 9 191 1 5 : HELD
+RULE S4_implicit_normal_force_leaves_a_tenth_set3 share 1 191 1 10 : HELD
+RULE S5_armijo_alone_leaves_half_set3 share 191 193 2 1 : HELD
+RULE S6_no_ground_no_stop_set3 all_eq 0 0 0 : HELD
+RULE S7_joint_limit_patch_with_explicit_normals_a_fifth_set3 share 9 217 1 5 : HELD
+RULE S8_its_extra_stops_go_with_explicit_normals_set3 le_plus 9 9 21 : HELD
+STUDY10 rules held 38 failed 0 ; values missing 0 ; measuring complete 1

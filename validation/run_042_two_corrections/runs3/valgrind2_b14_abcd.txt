@@ -1,0 +1,21 @@
+==56770== Memcheck, a memory error detector
+==56770== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==56770== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==56770== Command: tools/sdx_contact64_b14 validation/run_042_two_corrections/runs3/exit2_b14_abcd.txt dt=0.01 secs=0.1 h0=0 mu=0.35 mass=0.8 radius=0.035 exitscene=2
+==56770== Parent PID: 56769
+==56770== 
+==56770== 
+==56770== HEAP SUMMARY:
+==56770==     in use at exit: 53,239 bytes in 737 blocks
+==56770==   total heap usage: 8,213 allocs, 7,476 frees, 7,717,174 bytes allocated
+==56770== 
+==56770== LEAK SUMMARY:
+==56770==    definitely lost: 0 bytes in 0 blocks
+==56770==    indirectly lost: 0 bytes in 0 blocks
+==56770==      possibly lost: 0 bytes in 0 blocks
+==56770==    still reachable: 53,239 bytes in 737 blocks
+==56770==         suppressed: 0 bytes in 0 blocks
+==56770== Rerun with --leak-check=full to see details of leaked memory
+==56770== 
+==56770== For lists of detected and suppressed errors, rerun with: -s
+==56770== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

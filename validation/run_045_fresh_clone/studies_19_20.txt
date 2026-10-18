@@ -1,0 +1,6 @@
+SAME study19 identity.txt
+SAME study19 exit.txt
+SAME study19 soft.txt
+study19 plays: 41 of 41 the same
+SAME study20 identity.txt
+study20 plays: 497 of 497 the same

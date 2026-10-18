@@ -1,0 +1,10 @@
+STATS run rest_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 1 dofs 1 steps 300 converged 300 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra lo=-0.3 hi=3 limitk=2000 limitd=150
+STATS run lift_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 1 dofs 1 steps 160 converged 160 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra lo=-0.3 hi=3 limitk=2000 limitd=150 torque=15.68 torqueat=1.5
+STATS run rest_16 joint dt 0.000625 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 1 dofs 1 steps 4800 converged 4800 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra lo=-0.3 hi=3 limitk=2000 limitd=150
+STATS run lift_16 joint dt 0.000625 mass 2 radius 0.04 arm 0.4 angle0 0 gravity 1 dofs 1 steps 2560 converged 2560 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra lo=-0.3 hi=3 limitk=2000 limitd=150 torque=15.68 torqueat=1.5
+STATS run rel20_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 -0.33 gravity 0 dofs 1 steps 50 converged 50 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra lo=-0.3 hi=3 limitk=2000 limitd=20
+STATS run rel150_1 joint dt 0.01 mass 2 radius 0.04 arm 0.4 angle0 -0.33 gravity 0 dofs 1 steps 50 converged 50 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra lo=-0.3 hi=3 limitk=2000 limitd=150
+STATS run rel20_16 joint dt 0.000625 mass 2 radius 0.04 arm 0.4 angle0 -0.33 gravity 0 dofs 1 steps 800 converged 800 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra lo=-0.3 hi=3 limitk=2000 limitd=20
+STATS run rel150_16 joint dt 0.000625 mass 2 radius 0.04 arm 0.4 angle0 -0.33 gravity 0 dofs 1 steps 800 converged 800 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra lo=-0.3 hi=3 limitk=2000 limitd=150
+STATS run rel20_64 joint dt 0.00015625 mass 2 radius 0.04 arm 0.4 angle0 -0.33 gravity 0 dofs 1 steps 3200 converged 3200 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra lo=-0.3 hi=3 limitk=2000 limitd=20
+STATS run rel150_64 joint dt 0.00015625 mass 2 radius 0.04 arm 0.4 angle0 -0.33 gravity 0 dofs 1 steps 3200 converged 3200 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra lo=-0.3 hi=3 limitk=2000 limitd=150

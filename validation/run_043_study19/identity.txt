@@ -1,0 +1,8 @@
+suite 1 stock against registered: 39 of 39
+suite 1 off against registered stock: 39 of 39
+suite 1 A to D against registered: 39 of 39
+suite 1 A to E against registered: 39 of 39
+suite 2 stock against registered: 28 of 28
+suite 2 off against registered stock: 28 of 28
+suite 2 A to D against registered: 28 of 28
+suite 2 A to E against registered: 28 of 28

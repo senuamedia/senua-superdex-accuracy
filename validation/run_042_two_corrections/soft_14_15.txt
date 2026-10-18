@@ -1,0 +1,18 @@
+SAME soft_b14_abcd_drop_1.txt
+SAME soft_b14_abcd_drop_16.txt
+SAME soft_b14_abcd_drop_4.txt
+SAME soft_b14_abcd_hold_1.txt
+SAME soft_b14_abcd_hold_16.txt
+SAME soft_b14_abcd_hold_4.txt
+SAME soft_b14_abcd_slide_1.txt
+SAME soft_b14_abcd_slide_16.txt
+SAME soft_b14_abcd_slide_4.txt
+SAME off soft_stock_drop_1.txt
+SAME off soft_stock_drop_16.txt
+SAME off soft_stock_drop_4.txt
+SAME off soft_stock_hold_1.txt
+SAME off soft_stock_hold_16.txt
+SAME off soft_stock_hold_4.txt
+SAME off soft_stock_slide_1.txt
+SAME off soft_stock_slide_16.txt
+SAME off soft_stock_slide_4.txt

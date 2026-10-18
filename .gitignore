@@ -1,0 +1,11 @@
+.DS_Store
+*.f32
+# local play output and scratch: work/<registration>/, suites/1 and suites/2 (the two contact suites' play output)
+work/
+suites/
+# the rigs, built from tools/*.cpp by tools/build_player.sh
+tools/sdx_player
+tools/sdx_*64
+tools/sdx_*32
+tools/sdx_*64_stock
+tools/sdx_*64_b4

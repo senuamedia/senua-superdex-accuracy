@@ -1,0 +1,1 @@
+STATS contact dt 0.01 h0 0.06 vx0 1.9 mu 0.38 lock 1 mass 1.7 radius 0.05 steps 30 converged 30 stopped 0 diverged 0 most_iterations 10 real_bits 64 extra ndamp=5 falloff=0.03 abstol=1e-4 reltol=1e-8 sdfdiv=32

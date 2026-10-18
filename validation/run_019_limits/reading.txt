@@ -1,0 +1,48 @@
+stock rest 1/1 | FINAL dt_ns 10000000 angle_urad -303744 speed_urads 0
+stock rest 1/16 | FINAL dt_ns 625000 angle_urad -303741 speed_urads 0
+patched rest 1/1 | FINAL dt_ns 10000000 angle_urad -303744 speed_urads 0
+patched rest 1/16 | FINAL dt_ns 625000 angle_urad -303741 speed_urads 0
+stock release, damping 20, 1/64 | LEAVE dt_ns 156250 largest_speed_urads 1423020 speed_at_leaving_urads 1004593 final_speed_urads 1004580 final_angle_urad 174753 steps_inside 175 largest_fall_inside_urads 418427
+stock release, damping 20, 1/1 | LEAVE dt_ns 10000000 largest_speed_urads 971350 speed_at_leaving_urads 764974 final_speed_urads 762923 final_angle_urad 54731 steps_inside 3 largest_fall_inside_urads 206348
+stock release, damping 20, 1/16 | LEAVE dt_ns 625000 largest_speed_urads 1390648 speed_at_leaving_urads 981305 final_speed_urads 981257 final_angle_urad 163342 steps_inside 44 largest_fall_inside_urads 409343
+stock release, damping 150, 1/64 | LEAVE dt_ns 156250 largest_speed_urads 367995 speed_at_leaving_urads 0 final_speed_urads 445 final_angle_urad -300032 steps_inside 3200 largest_fall_inside_urads 367550
+stock release, damping 150, 1/1 | LEAVE dt_ns 10000000 largest_speed_urads 314637 speed_at_leaving_urads 0 final_speed_urads 681 final_angle_urad -300050 steps_inside 50 largest_fall_inside_urads 313956
+stock release, damping 150, 1/16 | LEAVE dt_ns 625000 largest_speed_urads 364068 speed_at_leaving_urads 0 final_speed_urads 455 final_angle_urad -300033 steps_inside 800 largest_fall_inside_urads 363613
+patched release, damping 20, 1/64 | LEAVE dt_ns 156250 largest_speed_urads 1423020 speed_at_leaving_urads 1423016 final_speed_urads 1422979 final_angle_urad 374250 steps_inside 167 largest_fall_inside_urads 4
+patched release, damping 20, 1/1 | LEAVE dt_ns 10000000 largest_speed_urads 971350 speed_at_leaving_urads 971186 final_speed_urads 966999 final_angle_urad 153214 steps_inside 3 largest_fall_inside_urads 72
+patched release, damping 20, 1/16 | LEAVE dt_ns 625000 largest_speed_urads 1390648 speed_at_leaving_urads 1390631 final_speed_urads 1390496 final_angle_urad 358545 steps_inside 42 largest_fall_inside_urads 16
+patched release, damping 150, 1/64 | LEAVE dt_ns 156250 largest_speed_urads 367995 speed_at_leaving_urads 367995 final_speed_urads 367994 final_angle_urad -146642 steps_inside 532 largest_fall_inside_urads 0
+patched release, damping 150, 1/1 | LEAVE dt_ns 10000000 largest_speed_urads 314637 speed_at_leaving_urads 314622 final_speed_urads 314601 final_angle_urad -172872 steps_inside 9 largest_fall_inside_urads 14
+patched release, damping 150, 1/16 | LEAVE dt_ns 625000 largest_speed_urads 364068 speed_at_leaving_urads 364066 final_speed_urads 364064 final_angle_urad -148574 steps_inside 134 largest_fall_inside_urads 2
+stock lift 1/1 | FINAL dt_ns 10000000 angle_urad -259228 speed_urads 1322825
+stock lift 1/16 | FINAL dt_ns 625000 angle_urad -264233 speed_urads 1339322
+patched lift 1/1 | FINAL dt_ns 10000000 angle_urad -165016 speed_urads 2506797
+patched lift 1/16 | FINAL dt_ns 625000 angle_urad -175432 speed_urads 2527686
+solver | the patched limit runs: stopped 0 diverged 0 ; stock: stopped 0
+benchmark | PLAIN half_cheetah Z folds_in_order 3
+benchmark | PLAIN ant Z folds_in_order 3
+benchmark | half_cheetah z1 steps 21600 stopped 6 diverged 0 most_iterations 200
+benchmark | half_cheetah z2 steps 43200 stopped 6 diverged 0 most_iterations 200
+benchmark | half_cheetah z4 steps 86400 stopped 4 diverged 0 most_iterations 200
+benchmark | half_cheetah z8 steps 172800 stopped 2 diverged 0 most_iterations 200
+benchmark | half_cheetah z16 steps 345600 stopped 0 diverged 0 most_iterations 10
+benchmark | ant z1 steps 21600 stopped 7 diverged 0 most_iterations 200
+benchmark | ant z2 steps 43200 stopped 7 diverged 0 most_iterations 200
+benchmark | ant z4 steps 86400 stopped 5 diverged 0 most_iterations 200
+benchmark | ant z8 steps 172800 stopped 6 diverged 0 most_iterations 200
+benchmark | ant z16 steps 345600 stopped 5 diverged 0 most_iterations 200
+H0 safe when off: joint files byte-identical 40 of 40 ; benchmark streams 38 of 38 ; held 1
+H1 the limit at rest is a spring: final angle urad (answer -303741, allowed 1 in 100 of the depth): stock -303744 -303741 ; patched -303744 -303741 ; held 1
+RELEASE from inside a damped limit: speed at leaving at 1/64 of the step, then final speed and angle at step 1 and at 1/16 (answers 1434131 and 369401 urad/s; passes within 2 in 100 at 1/64 and when it has left at the coarser steps)
+  stock, damping 20: 1004593 762923 54731 981257 163342 : 0
+  stock, damping 150: 0 681 -300050 455 -300033 : 0
+  patched, damping 20: 1423016 966999 153214 1390496 358545 : 1
+  patched, damping 150: 367995 314601 -172872 364064 -148574 : 1
+LIFT off the limit with twice gravity's torque: angle urad 0.1 s after the lift starts (passes at -189208 or more): stock -259228 -264233 ; patched -165016 -175432
+H2 stock's damped limit holds back a joint that is leaving it: the release fails at damping 20 1 and at 150 1 ; the lift fails at step 1 1 and at 1/16 1 ; held 1
+H3 the limit that cannot pull: the release passes at damping 20 1 and at 150 1 ; the lift passes at both steps 1 ; solver steps stopped 0 diverged 0 ; held 1
+H4 nothing changes where there is no limit: the sixth registration's runs with the switch on byte-identical 30 of 30 ; held 1
+H5 the benchmark with the switch on, at the shipped step (stopped stock, stopped patched, steps, diverged patched): half_cheetah 2 2 21600 0 ; ant 206 245 21600 0 ; cart_pole 0 0 21600 0 ; none diverged and no more stopped than stock plus 1 in 1,000: held 0
+DECISION the recommended configuration with the switch added: half_cheetah folds in order of 3 3 ; ant 3 ; steps diverged 0 ; stopped at the shipped step half_cheetah 6 ant 7 ; the patch joins the recommended configuration (both chains in order in 3 of 3 and none diverged): 1
+LIMITS H0 1 H1 1 H2 1 H3 1 H4 1 H5 0
+THESIS a damped joint limit of stock SuperDex holds back a joint that is leaving it, and a limit that cannot pull is required, correct and safe: FAIL

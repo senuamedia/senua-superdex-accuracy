@@ -1,0 +1,31 @@
+played stock
+played patched_off
+played implicit
+played damped
+played damped_a
+played damped_ab
+played stick
+played recommended
+played recommended_implicit
+STATS source sref scene half_cheetah integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 9 solver_steps 21600 converged 2
+STATS source t2 scene half_cheetah integ be maxiter 200 sub 2 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 9 solver_steps 43200 converged 431
+STATS source t4 scene half_cheetah integ be maxiter 200 sub 4 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 9 solver_steps 86400 converged 863
+STATS source t8 scene half_cheetah integ be maxiter 200 sub 8 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 9 solver_steps 172800 converged 17
+STATS source t16 scene half_cheetah integ be maxiter 200 sub 16 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 9 solver_steps 345600 converged 
+STATS source q1 scene half_cheetah integ be maxiter 200 sub 1 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 21600 converged 216
+STATS source q2 scene half_cheetah integ be maxiter 200 sub 2 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 43200 converged 432
+STATS source q4 scene half_cheetah integ be maxiter 200 sub 4 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 86400 converged 864
+STATS source q8 scene half_cheetah integ be maxiter 200 sub 8 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 172800 converged 17
+STATS source q16 scene half_cheetah integ be maxiter 200 sub 16 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 345600 converged 
+STATS source qi1 scene half_cheetah integ be maxiter 200 sub 1 smooth -1 contact_actors_set 9 episodes 108 readings 21600 dofs 9 solver_steps 21600 converged 21
+STATS source sref scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged 21394 sto
+STATS source t2 scene ant integ be maxiter 200 sub 2 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 43200 converged 43143 stopp
+STATS source t4 scene ant integ be maxiter 200 sub 4 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 86400 converged 86397 stopp
+STATS source t8 scene ant integ be maxiter 200 sub 8 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 172800 converged 172798 sto
+STATS source t16 scene ant integ be maxiter 200 sub 16 smooth -1 contact_actors_set 0 episodes 108 readings 21600 dofs 14 solver_steps 345600 converged 345600 s
+STATS source q1 scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged 21598 stop
+STATS source q2 scene ant integ be maxiter 200 sub 2 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 43200 converged 43196 stop
+STATS source q4 scene ant integ be maxiter 200 sub 4 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 86400 converged 86400 stop
+STATS source q8 scene ant integ be maxiter 200 sub 8 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 172800 converged 172798 st
+STATS source q16 scene ant integ be maxiter 200 sub 16 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 345600 converged 345593 
+STATS source qi1 scene ant integ be maxiter 200 sub 1 smooth -1 contact_actors_set 10 episodes 108 readings 21600 dofs 14 solver_steps 21600 converged 21446 sto

@@ -1,0 +1,18 @@
+side 1/1 stock: from_step 5 limit 200 steps 45 converged 45 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 135 most_iterations 42 largest_converged_residual_u 467 stopped_residual_u -1 to 0
+side 1/1 off: from_step 5 limit 200 steps 45 converged 45 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 135 most_iterations 42 largest_converged_residual_u 467 stopped_residual_u -1 to 0
+side 1/1 on: from_step 5 limit 200 steps 45 converged 45 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 47 most_iterations 3 largest_converged_residual_u 196 stopped_residual_u -1 to 0
+  1/1 off: identical to stock
+  1/1 last line of B, stock: 49 28815308 88536 0 0 0 ; on: 49 28815308 88536 0 0 0
+  1/1 last line of A, stock: 49 72687901 151911 0 0 0 ; on: 49 72687901 151911 0 0 0
+side 1/16 stock: from_step 45 limit 200 steps 755 converged 755 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 6179 most_iterations 65 largest_converged_residual_u 612 stopped_residual_u -1 to 0
+side 1/16 off: from_step 45 limit 200 steps 755 converged 755 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 6179 most_iterations 65 largest_converged_residual_u 612 stopped_residual_u -1 to 0
+side 1/16 on: from_step 45 limit 200 steps 755 converged 755 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 756 most_iterations 2 largest_converged_residual_u 194 stopped_residual_u -1 to 0
+  1/16 off: identical to stock
+  1/16 last line of B, stock: 799 253193512 -316000 0 0 0 ; on: 799 253193500 -316000 0 0 0
+  1/16 last line of A, stock: 799 104741930 219333 0 0 0 ; on: 799 104741929 219333 0 0 0
+side 1/64 stock: from_step 172 limit 200 steps 3028 converged 918 stopped 2110 at_the_limit 2110 earlier 0 diverged 0 iterations_in_all 427868 most_iterations 200 largest_converged_residual_u 1021 stopped_residual_u 1071 to 3998
+side 1/64 off: from_step 172 limit 200 steps 3028 converged 918 stopped 2110 at_the_limit 2110 earlier 0 diverged 0 iterations_in_all 427868 most_iterations 200 largest_converged_residual_u 1021 stopped_residual_u 1071 to 3998
+side 1/64 on: from_step 172 limit 200 steps 3028 converged 3028 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 3029 most_iterations 2 largest_converged_residual_u 423 stopped_residual_u -1 to 0
+  1/64 off: identical to stock
+  1/64 last line of B, stock: 3199 393473046 -568646 0 0 0 ; on: 3199 393473045 -568646 0 0 0
+  1/64 last line of A, stock: 3199 124781864 261441 0 0 0 ; on: 3199 124781864 261441 0 0 0

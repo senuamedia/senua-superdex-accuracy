@@ -1,0 +1,47 @@
+fd52b61041ab80de8487dc314b5bb7589971f363c1ab9e33d018c0132d2179a0  tools/sdx_chain.cpp
+9ce3b6f33cdf705e0fe827ce2d76b18113c2327d855dc79dff50101b31e420bb  tools/sdx_contact.cpp
+4956a1bf50e50fa5af8be047fc911f007aa76df32cc365f555a316ae4911c7ac  tools/sdx_deform.cpp
+dc234ca7de6564ae82101181693d25bb90637db921a5c876dd970b9c43b6e0a7  tools/sdx_exit.cpp
+a95525e8658a4ea09c6bee3975eb43c718375405f29e394b0898e1d02b74d74d  tools/sdx_grip.cpp
+4cd5a6f600f139ca33195470e7beb1a54901786f6e4d468a63f58808c0150e8c  tools/sdx_joint.cpp
+ad80834cecbaccdb4ac7f627358cdfd73dcd18de52ad69c4dfaa28a5125597d2  tools/sdx_pair.cpp
+e7328fcff80a0856aafcd3e0492189f6aa361fcc714e3b7c5b4445ef0eae762b  tools/sdx_player.cpp
+cfffbfaf9fb72b25abd6ff529617c1b9e58a6dcbccedf3220b7e4373c24f6cd9  tools/sdx_rotvec.cpp
+b6daae9c807f3a3ea15e7ca504b82944cc60b91fee8bfd2078728997e09fefa1  tools/build_player.sh
+bb1f52e8fdae023ffbe0131f9e99d6d61a7aefa6feeadf157d9d1f1fd45436bc  tools/play_identity.sh
+5c0db0f1c0e787189f5323924a7da8c215b9bd34f5e238b77cdcf49adcf7dda6  tools/contact_suite.sh
+13fb4706d780ea06b72021dc0601e8521b5806737114861a0340cff766ef3ffe  tools/contact_suite2.sh
+9489cb053b9effeb3406a47339b2078973c559e0647e7781a8d94f3f72e93793  tools/sdx_contact64
+2b1a47f79c20f222650174179bd6d1497b552f2f3a0949cff6d6e3ec1a98d679  tools/sdx_pair64
+012684e1c12fb83c275447205c1df7b28a7efaf551868464940ddd29b34cad6d  tools/sdx_joint64
+5e080d54610e2ef39cb8d92db2d5f0a6a95aa728ac6af7f9d9d2ea5cf21f0465  tools/sdx_chain64
+ab2f8a88882434a6602f9f63e445b69a77760d0931b519ad7551015867cdd9c2  tools/sdx_rotvec64
+a71ba9f7fa5f20da960edebf0c564d4a329c9186868b3f9ad1e4e7104a73105f  tools/sdx_player64
+281e25afd67844d80ade8d07d831b36489b72008a6b39d9467dd4d2001de8b01  tools/sdx_contact64_stock
+b460b2c2bc82373066f2c813b42613f78c83e8c1713d6b685903b28e75f13537  tools/sdx_joint64_stock
+e805987ead8284608468bcf02212eb30d6fb7a1742b0792d86f64300e02618eb  tools/sdx_chain64_stock
+4eef88dd732f017769d12ce68cbf5731fea1750626670f502a76db3d60de7e8b  tools/sdx_player64_stock
+8c136f2cdf03c3cd8fe151d046329e60de82dd8b05b26c919b63be591b88cb03  ~/work/sdx/rigs22_cur/sdx_chain64
+4bb7e0ba77116f34477389071d827aa5ac5f3a9ba7ea7678eea38054be096cec  ~/work/sdx/rigs22_cur/sdx_joint64
+5de4e34ae5e5c43bbec4e90bef0bab109f45d0825de7dec541059a2f10fb1768  ~/work/sdx/rigs22_cur/sdx_player64
+05cfa0a011a0bcf68434b9cbb1d51dbce64da1c14bf1bb2df18a2933e5c63301  patches/senua_contact.patch
+9807f00f6b5431358edfb280f311a68b6eedded26838036ae68b685a285bbae4  patches/senua_inertia_transport.patch
+6faaa83202139795289074d9b502557c59701d78aa455250350bc2c7597ff5a3  patches/senua_joint_limit.patch
+279c9510764649439d14d6245fd602662cdf9fd07dd1083078a06f1394e303b0  patches/senua_rotation_axis.patch
+c3e1442befd6dee9538b8618e60c963f3cf515ba1b331c67ef4a0b0a2f5a259f  patches/in_design/senua_inertia_transport_bdf2_derived.patch
+75def9201a45216a76f8f2896a9f5aba542a4bf630d213e16025d41604266a86  ~/work/sdx/build-stock/bin/libmochi_physics_double.so
+eee7cca1423650df64c5bc7f6f13fc225c83bd4ef2bab9fcca5742cd1751e694  ~/work/sdx/build-patched/bin/libmochi_physics_double.so
+2dc292922b3fa4e5f3f0b802bff62c70b8c7238c021de99d9be3d584662df1e1  ~/work/sdx/build-derived/bin/libmochi_physics_double.so
+tools/sdx_contact64 loads: 	libmochi_physics_double.so => ~/work/sdx/build-derived/bin/libmochi_physics_double.so (0x000070adff000000)
+tools/sdx_pair64 loads: 	libmochi_physics_double.so => ~/work/sdx/build-derived/bin/libmochi_physics_double.so (0x0000700a67200000)
+tools/sdx_joint64 loads: 	libmochi_physics_double.so => ~/work/sdx/build-derived/bin/libmochi_physics_double.so (0x00007b0a51e00000)
+tools/sdx_chain64 loads: 	libmochi_physics_double.so => ~/work/sdx/build-derived/bin/libmochi_physics_double.so (0x0000719868200000)
+tools/sdx_rotvec64 loads: 	libmochi_physics_double.so => ~/work/sdx/build-derived/bin/libmochi_physics_double.so (0x000071301b200000)
+tools/sdx_player64 loads: 	libmochi_physics_double.so => ~/work/sdx/build-derived/bin/libmochi_physics_double.so (0x0000790d63200000)
+tools/sdx_chain64_stock loads: 	libmochi_physics_double.so => ~/work/sdx/build-stock/bin/libmochi_physics_double.so (0x000071b138c00000)
+tools/sdx_contact64_stock loads: 	libmochi_physics_double.so => ~/work/sdx/build-stock/bin/libmochi_physics_double.so (0x0000705551a00000)
+tools/sdx_joint64_stock loads: 	libmochi_physics_double.so => ~/work/sdx/build-stock/bin/libmochi_physics_double.so (0x00007cd020e00000)
+tools/sdx_player64_stock loads: 	libmochi_physics_double.so => ~/work/sdx/build-stock/bin/libmochi_physics_double.so (0x000072ec53a00000)
+~/work/sdx/rigs22_cur/sdx_chain64 loads: 	libmochi_physics_double.so => ~/work/sdx/build-patched/bin/libmochi_physics_double.so (0x0000779512600000)
+~/work/sdx/rigs22_cur/sdx_joint64 loads: 	libmochi_physics_double.so => ~/work/sdx/build-patched/bin/libmochi_physics_double.so (0x0000712a81c00000)
+~/work/sdx/rigs22_cur/sdx_player64 loads: 	libmochi_physics_double.so => ~/work/sdx/build-patched/bin/libmochi_physics_double.so (0x0000787a33400000)

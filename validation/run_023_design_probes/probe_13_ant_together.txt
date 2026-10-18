@@ -1,0 +1,11 @@
+ant, 108 throwaway episodes (set 0 of seed 9100), shipped step; rec = the recommended configuration (patches A to E, contact damping 5, friction falloff 0.03)
+rec: steps 21600 stopped 5 at_the_limit 5 diverged 0 iterations_in_all 125765 most_iterations 200 stopped_residual_u 5704 to 184472483
+stock: steps 21600 stopped 223 at_the_limit 223 diverged 0 iterations_in_all 181733 most_iterations 200 stopped_residual_u 5066 to 2142041
+rec_f4: steps 21600 stopped 0 at_the_limit 0 diverged 0 iterations_in_all 152598 most_iterations 102 stopped_residual_u -1 to 0
+rec_ne: steps 21600 stopped 6 at_the_limit 6 diverged 0 iterations_in_all 126336 most_iterations 200 stopped_residual_u 5593 to 96137450
+rec_g: steps 21600 stopped 11 at_the_limit 11 diverged 0 iterations_in_all 129780 most_iterations 200 stopped_residual_u 4917 to 412139367
+rec_neg: steps 21600 stopped 5 at_the_limit 5 diverged 0 iterations_in_all 129193 most_iterations 200 stopped_residual_u 4072 to 96162154
+rec_f4_g: steps 21600 stopped 0 at_the_limit 0 diverged 0 iterations_in_all 156400 most_iterations 116 stopped_residual_u -1 to 0
+rec_f4_neg: steps 21600 stopped 0 at_the_limit 0 diverged 0 iterations_in_all 156391 most_iterations 105 stopped_residual_u -1 to 0
+stock_ne: steps 21600 stopped 209 at_the_limit 209 diverged 0 iterations_in_all 179681 most_iterations 200 stopped_residual_u 4463 to 2323941
+stock_neg: steps 21600 stopped 217 at_the_limit 217 diverged 0 iterations_in_all 184743 most_iterations 200 stopped_residual_u 4201 to 6347848

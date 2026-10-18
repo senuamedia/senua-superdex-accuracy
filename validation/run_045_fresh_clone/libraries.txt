@@ -1,0 +1,6 @@
+SAME stock 64-bit 75def9201a45216a
+SAME patched 64-bit (build 15) eee7cca1423650df
+SAME stock 32-bit 5cda843a4cf2ba2e
+SAME patched 32-bit 3366a7bf36fae858
+SAME library build 14 33935ba1df6c7ebe
+library build 13 (no Linux build registered) a5ac49aa8aada889

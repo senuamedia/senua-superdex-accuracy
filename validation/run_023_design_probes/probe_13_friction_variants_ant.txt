@@ -1,0 +1,8 @@
+rec_f1: steps 21600 stopped 2 at_the_limit 2 diverged 4 iterations_in_all 136529 most_iterations 200 stopped_residual_u 45847770 to 69566272
+cf1: steps 21600 stopped 0 at_the_limit 0 diverged 3 iterations_in_all 136854 most_iterations 63 stopped_residual_u -1 to 0
+rec_f2: steps 21600 stopped 20 at_the_limit 20 diverged 8 iterations_in_all 142375 most_iterations 200 stopped_residual_u 21804 to 38092454
+cf2: steps 21600 stopped 30 at_the_limit 30 diverged 8 iterations_in_all 144568 most_iterations 200 stopped_residual_u 4188 to 36066125
+rec_f3: steps 21600 stopped 3 at_the_limit 3 diverged 0 iterations_in_all 153912 most_iterations 200 stopped_residual_u 19475 to 12385921
+cf3: steps 21600 stopped 3 at_the_limit 3 diverged 0 iterations_in_all 157701 most_iterations 200 stopped_residual_u 19392 to 9874285
+rec_f4: steps 21600 stopped 0 at_the_limit 0 diverged 0 iterations_in_all 152598 most_iterations 102 stopped_residual_u -1 to 0
+cf4: steps 21600 stopped 0 at_the_limit 0 diverged 0 iterations_in_all 156740 most_iterations 140 stopped_residual_u -1 to 0

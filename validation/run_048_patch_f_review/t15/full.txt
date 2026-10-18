@@ -1,0 +1,4 @@
+full own nof | 1/1 B 4392 A 6985 stopped 0 diverged 0 | 1/2 B 4259 A 7007 stopped 0 diverged 0 | 1/4 B 4229 A 7012 stopped 0 diverged 0 | 1/8 B 4221 A 7013 stopped 0 diverged 0 | 1/16 B 4215 A 7014 stopped 0 diverged 0
+full own f | 1/1 B 4221 A 7013 stopped 0 diverged 0 | 1/2 B 4231 A 7012 stopped 0 diverged 0 | 1/4 B 4226 A 7013 stopped 0 diverged 0 | 1/8 B 4220 A 7014 stopped 0 diverged 0 | 1/16 B 4216 A 7014 stopped 0 diverged 0
+full div32 nof | 1/1 B 4410 A 6982 stopped 0 diverged 0 | 1/2 B 4409 A 6982 stopped 0 diverged 0 | 1/4 B 4409 A 6982 stopped 0 diverged 0 | 1/8 B 4409 A 6982 stopped 0 diverged 0 | 1/16 B 4409 A 6982 stopped 0 diverged 0
+full div32 f | 1/1 B 4410 A 6982 stopped 0 diverged 0 | 1/2 B 4410 A 6982 stopped 0 diverged 0 | 1/4 B 4410 A 6982 stopped 0 diverged 0 | 1/8 B 4410 A 6982 stopped 0 diverged 0 | 1/16 B 4409 A 6982 stopped 0 diverged 0

@@ -1,0 +1,68 @@
+IDENTITY rotvec 1 of 1
+IDENTITY flight 8 of 8
+IDENTITY suites_off 67 of 67
+IDENTITY suites_abcd 67 of 67
+IDENTITY suites_e 67 of 67
+IDENTITY suites_abcde 67 of 67
+DIFFERS joint swing_be_64
+IDENTITY joints 39 of 40
+DIFFERS zero joint swing_be_64
+IDENTITY zero 106 of 107
+DIFFERS fg chain swing_16
+DIFFERS fg chain tight free_16
+DIFFERS fg joints_fc swing_be_64
+DIFFERS fg limits_fc rel20_64
+IDENTITY fg 40 of 44
+DIFFERS benchmark ant s4
+DIFFERS benchmark ant c1
+DIFFERS benchmark ant c06
+DIFFERS benchmark ant c03
+IDENTITY bench 34 of 38
+DIFFERS benchmark under its switches half_cheetah y1
+DIFFERS benchmark under its switches half_cheetah y4
+IDENTITY benchrec 5 of 7
+DIFFERS r032 bench/ant_accurate.tr.gz
+DIFFERS r032 bench/ant_accurate_enc.pcm
+DIFFERS r032 bench/cart_pole_accurate.tr.gz
+DIFFERS r032 bench/half_cheetah_accurate.tr.gz
+DIFFERS r032 bench/half_cheetah_final.tr.gz
+DIFFERS r032 bench/half_cheetah_stock.tr.gz
+DIFFERS r032 deform_accurate/soft_rest_0.000625.txt
+DIFFERS r032 deform_final/shell_slide_0.01.txt
+DIFFERS r032 deform_final/soft_slide_0.01.txt
+DIFFERS r032 deform_stock/soft_fall_0.001.txt
+DIFFERS r032 deform_stock/soft_fall_0.01.txt
+DIFFERS r032 deform_stock/soft_hang_0.001.txt
+DIFFERS r032 deform_stock/soft_rest_0.001.txt
+DIFFERS r032 grip_accurate/built_0.9.txt
+DIFFERS r032 grip_accurate/fr3_0.9.txt
+DIFFERS r032 items/b2g_chainfree_16.txt
+DIFFERS r032 items/b2g_chainswing_16.txt
+DIFFERS r032 items/b2g_chainswing_4.txt
+DIFFERS r032 items/b2nog_chainswing_16.txt
+DIFFERS r032 items/b2nog_swing_16.txt
+DIFFERS r032 items/chainfree_16.txt
+DIFFERS r032 joints_accurate/chainfree_16.txt
+DIFFERS r032 joints_accurate/chainswing_16.txt
+DIFFERS r032 joints_final/swing_64.txt
+DIFFERS r032 limits_final/rel20_64.txt
+IDENTITY r032 366 of 391
+DIFFERS r034 accurate14/runs/bench/ant_accurate.tr.gz
+DIFFERS r034 accurate14/runs/bench/cart_pole_accurate.tr.gz
+DIFFERS r034 accurate14/runs/bench/half_cheetah_accurate.tr.gz
+DIFFERS r034 accurate14/runs/grip_accurate/built_0.9.txt
+DIFFERS r034 accurate14/runs/grip_accurate/fr3_0.9.txt
+DIFFERS r034 accurate14/runs/joints_accurate/chainswing_16.txt
+DIFFERS r034 runs/deform_accurate/soft_rest_0.000625.txt
+DIFFERS r034 runs/deform_final/shell_slide_0.01.txt
+DIFFERS r034 runs/deform_stock/soft_hold_0.001.txt
+DIFFERS r034 runs/deform_stock/soft_rest_0.001.txt
+DIFFERS r034 runs/deform_stock/soft_slide_0.001.txt
+DIFFERS r034 runs/items/b2_chainswing_16.txt
+DIFFERS r034 runs/items/chainfree_16.txt
+DIFFERS r034 runs/long/accurate_16.txt
+DIFFERS r034 runs/long/accurate_64.txt
+DIFFERS r034 runs/long/b2_chainswing_64.txt
+DIFFERS r034 runs/long/final_16.txt
+DIFFERS r034 runs/long/shipped_tolerances_16.txt
+IDENTITY r034 207 of 225

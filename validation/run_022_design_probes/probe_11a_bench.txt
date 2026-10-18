@@ -1,0 +1,12 @@
+ant rec 1/1: steps 2400 converged 2400 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 13771 most_iterations 94 largest_converged_residual_u 8309 stopped_residual_u -1 to 0
+ant rec 1/4: steps 9600 converged 9600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 33695 most_iterations 110 largest_converged_residual_u 24380 stopped_residual_u -1 to 0
+ant rec 1/16: steps 38400 converged 38399 stopped 1 at_the_limit 1 earlier 0 diverged 0 iterations_in_all 91794 most_iterations 200 largest_converged_residual_u 99728 stopped_residual_u 10881 to 10881
+ant rec_f 1/1: steps 2400 converged 2399 stopped 0 at_the_limit 0 earlier 0 diverged 1 iterations_in_all 15200 most_iterations 51 largest_converged_residual_u 5330 stopped_residual_u -1 to 0
+ant rec_f 1/4: steps 9600 converged 9600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 34831 most_iterations 15 largest_converged_residual_u 32267 stopped_residual_u -1 to 0
+ant rec_f 1/16: steps 38400 converged 38400 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 91720 most_iterations 10 largest_converged_residual_u 116340 stopped_residual_u -1 to 0
+half_cheetah rec 1/1: steps 2400 converged 2400 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 11709 most_iterations 13 largest_converged_residual_u 136350 stopped_residual_u -1 to 0
+half_cheetah rec 1/4: steps 9600 converged 9600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 31613 most_iterations 14 largest_converged_residual_u 140609 stopped_residual_u -1 to 0
+half_cheetah rec 1/16: steps 38400 converged 38400 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 106493 most_iterations 8 largest_converged_residual_u 145648 stopped_residual_u -1 to 0
+half_cheetah rec_f 1/1: steps 2400 converged 2400 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 15854 most_iterations 14 largest_converged_residual_u 136350 stopped_residual_u -1 to 0
+half_cheetah rec_f 1/4: steps 9600 converged 9600 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 34802 most_iterations 26 largest_converged_residual_u 140609 stopped_residual_u -1 to 0
+half_cheetah rec_f 1/16: steps 38400 converged 38400 stopped 0 at_the_limit 0 earlier 0 diverged 0 iterations_in_all 108530 most_iterations 7 largest_converged_residual_u 145648 stopped_residual_u -1 to 0

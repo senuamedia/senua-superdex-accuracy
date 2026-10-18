@@ -1,0 +1,61 @@
+ORDER: folds in order of 3 (sx_settings3 plain), and each fold's plain_in_order
+order rec half_cheetah folds_in_order 3 of 3 ; fold0=1 fold1=1 fold2=1
+order rec ant folds_in_order 3 of 3 ; fold0=1 fold1=1 fold2=1
+order nof half_cheetah folds_in_order 3 of 3 ; fold0=1 fold1=1 fold2=1
+order nof ant folds_in_order 3 of 3 ; fold0=1 fold1=1 fold2=1
+order nog half_cheetah folds_in_order 3 of 3 ; fold0=1 fold1=1 fold2=1
+order nog ant folds_in_order 3 of 3 ; fold0=1 fold1=1 fold2=1
+order shp half_cheetah folds_in_order 3 of 3 ; fold0=1 fold1=1 fold2=1
+order shp ant folds_in_order 3 of 3 ; fold0=1 fold1=1 fold2=1
+SOLVER: each play's STATS line (stopped, diverged, most iterations, wall seconds)
+solver rec half_cheetah 1/1 steps 21600 converged 21595 stopped 5 diverged 0 unset 0 most_iterations 200 stopped_at_limit 5 stopped_below_limit 0 wall_s 97.1
+solver rec half_cheetah 1/2 steps 43200 converged 43200 stopped 0 diverged 0 unset 0 most_iterations 193 stopped_at_limit 0 stopped_below_limit 0 wall_s 118.1
+solver rec half_cheetah 1/4 steps 86400 converged 86398 stopped 2 diverged 0 unset 0 most_iterations 200 stopped_at_limit 2 stopped_below_limit 0 wall_s 159.3
+solver rec half_cheetah 1/8 steps 172800 converged 172799 stopped 1 diverged 0 unset 0 most_iterations 200 stopped_at_limit 1 stopped_below_limit 0 wall_s 236.3
+solver rec half_cheetah 1/16 steps 345600 converged 345600 stopped 0 diverged 0 unset 0 most_iterations 145 stopped_at_limit 0 stopped_below_limit 0 wall_s 374.2
+solver rec ant 1/1 steps 21600 converged 21598 stopped 2 diverged 0 unset 0 most_iterations 200 stopped_at_limit 2 stopped_below_limit 0 wall_s 17.5
+solver rec ant 1/2 steps 43200 converged 43199 stopped 1 diverged 0 unset 0 most_iterations 200 stopped_at_limit 1 stopped_below_limit 0 wall_s 22.3
+solver rec ant 1/4 steps 86400 converged 86400 stopped 0 diverged 0 unset 0 most_iterations 163 stopped_at_limit 0 stopped_below_limit 0 wall_s 30.1
+solver rec ant 1/8 steps 172800 converged 172800 stopped 0 diverged 0 unset 0 most_iterations 124 stopped_at_limit 0 stopped_below_limit 0 wall_s 45.5
+solver rec ant 1/16 steps 345600 converged 345600 stopped 0 diverged 0 unset 0 most_iterations 106 stopped_at_limit 0 stopped_below_limit 0 wall_s 75.0
+solver nof half_cheetah 1/1 steps 21600 converged 21594 stopped 6 diverged 0 unset 0 most_iterations 200 stopped_at_limit 6 stopped_below_limit 0 wall_s 58.8
+solver nof half_cheetah 1/2 steps 43200 converged 43199 stopped 1 diverged 0 unset 0 most_iterations 200 stopped_at_limit 1 stopped_below_limit 0 wall_s 74.6
+solver nof half_cheetah 1/4 steps 86400 converged 86398 stopped 2 diverged 0 unset 0 most_iterations 200 stopped_at_limit 2 stopped_below_limit 0 wall_s 104.4
+solver nof half_cheetah 1/8 steps 172800 converged 172799 stopped 1 diverged 0 unset 0 most_iterations 200 stopped_at_limit 1 stopped_below_limit 0 wall_s 160.2
+solver nof half_cheetah 1/16 steps 345600 converged 345599 stopped 1 diverged 0 unset 0 most_iterations 200 stopped_at_limit 1 stopped_below_limit 0 wall_s 267.8
+solver nof ant 1/1 steps 21600 converged 21575 stopped 25 diverged 0 unset 0 most_iterations 200 stopped_at_limit 25 stopped_below_limit 0 wall_s 17.3
+solver nof ant 1/2 steps 43200 converged 43192 stopped 8 diverged 0 unset 0 most_iterations 200 stopped_at_limit 8 stopped_below_limit 0 wall_s 20.9
+solver nof ant 1/4 steps 86400 converged 86392 stopped 8 diverged 0 unset 0 most_iterations 200 stopped_at_limit 8 stopped_below_limit 0 wall_s 28.0
+solver nof ant 1/8 steps 172800 converged 172791 stopped 9 diverged 0 unset 0 most_iterations 200 stopped_at_limit 9 stopped_below_limit 0 wall_s 42.1
+solver nof ant 1/16 steps 345600 converged 345592 stopped 8 diverged 0 unset 0 most_iterations 200 stopped_at_limit 8 stopped_below_limit 0 wall_s 68.0
+solver nog half_cheetah 1/1 steps 21600 converged 21592 stopped 8 diverged 0 unset 0 most_iterations 200 stopped_at_limit 8 stopped_below_limit 0 wall_s 96.5
+solver nog half_cheetah 1/2 steps 43200 converged 43198 stopped 2 diverged 0 unset 0 most_iterations 200 stopped_at_limit 2 stopped_below_limit 0 wall_s 116.6
+solver nog half_cheetah 1/4 steps 86400 converged 86399 stopped 1 diverged 0 unset 0 most_iterations 200 stopped_at_limit 1 stopped_below_limit 0 wall_s 157.6
+solver nog half_cheetah 1/8 steps 172800 converged 172799 stopped 1 diverged 0 unset 0 most_iterations 200 stopped_at_limit 1 stopped_below_limit 0 wall_s 233.5
+solver nog half_cheetah 1/16 steps 345600 converged 345600 stopped 0 diverged 0 unset 0 most_iterations 131 stopped_at_limit 0 stopped_below_limit 0 wall_s 371.6
+solver nog ant 1/1 steps 21600 converged 21598 stopped 2 diverged 0 unset 0 most_iterations 200 stopped_at_limit 2 stopped_below_limit 0 wall_s 16.9
+solver nog ant 1/2 steps 43200 converged 43200 stopped 0 diverged 0 unset 0 most_iterations 145 stopped_at_limit 0 stopped_below_limit 0 wall_s 21.4
+solver nog ant 1/4 steps 86400 converged 86400 stopped 0 diverged 0 unset 0 most_iterations 158 stopped_at_limit 0 stopped_below_limit 0 wall_s 29.0
+solver nog ant 1/8 steps 172800 converged 172800 stopped 0 diverged 0 unset 0 most_iterations 125 stopped_at_limit 0 stopped_below_limit 0 wall_s 42.3
+solver nog ant 1/16 steps 345600 converged 345600 stopped 0 diverged 0 unset 0 most_iterations 137 stopped_at_limit 0 stopped_below_limit 0 wall_s 68.3
+solver shp half_cheetah 1/1 steps 21600 converged 21598 stopped 2 diverged 0 unset 0 most_iterations 200 stopped_at_limit 2 stopped_below_limit 0 wall_s 85.9
+solver shp half_cheetah 1/2 steps 43200 converged 43200 stopped 0 diverged 0 unset 0 most_iterations 148 stopped_at_limit 0 stopped_below_limit 0 wall_s 103.4
+solver shp half_cheetah 1/4 steps 86400 converged 86399 stopped 1 diverged 0 unset 0 most_iterations 200 stopped_at_limit 1 stopped_below_limit 0 wall_s 139.4
+solver shp half_cheetah 1/8 steps 172800 converged 172800 stopped 0 diverged 0 unset 0 most_iterations 155 stopped_at_limit 0 stopped_below_limit 0 wall_s 206.8
+solver shp half_cheetah 1/16 steps 345600 converged 345600 stopped 0 diverged 0 unset 0 most_iterations 112 stopped_at_limit 0 stopped_below_limit 0 wall_s 330.5
+solver shp ant 1/1 steps 21600 converged 21598 stopped 2 diverged 0 unset 0 most_iterations 200 stopped_at_limit 2 stopped_below_limit 0 wall_s 16.5
+solver shp ant 1/2 steps 43200 converged 43200 stopped 0 diverged 0 unset 0 most_iterations 163 stopped_at_limit 0 stopped_below_limit 0 wall_s 20.5
+solver shp ant 1/4 steps 86400 converged 86400 stopped 0 diverged 0 unset 0 most_iterations 91 stopped_at_limit 0 stopped_below_limit 0 wall_s 27.1
+solver shp ant 1/8 steps 172800 converged 172800 stopped 0 diverged 0 unset 0 most_iterations 128 stopped_at_limit 0 stopped_below_limit 0 wall_s 38.9
+solver shp ant 1/16 steps 345600 converged 345600 stopped 0 diverged 0 unset 0 most_iterations 82 stopped_at_limit 0 stopped_below_limit 0 wall_s 61.9
+CONTROL: shp against the record's streams/12 g chain (laptop, library build 12), byte for byte
+control half_cheetah shp1 against streams/12 g1: same
+control half_cheetah shp2 against streams/12 g2: same
+control half_cheetah shp4 against streams/12 g4: same
+control half_cheetah shp8 against streams/12 g8: same
+control half_cheetah shp16 against streams/12 g16: same
+control ant shp1 against streams/12 g1: same
+control ant shp2 against streams/12 g2: same
+control ant shp4 against streams/12 g4: same
+control ant shp8 against streams/12 g8: same
+control ant shp16 against streams/12 g16: same

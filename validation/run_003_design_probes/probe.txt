@@ -1,0 +1,106 @@
+=== cart_pole 16:59:55
+PLAY cart_pole ship32 rc=0 integ be maxiter 4 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1199 stopped 1 diverged 0 unset 0 most_iterations 4 wall_s 0.2 real_bits 32 worst_residual 77.9 extra none
+PLAY cart_pole s4 rc=0 integ be maxiter 4 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1199 stopped 1 diverged 0 unset 0 most_iterations 4 wall_s 0.1 real_bits 64 worst_residual 77.9 extra none
+PLAY cart_pole m200 rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1200 stopped 0 diverged 0 unset 0 most_iterations 7 wall_s 0.1 real_bits 64 worst_residual 0.0423 extra none
+PLAY cart_pole m1000 rc=0 integ be maxiter 1000 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1200 stopped 0 diverged 0 unset 0 most_iterations 7 wall_s 0.1 real_bits 64 worst_residual 0.0423 extra none
+PLAY cart_pole m200x rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1200 stopped 0 diverged 0 unset 0 most_iterations 7 wall_s 0.1 real_bits 64 worst_residual 0.0423 extra exacth=1
+PLAY cart_pole m200d rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1200 stopped 0 diverged 0 unset 0 most_iterations 7 wall_s 0.1 real_bits 64 worst_residual 0.0423 extra linsolve=ldlt
+PLAY cart_pole m200lu rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1200 stopped 0 diverged 0 unset 0 most_iterations 7 wall_s 0.1 real_bits 64 worst_residual 0.0423 extra linsolve=lu
+PLAY cart_pole m200c rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1200 stopped 0 diverged 0 unset 0 most_iterations 7 wall_s 0.1 real_bits 64 worst_residual 0.0423 extra linstrat=constant linreltol=1e-12
+PLAY cart_pole m200t rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1200 stopped 0 diverged 0 unset 0 most_iterations 7 wall_s 0.1 real_bits 64 worst_residual 5.89e-05 extra abstol=1e-6 reltol=1e-9
+PLAY cart_pole be8 rc=0 integ be maxiter 200 sub 8 smooth -1 contact_actors_set 0 solver_steps 9600 converged 9600 stopped 0 diverged 0 unset 0 most_iterations 3 wall_s 0.6 real_bits 64 worst_residual 0.103 extra none
+PLAY cart_pole bdf2_16 rc=0 integ bdf2 maxiter 200 sub 16 smooth -1 contact_actors_set 0 solver_steps 19200 converged 19200 stopped 0 diverged 0 unset 0 most_iterations 3 wall_s 1.1 real_bits 64 worst_residual 0.171 extra none
+PLAY cart_pole bdf2_32 rc=0 integ bdf2 maxiter 200 sub 32 smooth -1 contact_actors_set 0 solver_steps 38400 converged 38400 stopped 0 diverged 0 unset 0 most_iterations 3 wall_s 2.2 real_bits 64 worst_residual 0.205 extra none
+PLAY cart_pole dirk33_4 rc=0 integ dirk33 maxiter 200 sub 4 smooth -1 contact_actors_set 0 solver_steps 4800 converged 4800 stopped 0 diverged 0 unset 0 most_iterations 3 wall_s 0.6 real_bits 64 worst_residual 0.0724 extra none
+PLAY cart_pole dirk33_8 rc=0 integ dirk33 maxiter 200 sub 8 smooth -1 contact_actors_set 0 solver_steps 9600 converged 9600 stopped 0 diverged 0 unset 0 most_iterations 3 wall_s 1.2 real_bits 64 worst_residual 0.151 extra none
+PLAY cart_pole dirk33_16 rc=0 integ dirk33 maxiter 200 sub 16 smooth -1 contact_actors_set 0 solver_steps 19200 converged 19200 stopped 0 diverged 0 unset 0 most_iterations 3 wall_s 2.3 real_bits 64 worst_residual 0.166 extra none
+PLAY cart_pole bdf3_16 rc=0 integ bdf3 maxiter 200 sub 16 smooth -1 contact_actors_set 0 solver_steps 19200 converged 19200 stopped 0 diverged 0 unset 0 most_iterations 3 wall_s 1.2 real_bits 64 worst_residual 0.185 extra none
+PLAY cart_pole c0625 rc=0 integ be maxiter 200 sub 1 smooth 0.000625 contact_actors_set 2 solver_steps 1200 converged 1200 stopped 0 diverged 0 unset 0 most_iterations 7 wall_s 0.1 real_bits 64 worst_residual 0.0423 extra none
+PLAY cart_pole c03125 rc=0 integ be maxiter 200 sub 1 smooth 0.0003125 contact_actors_set 2 solver_steps 1200 converged 1200 stopped 0 diverged 0 unset 0 most_iterations 7 wall_s 0.1 real_bits 64 worst_residual 0.0423 extra none
+PAIR cart_pole s4 vs ship32: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+PAIR cart_pole m200 vs m1000: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+PAIR cart_pole m200 vs m200x: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+PAIR cart_pole m200 vs m200d: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+PAIR cart_pole m200 vs m200lu: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+PAIR cart_pole m200d vs m200lu: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+PAIR cart_pole m200 vs m200c: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+PAIR cart_pole m200 vs m200t: readings 1200 differing 79 more_than_1_count 18 largest 3 episodes_parting 4 of 6 earliest_step 18
+PAIR cart_pole m200 vs be8: readings 1200 differing 280 more_than_1_count 194 largest 309 episodes_parting 6 of 6 earliest_step 0
+PAIR cart_pole bdf2_16 vs bdf2_32: readings 1200 differing 989 more_than_1_count 440 largest 45 episodes_parting 6 of 6 earliest_step 6
+PAIR cart_pole dirk33_4 vs dirk33_8: readings 1200 differing 989 more_than_1_count 868 largest 13 episodes_parting 6 of 6 earliest_step 13
+PAIR cart_pole dirk33_8 vs dirk33_16: readings 1200 differing 1114 more_than_1_count 970 largest 20 episodes_parting 6 of 6 earliest_step 15
+PAIR cart_pole bdf2_32 vs dirk33_16: readings 1200 differing 1021 more_than_1_count 870 largest 43 episodes_parting 6 of 6 earliest_step 4
+PAIR cart_pole bdf3_16 vs dirk33_16: readings 1200 differing 902 more_than_1_count 616 largest 87 episodes_parting 6 of 6 earliest_step 2
+PAIR cart_pole be8 vs dirk33_16: readings 1200 differing 923 more_than_1_count 799 largest 46 episodes_parting 6 of 6 earliest_step 0
+PAIR cart_pole c0625 vs c03125: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+=== half_cheetah 17:00:13
+PLAY half_cheetah ship32 rc=0 integ be maxiter 4 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 117 stopped 1083 diverged 0 unset 0 most_iterations 4 wall_s 3.5 real_bits 32 worst_residual 462 extra none
+PLAY half_cheetah s4 rc=0 integ be maxiter 4 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 131 stopped 1069 diverged 0 unset 0 most_iterations 4 wall_s 3.7 real_bits 64 worst_residual 462 extra none
+PLAY half_cheetah m200 rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1200 stopped 0 diverged 0 unset 0 most_iterations 144 wall_s 4.7 real_bits 64 worst_residual 0.0825 extra none
+PLAY half_cheetah m1000 rc=0 integ be maxiter 1000 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1200 stopped 0 diverged 0 unset 0 most_iterations 144 wall_s 4.8 real_bits 64 worst_residual 0.0825 extra none
+PLAY half_cheetah m200x rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1200 stopped 0 diverged 0 unset 0 most_iterations 10 wall_s 3.7 real_bits 64 worst_residual 0.0943 extra exacth=1
+PLAY half_cheetah m200d rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1200 stopped 0 diverged 0 unset 0 most_iterations 144 wall_s 4.7 real_bits 64 worst_residual 0.0825 extra linsolve=ldlt
+PLAY half_cheetah m200lu rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1200 stopped 0 diverged 0 unset 0 most_iterations 144 wall_s 4.7 real_bits 64 worst_residual 0.0825 extra linsolve=lu
+PLAY half_cheetah m200c rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1200 stopped 0 diverged 0 unset 0 most_iterations 144 wall_s 4.8 real_bits 64 worst_residual 0.0825 extra linstrat=constant linreltol=1e-12
+PLAY half_cheetah m200t rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1199 stopped 1 diverged 0 unset 0 most_iterations 200 wall_s 5.7 real_bits 64 worst_residual 0.00181 extra abstol=1e-6 reltol=1e-9
+PLAY half_cheetah be8 rc=0 integ be maxiter 200 sub 8 smooth -1 contact_actors_set 0 solver_steps 9600 converged 9600 stopped 0 diverged 0 unset 0 most_iterations 157 wall_s 8.8 real_bits 64 worst_residual 0.119 extra none
+PLAY half_cheetah bdf2_16 rc=0 integ bdf2 maxiter 200 sub 16 smooth -1 contact_actors_set 0 solver_steps 19200 converged 19200 stopped 0 diverged 0 unset 0 most_iterations 128 wall_s 8.9 real_bits 64 worst_residual 0.137 extra none
+PLAY half_cheetah bdf2_32 rc=0 integ bdf2 maxiter 200 sub 32 smooth -1 contact_actors_set 0 solver_steps 38400 converged 38400 stopped 0 diverged 0 unset 0 most_iterations 65 wall_s 12.3 real_bits 64 worst_residual 0.235 extra none
+PLAY half_cheetah dirk33_4 rc=0 integ dirk33 maxiter 200 sub 4 smooth -1 contact_actors_set 0 solver_steps 4800 converged 4800 stopped 0 diverged 0 unset 0 most_iterations 199 wall_s 8.1 real_bits 64 worst_residual 0.0931 extra none
+PLAY half_cheetah dirk33_8 rc=0 integ dirk33 maxiter 200 sub 8 smooth -1 contact_actors_set 0 solver_steps 9600 converged 9600 stopped 0 diverged 0 unset 0 most_iterations 178 wall_s 15.0 real_bits 64 worst_residual 0.11 extra none
+PLAY half_cheetah dirk33_16 rc=0 integ dirk33 maxiter 200 sub 16 smooth -1 contact_actors_set 0 solver_steps 19200 converged 19200 stopped 0 diverged 0 unset 0 most_iterations 158 wall_s 45.9 real_bits 64 worst_residual 0.105 extra none
+PLAY half_cheetah bdf3_16 rc=0 integ bdf3 maxiter 200 sub 16 smooth -1 contact_actors_set 0 solver_steps 19200 converged 19200 stopped 0 diverged 0 unset 0 most_iterations 98 wall_s 11.5 real_bits 64 worst_residual 0.172 extra none
+PLAY half_cheetah c0625 rc=0 integ be maxiter 200 sub 1 smooth 0.000625 contact_actors_set 9 solver_steps 1200 converged 1198 stopped 2 diverged 0 unset 0 most_iterations 200 wall_s 5.8 real_bits 64 worst_residual 0.724 extra none
+PLAY half_cheetah c03125 rc=0 integ be maxiter 200 sub 1 smooth 0.0003125 contact_actors_set 9 solver_steps 1200 converged 1198 stopped 2 diverged 0 unset 0 most_iterations 200 wall_s 5.4 real_bits 64 worst_residual 0.401 extra none
+PAIR half_cheetah s4 vs ship32: readings 1200 differing 101 more_than_1_count 29 largest 3 episodes_parting 1 of 6 earliest_step 155
+PAIR half_cheetah m200 vs m1000: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+PAIR half_cheetah m200 vs m200x: readings 1200 differing 65 more_than_1_count 0 largest 1 episodes_parting 0 of 6 earliest_step -1
+PAIR half_cheetah m200 vs m200d: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+PAIR half_cheetah m200 vs m200lu: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+PAIR half_cheetah m200d vs m200lu: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+PAIR half_cheetah m200 vs m200c: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+PAIR half_cheetah m200 vs m200t: readings 1200 differing 79 more_than_1_count 0 largest 1 episodes_parting 0 of 6 earliest_step -1
+PAIR half_cheetah m200 vs be8: readings 1200 differing 1197 more_than_1_count 1184 largest 254 episodes_parting 6 of 6 earliest_step 0
+PAIR half_cheetah bdf2_16 vs bdf2_32: readings 1200 differing 1063 more_than_1_count 930 largest 553 episodes_parting 6 of 6 earliest_step 8
+PAIR half_cheetah dirk33_4 vs dirk33_8: readings 1200 differing 1105 more_than_1_count 1048 largest 490 episodes_parting 6 of 6 earliest_step 12
+PAIR half_cheetah dirk33_8 vs dirk33_16: readings 1200 differing 1047 more_than_1_count 964 largest 304 episodes_parting 6 of 6 earliest_step 16
+PAIR half_cheetah bdf2_32 vs dirk33_16: readings 1200 differing 1036 more_than_1_count 867 largest 415 episodes_parting 6 of 6 earliest_step 9
+PAIR half_cheetah bdf3_16 vs dirk33_16: readings 1200 differing 1112 more_than_1_count 1009 largest 621 episodes_parting 6 of 6 earliest_step 7
+PAIR half_cheetah be8 vs dirk33_16: readings 1200 differing 1182 more_than_1_count 1143 largest 484 episodes_parting 6 of 6 earliest_step 1
+PAIR half_cheetah c0625 vs c03125: readings 1200 differing 661 more_than_1_count 290 largest 6 episodes_parting 5 of 6 earliest_step 14
+=== ant 17:03:00
+PLAY ant ship32 rc=0 integ be maxiter 4 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 299 stopped 901 diverged 0 unset 0 most_iterations 4 wall_s 1.5 real_bits 32 worst_residual 273 extra none
+PLAY ant s4 rc=0 integ be maxiter 4 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 234 stopped 966 diverged 0 unset 0 most_iterations 4 wall_s 1.5 real_bits 64 worst_residual 363 extra none
+PLAY ant m200 rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1189 stopped 11 diverged 0 unset 0 most_iterations 200 wall_s 2.2 real_bits 64 worst_residual 5.16 extra none
+PLAY ant m1000 rc=0 integ be maxiter 1000 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1189 stopped 11 diverged 0 unset 0 most_iterations 1000 wall_s 3.8 real_bits 64 worst_residual 5.16 extra none
+PLAY ant m200x rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1191 stopped 9 diverged 0 unset 0 most_iterations 200 wall_s 2.1 real_bits 64 worst_residual 4.01 extra exacth=1
+PLAY ant m200d rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1189 stopped 11 diverged 0 unset 0 most_iterations 200 wall_s 2.2 real_bits 64 worst_residual 5.16 extra linsolve=ldlt
+PLAY ant m200lu rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1189 stopped 11 diverged 0 unset 0 most_iterations 200 wall_s 2.5 real_bits 64 worst_residual 5.16 extra linsolve=lu
+PLAY ant m200c rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1189 stopped 11 diverged 0 unset 0 most_iterations 200 wall_s 2.1 real_bits 64 worst_residual 5.16 extra linstrat=constant linreltol=1e-12
+PLAY ant m200t rc=0 integ be maxiter 200 sub 1 smooth -1 contact_actors_set 0 solver_steps 1200 converged 1191 stopped 9 diverged 0 unset 0 most_iterations 200 wall_s 2.4 real_bits 64 worst_residual 5.13 extra abstol=1e-6 reltol=1e-9
+PLAY ant be8 rc=0 integ be maxiter 200 sub 8 smooth -1 contact_actors_set 0 solver_steps 9600 converged 9600 stopped 0 diverged 0 unset 0 most_iterations 95 wall_s 4.0 real_bits 64 worst_residual 0.0366 extra none
+PLAY ant bdf2_16 rc=0 integ bdf2 maxiter 200 sub 16 smooth -1 contact_actors_set 0 solver_steps 19200 converged 19200 stopped 0 diverged 0 unset 0 most_iterations 90 wall_s 5.7 real_bits 64 worst_residual 0.142 extra none
+PLAY ant bdf2_32 rc=0 integ bdf2 maxiter 200 sub 32 smooth -1 contact_actors_set 0 solver_steps 38400 converged 38400 stopped 0 diverged 0 unset 0 most_iterations 83 wall_s 9.6 real_bits 64 worst_residual 0.297 extra none
+PLAY ant dirk33_4 rc=0 integ dirk33 maxiter 200 sub 4 smooth -1 contact_actors_set 0 solver_steps 4800 converged 4800 stopped 0 diverged 0 unset 0 most_iterations 112 wall_s 3.5 real_bits 64 worst_residual 0.0314 extra none
+PLAY ant dirk33_8 rc=0 integ dirk33 maxiter 200 sub 8 smooth -1 contact_actors_set 0 solver_steps 9600 converged 9600 stopped 0 diverged 0 unset 0 most_iterations 96 wall_s 5.7 real_bits 64 worst_residual 0.0819 extra none
+PLAY ant dirk33_16 rc=0 integ dirk33 maxiter 200 sub 16 smooth -1 contact_actors_set 0 solver_steps 19200 converged 19200 stopped 0 diverged 0 unset 0 most_iterations 109 wall_s 10.5 real_bits 64 worst_residual 0.0863 extra none
+PLAY ant bdf3_16 rc=0 integ bdf3 maxiter 200 sub 16 smooth -1 contact_actors_set 0 solver_steps 19200 converged 19200 stopped 0 diverged 0 unset 0 most_iterations 53 wall_s 5.2 real_bits 64 worst_residual 0.238 extra none
+PLAY ant c0625 rc=0 integ be maxiter 200 sub 1 smooth 0.000625 contact_actors_set 10 solver_steps 1200 converged 1176 stopped 24 diverged 0 unset 0 most_iterations 200 wall_s 2.6 real_bits 64 worst_residual 8.91 extra none
+PLAY ant c03125 rc=0 integ be maxiter 200 sub 1 smooth 0.0003125 contact_actors_set 10 solver_steps 1200 converged 1171 stopped 29 diverged 0 unset 0 most_iterations 200 wall_s 2.6 real_bits 64 worst_residual 4.04 extra none
+PAIR ant s4 vs ship32: readings 1200 differing 785 more_than_1_count 651 largest 383 episodes_parting 6 of 6 earliest_step 33
+PAIR ant m200 vs m1000: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+PAIR ant m200 vs m200x: readings 1200 differing 29 more_than_1_count 0 largest 1 episodes_parting 0 of 6 earliest_step -1
+PAIR ant m200 vs m200d: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+PAIR ant m200 vs m200lu: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+PAIR ant m200d vs m200lu: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+PAIR ant m200 vs m200c: readings 1200 differing 0 more_than_1_count 0 largest 0 episodes_parting 0 of 6 earliest_step -1
+PAIR ant m200 vs m200t: readings 1200 differing 7 more_than_1_count 0 largest 1 episodes_parting 0 of 6 earliest_step -1
+PAIR ant m200 vs be8: readings 1200 differing 1194 more_than_1_count 1173 largest 634 episodes_parting 6 of 6 earliest_step 0
+PAIR ant bdf2_16 vs bdf2_32: readings 1200 differing 1095 more_than_1_count 930 largest 272 episodes_parting 6 of 6 earliest_step 2
+PAIR ant dirk33_4 vs dirk33_8: readings 1200 differing 1086 more_than_1_count 985 largest 301 episodes_parting 6 of 6 earliest_step 0
+PAIR ant dirk33_8 vs dirk33_16: readings 1200 differing 1038 more_than_1_count 888 largest 213 episodes_parting 6 of 6 earliest_step 1
+PAIR ant bdf2_32 vs dirk33_16: readings 1200 differing 1071 more_than_1_count 895 largest 177 episodes_parting 6 of 6 earliest_step 5
+PAIR ant bdf3_16 vs dirk33_16: readings 1200 differing 1129 more_than_1_count 983 largest 221 episodes_parting 6 of 6 earliest_step 4
+PAIR ant be8 vs dirk33_16: readings 1200 differing 1146 more_than_1_count 1026 largest 276 episodes_parting 6 of 6 earliest_step 0
+PAIR ant c0625 vs c03125: readings 1200 differing 660 more_than_1_count 392 largest 101 episodes_parting 6 of 6 earliest_step 3
+=== done 17:04:15

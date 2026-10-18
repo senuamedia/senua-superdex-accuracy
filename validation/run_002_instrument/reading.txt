@@ -1,0 +1,248 @@
+LIBRARY window 32 pfa 1 / 100 declared normal needs 6400 episodes 108 readings each 200 a block 7200
+CELL cart_pole S_solver_convergence fold 0 normal usable 1
+  reference_C level 23 of 6084 change 0 magnitude 394
+  s1 level 4953 of 6084 change 5840 magnitude 4488041
+  s2 level 2896 of 6084 change 3940 magnitude 506290
+  s4 level 495 of 6084 change 502 magnitude 46335
+  s8 IS the reference (identical stream)
+  s16 IS the reference (identical stream)
+  G0 1 G1 1 A1 1 ; finest detected rung 2 ; shipped rung magnitude 46335
+CELL cart_pole S_solver_convergence fold 1 normal usable 1
+  reference_C level 44 of 6084 change 0 magnitude 873
+  s1 level 5277 of 6084 change 5996 magnitude 36604336
+  s2 level 2694 of 6084 change 3999 magnitude 441031
+  s4 level 492 of 6084 change 706 magnitude 30750
+  s8 IS the reference (identical stream)
+  s16 IS the reference (identical stream)
+  G0 1 G1 1 A1 1 ; finest detected rung 2 ; shipped rung magnitude 30750
+CELL cart_pole S_solver_convergence fold 2 normal usable 1
+  reference_C level 128 of 6084 change 0 magnitude 2064
+  s1 level 5674 of 6084 change 6012 magnitude 9173789
+  s2 level 2305 of 6084 change 3066 magnitude 338004
+  s4 level 141 of 6084 change 113 magnitude 2778
+  s8 IS the reference (identical stream)
+  s16 IS the reference (identical stream)
+  G0 0 G1 1 A1 1 ; finest detected rung 2 ; shipped rung magnitude 2778
+CELL cart_pole T_time_integration fold 0 normal usable 1
+  reference_C level 23 of 6084 change 0 magnitude 394
+  base level 5937 of 6084 change 6083 magnitude 5388847
+  t2 level 5913 of 6084 change 6081 magnitude 3030379
+  t4 level 5959 of 6084 change 6084 magnitude 2045489
+  t8 level 5873 of 6084 change 6075 magnitude 1707068
+  G0 1 G1 1 A1 1 ; finest detected rung 3 ; shipped rung magnitude 5388847
+CELL cart_pole T_time_integration fold 1 normal usable 1
+  reference_C level 44 of 6084 change 0 magnitude 873
+  base level 5873 of 6084 change 6084 magnitude 7001502
+  t2 level 5817 of 6084 change 6084 magnitude 3492110
+  t4 level 5841 of 6084 change 6084 magnitude 2373534
+  t8 level 5820 of 6084 change 6084 magnitude 3324153
+  G0 1 G1 1 A1 0 ; finest detected rung 3 ; shipped rung magnitude 7001502
+CELL cart_pole T_time_integration fold 2 normal usable 1
+  reference_C level 128 of 6084 change 0 magnitude 2064
+  base level 5999 of 6084 change 6084 magnitude 8044103
+  t2 level 6002 of 6084 change 6084 magnitude 6410979
+  t4 level 5987 of 6084 change 6084 magnitude 27744207
+  t8 level 5949 of 6084 change 6084 magnitude 29427993
+  G0 0 G1 1 A1 0 ; finest detected rung 3 ; shipped rung magnitude 8044103
+CELL cart_pole C_contact_compliance fold 0 normal usable 1
+  reference_C level 23 of 6084 change 0 magnitude 394
+  c10 IS the reference (identical stream)
+  base IS the reference (identical stream)
+  c2 IS the reference (identical stream)
+  c1 IS the reference (identical stream)
+  G0 1 N0 1 ; finest detected rung -1 ; shipped rung is the reference
+CELL cart_pole C_contact_compliance fold 1 normal usable 1
+  reference_C level 44 of 6084 change 0 magnitude 873
+  c10 IS the reference (identical stream)
+  base IS the reference (identical stream)
+  c2 IS the reference (identical stream)
+  c1 IS the reference (identical stream)
+  G0 1 N0 1 ; finest detected rung -1 ; shipped rung is the reference
+CELL cart_pole C_contact_compliance fold 2 normal usable 1
+  reference_C level 128 of 6084 change 0 magnitude 2064
+  c10 IS the reference (identical stream)
+  base IS the reference (identical stream)
+  c2 IS the reference (identical stream)
+  c1 IS the reference (identical stream)
+  G0 0 N0 1 ; finest detected rung -1 ; shipped rung is the reference
+CELL cart_pole X_reported_against_T_reference fold 0 normal usable 1
+  reference_C level 23 of 6084 change 0 magnitude 394
+  s4 level 5537 of 6084 change 6032 magnitude 5251243
+  b1 level 6084 of 6084 change 6084 magnitude 57564175
+  G0 1 ; finest detected rung 1
+CELL cart_pole X_reported_against_T_reference fold 1 normal usable 1
+  reference_C level 44 of 6084 change 0 magnitude 873
+  s4 level 5795 of 6084 change 6084 magnitude 6941307
+  b1 level 6084 of 6084 change 6084 magnitude 95796065
+  G0 1 ; finest detected rung 1
+CELL cart_pole X_reported_against_T_reference fold 2 normal usable 1
+  reference_C level 128 of 6084 change 0 magnitude 2064
+  s4 level 5999 of 6084 change 6084 magnitude 8045903
+  b1 level 6084 of 6084 change 6084 magnitude 61516034
+  G0 0 ; finest detected rung 1
+SCENE cart_pole S 0 T 0 C 0 reported_G0 0
+CELL half_cheetah S_solver_convergence fold 0 normal usable 1
+  reference_C level 23 of 6084 change 0 magnitude 394
+  s1 level 5979 of 6084 change 6084 magnitude 33059282
+  s2 level 5878 of 6084 change 6084 magnitude 32318628
+  s4 level 5691 of 6084 change 6084 magnitude 17427543
+  s8 level 4636 of 6084 change 6054 magnitude 2348687
+  s16 level 1373 of 6084 change 4524 magnitude 277709
+  G0 1 G1 1 A1 1 ; finest detected rung 4 ; shipped rung magnitude 17427543
+CELL half_cheetah S_solver_convergence fold 1 normal usable 1
+  reference_C level 44 of 6084 change 0 magnitude 873
+  s1 level 6022 of 6084 change 6084 magnitude 39330800
+  s2 level 5946 of 6084 change 6084 magnitude 35642594
+  s4 level 5839 of 6084 change 6084 magnitude 23158920
+  s8 level 4517 of 6084 change 6069 magnitude 2020361
+  s16 level 1872 of 6084 change 4892 magnitude 268412
+  G0 1 G1 1 A1 1 ; finest detected rung 4 ; shipped rung magnitude 23158920
+CELL half_cheetah S_solver_convergence fold 2 normal usable 1
+  reference_C level 128 of 6084 change 0 magnitude 2064
+  s1 level 6036 of 6084 change 6084 magnitude 30166269
+  s2 level 5957 of 6084 change 6084 magnitude 28217653
+  s4 level 5988 of 6084 change 6084 magnitude 18986434
+  s8 level 5190 of 6084 change 6065 magnitude 2837065
+  s16 level 2095 of 6084 change 4563 magnitude 414904
+  G0 0 G1 1 A1 1 ; finest detected rung 4 ; shipped rung magnitude 18986434
+CELL half_cheetah T_time_integration fold 0 normal usable 1
+  reference_C level 23 of 6084 change 0 magnitude 394
+  base level 6032 of 6084 change 6084 magnitude 21845479
+  t2 level 5962 of 6084 change 6084 magnitude 20540501
+  t4 level 5915 of 6084 change 6084 magnitude 19103734
+  t8 level 5895 of 6084 change 6084 magnitude 17334552
+  G0 1 G1 1 A1 1 ; finest detected rung 3 ; shipped rung magnitude 21845479
+CELL half_cheetah T_time_integration fold 1 normal usable 1
+  reference_C level 44 of 6084 change 0 magnitude 873
+  base level 6021 of 6084 change 6084 magnitude 22015747
+  t2 level 6071 of 6084 change 6084 magnitude 20301095
+  t4 level 6013 of 6084 change 6084 magnitude 18590226
+  t8 level 5976 of 6084 change 6084 magnitude 16961800
+  G0 1 G1 1 A1 1 ; finest detected rung 3 ; shipped rung magnitude 22015747
+CELL half_cheetah T_time_integration fold 2 normal usable 1
+  reference_C level 128 of 6084 change 0 magnitude 2064
+  base level 6081 of 6084 change 6084 magnitude 19498352
+  t2 level 6079 of 6084 change 6084 magnitude 17847098
+  t4 level 6080 of 6084 change 6084 magnitude 16115004
+  t8 level 6075 of 6084 change 6084 magnitude 14550330
+  G0 0 G1 1 A1 1 ; finest detected rung 3 ; shipped rung magnitude 19498352
+CELL half_cheetah C_contact_compliance fold 0 normal usable 1
+  reference_C level 23 of 6084 change 0 magnitude 394
+  c10 level 4678 of 6084 change 6084 magnitude 1517601
+  base level 4124 of 6084 change 6084 magnitude 862014
+  c2 level 3382 of 6084 change 5978 magnitude 436728
+  c1 level 1746 of 6084 change 5458 magnitude 132971
+  G0 1 G1 1 A1 1 ; finest detected rung 3 ; shipped rung magnitude 862014
+CELL half_cheetah C_contact_compliance fold 1 normal usable 1
+  reference_C level 44 of 6084 change 0 magnitude 873
+  c10 level 4928 of 6084 change 6084 magnitude 1767531
+  base level 4581 of 6084 change 6084 magnitude 1064317
+  c2 level 3908 of 6084 change 6053 magnitude 568673
+  c1 level 2522 of 6084 change 5670 magnitude 186404
+  G0 1 G1 1 A1 1 ; finest detected rung 3 ; shipped rung magnitude 1064317
+CELL half_cheetah C_contact_compliance fold 2 normal usable 1
+  reference_C level 128 of 6084 change 0 magnitude 2064
+  c10 level 5293 of 6084 change 6084 magnitude 1594397
+  base level 4926 of 6084 change 6080 magnitude 925981
+  c2 level 4082 of 6084 change 5989 magnitude 480808
+  c1 level 2447 of 6084 change 5597 magnitude 186712
+  G0 0 G1 1 A1 1 ; finest detected rung 3 ; shipped rung magnitude 925981
+CELL half_cheetah X_reported_against_T_reference fold 0 normal usable 1
+  reference_C level 23 of 6084 change 0 magnitude 394
+  s4 level 5977 of 6084 change 6084 magnitude 24064842
+  b1 level 5923 of 6084 change 6084 magnitude 19658166
+  G0 1 ; finest detected rung 1
+CELL half_cheetah X_reported_against_T_reference fold 1 normal usable 1
+  reference_C level 44 of 6084 change 0 magnitude 873
+  s4 level 6043 of 6084 change 6084 magnitude 28060344
+  b1 level 6010 of 6084 change 6084 magnitude 17511617
+  G0 1 ; finest detected rung 1
+CELL half_cheetah X_reported_against_T_reference fold 2 normal usable 1
+  reference_C level 128 of 6084 change 0 magnitude 2064
+  s4 level 6079 of 6084 change 6084 magnitude 24766352
+  b1 level 6076 of 6084 change 6084 magnitude 16569221
+  G0 0 ; finest detected rung 1
+SCENE half_cheetah S 0 T 0 C 0 reported_G0 0
+CELL ant S_solver_convergence fold 0 normal usable 1
+  reference_C level 23 of 6084 change 0 magnitude 394
+  s1 level 6029 of 6084 change 6084 magnitude 128201635
+  s2 level 5384 of 6084 change 6084 magnitude 38219831
+  s4 level 3214 of 6084 change 6025 magnitude 4489031
+  s8 level 1048 of 6084 change 3929 magnitude 3659546
+  s16 level 847 of 6084 change 2601 magnitude 3535667
+  G0 1 G1 1 A1 1 ; finest detected rung 4 ; shipped rung magnitude 4489031
+CELL ant S_solver_convergence fold 1 normal usable 1
+  reference_C level 44 of 6084 change 0 magnitude 873
+  s1 level 6036 of 6084 change 6084 magnitude 126969898
+  s2 level 5701 of 6084 change 6084 magnitude 44358665
+  s4 level 3034 of 6084 change 6030 magnitude 3417368
+  s8 level 940 of 6084 change 3565 magnitude 756435
+  s16 level 636 of 6084 change 2258 magnitude 482532
+  G0 1 G1 1 A1 1 ; finest detected rung 4 ; shipped rung magnitude 3417368
+CELL ant S_solver_convergence fold 2 normal usable 1
+  reference_C level 128 of 6084 change 0 magnitude 2064
+  s1 level 6084 of 6084 change 6084 magnitude 118185503
+  s2 level 5917 of 6084 change 6084 magnitude 37523944
+  s4 level 3750 of 6084 change 6034 magnitude 4578227
+  s8 level 1461 of 6084 change 3671 magnitude 1261298
+  s16 level 1176 of 6084 change 2134 magnitude 1026030
+  G0 0 G1 1 A1 1 ; finest detected rung 4 ; shipped rung magnitude 4578227
+CELL ant T_time_integration fold 0 normal usable 1
+  reference_C level 23 of 6084 change 0 magnitude 394
+  base level 5436 of 6084 change 6084 magnitude 12274681
+  t2 level 4920 of 6084 change 6084 magnitude 8836706
+  t4 level 4330 of 6084 change 6084 magnitude 5818210
+  t8 level 4013 of 6084 change 6084 magnitude 4414317
+  G0 1 G1 1 A1 1 ; finest detected rung 3 ; shipped rung magnitude 12274681
+CELL ant T_time_integration fold 1 normal usable 1
+  reference_C level 44 of 6084 change 0 magnitude 873
+  base level 5794 of 6084 change 6084 magnitude 12207544
+  t2 level 5164 of 6084 change 6084 magnitude 6946403
+  t4 level 4633 of 6084 change 6084 magnitude 3850464
+  t8 level 4313 of 6084 change 6084 magnitude 3024647
+  G0 1 G1 1 A1 1 ; finest detected rung 3 ; shipped rung magnitude 12207544
+CELL ant T_time_integration fold 2 normal usable 1
+  reference_C level 128 of 6084 change 0 magnitude 2064
+  base level 6016 of 6084 change 6084 magnitude 11530528
+  t2 level 5811 of 6084 change 6084 magnitude 6738624
+  t4 level 5412 of 6084 change 6084 magnitude 4205097
+  t8 level 5043 of 6084 change 6084 magnitude 3334092
+  G0 0 G1 1 A1 1 ; finest detected rung 3 ; shipped rung magnitude 11530528
+CELL ant C_contact_compliance fold 0 normal usable 1
+  reference_C level 23 of 6084 change 0 magnitude 394
+  c10 level 2842 of 6084 change 5902 magnitude 6580320
+  base level 2070 of 6084 change 5505 magnitude 2671563
+  c2 level 1504 of 6084 change 5031 magnitude 1663840
+  c1 level 1415 of 6084 change 4754 magnitude 1633988
+  G0 1 G1 1 A1 1 ; finest detected rung 3 ; shipped rung magnitude 2671563
+CELL ant C_contact_compliance fold 1 normal usable 1
+  reference_C level 44 of 6084 change 0 magnitude 873
+  c10 level 2628 of 6084 change 5837 magnitude 5151770
+  base level 1712 of 6084 change 5376 magnitude 833548
+  c2 level 1827 of 6084 change 5246 magnitude 1439560
+  c1 level 1268 of 6084 change 4490 magnitude 1111742
+  G0 1 G1 1 A1 0 ; finest detected rung 3 ; shipped rung magnitude 833548
+CELL ant C_contact_compliance fold 2 normal usable 1
+  reference_C level 128 of 6084 change 0 magnitude 2064
+  c10 level 3203 of 6084 change 5889 magnitude 3441039
+  base level 2756 of 6084 change 5429 magnitude 1799286
+  c2 level 2117 of 6084 change 4988 magnitude 580691
+  c1 level 1671 of 6084 change 4596 magnitude 330980
+  G0 0 G1 1 A1 1 ; finest detected rung 3 ; shipped rung magnitude 1799286
+CELL ant X_reported_against_T_reference fold 0 normal usable 1
+  reference_C level 23 of 6084 change 0 magnitude 394
+  s4 level 5481 of 6084 change 6084 magnitude 13098689
+  b1 level 5654 of 6084 change 6084 magnitude 17973085
+  G0 1 ; finest detected rung 1
+CELL ant X_reported_against_T_reference fold 1 normal usable 1
+  reference_C level 44 of 6084 change 0 magnitude 873
+  s4 level 5741 of 6084 change 6084 magnitude 13046382
+  b1 level 5859 of 6084 change 6084 magnitude 18166497
+  G0 1 ; finest detected rung 1
+CELL ant X_reported_against_T_reference fold 2 normal usable 1
+  reference_C level 128 of 6084 change 0 magnitude 2064
+  s4 level 6032 of 6084 change 6084 magnitude 12358222
+  b1 level 6063 of 6084 change 6084 magnitude 14722258
+  G0 0 ; finest detected rung 1
+SCENE ant S 0 T 0 C 0 reported_G0 0
+THESIS every cell (G0; G1 and A1 on each ladder; N0 on the control): FAIL

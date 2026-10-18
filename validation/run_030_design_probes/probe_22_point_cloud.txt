@@ -1,0 +1,23 @@
+# probe 22: a throwaway cube (1.2 kg, half-size 0.04 m, friction 0.4) on the point-cloud floor, final configuration, shipped step; friction over the impact and in a slide (law 4,000 per 10,000), the hold's creep, and the slip's mean speed against the law's prediction
+## first form, as printed: the slip was played 1.5 s against a measure that assumes 2 s, so its speeds are to be read against the plane's (last line), not the prediction
+h10r10 (cloudh=0.01 pcradius=0.01) | impact 4202 (law 4000) | slide 4138 (law 4000) | hold creep 0 um/s | slip 427100 of 588000 (7263 per 10000) | stopped 0 diverged 0 | 15 s
+h5r5 (cloudh=0.005 pcradius=0.005) | impact 4145 (law 4000) | slide 4132 (law 4000) | hold creep 0 um/s | slip 430600 of 588000 (7323 per 10000) | stopped 0 diverged 0 | 56 s
+h10r10_c0.01 (cloudh=0.01 pcradius=0.01 sdfcell=0.01) | impact 4117 (law 4000) | slide 4084 (law 4000) | hold creep 0 um/s | slip 457000 of 588000 (7772 per 10000) | stopped 0 diverged 0 | 15 s
+h10r10_c0.005 (cloudh=0.01 pcradius=0.01 sdfcell=0.005) | impact 4043 (law 4000) | slide 4053 (law 4000) | hold creep 0 um/s | slip 463900 of 588000 (7889 per 10000) | stopped 0 diverged 0 | 14 s
+h10r10_c0.0025 (cloudh=0.01 pcradius=0.01 sdfcell=0.0025) | impact 4018 (law 4000) | slide 4037 (law 4000) | hold creep 0 um/s | slip 480300 of 588000 (8168 per 10000) | stopped 0 diverged 0 | 15 s
+plane, the same slip played 1.5 s: SLIP dt_ns 10000000 mean_speed_ums 494900 predicted_ums 588000 push_mN 5645 friction_limit_mN 4704
+## the slip played 2 s, with a plane beside it
+plane_ref () | impact 4000 (law 4000) | slide 4000 (law 4000) | hold creep 0 um/s | slip 787900 of 784000 (10049 per 10000) | stopped 0 diverged 0 | 1 s
+h10r10 (floor=cloud cloudwid=0.16 cloudh=0.01 pcradius=0.01) | impact 4202 (law 4000) | slide 4138 (law 4000) | hold creep 0 um/s | slip 671800 of 784000 (8568 per 10000) | stopped 0 diverged 0 | 17 s
+h10r10c25 (floor=cloud cloudwid=0.16 cloudh=0.01 pcradius=0.01 sdfcell=0.0025) | impact 4018 (law 4000) | slide 4037 (law 4000) | hold creep 0 um/s | slip 765500 of 784000 (9764 per 10000) | stopped 0 diverged 0 | 17 s
+h5r5c25 (floor=cloud cloudwid=0.16 cloudh=0.005 pcradius=0.005 sdfcell=0.0025) | impact 4015 (law 4000) | slide 4029 (law 4000) | hold creep 0 um/s | slip 747600 of 784000 (9535 per 10000) | stopped 0 diverged 0 | 66 s
+h5r10c25 (floor=cloud cloudwid=0.16 cloudh=0.005 pcradius=0.01 sdfcell=0.0025) | impact 4015 (law 4000) | slide 4029 (law 4000) | hold creep 0 um/s | slip 747600 of 784000 (9535 per 10000) | stopped 0 diverged 0 | 65 s
+h10q6r5c25 (floor=cloud cloudwid=0.16 cloudh=0.01 pcquad=q6 pcradius=0.005 sdfcell=0.0025) | impact 4018 (law 4000) | slide 4037 (law 4000) | hold creep 0 um/s | slip 765500 of 784000 (9764 per 10000) | stopped 0 diverged 0 | 19 s
+h10r10c125 (floor=cloud cloudwid=0.16 cloudh=0.01 pcradius=0.01 sdfcell=0.00125) | impact 4034 (law 4000) | slide 4118 (law 4000) | hold creep 0 um/s | slip 700800 of 784000 (8938 per 10000) | stopped 0 diverged 0 | 18 s
+## contact damping and smoothing
+h10c25nd0 (floor=cloud cloudwid=0.16 cloudh=0.01 sdfcell=0.0025 ndamp=0) | impact 4017 (law 4000) | slide 3997 (law 4000) | hold creep 0 um/s | slip 795100 of 784000 (10141 per 10000) | stopped 0 diverged 0 | 17 s
+h10c25s1 (floor=cloud cloudwid=0.16 cloudh=0.01 sdfcell=0.0025 smooth=0.001) | impact 4106 (law 4000) | slide 4011 (law 4000) | hold creep 0 um/s | slip 777000 of 784000 (9910 per 10000) | stopped 0 diverged 0 | 18 s
+h10c5s1 (floor=cloud cloudwid=0.16 cloudh=0.01 sdfcell=0.005 smooth=0.001) | impact 3987 (law 4000) | slide 4023 (law 4000) | hold creep 0 um/s | slip 765000 of 784000 (9757 per 10000) | stopped 0 diverged 0 | 18 s
+h10c125s1 (floor=cloud cloudwid=0.16 cloudh=0.01 sdfcell=0.00125 smooth=0.001) | impact 4002 (law 4000) | slide 3999 (law 4000) | hold creep 0 um/s | slip 773300 of 784000 (9863 per 10000) | stopped 0 diverged 0 | 19 s
+h5c25s1 (floor=cloud cloudwid=0.16 cloudh=0.005 sdfcell=0.0025 smooth=0.001) | impact 4019 (law 4000) | slide 4012 (law 4000) | hold creep 0 um/s | slip 775300 of 784000 (9889 per 10000) | stopped 0 diverged 0 | 69 s
+plane_s1 (smooth=0.001) | impact 4000 (law 4000) | slide 4000 (law 4000) | hold creep 0 um/s | slip 787900 of 784000 (10049 per 10000) | stopped 0 diverged 0 | 1 s

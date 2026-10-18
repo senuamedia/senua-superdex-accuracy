@@ -1,0 +1,112 @@
+=== half_cheetah, the fifth registration's commands: control: the recommended configuration at SuperDex's shipped tolerances (1e-3, 1e-6), Study 12's g chain (shp1 .. shp16)
+TIME half_cheetah shp1 against shp2 readings 0 to 5 summed_difference 2993 more_than_1_count 464 largest 13
+TIME half_cheetah shp1 against shp2 readings 5 to 10 summed_difference 3465 more_than_1_count 445 largest 26
+TIME half_cheetah shp1 against shp2 readings 10 to 20 summed_difference 17321 more_than_1_count 1008 largest 60
+TIME half_cheetah shp1 against shp2 readings 20 to 40 summed_difference 47574 more_than_1_count 2049 largest 89
+TIME half_cheetah shp1 against shp2 readings 40 to 80 summed_difference 114616 more_than_1_count 4156 largest 131
+TIME half_cheetah shp1 against shp2 readings 80 to 120 summed_difference 138623 more_than_1_count 4169 largest 261
+TIME half_cheetah shp1 against shp2 readings 120 to 160 summed_difference 138982 more_than_1_count 4200 largest 216
+TIME half_cheetah shp1 against shp2 readings 160 to 200 summed_difference 143748 more_than_1_count 4199 largest 219
+PARTING half_cheetah shp1 against shp2 summed_difference 607322 episodes 108 never_part 0 earliest 0 quarter 0 median 0 three_quarters 0 latest 13
+TIME half_cheetah shp2 against shp4 readings 0 to 5 summed_difference 1625 more_than_1_count 391 largest 7
+TIME half_cheetah shp2 against shp4 readings 5 to 10 summed_difference 1836 more_than_1_count 389 largest 14
+TIME half_cheetah shp2 against shp4 readings 10 to 20 summed_difference 9230 more_than_1_count 942 largest 33
+TIME half_cheetah shp2 against shp4 readings 20 to 40 summed_difference 28077 more_than_1_count 1999 largest 60
+TIME half_cheetah shp2 against shp4 readings 40 to 80 summed_difference 67640 more_than_1_count 4035 largest 91
+TIME half_cheetah shp2 against shp4 readings 80 to 120 summed_difference 79812 more_than_1_count 4084 largest 99
+TIME half_cheetah shp2 against shp4 readings 120 to 160 summed_difference 83841 more_than_1_count 4122 largest 169
+TIME half_cheetah shp2 against shp4 readings 160 to 200 summed_difference 91685 more_than_1_count 4104 largest 201
+PARTING half_cheetah shp2 against shp4 summed_difference 363746 episodes 108 never_part 0 earliest 0 quarter 0 median 1 three_quarters 2 latest 18
+TIME half_cheetah shp4 against shp8 readings 0 to 5 summed_difference 878 more_than_1_count 274 largest 4
+TIME half_cheetah shp4 against shp8 readings 5 to 10 summed_difference 941 more_than_1_count 267 largest 7
+TIME half_cheetah shp4 against shp8 readings 10 to 20 summed_difference 4828 more_than_1_count 861 largest 18
+TIME half_cheetah shp4 against shp8 readings 20 to 40 summed_difference 15478 more_than_1_count 1825 largest 38
+TIME half_cheetah shp4 against shp8 readings 40 to 80 summed_difference 37044 more_than_1_count 3784 largest 56
+TIME half_cheetah shp4 against shp8 readings 80 to 120 summed_difference 41739 more_than_1_count 3837 largest 58
+TIME half_cheetah shp4 against shp8 readings 120 to 160 summed_difference 44764 more_than_1_count 3942 largest 124
+TIME half_cheetah shp4 against shp8 readings 160 to 200 summed_difference 45989 more_than_1_count 3888 largest 123
+PARTING half_cheetah shp4 against shp8 summed_difference 191661 episodes 108 never_part 0 earliest 0 quarter 1 median 2 three_quarters 6 latest 17
+TIME half_cheetah shp8 against shp16 readings 0 to 5 summed_difference 419 more_than_1_count 69 largest 2
+TIME half_cheetah shp8 against shp16 readings 5 to 10 summed_difference 499 more_than_1_count 99 largest 4
+TIME half_cheetah shp8 against shp16 readings 10 to 20 summed_difference 2416 more_than_1_count 667 largest 9
+TIME half_cheetah shp8 against shp16 readings 20 to 40 summed_difference 8110 more_than_1_count 1587 largest 20
+TIME half_cheetah shp8 against shp16 readings 40 to 80 summed_difference 19024 more_than_1_count 3268 largest 28
+TIME half_cheetah shp8 against shp16 readings 80 to 120 summed_difference 21855 more_than_1_count 3415 largest 35
+TIME half_cheetah shp8 against shp16 readings 120 to 160 summed_difference 22865 more_than_1_count 3575 largest 52
+TIME half_cheetah shp8 against shp16 readings 160 to 200 summed_difference 23796 more_than_1_count 3552 largest 64
+PARTING half_cheetah shp8 against shp16 summed_difference 98984 episodes 108 never_part 0 earliest 2 quarter 3 median 7 three_quarters 13 latest 25
+CELL half_cheetah SHP fold 0
+  gap shp1 against shp2 ; plain 3032878
+  gap shp2 against shp4 ; plain 1748224
+  gap shp4 against shp8 ; plain 916831
+  gap shp8 against shp16 ; plain 517598
+  plain_in_order 1
+CELL half_cheetah SHP fold 1
+  gap shp1 against shp2 ; plain 3394477
+  gap shp2 against shp4 ; plain 2168805
+  gap shp4 against shp8 ; plain 1080533
+  gap shp8 against shp16 ; plain 542900
+  plain_in_order 1
+CELL half_cheetah SHP fold 2
+  gap shp1 against shp2 ; plain 2810955
+  gap shp2 against shp4 ; plain 1816927
+  gap shp4 against shp8 ; plain 996488
+  gap shp8 against shp16 ; plain 485698
+  plain_in_order 1
+PLAIN half_cheetah SHP folds_in_order 3
+=== ant, the fifth registration's commands: control: the recommended configuration at SuperDex's shipped tolerances (1e-3, 1e-6), Study 12's g chain (shp1 .. shp16)
+TIME ant shp1 against shp2 readings 0 to 5 summed_difference 6891 more_than_1_count 497 largest 44
+TIME ant shp1 against shp2 readings 5 to 10 summed_difference 12410 more_than_1_count 525 largest 65
+TIME ant shp1 against shp2 readings 10 to 20 summed_difference 19195 more_than_1_count 1022 largest 64
+TIME ant shp1 against shp2 readings 20 to 40 summed_difference 50300 more_than_1_count 1987 largest 219
+TIME ant shp1 against shp2 readings 40 to 80 summed_difference 247816 more_than_1_count 4146 largest 448
+TIME ant shp1 against shp2 readings 80 to 120 summed_difference 407496 more_than_1_count 4149 largest 872
+TIME ant shp1 against shp2 readings 120 to 160 summed_difference 390214 more_than_1_count 4186 largest 1375
+TIME ant shp1 against shp2 readings 160 to 200 summed_difference 434930 more_than_1_count 4174 largest 1388
+PARTING ant shp1 against shp2 summed_difference 1569252 episodes 108 never_part 0 earliest 0 quarter 0 median 0 three_quarters 0 latest 6
+TIME ant shp2 against shp4 readings 0 to 5 summed_difference 3463 more_than_1_count 451 largest 23
+TIME ant shp2 against shp4 readings 5 to 10 summed_difference 6294 more_than_1_count 504 largest 34
+TIME ant shp2 against shp4 readings 10 to 20 summed_difference 10173 more_than_1_count 971 largest 32
+TIME ant shp2 against shp4 readings 20 to 40 summed_difference 28648 more_than_1_count 1865 largest 121
+TIME ant shp2 against shp4 readings 40 to 80 summed_difference 153088 more_than_1_count 4014 largest 497
+TIME ant shp2 against shp4 readings 80 to 120 summed_difference 252830 more_than_1_count 4103 largest 1362
+TIME ant shp2 against shp4 readings 120 to 160 summed_difference 265005 more_than_1_count 4068 largest 1238
+TIME ant shp2 against shp4 readings 160 to 200 summed_difference 300474 more_than_1_count 4088 largest 1286
+PARTING ant shp2 against shp4 summed_difference 1019975 episodes 108 never_part 0 earliest 0 quarter 0 median 0 three_quarters 1 latest 7
+TIME ant shp4 against shp8 readings 0 to 5 summed_difference 1733 more_than_1_count 364 largest 11
+TIME ant shp4 against shp8 readings 5 to 10 summed_difference 3166 more_than_1_count 450 largest 18
+TIME ant shp4 against shp8 readings 10 to 20 summed_difference 5235 more_than_1_count 873 largest 16
+TIME ant shp4 against shp8 readings 20 to 40 summed_difference 15622 more_than_1_count 1666 largest 65
+TIME ant shp4 against shp8 readings 40 to 80 summed_difference 84704 more_than_1_count 3792 largest 215
+TIME ant shp4 against shp8 readings 80 to 120 summed_difference 137011 more_than_1_count 3913 largest 338
+TIME ant shp4 against shp8 readings 120 to 160 summed_difference 171227 more_than_1_count 3944 largest 807
+TIME ant shp4 against shp8 readings 160 to 200 summed_difference 215338 more_than_1_count 3944 largest 1285
+PARTING ant shp4 against shp8 summed_difference 634036 episodes 108 never_part 0 earliest 0 quarter 0 median 1 three_quarters 2 latest 14
+TIME ant shp8 against shp16 readings 0 to 5 summed_difference 882 more_than_1_count 235 largest 6
+TIME ant shp8 against shp16 readings 5 to 10 summed_difference 1649 more_than_1_count 377 largest 9
+TIME ant shp8 against shp16 readings 10 to 20 summed_difference 2707 more_than_1_count 721 largest 8
+TIME ant shp8 against shp16 readings 20 to 40 summed_difference 8047 more_than_1_count 1325 largest 34
+TIME ant shp8 against shp16 readings 40 to 80 summed_difference 43866 more_than_1_count 3415 largest 83
+TIME ant shp8 against shp16 readings 80 to 120 summed_difference 78286 more_than_1_count 3543 largest 240
+TIME ant shp8 against shp16 readings 120 to 160 summed_difference 117854 more_than_1_count 3636 largest 587
+TIME ant shp8 against shp16 readings 160 to 200 summed_difference 141934 more_than_1_count 3674 largest 595
+PARTING ant shp8 against shp16 summed_difference 395225 episodes 108 never_part 0 earliest 0 quarter 1 median 2 three_quarters 6 latest 21
+CELL ant SHP fold 0
+  gap shp1 against shp2 ; plain 12101622
+  gap shp2 against shp4 ; plain 7994922
+  gap shp4 against shp8 ; plain 5425983
+  gap shp8 against shp16 ; plain 3195066
+  plain_in_order 1
+CELL ant SHP fold 1
+  gap shp1 against shp2 ; plain 9329921
+  gap shp2 against shp4 ; plain 6576967
+  gap shp4 against shp8 ; plain 3589839
+  gap shp8 against shp16 ; plain 2392689
+  plain_in_order 1
+CELL ant SHP fold 2
+  gap shp1 against shp2 ; plain 10463504
+  gap shp2 against shp4 ; plain 6245417
+  gap shp4 against shp8 ; plain 3656531
+  gap shp8 against shp16 ; plain 2150510
+  plain_in_order 1
+PLAIN ant SHP folds_in_order 3

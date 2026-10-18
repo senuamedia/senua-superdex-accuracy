@@ -1,0 +1,9 @@
+STATS run spin1.56_1 joint dt 0.01 mass 1.556 radius 0.0449 arm 0.443 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=1 abstol=1e-4 reltol=1e-8
+STATS run spin1.56_4 joint dt 0.0025 mass 1.556 radius 0.0449 arm 0.443 angle0 0 gravity 0 dofs 1 steps 400 converged 400 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=1 abstol=1e-4 reltol=1e-8
+STATS run spin1.56_16 joint dt 0.000625 mass 1.556 radius 0.0449 arm 0.443 angle0 0 gravity 0 dofs 1 steps 1600 converged 1600 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=1 abstol=1e-4 reltol=1e-8
+STATS run spin2.93_1 joint dt 0.01 mass 1.556 radius 0.0449 arm 0.443 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=1 abstol=1e-4 reltol=1e-8
+STATS run spin2.93_4 joint dt 0.0025 mass 1.556 radius 0.0449 arm 0.443 angle0 0 gravity 0 dofs 1 steps 400 converged 400 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=1 abstol=1e-4 reltol=1e-8
+STATS run spin2.93_16 joint dt 0.000625 mass 1.556 radius 0.0449 arm 0.443 angle0 0 gravity 0 dofs 1 steps 1600 converged 1600 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=1 abstol=1e-4 reltol=1e-8
+STATS run spin4.51_1 joint dt 0.01 mass 1.556 radius 0.0449 arm 0.443 angle0 0 gravity 0 dofs 1 steps 100 converged 100 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=1 abstol=1e-4 reltol=1e-8
+STATS run spin4.51_4 joint dt 0.0025 mass 1.556 radius 0.0449 arm 0.443 angle0 0 gravity 0 dofs 1 steps 400 converged 400 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=1 abstol=1e-4 reltol=1e-8
+STATS run spin4.51_16 joint dt 0.000625 mass 1.556 radius 0.0449 arm 0.443 angle0 0 gravity 0 dofs 1 steps 1600 converged 1600 stopped 0 diverged 0 most_iterations 2 real_bits 64 extra newtoneuler=1 abstol=1e-4 reltol=1e-8

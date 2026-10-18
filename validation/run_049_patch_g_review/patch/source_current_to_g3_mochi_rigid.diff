@@ -1,0 +1,53 @@
+--- mochi_rigid.cpp.cur	2026-10-15 18:22:31
++++ mochi_rigid.cpp	2026-10-15 18:23:57
+@@ -86,6 +86,27 @@
+   out[0] = it->second[0];
+   out[1] = it->second[1];
+   out[2] = it->second[2];
++  return true;
++}
++// Under a multistep integrator: each body's mass and its centre at the start of the stage, for the articulated
++// assembly's BDF2 term (under the same mutex).
++void SenuaInertiaStartStore(void const* key, real mass, Real3 const& start);
++bool SenuaInertiaStartLoad(void const* key, real* mass, real* start);
++static std::unordered_map<void const*, std::array<real, 4>> gSenuaInertiaStart;
++void SenuaInertiaStartStore(void const* key, real mass, Real3 const& start) {
++  std::lock_guard<std::mutex> lock(gSenuaInertiaForceMutex);
++  gSenuaInertiaStart[key] = std::array<real, 4>{mass, start[0], start[1], start[2]};
++}
++bool SenuaInertiaStartLoad(void const* key, real* mass, real* start) {
++  std::lock_guard<std::mutex> lock(gSenuaInertiaForceMutex);
++  auto const it = gSenuaInertiaStart.find(key);
++  if (it == gSenuaInertiaStart.end()) {
++    return false;
++  }
++  *mass = it->second[0];
++  start[0] = it->second[1];
++  start[1] = it->second[2];
++  start[2] = it->second[3];
+   return true;
+ }
+ } // namespace mochi::rigid
+@@ -754,6 +775,12 @@
+       SenuaInertiaTransportOn() && params.assemRes && gradTarget == GradTarget::Current;
+   if (senuaTransport) {
+     SenuaInertiaTransportStore(&outActorSnle, 0_r, 0_r, 0_r);
++  }
++  // Senua AI patch G, multistep integrators: this body's mass and its centre at the start of the stage (a mass of 0
++  // while no inertia is assembled), for the articulated assembly's BDF2 term. Nothing under a one-step integrator.
++  bool const senuaMultiStep = senuaTransport && intState.numSteps > 1;
++  if (senuaMultiStep) {
++    SenuaInertiaStartStore(&outActorSnle, 0_r, stageStartPose.value.GetTranslation());
+   }
+ 
+   // Compute inertial terms
+@@ -789,6 +816,9 @@
+           tempGradient.data()[1] - senuaBefore[1],
+           tempGradient.data()[2] - senuaBefore[2]);
+     }
++    if (senuaMultiStep) {
++      SenuaInertiaStartStore(&outActorSnle, rigidInertia.GetMass(), stageStartPose.value.GetTranslation());
++    }
+ 
+     if (params.assemDRes && params.psdDRes) {
+       VMatrix3x3r outHessian, outInertiaHessian;

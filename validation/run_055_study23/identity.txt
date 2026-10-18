@@ -1,0 +1,23 @@
+IDENTITY rotvec 1 of 1
+IDENTITY flight 8 of 8
+IDENTITY suites_off 67 of 67
+IDENTITY suites_abcd 67 of 67
+IDENTITY suites_e 67 of 67
+IDENTITY suites_abcde 67 of 67
+DIFFERS joint swing_be_64
+IDENTITY joints 39 of 40
+DIFFERS zero joint swing_be_64
+IDENTITY zero 106 of 107
+DIFFERS fg chain swing_16
+DIFFERS fg chain tight free_16
+DIFFERS fg joints_fc swing_be_64
+DIFFERS fg limits_fc rel20_64
+IDENTITY fg 40 of 44
+DIFFERS benchmark ant s4
+DIFFERS benchmark ant c1
+DIFFERS benchmark ant c06
+DIFFERS benchmark ant c03
+IDENTITY bench 34 of 38
+DIFFERS benchmark under its switches half_cheetah y1
+DIFFERS benchmark under its switches half_cheetah y4
+IDENTITY benchrec 5 of 7

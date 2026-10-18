@@ -1,0 +1,112 @@
+=== half_cheetah, the fifth registration's commands: the recommended configuration with the friction correction added (f1 .. f16)
+TIME half_cheetah f1 against f2 readings 0 to 5 summed_difference 3026 more_than_1_count 464 largest 13
+TIME half_cheetah f1 against f2 readings 5 to 10 summed_difference 3430 more_than_1_count 447 largest 26
+TIME half_cheetah f1 against f2 readings 10 to 20 summed_difference 16851 more_than_1_count 1001 largest 59
+TIME half_cheetah f1 against f2 readings 20 to 40 summed_difference 47839 more_than_1_count 2049 largest 89
+TIME half_cheetah f1 against f2 readings 40 to 80 summed_difference 114842 more_than_1_count 4158 largest 130
+TIME half_cheetah f1 against f2 readings 80 to 120 summed_difference 139687 more_than_1_count 4174 largest 276
+TIME half_cheetah f1 against f2 readings 120 to 160 summed_difference 139557 more_than_1_count 4195 largest 207
+TIME half_cheetah f1 against f2 readings 160 to 200 summed_difference 144008 more_than_1_count 4192 largest 210
+PARTING half_cheetah f1 against f2 summed_difference 609240 episodes 108 never_part 0 earliest 0 quarter 0 median 0 three_quarters 0 latest 13
+TIME half_cheetah f2 against f4 readings 0 to 5 summed_difference 1636 more_than_1_count 392 largest 7
+TIME half_cheetah f2 against f4 readings 5 to 10 summed_difference 1829 more_than_1_count 387 largest 14
+TIME half_cheetah f2 against f4 readings 10 to 20 summed_difference 9021 more_than_1_count 938 largest 34
+TIME half_cheetah f2 against f4 readings 20 to 40 summed_difference 28215 more_than_1_count 1997 largest 60
+TIME half_cheetah f2 against f4 readings 40 to 80 summed_difference 67804 more_than_1_count 4023 largest 92
+TIME half_cheetah f2 against f4 readings 80 to 120 summed_difference 80466 more_than_1_count 4092 largest 102
+TIME half_cheetah f2 against f4 readings 120 to 160 summed_difference 84356 more_than_1_count 4122 largest 167
+TIME half_cheetah f2 against f4 readings 160 to 200 summed_difference 92581 more_than_1_count 4121 largest 201
+PARTING half_cheetah f2 against f4 summed_difference 365908 episodes 108 never_part 0 earliest 0 quarter 0 median 1 three_quarters 2 latest 14
+TIME half_cheetah f4 against f8 readings 0 to 5 summed_difference 882 more_than_1_count 273 largest 4
+TIME half_cheetah f4 against f8 readings 5 to 10 summed_difference 927 more_than_1_count 269 largest 7
+TIME half_cheetah f4 against f8 readings 10 to 20 summed_difference 4681 more_than_1_count 848 largest 17
+TIME half_cheetah f4 against f8 readings 20 to 40 summed_difference 15567 more_than_1_count 1840 largest 38
+TIME half_cheetah f4 against f8 readings 40 to 80 summed_difference 37092 more_than_1_count 3788 largest 57
+TIME half_cheetah f4 against f8 readings 80 to 120 summed_difference 41933 more_than_1_count 3842 largest 55
+TIME half_cheetah f4 against f8 readings 120 to 160 summed_difference 45175 more_than_1_count 3941 largest 123
+TIME half_cheetah f4 against f8 readings 160 to 200 summed_difference 46418 more_than_1_count 3894 largest 126
+PARTING half_cheetah f4 against f8 summed_difference 192675 episodes 108 never_part 0 earliest 0 quarter 1 median 2 three_quarters 6 latest 17
+TIME half_cheetah f8 against f16 readings 0 to 5 summed_difference 421 more_than_1_count 69 largest 2
+TIME half_cheetah f8 against f16 readings 5 to 10 summed_difference 498 more_than_1_count 100 largest 4
+TIME half_cheetah f8 against f16 readings 10 to 20 summed_difference 2385 more_than_1_count 669 largest 8
+TIME half_cheetah f8 against f16 readings 20 to 40 summed_difference 8134 more_than_1_count 1581 largest 20
+TIME half_cheetah f8 against f16 readings 40 to 80 summed_difference 19137 more_than_1_count 3271 largest 28
+TIME half_cheetah f8 against f16 readings 80 to 120 summed_difference 21861 more_than_1_count 3430 largest 35
+TIME half_cheetah f8 against f16 readings 120 to 160 summed_difference 23090 more_than_1_count 3576 largest 53
+TIME half_cheetah f8 against f16 readings 160 to 200 summed_difference 24038 more_than_1_count 3567 largest 65
+PARTING half_cheetah f8 against f16 summed_difference 99564 episodes 108 never_part 0 earliest 2 quarter 3 median 7 three_quarters 12 latest 24
+CELL half_cheetah F fold 0
+  gap f1 against f2 ; plain 3064551
+  gap f2 against f4 ; plain 1765968
+  gap f4 against f8 ; plain 925304
+  gap f8 against f16 ; plain 521558
+  plain_in_order 1
+CELL half_cheetah F fold 1
+  gap f1 against f2 ; plain 3401224
+  gap f2 against f4 ; plain 2197053
+  gap f4 against f8 ; plain 1098450
+  gap f8 against f16 ; plain 548436
+  plain_in_order 1
+CELL half_cheetah F fold 2
+  gap f1 against f2 ; plain 2825543
+  gap f2 against f4 ; plain 1835043
+  gap f4 against f8 ; plain 996802
+  gap f8 against f16 ; plain 489715
+  plain_in_order 1
+PLAIN half_cheetah F folds_in_order 3
+=== ant, the fifth registration's commands: the recommended configuration with the friction correction added (f1 .. f16)
+TIME ant f1 against f2 readings 0 to 5 summed_difference 6893 more_than_1_count 497 largest 44
+TIME ant f1 against f2 readings 5 to 10 summed_difference 12392 more_than_1_count 524 largest 65
+TIME ant f1 against f2 readings 10 to 20 summed_difference 19178 more_than_1_count 1023 largest 63
+TIME ant f1 against f2 readings 20 to 40 summed_difference 50422 more_than_1_count 1987 largest 219
+TIME ant f1 against f2 readings 40 to 80 summed_difference 248368 more_than_1_count 4147 largest 444
+TIME ant f1 against f2 readings 80 to 120 summed_difference 402296 more_than_1_count 4152 largest 908
+TIME ant f1 against f2 readings 120 to 160 summed_difference 388330 more_than_1_count 4180 largest 1390
+TIME ant f1 against f2 readings 160 to 200 summed_difference 433563 more_than_1_count 4174 largest 1411
+PARTING ant f1 against f2 summed_difference 1561442 episodes 108 never_part 0 earliest 0 quarter 0 median 0 three_quarters 0 latest 6
+TIME ant f2 against f4 readings 0 to 5 summed_difference 3464 more_than_1_count 451 largest 23
+TIME ant f2 against f4 readings 5 to 10 summed_difference 6290 more_than_1_count 504 largest 34
+TIME ant f2 against f4 readings 10 to 20 summed_difference 10152 more_than_1_count 972 largest 32
+TIME ant f2 against f4 readings 20 to 40 summed_difference 28726 more_than_1_count 1870 largest 122
+TIME ant f2 against f4 readings 40 to 80 summed_difference 154217 more_than_1_count 4021 largest 487
+TIME ant f2 against f4 readings 80 to 120 summed_difference 254986 more_than_1_count 4089 largest 1346
+TIME ant f2 against f4 readings 120 to 160 summed_difference 256402 more_than_1_count 4059 largest 1263
+TIME ant f2 against f4 readings 160 to 200 summed_difference 300100 more_than_1_count 4101 largest 1323
+PARTING ant f2 against f4 summed_difference 1014337 episodes 108 never_part 0 earliest 0 quarter 0 median 0 three_quarters 1 latest 7
+TIME ant f4 against f8 readings 0 to 5 summed_difference 1731 more_than_1_count 364 largest 11
+TIME ant f4 against f8 readings 5 to 10 summed_difference 3164 more_than_1_count 450 largest 18
+TIME ant f4 against f8 readings 10 to 20 summed_difference 5244 more_than_1_count 875 largest 16
+TIME ant f4 against f8 readings 20 to 40 summed_difference 15667 more_than_1_count 1671 largest 65
+TIME ant f4 against f8 readings 40 to 80 summed_difference 85172 more_than_1_count 3798 largest 214
+TIME ant f4 against f8 readings 80 to 120 summed_difference 140518 more_than_1_count 3920 largest 337
+TIME ant f4 against f8 readings 120 to 160 summed_difference 178878 more_than_1_count 3930 largest 825
+TIME ant f4 against f8 readings 160 to 200 summed_difference 221056 more_than_1_count 3936 largest 1308
+PARTING ant f4 against f8 summed_difference 651430 episodes 108 never_part 0 earliest 0 quarter 0 median 1 three_quarters 2 latest 14
+TIME ant f8 against f16 readings 0 to 5 summed_difference 883 more_than_1_count 235 largest 6
+TIME ant f8 against f16 readings 5 to 10 summed_difference 1649 more_than_1_count 377 largest 9
+TIME ant f8 against f16 readings 10 to 20 summed_difference 2702 more_than_1_count 720 largest 9
+TIME ant f8 against f16 readings 20 to 40 summed_difference 8074 more_than_1_count 1332 largest 34
+TIME ant f8 against f16 readings 40 to 80 summed_difference 44152 more_than_1_count 3417 largest 84
+TIME ant f8 against f16 readings 80 to 120 summed_difference 77716 more_than_1_count 3538 largest 241
+TIME ant f8 against f16 readings 120 to 160 summed_difference 115098 more_than_1_count 3638 largest 603
+TIME ant f8 against f16 readings 160 to 200 summed_difference 140488 more_than_1_count 3663 largest 615
+PARTING ant f8 against f16 summed_difference 390762 episodes 108 never_part 0 earliest 0 quarter 1 median 2 three_quarters 6 latest 21
+CELL ant F fold 0
+  gap f1 against f2 ; plain 12145740
+  gap f2 against f4 ; plain 7916045
+  gap f4 against f8 ; plain 5837280
+  gap f8 against f16 ; plain 3171803
+  plain_in_order 1
+CELL ant F fold 1
+  gap f1 against f2 ; plain 9172623
+  gap f2 against f4 ; plain 6579737
+  gap f4 against f8 ; plain 3602892
+  gap f8 against f16 ; plain 2303181
+  plain_in_order 1
+CELL ant F fold 2
+  gap f1 against f2 ; plain 10422442
+  gap f2 against f4 ; plain 6237374
+  gap f4 against f8 ; plain 3677996
+  gap f8 against f16 ; plain 2174721
+  plain_in_order 1
+PLAIN ant F folds_in_order 3

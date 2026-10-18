@@ -1,0 +1,10 @@
+PLAYED 64 final rc 0
+PLAYED 64 abcde rc 0
+PLAYED 32 abcde rc 0
+PLAYED 32 final rc 0
+PLAYED 32 abcd rc 0
+PLAYED 32 off rc 0
+PLAYED 32 stock rc 0
+PLAYED 64 stock rc 0
+PLAYED 64 off rc 0
+PLAYED 64 abcd rc 0

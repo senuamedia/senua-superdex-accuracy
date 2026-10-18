@@ -1,0 +1,39 @@
+STATS run free_1 contact dt 0.01 h0 10 vx0 0.9 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 100 converged 100 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra none
+STATS run drop_1 contact dt 0.01 h0 0.1 vx0 0 mu 0 lock 1 mass 0.8 radius 0.035 steps 50 converged 50 stopped 0 diverged 0 most_iterations 6 real_bits 64 extra none
+STATS run oblique_1 contact dt 0.01 h0 0.1 vx0 2.5 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 30 converged 30 stopped 0 diverged 0 most_iterations 10 real_bits 64 extra none
+STATS run chain_1 contact dt 0.01 h0 0.1 vx0 0.9 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 100 converged 99 stopped 1 diverged 0 most_iterations 200 real_bits 64 extra none
+STATS run free_2 contact dt 0.005 h0 10 vx0 0.9 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 200 converged 200 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra none
+STATS run drop_2 contact dt 0.005 h0 0.1 vx0 0 mu 0 lock 1 mass 0.8 radius 0.035 steps 100 converged 100 stopped 0 diverged 0 most_iterations 19 real_bits 64 extra none
+STATS run oblique_2 contact dt 0.005 h0 0.1 vx0 2.5 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 60 converged 59 stopped 1 diverged 0 most_iterations 200 real_bits 64 extra none
+STATS run chain_2 contact dt 0.005 h0 0.1 vx0 0.9 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 200 converged 198 stopped 2 diverged 0 most_iterations 200 real_bits 64 extra none
+STATS run free_4 contact dt 0.0025 h0 10 vx0 0.9 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 400 converged 400 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra none
+STATS run drop_4 contact dt 0.0025 h0 0.1 vx0 0 mu 0 lock 1 mass 0.8 radius 0.035 steps 200 converged 200 stopped 0 diverged 0 most_iterations 20 real_bits 64 extra none
+STATS run oblique_4 contact dt 0.0025 h0 0.1 vx0 2.5 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 120 converged 119 stopped 1 diverged 0 most_iterations 200 real_bits 64 extra none
+STATS run chain_4 contact dt 0.0025 h0 0.1 vx0 0.9 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 400 converged 396 stopped 4 diverged 0 most_iterations 200 real_bits 64 extra none
+STATS run free_8 contact dt 0.00125 h0 10 vx0 0.9 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 800 converged 800 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra none
+STATS run drop_8 contact dt 0.00125 h0 0.1 vx0 0 mu 0 lock 1 mass 0.8 radius 0.035 steps 400 converged 400 stopped 0 diverged 0 most_iterations 22 real_bits 64 extra none
+STATS run oblique_8 contact dt 0.00125 h0 0.1 vx0 2.5 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 240 converged 237 stopped 3 diverged 0 most_iterations 200 real_bits 64 extra none
+STATS run chain_8 contact dt 0.00125 h0 0.1 vx0 0.9 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 800 converged 794 stopped 6 diverged 0 most_iterations 200 real_bits 64 extra none
+STATS run free_16 contact dt 0.000625 h0 10 vx0 0.9 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 1600 converged 1600 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra none
+STATS run drop_16 contact dt 0.000625 h0 0.1 vx0 0 mu 0 lock 1 mass 0.8 radius 0.035 steps 800 converged 800 stopped 0 diverged 0 most_iterations 22 real_bits 64 extra none
+STATS run oblique_16 contact dt 0.000625 h0 0.1 vx0 2.5 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 480 converged 478 stopped 2 diverged 0 most_iterations 200 real_bits 64 extra none
+STATS run chain_16 contact dt 0.000625 h0 0.1 vx0 0.9 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 1600 converged 1598 stopped 2 diverged 0 most_iterations 200 real_bits 64 extra none
+STATS run free_32 contact dt 0.0003125 h0 10 vx0 0.9 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 3200 converged 3200 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra none
+STATS run drop_32 contact dt 0.0003125 h0 0.1 vx0 0 mu 0 lock 1 mass 0.8 radius 0.035 steps 1600 converged 1600 stopped 0 diverged 0 most_iterations 21 real_bits 64 extra none
+STATS run oblique_32 contact dt 0.0003125 h0 0.1 vx0 2.5 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 960 converged 959 stopped 1 diverged 0 most_iterations 200 real_bits 64 extra none
+STATS run chain_32 contact dt 0.0003125 h0 0.1 vx0 0.9 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 3200 converged 3196 stopped 4 diverged 0 most_iterations 200 real_bits 64 extra none
+STATS run free_64 contact dt 0.00015625 h0 10 vx0 0.9 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 6400 converged 6400 stopped 0 diverged 0 most_iterations 1 real_bits 64 extra none
+STATS run drop_64 contact dt 0.00015625 h0 0.1 vx0 0 mu 0 lock 1 mass 0.8 radius 0.035 steps 3200 converged 3200 stopped 0 diverged 0 most_iterations 22 real_bits 64 extra none
+STATS run oblique_64 contact dt 0.00015625 h0 0.1 vx0 2.5 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 1920 converged 1918 stopped 2 diverged 0 most_iterations 200 real_bits 64 extra none
+STATS run chain_64 contact dt 0.00015625 h0 0.1 vx0 0.9 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 6400 converged 6393 stopped 7 diverged 0 most_iterations 200 real_bits 64 extra none
+STATS run slide_1 contact dt 0.01 h0 0 vx0 3 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 50 converged 50 stopped 0 diverged 0 most_iterations 5 real_bits 64 extra none
+STATS run rest_1 contact dt 0.01 h0 0 vx0 0 mu 0 lock 1 mass 0.8 radius 0.035 steps 200 converged 200 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra none
+STATS run hold_1 contact dt 0.01 h0 0 vx0 0 mu 0.45 lock 1 mass 0.8 radius 0.035 steps 200 converged 200 stopped 0 diverged 0 most_iterations 4 real_bits 64 extra push=2.117 pushat=0.5
+STATS run slip_1 contact dt 0.01 h0 0 vx0 0 mu 0.45 lock 1 mass 0.8 radius 0.035 steps 200 converged 200 stopped 0 diverged 0 most_iterations 19 real_bits 64 extra push=4.234 pushat=0.5
+STATS run lift_1 contact dt 0.01 h0 0 vx0 0 mu 0 lock 1 mass 0.8 radius 0.035 steps 40 converged 40 stopped 0 diverged 0 most_iterations 3 real_bits 64 extra lift=23.52 liftat=0.3
+STATS run slide_16 contact dt 0.000625 h0 0 vx0 3 mu 0.35 lock 1 mass 0.8 radius 0.035 steps 800 converged 800 stopped 0 diverged 0 most_iterations 4 real_bits 64 extra none
+STATS run rest_16 contact dt 0.000625 h0 0 vx0 0 mu 0 lock 1 mass 0.8 radius 0.035 steps 3200 converged 3200 stopped 0 diverged 0 most_iterations 22 real_bits 64 extra none
+STATS run hold_16 contact dt 0.000625 h0 0 vx0 0 mu 0.45 lock 1 mass 0.8 radius 0.035 steps 3200 converged 3200 stopped 0 diverged 0 most_iterations 21 real_bits 64 extra push=2.117 pushat=0.5
+STATS run slip_16 contact dt 0.000625 h0 0 vx0 0 mu 0.45 lock 1 mass 0.8 radius 0.035 steps 3200 converged 3200 stopped 0 diverged 0 most_iterations 21 real_bits 64 extra push=4.234 pushat=0.5
+STATS run lift_16 contact dt 0.000625 h0 0 vx0 0 mu 0 lock 1 mass 0.8 radius 0.035 steps 640 converged 640 stopped 0 diverged 0 most_iterations 22 real_bits 64 extra lift=23.52 liftat=0.3
+STATS run rebound_16 contact dt 0.000625 h0 0.3 vx0 0 mu 0 lock 1 mass 0.8 radius 0.035 steps 800 converged 800 stopped 0 diverged 0 most_iterations 21 real_bits 64 extra integ=bdf2

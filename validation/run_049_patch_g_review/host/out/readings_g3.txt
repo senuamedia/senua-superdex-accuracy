@@ -1,0 +1,250 @@
+== r14: rule lines, build 15 against g3 (both made on this machine)
+rule lines: build 15 150, g3 150; verdicts that differ: 3
+27,28c27,28
+< I5b_bdf2_with_patch_g_free_spin HELD
+< I5b_pendulum_shipped_step HELD
+---
+> I5b_bdf2_with_patch_g_free_spin FAILED
+> I5b_pendulum_shipped_step FAILED
+31c31
+< I5c_swinging_chain_quarter_step HELD
+---
+> I5c_swinging_chain_quarter_step FAILED
+-- every measured line that differs:
+< item 5, BDF2 g, pendulum 1/1 | SWING dt_ns 10000000 released_at_urad 0 turn_urad -3137411 swing_per_10000 9986 turn_urad -5249 swing_per_10000 9969 turn_urad -3133923 swing_per_10000 9958 turn_urad -8455 swing_per_10000 9948 turns 4
+< item 5, BDF2 g, free spin 1/1 | FINAL dt_ns 10000000 angle_urad 3998100 speed_urads 3997431
+< item 5, BDF2 g, swinging chain 1/1 | CHAIN dt_ns 10000000 gravity 1 steps 200 kinetic_start_nj 0 kinetic_end_nj 4888272854 kinetic_most_nj 12016009955 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic -158174 energy_largest_drift_ppm 247267 energy_lost_ppm_of_most_kinetic 158174 momentum_start_u 0 momentum_end_u -528549743 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad -219709 speed1_urads -4319761 angle2_urad -1167969 speed2_urads 16430468
+< item 5, BDF2 g, free chain 1/1 | CHAIN dt_ns 10000000 gravity 0 steps 200 kinetic_start_nj 1416983494 kinetic_end_nj 1413852049 kinetic_most_nj 1417073547 kinetic_end_per_million_of_start 997790 energy_drift_ppm_of_most_kinetic -2209 energy_largest_drift_ppm 5780 energy_lost_ppm_of_most_kinetic 2209 momentum_start_u 1227380460 momentum_end_u 1204331809 momentum_drift_ppm -18778 momentum_largest_drift_ppm 18778 angle1_urad 4331813 speed1_urads 2968930 angle2_urad -730070 speed2_urads -3194818
+< item 5, BDF2 g, pendulum 1/4 | SWING dt_ns 2500000 released_at_urad -1 turn_urad -3141519 swing_per_10000 9999 turn_urad -27 swing_per_10000 9999 turn_urad -3141601 swing_per_10000 9999 turn_urad 33 swing_per_10000 10000 turns 4
+< item 5, BDF2 g, free spin 1/4 | FINAL dt_ns 2500000 angle_urad 3999886 speed_urads 3999853
+< item 5, BDF2 g, swinging chain 1/4 | CHAIN dt_ns 2500000 gravity 1 steps 800 kinetic_start_nj 0 kinetic_end_nj 6832136225 kinetic_most_nj 12205563154 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic -7309 energy_largest_drift_ppm 22179 energy_lost_ppm_of_most_kinetic 7309 momentum_start_u 0 momentum_end_u -535746846 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad -256308 speed1_urads -6279518 angle2_urad -909913 speed2_urads 23150744
+< item 5, BDF2 g, free chain 1/4 | CHAIN dt_ns 2500000 gravity 0 steps 800 kinetic_start_nj 1416983494 kinetic_end_nj 1417244190 kinetic_most_nj 1417244190 kinetic_end_per_million_of_start 1000184 energy_drift_ppm_of_most_kinetic 183 energy_largest_drift_ppm 236 energy_lost_ppm_of_most_kinetic -183 momentum_start_u 1227380460 momentum_end_u 1221917608 momentum_drift_ppm -4450 momentum_largest_drift_ppm 4450 angle1_urad 4346444 speed1_urads 2718477 angle2_urad -778619 speed2_urads -1919691
+< item 5, BDF2 g, pendulum 1/16 | SWING dt_ns 625000 released_at_urad -1 turn_urad -3141799 swing_per_10000 10000 turn_urad 428 swing_per_10000 10001 turn_urad -3142241 swing_per_10000 10003 turn_urad 869 swing_per_10000 10004 turns 4
+< item 5, BDF2 g, free spin 1/16 | FINAL dt_ns 625000 angle_urad 4005711 speed_urads 4011464
+< item 5, BDF2 g, swinging chain 1/16 | CHAIN dt_ns 625000 gravity 1 steps 3200 kinetic_start_nj 0 kinetic_end_nj 7492365851 kinetic_most_nj 12233880736 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic 1743 energy_largest_drift_ppm 1820 energy_lost_ppm_of_most_kinetic -1743 momentum_start_u 0 momentum_end_u -614942071 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad -312564 speed1_urads -5081218 angle2_urad -1266952 speed2_urads 19991601
+< item 5, BDF2 g, free chain 1/16 | CHAIN dt_ns 625000 gravity 0 steps 3200 kinetic_start_nj 1416983494 kinetic_end_nj 1421950601 kinetic_most_nj 1421950601 kinetic_end_per_million_of_start 1003505 energy_drift_ppm_of_most_kinetic 3493 energy_largest_drift_ppm 3493 energy_lost_ppm_of_most_kinetic -3493 momentum_start_u 1227380460 momentum_end_u 1227554880 momentum_drift_ppm 142 momentum_largest_drift_ppm 143 angle1_urad 4351126 speed1_urads 2664615 angle2_urad -781536 speed2_urads -1641576
+> item 5, BDF2 g, pendulum 1/1 | SWING dt_ns 10000000 released_at_urad 0 turn_urad -3135893 swing_per_10000 9981 turn_urad -8121 swing_per_10000 9955 turn_urad -3129397 swing_per_10000 9935 turn_urad -14160 swing_per_10000 9915 turns 4
+> item 5, BDF2 g, free spin 1/1 | FINAL dt_ns 10000000 angle_urad 3994472 speed_urads 3993537
+> item 5, BDF2 g, swinging chain 1/1 | CHAIN dt_ns 10000000 gravity 1 steps 200 kinetic_start_nj 0 kinetic_end_nj 4676831752 kinetic_most_nj 12086474764 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic -204188 energy_largest_drift_ppm 316453 energy_lost_ppm_of_most_kinetic 204188 momentum_start_u 0 momentum_end_u -890452897 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad -843193 speed1_urads -998009 angle2_urad -3212176 speed2_urads 12278456
+> item 5, BDF2 g, free chain 1/1 | CHAIN dt_ns 10000000 gravity 0 steps 200 kinetic_start_nj 1416983494 kinetic_end_nj 1412917106 kinetic_most_nj 1417073547 kinetic_end_per_million_of_start 997130 energy_drift_ppm_of_most_kinetic -2869 energy_largest_drift_ppm 6341 energy_lost_ppm_of_most_kinetic 2869 momentum_start_u 1227380460 momentum_end_u 1226994966 momentum_drift_ppm -314 momentum_largest_drift_ppm 1285 angle1_urad 4335094 speed1_urads 2660167 angle2_urad -760608 speed2_urads -1673030
+> item 5, BDF2 g, pendulum 1/4 | SWING dt_ns 2500000 released_at_urad -1 turn_urad -3141477 swing_per_10000 9999 turn_urad -114 swing_per_10000 9999 turn_urad -3141469 swing_per_10000 9999 turn_urad -47 swing_per_10000 9999 turns 4
+> item 5, BDF2 g, free spin 1/4 | FINAL dt_ns 2500000 angle_urad 3999667 speed_urads 3999630
+> item 5, BDF2 g, swinging chain 1/4 | CHAIN dt_ns 2500000 gravity 1 steps 800 kinetic_start_nj 0 kinetic_end_nj 7454599482 kinetic_most_nj 12229977311 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic -11133 energy_largest_drift_ppm 32888 energy_lost_ppm_of_most_kinetic 11133 momentum_start_u 0 momentum_end_u -670982663 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad -354282 speed1_urads -3876825 angle2_urad -1631301 speed2_urads 17321200
+> item 5, BDF2 g, free chain 1/4 | CHAIN dt_ns 2500000 gravity 0 steps 800 kinetic_start_nj 1416983494 kinetic_end_nj 1416883876 kinetic_most_nj 1416989483 kinetic_end_per_million_of_start 999930 energy_drift_ppm_of_most_kinetic -70 energy_largest_drift_ppm 305 energy_lost_ppm_of_most_kinetic 70 momentum_start_u 1227380460 momentum_end_u 1227361909 momentum_drift_ppm -15 momentum_largest_drift_ppm 83 angle1_urad 4345658 speed1_urads 2642177 angle2_urad -776581 speed2_urads -1559434
+> item 5, BDF2 g, pendulum 1/16 | SWING dt_ns 625000 released_at_urad -1 turn_urad -3141750 swing_per_10000 10000 turn_urad 330 swing_per_10000 10001 turn_urad -3142095 swing_per_10000 10002 turn_urad 675 swing_per_10000 10003 turns 4
+> item 5, BDF2 g, free spin 1/16 | FINAL dt_ns 625000 angle_urad 3999979 speed_urads 3999977
+> item 5, BDF2 g, swinging chain 1/16 | CHAIN dt_ns 625000 gravity 1 steps 3200 kinetic_start_nj 0 kinetic_end_nj 7609450989 kinetic_most_nj 12236211229 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic -210 energy_largest_drift_ppm 2083 energy_lost_ppm_of_most_kinetic 210 momentum_start_u 0 momentum_end_u -679974069 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad -351501 speed1_urads -4100528 angle2_urad -1579827 speed2_urads 17772692
+> item 5, BDF2 g, free chain 1/16 | CHAIN dt_ns 625000 gravity 0 steps 3200 kinetic_start_nj 1416983494 kinetic_end_nj 1416983289 kinetic_most_nj 1416986147 kinetic_end_per_million_of_start 1000000 energy_drift_ppm_of_most_kinetic 0 energy_largest_drift_ppm 16 energy_lost_ppm_of_most_kinetic 0 momentum_start_u 1227380460 momentum_end_u 1227380466 momentum_drift_ppm 0 momentum_largest_drift_ppm 5 angle1_urad 4346154 speed1_urads 2640456 angle2_urad -777387 speed2_urads -1550259
+< arm, accurate, free spin 1/16 | FINAL dt_ns 625000 angle_urad 3002434 speed_urads 3004879
+< arm, accurate, driven 1/16 | FINAL dt_ns 625000 angle_urad 2329121 speed_urads 4660271
+< arm, accurate, pendulum 1/16 | SWING dt_ns 625000 released_at_urad -1 turn_urad -3141810 swing_per_10000 10000 turn_urad 446 swing_per_10000 10001 turn_urad -3142266 swing_per_10000 10003 turns 3
+> arm, accurate, free spin 1/16 | FINAL dt_ns 625000 angle_urad 3005219 speed_urads 3010487
+> arm, accurate, driven 1/16 | FINAL dt_ns 625000 angle_urad 2329070 speed_urads 4658189
+> arm, accurate, pendulum 1/16 | SWING dt_ns 625000 released_at_urad -1 turn_urad -3141761 swing_per_10000 10000 turn_urad 347 swing_per_10000 10001 turn_urad -3142118 swing_per_10000 10002 turns 3
+< arm, accurate, slip 1/16 | FINAL dt_ns 625000 angle_urad 1552151 speed_urads 3104294
+< chain, accurate, free 1/16 | CHAIN dt_ns 625000 gravity 0 steps 3200 kinetic_start_nj 1277211185 kinetic_end_nj 1283191410 kinetic_most_nj 1283191410 kinetic_end_per_million_of_start 1004682 energy_drift_ppm_of_most_kinetic 4660 energy_largest_drift_ppm 4660 energy_lost_ppm_of_most_kinetic -4660 momentum_start_u 906687804 momentum_end_u 906863660 momentum_drift_ppm 193 momentum_largest_drift_ppm 194 angle1_urad 5269798 speed1_urads 1845070 angle2_urad -711413 speed2_urads 3944294
+< chain, accurate, swinging 1/16 | CHAIN dt_ns 625000 gravity 1 steps 3200 kinetic_start_nj 0 kinetic_end_nj 6050781763 kinetic_most_nj 8794002608 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic 1455 energy_largest_drift_ppm 1524 energy_lost_ppm_of_most_kinetic -1455 momentum_start_u 0 momentum_end_u -885910982 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad -2553489 speed1_urads -4989835 angle2_urad 1765628 speed2_urads 19049041
+> arm, accurate, slip 1/16 | FINAL dt_ns 625000 angle_urad 1552148 speed_urads 3104281
+> chain, accurate, free 1/16 | CHAIN dt_ns 625000 gravity 0 steps 3200 kinetic_start_nj 1277211185 kinetic_end_nj 1277208331 kinetic_most_nj 1277213568 kinetic_end_per_million_of_start 999997 energy_drift_ppm_of_most_kinetic -2 energy_largest_drift_ppm 22 energy_lost_ppm_of_most_kinetic 2 momentum_start_u 906687804 momentum_end_u 906687293 momentum_drift_ppm 0 momentum_largest_drift_ppm 6 angle1_urad 5256357 speed1_urads 1796519 angle2_urad -684540 speed2_urads 4061885
+> chain, accurate, swinging 1/16 | CHAIN dt_ns 625000 gravity 1 steps 3200 kinetic_start_nj 0 kinetic_end_nj 5458522681 kinetic_most_nj 8972271875 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic -268 energy_largest_drift_ppm 2751 energy_lost_ppm_of_most_kinetic 268 momentum_start_u 0 momentum_end_u -962901737 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad -2409585 speed1_urads -3435209 angle2_urad 2766884 speed2_urads 15532223
+< limit, accurate, lift 1/16 | FINAL dt_ns 625000 angle_urad -176625 speed_urads 2524096
+< limit, accurate, release, damping 20, 1/64 | LEAVE dt_ns 156250 largest_speed_urads 1434161 speed_at_leaving_urads 1434098 final_speed_urads 1434161 final_angle_urad 379635 steps_inside 167 largest_fall_inside_urads 0
+< limit, accurate, release, damping 20, 1/16 | LEAVE dt_ns 625000 largest_speed_urads 1434035 speed_at_leaving_urads 1433783 final_speed_urads 1434035 final_angle_urad 379510 steps_inside 41 largest_fall_inside_urads 0
+< limit, accurate, release, damping 150, 1/64 | LEAVE dt_ns 156250 largest_speed_urads 369446 speed_at_leaving_urads 369445 final_speed_urads 369446 final_angle_urad -145928 steps_inside 530 largest_fall_inside_urads 0
+< limit, accurate, release, damping 150, 1/16 | LEAVE dt_ns 625000 largest_speed_urads 370390 speed_at_leaving_urads 370386 final_speed_urads 370390 final_angle_urad -145467 steps_inside 132 largest_fall_inside_urads 0
+> limit, accurate, lift 1/16 | FINAL dt_ns 625000 angle_urad -176623 speed_urads 2524177
+> limit, accurate, release, damping 20, 1/64 | LEAVE dt_ns 156250 largest_speed_urads 1434234 speed_at_leaving_urads 1434098 final_speed_urads 1434234 final_angle_urad 379653 steps_inside 167 largest_fall_inside_urads 0
+> limit, accurate, release, damping 20, 1/16 | LEAVE dt_ns 625000 largest_speed_urads 1434327 speed_at_leaving_urads 1433786 final_speed_urads 1434327 final_angle_urad 379580 steps_inside 41 largest_fall_inside_urads 0
+> limit, accurate, release, damping 150, 1/64 | LEAVE dt_ns 156250 largest_speed_urads 369447 speed_at_leaving_urads 369445 final_speed_urads 369447 final_angle_urad -145928 steps_inside 530 largest_fall_inside_urads 0
+> limit, accurate, release, damping 150, 1/16 | LEAVE dt_ns 625000 largest_speed_urads 370394 speed_at_leaving_urads 370386 final_speed_urads 370394 final_angle_urad -145466 steps_inside 132 largest_fall_inside_urads 0
+< benchmark | half_cheetah stock steps 21600 stopped 3 diverged 0 most_iterations 200 wall_s 46.1
+< benchmark | half_cheetah final steps 21600 stopped 9 diverged 0 most_iterations 200 wall_s 95.4
+< benchmark | half_cheetah accurate steps 345600 stopped 0 diverged 0 most_iterations 85 wall_s 279.4
+> benchmark | half_cheetah stock steps 21600 stopped 3 diverged 0 most_iterations 200 wall_s 45.9
+> benchmark | half_cheetah final steps 21600 stopped 9 diverged 0 most_iterations 200 wall_s 95.6
+> benchmark | half_cheetah accurate steps 345600 stopped 0 diverged 0 most_iterations 114 wall_s 281.4
+< benchmark | ant final steps 21600 stopped 0 diverged 0 most_iterations 124 wall_s 17.0
+< benchmark | ant accurate steps 345600 stopped 0 diverged 0 most_iterations 117 wall_s 50.7
+< benchmark | cart_pole stock steps 21600 stopped 0 diverged 0 most_iterations 7 wall_s 0.8
+> benchmark | ant final steps 21600 stopped 0 diverged 0 most_iterations 124 wall_s 17.1
+> benchmark | ant accurate steps 345600 stopped 0 diverged 0 most_iterations 88 wall_s 51.3
+> benchmark | cart_pole stock steps 21600 stopped 0 diverged 0 most_iterations 7 wall_s 0.9
+< RULE I5b_bdf2_with_patch_g_free_spin all_ge 3996000 3997431 3999853 4011464 : HELD
+< RULE I5b_pendulum_shipped_step all_in 9950 10010 9986 9969 9958 : HELD
+> RULE I5b_bdf2_with_patch_g_free_spin all_ge 3996000 3993537 3999630 3999977 : FAILED
+> RULE I5b_pendulum_shipped_step all_in 9950 10010 9981 9955 9935 : FAILED
+< RULE I5b_pendulum_sixteenth_step all_in 9995 10005 10000 10001 10003 : HELD
+< RULE I5c_swinging_chain_quarter_step in -7309 -10000 10000 : HELD
+< RULE I5c_swinging_chain_sixteenth_step in 1743 -5000 5000 : HELD
+< RULE I5c_backward_euler_loses_more_at_the_quarter_step le -74051 -7309 : HELD
+< RULE I5c_free_chain_sixteenth_step within 1003505 1000000 100 : HELD
+< RULE I5c_free_chain_momentum_sixteenth_step le 143 1000 : HELD
+> RULE I5b_pendulum_sixteenth_step all_in 9995 10005 10000 10001 10002 : HELD
+> RULE I5c_swinging_chain_quarter_step in -11133 -10000 10000 : FAILED
+> RULE I5c_swinging_chain_sixteenth_step in -210 -5000 5000 : HELD
+> RULE I5c_backward_euler_loses_more_at_the_quarter_step le -74051 -11133 : HELD
+> RULE I5c_free_chain_sixteenth_step within 1000000 1000000 100 : HELD
+> RULE I5c_free_chain_momentum_sixteenth_step le 5 1000 : HELD
+< RULE A2_a_free_arm_keeps_its_speed ge 3004879 2999700 : HELD
+< RULE A2_a_driven_arm within 4660271 4656457 1000 : HELD
+< RULE A2_the_pendulum_keeps_its_swing all_in 9990 10010 10000 10001 10003 : HELD
+> RULE A2_a_free_arm_keeps_its_speed ge 3010487 2999700 : HELD
+> RULE A2_a_driven_arm within 4658189 4656457 1000 : HELD
+> RULE A2_the_pendulum_keeps_its_swing all_in 9990 10010 10000 10001 10002 : HELD
+< RULE A2_slip_at_its_right_answer within 3104294 3104308 100 : HELD
+< RULE A2_free_chain within 1004682 1000000 200 : HELD
+< RULE A2_free_chain_momentum le 194 1000 : HELD
+< RULE A2_swinging_chain_keeps_its_energy in 1455 -5000 5000 : HELD
+> RULE A2_slip_at_its_right_answer within 3104281 3104308 100 : HELD
+> RULE A2_free_chain within 999997 1000000 200 : HELD
+> RULE A2_free_chain_momentum le 6 1000 : HELD
+> RULE A2_swinging_chain_keeps_its_energy in -268 -5000 5000 : HELD
+< RULE A3_released_and_moving all_ge -299000 379510 -145467 : HELD
+< RULE A3_moving_at_the_end all_ge 36941 1434035 370390 : HELD
+< RULE A3_lifted_off_the_limit ge -176625 -189208 : HELD
+> RULE A3_released_and_moving all_ge -299000 379580 -145466 : HELD
+> RULE A3_moving_at_the_end all_ge 36941 1434327 370394 : HELD
+> RULE A3_lifted_off_the_limit ge -176623 -189208 : HELD
+< STUDY14 rules held 142 failed 8 ; values missing 0 ; measuring complete 1
+> STUDY14 rules held 139 failed 11 ; values missing 0 ; measuring complete 1
+== r15: rule lines, build 15 against g3 (both made on this machine)
+rule lines: build 15 121, g3 121; verdicts that differ: 4
+33c33
+< V5_free_spin HELD
+---
+> V5_free_spin FAILED
+60,61c60,61
+< V7_required_build_13_loses_the_stick_to_a_second_scene HELD
+< V7_required_build_13_carries_the_rollout_back HELD
+---
+> V7_required_build_13_loses_the_stick_to_a_second_scene FAILED
+> V7_required_build_13_carries_the_rollout_back FAILED
+88c88
+< V8_A2_free_chain_momentum FAILED
+---
+> V8_A2_free_chain_momentum HELD
+-- every measured line that differs:
+< item 5, BDF2, pendulum 1/1 | SWING dt_ns 10000000 released_at_urad -1 turn_urad -3138797 swing_per_10000 9990 turn_urad -3886 swing_per_10000 9978 turn_urad -3136599 swing_per_10000 9971 turns 3
+< item 5, BDF2, pendulum 1/1, turns placed between the steps | SWINGQ dt_ns 10000000 released_at_urad -1 turn_urad -3138819 swing_per_10000 9991 turn_urad -3807 swing_per_10000 9978 turn_urad -3136753 swing_per_10000 9972 turns 3 least_per_10000 9972 most_per_10000 9991 last_per_10000 9972
+< item 5, BDF2, free spin 1/1 | FINAL dt_ns 10000000 angle_urad 3498740 speed_urads 3498314
+< item 5, BDF2, swinging chain 1/1 | CHAIN dt_ns 10000000 gravity 1 steps 200 kinetic_start_nj 0 kinetic_end_nj 7492073092 kinetic_most_nj 12470357857 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic -162927 energy_largest_drift_ppm 230769 energy_lost_ppm_of_most_kinetic 162927 momentum_start_u 0 momentum_end_u -1413733629 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad -1194351 speed1_urads -5233823 angle2_urad 2901937 speed2_urads 11928017
+> item 5, BDF2, pendulum 1/1 | SWING dt_ns 10000000 released_at_urad -1 turn_urad -3138129 swing_per_10000 9988 turn_urad -5257 swing_per_10000 9971 turn_urad -3134508 swing_per_10000 9960 turns 3
+> item 5, BDF2, pendulum 1/1, turns placed between the steps | SWINGQ dt_ns 10000000 released_at_urad -1 turn_urad -3138181 swing_per_10000 9988 turn_urad -5074 swing_per_10000 9972 turn_urad -3134862 swing_per_10000 9962 turns 3 least_per_10000 9962 most_per_10000 9988 last_per_10000 9962
+> item 5, BDF2, free spin 1/1 | FINAL dt_ns 10000000 angle_urad 3496335 speed_urads 3495765
+> item 5, BDF2, swinging chain 1/1 | CHAIN dt_ns 10000000 gravity 1 steps 200 kinetic_start_nj 0 kinetic_end_nj 618483645 kinetic_most_nj 12532017042 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic -145033 energy_largest_drift_ppm 240176 energy_lost_ppm_of_most_kinetic 145033 momentum_start_u 0 momentum_end_u -429674514 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad 374548 speed1_urads -1855222 angle2_urad -2925986 speed2_urads 2581244
+< item 5, BDF2, pendulum 1/4 | SWING dt_ns 2500000 released_at_urad -1 turn_urad -3141462 swing_per_10000 9999 turn_urad -163 swing_per_10000 9998 turn_urad -3141389 swing_per_10000 9998 turns 3
+< item 5, BDF2, pendulum 1/4, turns placed between the steps | SWINGQ dt_ns 2500000 released_at_urad -1 turn_urad -3141466 swing_per_10000 9999 turn_urad -144 swing_per_10000 9999 turn_urad -3141431 swing_per_10000 9998 turns 3 least_per_10000 9998 most_per_10000 9999 last_per_10000 9998
+< item 5, BDF2, free spin 1/4 | FINAL dt_ns 2500000 angle_urad 3499923 speed_urads 3499902
+< item 5, BDF2, swinging chain 1/4 | CHAIN dt_ns 2500000 gravity 1 steps 800 kinetic_start_nj 0 kinetic_end_nj 160094460 kinetic_most_nj 12691654653 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic -3783 energy_largest_drift_ppm 20008 energy_lost_ppm_of_most_kinetic 3783 momentum_start_u 0 momentum_end_u -172796894 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad 697542 speed1_urads -391818 angle2_urad -3414036 speed2_urads 2470752
+> item 5, BDF2, pendulum 1/4 | SWING dt_ns 2500000 released_at_urad -1 turn_urad -3141443 swing_per_10000 9999 turn_urad -201 swing_per_10000 9998 turn_urad -3141329 swing_per_10000 9998 turns 3
+> item 5, BDF2, pendulum 1/4, turns placed between the steps | SWINGQ dt_ns 2500000 released_at_urad -1 turn_urad -3141448 swing_per_10000 9999 turn_urad -180 swing_per_10000 9998 turn_urad -3141378 swing_per_10000 9998 turns 3 least_per_10000 9998 most_per_10000 9999 last_per_10000 9998
+> item 5, BDF2, free spin 1/4 | FINAL dt_ns 2500000 angle_urad 3499776 speed_urads 3499752
+> item 5, BDF2, swinging chain 1/4 | CHAIN dt_ns 2500000 gravity 1 steps 800 kinetic_start_nj 0 kinetic_end_nj 225267039 kinetic_most_nj 12715717875 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic -5737 energy_largest_drift_ppm 24157 energy_lost_ppm_of_most_kinetic 5737 momentum_start_u 0 momentum_end_u -245361771 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad 451550 speed1_urads -931517 angle2_urad -4140362 speed2_urads 2417470
+< item 5, BDF2, pendulum 1/16 | SWING dt_ns 625000 released_at_urad 0 turn_urad -3141586 swing_per_10000 9999 turn_urad -1 swing_per_10000 9999 turn_urad -3141596 swing_per_10000 9999 turns 3
+< item 5, BDF2, pendulum 1/16, turns placed between the steps | SWINGQ dt_ns 625000 released_at_urad 0 turn_urad -3141590 swing_per_10000 9999 turn_urad 2 swing_per_10000 9999 turn_urad -3141600 swing_per_10000 10000 turns 3 least_per_10000 9999 most_per_10000 10000 last_per_10000 10000
+< item 5, BDF2, free spin 1/16 | FINAL dt_ns 625000 angle_urad 3499995 speed_urads 3499994
+< item 5, BDF2, swinging chain 1/16 | CHAIN dt_ns 625000 gravity 1 steps 3200 kinetic_start_nj 0 kinetic_end_nj 228245283 kinetic_most_nj 12716207359 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic -43 energy_largest_drift_ppm 1182 energy_lost_ppm_of_most_kinetic 43 momentum_start_u 0 momentum_end_u -241306626 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad 474103 speed1_urads -905782 angle2_urad -4103941 speed2_urads 2479939
+> item 5, BDF2, pendulum 1/16 | SWING dt_ns 625000 released_at_urad 0 turn_urad -3141585 swing_per_10000 9999 turn_urad -4 swing_per_10000 9999 turn_urad -3141592 swing_per_10000 9999 turns 3
+> item 5, BDF2, pendulum 1/16, turns placed between the steps | SWINGQ dt_ns 625000 released_at_urad 0 turn_urad -3141589 swing_per_10000 9999 turn_urad 0 swing_per_10000 9999 turn_urad -3141596 swing_per_10000 9999 turns 3 least_per_10000 9999 most_per_10000 9999 last_per_10000 9999
+> item 5, BDF2, free spin 1/16 | FINAL dt_ns 625000 angle_urad 3499986 speed_urads 3499985
+> item 5, BDF2, swinging chain 1/16 | CHAIN dt_ns 625000 gravity 1 steps 3200 kinetic_start_nj 0 kinetic_end_nj 218687227 kinetic_most_nj 12722569749 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic -85 energy_largest_drift_ppm 1460 energy_lost_ppm_of_most_kinetic 85 momentum_start_u 0 momentum_end_u -250293323 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad 447120 speed1_urads -964441 angle2_urad -4221652 speed2_urads 2336095
+< review b14, the second second after a rollout and restore | CREEP dt_ns 10000000 steps 100 mean_speed_ums 110 friction_over_normal_per_10000 2879 friction_limit_per_10000 4800
+> review b14, the second second after a rollout and restore | CREEP dt_ns 10000000 steps 100 mean_speed_ums 0 friction_over_normal_per_10000 2879 friction_limit_per_10000 4800
+< review b13, the second second after a rollout and restore | CREEP dt_ns 10000000 steps 100 mean_speed_ums 410 friction_over_normal_per_10000 2879 friction_limit_per_10000 4800
+< review | b13: the hold with a second scene made and destroyed is byte-identical to the hold alone: 0
+> review b13, the second second after a rollout and restore | CREEP dt_ns 10000000 steps 100 mean_speed_ums 110 friction_over_normal_per_10000 2879 friction_limit_per_10000 4800
+> review | b13: the hold with a second scene made and destroyed is byte-identical to the hold alone: 1
+< accurate14 | arm, accurate, free spin 1/16 | FINAL dt_ns 625000 angle_urad 2999997 speed_urads 2999996
+< accurate14 | arm, accurate, driven 1/16 | FINAL dt_ns 625000 angle_urad 2328235 speed_urads 4656443
+< accurate14 | arm, accurate, pendulum 1/16 | SWING dt_ns 625000 released_at_urad -1 turn_urad -3141588 swing_per_10000 9999 turn_urad 1 swing_per_10000 9999 turn_urad -3141595 swing_per_10000 9999 turns 3
+> accurate14 | arm, accurate, free spin 1/16 | FINAL dt_ns 625000 angle_urad 2999991 speed_urads 2999990
+> accurate14 | arm, accurate, driven 1/16 | FINAL dt_ns 625000 angle_urad 2328227 speed_urads 4656413
+> accurate14 | arm, accurate, pendulum 1/16 | SWING dt_ns 625000 released_at_urad -1 turn_urad -3141587 swing_per_10000 9999 turn_urad -1 swing_per_10000 9999 turn_urad -3141591 swing_per_10000 9999 turns 3
+< accurate14 | arm, accurate, slip 1/16 | FINAL dt_ns 625000 angle_urad 1552151 speed_urads 3104294
+< accurate14 | chain, accurate, free 1/16 | CHAIN dt_ns 625000 gravity 0 steps 3200 kinetic_start_nj 1277211185 kinetic_end_nj 1277217364 kinetic_most_nj 1277220385 kinetic_end_per_million_of_start 1000004 energy_drift_ppm_of_most_kinetic 4 energy_largest_drift_ppm 21 energy_lost_ppm_of_most_kinetic -4 momentum_start_u 906687804 momentum_end_u 905290657 momentum_drift_ppm -1540 momentum_largest_drift_ppm 1540 angle1_urad 5262845 speed1_urads 1846561 angle2_urad -710310 speed2_urads 3909846
+< accurate14 | chain, accurate, swinging 1/16 | CHAIN dt_ns 625000 gravity 1 steps 3200 kinetic_start_nj 0 kinetic_end_nj 6111612380 kinetic_most_nj 8790580961 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic -136 energy_largest_drift_ppm 1858 energy_lost_ppm_of_most_kinetic 136 momentum_start_u 0 momentum_end_u -874394447 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad -2567912 speed1_urads -5454979 angle2_urad 1583843 speed2_urads 20264564
+> accurate14 | arm, accurate, slip 1/16 | FINAL dt_ns 625000 angle_urad 1552148 speed_urads 3104281
+> accurate14 | chain, accurate, free 1/16 | CHAIN dt_ns 625000 gravity 0 steps 3200 kinetic_start_nj 1277211185 kinetic_end_nj 1277204825 kinetic_most_nj 1277211768 kinetic_end_per_million_of_start 999995 energy_drift_ppm_of_most_kinetic -4 energy_largest_drift_ppm 25 energy_lost_ppm_of_most_kinetic 4 momentum_start_u 906687804 momentum_end_u 906686324 momentum_drift_ppm -1 momentum_largest_drift_ppm 7 angle1_urad 5256352 speed1_urads 1796545 angle2_urad -684550 speed2_urads 4061782
+> accurate14 | chain, accurate, swinging 1/16 | CHAIN dt_ns 625000 gravity 1 steps 3200 kinetic_start_nj 0 kinetic_end_nj 5457662159 kinetic_most_nj 8971545139 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic -295 energy_largest_drift_ppm 2836 energy_lost_ppm_of_most_kinetic 295 momentum_start_u 0 momentum_end_u -962934097 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad -2409441 speed1_urads -3434621 angle2_urad 2767883 speed2_urads 15529761
+< accurate14 | limit, accurate, lift 1/16 | FINAL dt_ns 625000 angle_urad -176640 speed_urads 2523591
+< accurate14 | limit, accurate, release, damping 20, 1/64 | LEAVE dt_ns 156250 largest_speed_urads 1434161 speed_at_leaving_urads 1434098 final_speed_urads 1434161 final_angle_urad 379635 steps_inside 167 largest_fall_inside_urads 0
+< accurate14 | limit, accurate, release, damping 20, 1/16 | LEAVE dt_ns 625000 largest_speed_urads 1433781 speed_at_leaving_urads 1433781 final_speed_urads 1433781 final_angle_urad 379449 steps_inside 41 largest_fall_inside_urads 0
+< accurate14 | limit, accurate, release, damping 150, 1/64 | LEAVE dt_ns 156250 largest_speed_urads 369446 speed_at_leaving_urads 369445 final_speed_urads 369446 final_angle_urad -145928 steps_inside 530 largest_fall_inside_urads 0
+< accurate14 | limit, accurate, release, damping 150, 1/16 | LEAVE dt_ns 625000 largest_speed_urads 370390 speed_at_leaving_urads 370386 final_speed_urads 370390 final_angle_urad -145467 steps_inside 132 largest_fall_inside_urads 0
+> accurate14 | limit, accurate, lift 1/16 | FINAL dt_ns 625000 angle_urad -176641 speed_urads 2523586
+> accurate14 | limit, accurate, release, damping 20, 1/64 | LEAVE dt_ns 156250 largest_speed_urads 1434234 speed_at_leaving_urads 1434098 final_speed_urads 1434234 final_angle_urad 379653 steps_inside 167 largest_fall_inside_urads 0
+> accurate14 | limit, accurate, release, damping 20, 1/16 | LEAVE dt_ns 625000 largest_speed_urads 1433780 speed_at_leaving_urads 1433780 final_speed_urads 1433780 final_angle_urad 379449 steps_inside 41 largest_fall_inside_urads 0
+> accurate14 | limit, accurate, release, damping 150, 1/64 | LEAVE dt_ns 156250 largest_speed_urads 369447 speed_at_leaving_urads 369445 final_speed_urads 369447 final_angle_urad -145928 steps_inside 530 largest_fall_inside_urads 0
+> accurate14 | limit, accurate, release, damping 150, 1/16 | LEAVE dt_ns 625000 largest_speed_urads 370394 speed_at_leaving_urads 370386 final_speed_urads 370394 final_angle_urad -145466 steps_inside 132 largest_fall_inside_urads 0
+< accurate14 | benchmark | half_cheetah accurate steps 345600 stopped 0 diverged 0 most_iterations 122 wall_s 317.8
+< accurate14 | benchmark | ant accurate steps 345600 stopped 0 diverged 0 most_iterations 99 wall_s 61.5
+< accurate14 | benchmark | cart_pole accurate steps 345600 stopped 0 diverged 0 most_iterations 4 wall_s 10.5
+> accurate14 | benchmark | half_cheetah accurate steps 345600 stopped 0 diverged 0 most_iterations 111 wall_s 318.1
+> accurate14 | benchmark | ant accurate steps 345600 stopped 0 diverged 0 most_iterations 93 wall_s 59.5
+> accurate14 | benchmark | cart_pole accurate steps 345600 stopped 0 diverged 0 most_iterations 3 wall_s 10.4
+< accurate14 | steps stopped (reported) 3946, diverged 0, most iterations of any step 122
+> accurate14 | steps stopped (reported) 3946, diverged 0, most iterations of any step 111
+< accurate14 | limits_accurate/stats.txt: stopped 0 diverged 0 most_iterations 2
+> accurate14 | limits_accurate/stats.txt: stopped 0 diverged 0 most_iterations 3
+< accurate14 | bench, the accurate sources: stopped 0 diverged 0 most_iterations 122
+< long, accurate_16 | SWINGQ dt_ns 625000 released_at_urad -1 turn_urad -3141589 swing_per_10000 9999 turn_urad 1 swing_per_10000 9999 turn_urad -3141598 swing_per_10000 9999 turn_urad 10 swing_per_10000 10000 turns 27 least_per_10000 9999 most_per_10000 10000 last_per_10000 10000
+< long, accurate_64 | SWINGQ dt_ns 156250 released_at_urad -1 turn_urad -3141604 swing_per_10000 10000 turn_urad 24 swing_per_10000 10000 turn_urad -3141628 swing_per_10000 10000 turn_urad 47 swing_per_10000 10000 turns 27 least_per_10000 10000 most_per_10000 10001 last_per_10000 10001
+> accurate14 | bench, the accurate sources: stopped 0 diverged 0 most_iterations 111
+> long, accurate_16 | SWINGQ dt_ns 625000 released_at_urad -1 turn_urad -3141588 swing_per_10000 9999 turn_urad -2 swing_per_10000 9999 turn_urad -3141594 swing_per_10000 9999 turn_urad 5 swing_per_10000 9999 turns 27 least_per_10000 9999 most_per_10000 10000 last_per_10000 10000
+> long, accurate_64 | SWINGQ dt_ns 156250 released_at_urad -1 turn_urad -3141602 swing_per_10000 10000 turn_urad 18 swing_per_10000 10000 turn_urad -3141621 swing_per_10000 10000 turn_urad 37 swing_per_10000 10000 turns 27 least_per_10000 10000 most_per_10000 10001 last_per_10000 10001
+< long, shipped_tolerances_16 | SWINGQ dt_ns 625000 released_at_urad -1 turn_urad -3141807 swing_per_10000 10000 turn_urad 436 swing_per_10000 10001 turn_urad -3142253 swing_per_10000 10003 turn_urad 885 swing_per_10000 10004 turns 27 least_per_10000 10000 most_per_10000 10037 last_per_10000 10037
+< long, item 5's chain, BDF2, 1/64 | CHAIN dt_ns 156250 gravity 1 steps 12800 kinetic_start_nj 0 kinetic_end_nj 221775820 kinetic_most_nj 12721371497 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic 42 energy_largest_drift_ppm 43 energy_lost_ppm_of_most_kinetic -42 momentum_start_u 0 momentum_end_u -249683573 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad 451771 speed1_urads -959027 angle2_urad -4200314 speed2_urads 2364903
+< long | steps stopped (reported) 0, diverged 0, most iterations of any step 3
+> long, shipped_tolerances_16 | SWINGQ dt_ns 625000 released_at_urad -1 turn_urad -3141761 swing_per_10000 10000 turn_urad 342 swing_per_10000 10001 turn_urad -3142110 swing_per_10000 10002 turn_urad 691 swing_per_10000 10003 turns 27 least_per_10000 10000 most_per_10000 10029 last_per_10000 10029
+> long, item 5's chain, BDF2, 1/64 | CHAIN dt_ns 156250 gravity 1 steps 12800 kinetic_start_nj 0 kinetic_end_nj 218947799 kinetic_most_nj 12722851143 kinetic_end_per_million_of_start 999999999 energy_drift_ppm_of_most_kinetic 0 energy_largest_drift_ppm 81 energy_lost_ppm_of_most_kinetic 0 momentum_start_u 0 momentum_end_u -251198519 momentum_drift_ppm 999999999 momentum_largest_drift_ppm 999999999 angle1_urad 446265 speed1_urads -968579 angle2_urad -4226080 speed2_urads 2331748
+> long | steps stopped (reported) 0, diverged 0, most iterations of any step 2
+< RULE V5_free_spin all_ge 3496500 3498314 3499902 3499994 : HELD
+< RULE V5_pendulum_shipped_step all_in 9950 10010 9990 9978 9971 : HELD
+> RULE V5_free_spin all_ge 3496500 3495765 3499752 3499985 : FAILED
+> RULE V5_pendulum_shipped_step all_in 9950 10010 9988 9971 9960 : HELD
+< RULE V5_pendulum_shipped_step_turns_between_steps all_in 9950 10010 9991 9978 9972 : HELD
+< RULE V5_pendulum_quarter_step_turns_between_steps all_in 9990 10010 9999 9999 9998 : HELD
+< RULE V5_pendulum_sixteenth_step_turns_between_steps all_in 9995 10005 9999 9999 10000 : HELD
+< RULE V5_swinging_chain_quarter_step in -3783 -10000 10000 : HELD
+< RULE V5_swinging_chain_sixteenth_step in -43 -5000 5000 : HELD
+< RULE V5_backward_euler_loses_more_at_the_quarter_step le -60672 -3783 : HELD
+> RULE V5_pendulum_shipped_step_turns_between_steps all_in 9950 10010 9988 9972 9962 : HELD
+> RULE V5_pendulum_quarter_step_turns_between_steps all_in 9990 10010 9999 9998 9998 : HELD
+> RULE V5_pendulum_sixteenth_step_turns_between_steps all_in 9995 10005 9999 9999 9999 : HELD
+> RULE V5_swinging_chain_quarter_step in -5737 -10000 10000 : HELD
+> RULE V5_swinging_chain_sixteenth_step in -85 -5000 5000 : HELD
+> RULE V5_backward_euler_loses_more_at_the_quarter_step le -60672 -5737 : HELD
+< RULE V7_a_restored_state_holds_within_the_stick_distance in 110 -300 300 : HELD
+< RULE V7_required_build_13_loses_the_stick_to_a_second_scene eq 0 0 : HELD
+< RULE V7_required_build_13_carries_the_rollout_back ge 410 300 : HELD
+> RULE V7_a_restored_state_holds_within_the_stick_distance in 0 -300 300 : HELD
+> RULE V7_required_build_13_loses_the_stick_to_a_second_scene eq 1 0 : FAILED
+> RULE V7_required_build_13_carries_the_rollout_back ge 110 300 : FAILED
+< RULE V8_A2_a_free_arm_keeps_its_speed ge 2999996 2999700 : HELD
+< RULE V8_A2_a_driven_arm within 4656443 4656457 1000 : HELD
+> RULE V8_A2_a_free_arm_keeps_its_speed ge 2999990 2999700 : HELD
+> RULE V8_A2_a_driven_arm within 4656413 4656457 1000 : HELD
+< RULE V8_A2_slip_at_its_right_answer within 3104294 3104308 100 : HELD
+< RULE V8_A2_free_chain within 1000004 1000000 200 : HELD
+< RULE V8_A2_free_chain_momentum le 1540 1000 : FAILED
+< RULE V8_A2_swinging_chain_keeps_its_energy in -136 -5000 5000 : HELD
+> RULE V8_A2_slip_at_its_right_answer within 3104281 3104308 100 : HELD
+> RULE V8_A2_free_chain within 999995 1000000 200 : HELD
+> RULE V8_A2_free_chain_momentum le 7 1000 : HELD
+> RULE V8_A2_swinging_chain_keeps_its_energy in -295 -5000 5000 : HELD
+< RULE V8_A3_released_and_moving all_ge -299000 379449 -145467 : HELD
+< RULE V8_A3_moving_at_the_end all_ge 36941 1433781 370390 : HELD
+< RULE V8_A3_lifted_off_the_limit ge -176640 -189208 : HELD
+> RULE V8_A3_released_and_moving all_ge -299000 379449 -145466 : HELD
+> RULE V8_A3_moving_at_the_end all_ge 36941 1433780 370394 : HELD
+> RULE V8_A3_lifted_off_the_limit ge -176641 -189208 : HELD
+< RULE V8_no_step_stops_at_the_iteration_limit le 122 199 : HELD
+> RULE V8_no_step_stops_at_the_iteration_limit le 111 199 : HELD
+< RULE V9_required_shipped_tolerances_gain ge 10037 10011 : HELD
+< RULE V9_chain_at_1_64 in 42 -1000 1000 : HELD
+> RULE V9_required_shipped_tolerances_gain ge 10029 10011 : HELD
+> RULE V9_chain_at_1_64 in 0 -1000 1000 : HELD
+< RULE V9_no_step_stops_at_the_iteration_limit le 3 199 : HELD
+< STUDY15 rules held 116 failed 5 ; values missing 0 ; measuring complete 1
+> RULE V9_no_step_stops_at_the_iteration_limit le 2 199 : HELD
+> STUDY15 rules held 114 failed 7 ; values missing 0 ; measuring complete 1

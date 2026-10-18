@@ -1,0 +1,1 @@
+STATS scene cart_pole integ bdf2 maxiter 200 sub 16 smooth -1 contact_actors_set 2 episodes 108 readings 21600 dofs 2 solver_steps 345600 converged 345600 stopped 0 diverged 0 unset 0 most_iterations 4 enc_min -4142 enc_max 4141 wall_s 31.5 real_bits 64 worst_residual 0.0222 extra ndamp=5 falloff=0.03 newtoneuler=1 abstol=1e-4 reltol=1e-8
